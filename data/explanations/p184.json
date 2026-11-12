@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket kings 3-bet the small blind's open every time: they are far ahead of its range and want a bigger pot.",
+    "1": "The ace is the card kings fear: about a fifth of the small blind's hands now have a pair of aces, but your kings still beat its smaller pairs and its many draws. Checking behind keeps the pot small and gets a free card; a small bet charges the draws a little. Both are about equally good, and checking is more common. A bigger bet is the mistake: it folds the hands you beat and gets called by aces.",
+    "2": "The nine changes nothing, and the small blind checks. Its range is mostly smaller pairs and hands with nothing, which your kings beat, plus some aces. Those weaker hands will not call much, so checking behind and taking the showdown is a little better; a full-pot bet folds them and costs 1.02 bb.",
+    "3": "The queen of diamonds makes a flush possible, but after another check the small blind's range is mostly smaller pairs, and your kings beat them. A half-pot bet gets called by some of those pairs; checking lets them reach showdown for free and earns 0.18 bb less. A full-pot bet folds the pairs and costs 0.65 bb."
+  },
+  "takeaway": "With a big pair under an ace, keep the pot small, then bet small on the river once the opponent's checks show weaker pairs."
+}

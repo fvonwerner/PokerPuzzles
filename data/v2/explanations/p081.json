@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "King-five suited calls the cutoff's open from the big blind: the price is cheap and a suited king can make strong pairs and win big pots when its suit comes. It 3-bets now and then; folding is the mistake.",
+    "1": "The flop was checked through, and the queen now makes your fives third pair, though you still have a flush draw. That is a hand that wants to see the river cheaply: it beats bluffs and can improve. Betting out of position would fold the cutoff's weaker hands and get called by better pairs, which is why checking is better; when you check, the cutoff bets about a third of the time.",
+    "2": "Your flush draw missed and you are left with third pair. That is a bluff-catcher: it beats the cutoff's missed draws and loses to any bigger pair. Checking lets the cutoff bluff and keeps the pot small; a small bet is almost as good, but a bet bigger than the pot only gets called by better hands and costs 0.63 bb.",
+    "3": "The cutoff bets about half the pot, and its bets are mostly pairs that beat your fives, like jack-ten, nines and eights. You need to win 25.2% and you win 24.5%, so folding is slightly better, and calling sometimes is fine. Raising all-in is the real mistake: the pairs will call and only the bluffs fold."
+  },
+  "takeaway": "A weak pair is a bluff-catcher: call only when the opponent has enough bluffs, and do not turn it into a raise."
+}

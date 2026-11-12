@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Ace-five suited 3-bets the button's open every time. It can win the pot right away, and when called its suited ace can still improve to strong hands, so it plays better as a 3-bet than as a call; folding or calling are both mistakes here.",
+    "1": "You 3-bet before the flop, so the button expects strong hands from you, and this king-high board fits them. Your ace-high has backdoor draws and an overcard, so a bet can win the pot now and still improve when called. A bet of 60% of the pot folds about a third of the button's hands; checking gives up that chance but keeps the pot small. Betting is the usual choice, and all three options work about equally well.",
+    "2": "The six of clubs gives you the nut flush draw to go with your ace. A half-pot bet is a semi-bluff: it wins when the button folds, and when called you still have many cards that make the best flush. Checking is almost as good, since it gets you a free card, but betting is the usual play. A full-pot bet risks more than the draw needs and costs 0.87 bb.",
+    "3": "The jack misses you: your flush draw missed and your ace-high cannot beat any hand the button still holds. A bluff does not work either, because after calling twice the button's range is made of pairs and better that will call. Check and be ready to give up.",
+    "4": "The button moves all-in, and your ace-high essentially never wins against the hands it can hold. You would need to win a quarter of the time to call, so fold and lose nothing more."
+  },
+  "takeaway": "Bet big draws while they can still win two ways; once they miss and the opponent keeps calling, give up instead of bluffing."
+}

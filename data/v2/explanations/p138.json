@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Pocket sixes open from the button every time: only the blinds are left to act, and a pair is ahead of their ranges often enough.",
+    "1": "Facing the small blind's 3-bet, pocket sixes call: in position they can win a big pot when a third six comes. A 4-bet is a small mistake, and folding a bigger one.",
+    "2": "You flopped a set on a board where flush draws and straights are possible. A small bet starts building the pot and charges the draws, and if the small blind raises, you are happy to get the money in; checking gives free cards. All three options are about equal, and the small bet is the usual choice.",
+    "3": "The ten means any seven, or queen-jack, makes a straight, but your set still wins most of the time. Betting half the pot gets called by the small blind's pairs and draws; checking keeps the pot smaller in case it already has a straight. Both are about equally good, and betting is more common.",
+    "4": "The two changes nothing, and the small blind checks. Your set beats its pairs and missed draws, and with about one pot left behind, moving all-in gets called by many of those pairs; a half-pot bet is only slightly worse. Checking is the big mistake, giving up 14.62 bb."
+  },
+  "takeaway": "With a set on a board full of draws, keep betting: the draws pay you, and checking gives them free cards."
+}

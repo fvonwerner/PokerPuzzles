@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Jack-eight suited calls the small blind's open: the price is good, and you will act last on every later street, which makes a playable suited hand worth defending. It is not strong enough to 3-bet.",
+    "1": "Top pair with a jack kicker is ahead of most of the small blind's bets, but the kicker is not strong. With position, calling keeps the pot small, keeps bluffs and weaker pairs in, and lets you decide on later streets; raising builds a bigger pot that the better hands will happily call. Calling is the usual choice and raising is fine too; folding would be a big mistake.",
+    "2": "The king is an overcard, so your eights are now second pair. With position you can take a free card: checking behind keeps the pot small and gets you to showdown, while a bet folds weaker hands and gets called by kings. Some hands like yours still bet as a cheap way to win the pot now, but checking is the more usual choice.",
+    "3": "The small blind has checked the turn and the river, and its remaining range is mostly ace-high hands, so your pair of eights is ahead most of the time. That makes it a value hand: a half-pot bet gets called by those weaker hands, while checking lets them reach showdown for free. Checking gives up 0.49 bb."
+  },
+  "takeaway": "When the opponent checks twice and you likely have the best hand, make a medium value bet on the river."
+}

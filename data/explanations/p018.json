@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket sixes call the cutoff's open from the big blind: the call is cheap, and a small pair can win a big pot when a third six comes. It is rarely strong enough to want a big pot before the flop, so calling is the usual play.",
+    "1": "Your sixes sit below the jack and the seven, so they beat the cutoff's misses but lose to any jack, seven or bigger pair. That makes this a hand that wants a cheap showdown: calling keeps the cutoff's bluffs in and costs little, while raising would fold the hands you beat and get called by the ones that beat you. A raise as a bluff works about as well, but calling is the natural play, and folding is a mistake at this cheap price.",
+    "2": "The six gives you a set, far ahead of almost everything. You want to win a big pot, and there are two ways to start: betting builds it now, while checking lets the cutoff bet its bluffs and pairs so you can call or raise. Betting is only slightly worse; checking is the usual choice here because the cutoff bets often when you check to it.",
+    "3": "The ace changes little: your set still beats almost every hand the cutoff can have. Out of position, the most money comes from letting it bet: when you check, it bets more than half the time, and you can call or raise. Betting yourself collects less, which is why betting about half the pot costs 1.51 bb."
+  },
+  "takeaway": "With a very strong hand out of position, check to an opponent who likes to bet, then call or raise."
+}

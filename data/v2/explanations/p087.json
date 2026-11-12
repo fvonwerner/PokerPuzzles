@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket sevens open from the hijack every time: they are ahead of most hands still to act and play well after the flop.",
+    "1": "Your sevens sit just below the eight, ahead of the big blind's many high cards but behind any eight. Checking keeps the pot small and gets a free card; a small bet charges the high cards and can win the pot now. All three options work about equally well; checking is the most common because your hand wants a cheap showdown.",
+    "2": "The ace is a second card above your sevens and hits many of the big blind's hands, like ace-jack and ace-ten. Your sevens still beat its kings and queens, so they want a cheap showdown: checking behind gets there, while a bet folds those hands and gets called by aces, costing 0.20 bb.",
+    "3": "The nine puts a third card above your sevens. After the big blind checks, your sevens are still ahead of most of its range, which is full of king-high and queen-high hands, but those hands will not call a bet. Checking wins against them at showdown; a small bet is nearly as good, and a big bet only gets called by better hands, costing 0.65 bb."
+  },
+  "takeaway": "A small pair against a range of high cards wants a showdown: check and let them miss rather than bet them away."
+}

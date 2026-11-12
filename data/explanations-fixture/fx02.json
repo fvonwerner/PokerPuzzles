@@ -1,0 +1,8 @@
+{
+  "decisions": {
+    "0": "Nine-eight suited plays well in position-poor spots because it makes straights and flushes. It is a pure defend against a button open.",
+    "1": "With a flush draw and a backdoor straight draw you have plenty of equity against a small c-bet. Raising and calling are almost tied; raising wins the pot right away more often.",
+    "3": "The deuce bricked your draws, and a two-thirds pot bet gets a lot of value from the button. Calling is barely profitable; folding is close."
+  },
+  "takeaway": "Big draws can raise small c-bets; when the turn bricks, the price matters more than the draw."
+}

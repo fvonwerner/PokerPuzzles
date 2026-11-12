@@ -1,0 +1,34 @@
+p122 - Ace-king on a paired nine flop  [c-bet, bluff]
+Scenario: BTN opens, BB 3-bets, BTN calls (3BP, tree 3BP_OOP_AGGRESSOR)
+Hero: BB (oop) AcKh [AKo]   Villain: BTN (ip)
+Board: 9s 9c 4d | 2h | Jc
+Solver: 350 iterations, exploitability 0.13% pot, 2890 MB, 219 s
+  UTG fold, HJ fold, CO fold, BTN raise 2.5, SB fold
+  HERO DECISION #0 (preflop, chart BB_vs_BTN) - pot 4, hero 99 behind, villain 97.5 behind, to call 1.5
+      Fold                   hand   0.0%   (range  55.9%)
+      Call                   hand   0.0%   (range  29.4%)
+      3-bet to 11            hand 100.0%   (range  14.7%)  <- main line
+  BTN call 11
+FLOP: 9s 9c 4d   (pot 22.5, hero 89 behind, villain 89 behind)
+  HERO DECISION #1 (flop, solver) - pot 22.5, hero 89 behind, villain 89 behind, to call 0
+      Check                  hand  25.7%  EV    6.00   (range  21.8%)
+      Bet 5.6 (25%)          hand   0.0%  EV    5.98   (range   0.0%)
+      Bet 13.5 (60%)         hand  74.3%  EV    5.99   (range  78.2%)  <- main line
+      best-second EV gap 0.01 bb (0.0% pot); hand equity 56.1%; range equity 52.4% vs villain 47.6%; combos hero 176.9 / villain 169.4
+  Villain BTN: Call 13.5 (66% of range; else Fold 28%, Raise to 33.8 6%)  [range 169.4 combos]
+TURN: 2h   (pot 49.5, hero 75.5 behind, villain 75.5 behind)
+  HERO DECISION #2 (turn, solver) - pot 49.5, hero 75.5 behind, villain 75.5 behind, to call 0
+      Check                  hand  95.0%  EV   11.67   (range  70.3%)  <- main line
+      Bet 24.8 (50%)         hand   5.0%  EV   11.68   (range  29.7%)
+      Bet 49.5 (100%)        hand   0.0%  EV   10.06   (range   0.0%)
+      best-second EV gap 0.01 bb (0.0% pot); hand equity 49.0%; range equity 45.2% vs villain 54.8%; combos hero 138.3 / villain 110.3
+  Villain BTN: Check (52% of range; else Bet 24.8 (50%) 48%, Bet 49.5 (100%) 0%)  [range 110.3 combos]
+RIVER: Jc   (pot 49.5, hero 75.5 behind, villain 75.5 behind)
+  HERO DECISION #3 (river, solver) - pot 49.5, hero 75.5 behind, villain 75.5 behind, to call 0
+      Check                  hand 100.0%  EV   15.69   (range  59.5%)  <- main line
+      Bet 24.8 (50%)         hand   0.0%  EV   15.35   (range  38.9%)
+      Bet 49.5 (100%)        hand   0.0%  EV   14.67   (range   1.6%)
+      best-second EV gap 0.34 bb (0.7% pot); hand equity 46.8%; range equity 45.3% vs villain 54.7%; combos hero 89.4 / villain 54.9
+  Villain BTN: Check (56% of range; else Bet 24.8 (50%) 8%, Bet 49.5 (100%) 36%)  [range 54.9 combos]
+END: showdown, pot 49.5, hero 75.5 behind, villain 75.5 behind; villain shows AdTd (Pair of nines) vs hero Pair of nines -> hero; hero net +25.00 bb
+Warnings: none

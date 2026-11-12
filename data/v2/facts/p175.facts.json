@@ -1,0 +1,2597 @@
+{
+ "id": "p175",
+ "title": "Queens under a king on a monotone flop",
+ "tags": [
+  "monotone",
+  "pot control"
+ ],
+ "scenario": {
+  "key": "BTN_SB_3BP",
+  "name": "BTN opens, SB 3-bets, BTN calls",
+  "potType": "3BP",
+  "tree": "3BP_OOP_AGGRESSOR"
+ },
+ "hero": {
+  "seat": "SB",
+  "position": "oop",
+  "hand": [
+   "Qh",
+   "Qc"
+  ],
+  "handClass": "QQ"
+ },
+ "villain": {
+  "seat": "BTN",
+  "position": "ip"
+ },
+ "startingStackBb": 100,
+ "preflopLine": [
+  "UTG fold",
+  "HJ fold",
+  "CO fold",
+  "BTN raise 2.5",
+  "SB (hero) 3-bet to 11",
+  "BB fold",
+  "BTN call 11"
+ ],
+ "board": {
+  "flop": [
+   "Kd",
+   "9d",
+   "5d"
+  ],
+  "turn": "2s",
+  "river": "Jh",
+  "final": [
+   "Kd",
+   "9d",
+   "5d",
+   "2s",
+   "Jh"
+  ]
+ },
+ "solverAccuracy": {
+  "exploitabilityPctPot": 0.14,
+  "iterations": 440,
+  "memoryMb": 901,
+  "seconds": 77,
+  "compressed": false,
+  "targetPctPot": 0.15,
+  "text": "440 iterations, exploitability 0.14% of the pot (target 0.15%), 77 s"
+ },
+ "warnings": [],
+ "decisions": [
+  {
+   "index": 0,
+   "street": "preflop",
+   "source": "chart",
+   "chart": "SB_vs_BTN",
+   "situation": {
+    "street": "preflop",
+    "board": [],
+    "pot": 4.0,
+    "toCall": 2.0,
+    "heroStack": 99.5,
+    "villainStack": 97.5,
+    "heroBetThisStreet": 0.5,
+    "villainBetThisStreet": 2.5,
+    "spr": 24.38,
+    "price": "call 2 to win 4",
+    "equityNeededPct": 33.3,
+    "facingBetOrRaise": true
+   },
+   "heroHand": {
+    "preflop": {
+     "street": "preflop",
+     "description": "pocket pair (queens); no board yet, so no made hand or draws"
+    }
+   },
+   "solver": {
+    "options": [
+     {
+      "id": "fold",
+      "label": "Fold",
+      "freq": 0.0,
+      "freqPct": 0.0,
+      "grade": "Wrong",
+      "points": 15.0,
+      "mainLine": false,
+      "rangeFreqPct": 84.7
+     },
+     {
+      "id": "raise",
+      "label": "3-bet to 11",
+      "freq": 1.0,
+      "freqPct": 100.0,
+      "grade": "Best",
+      "points": 100.0,
+      "mainLine": true,
+      "rangeFreqPct": 15.3
+     }
+    ],
+    "note": "preflop chart decision: frequencies only, no EV and no equity",
+    "mostFrequent": "3-bet to 11",
+    "verdict": null
+   },
+   "ranges": {
+    "heroRangeCombos": 1326.0,
+    "heroRangeSplit": [
+     {
+      "label": "Fold",
+      "pct": 84.7
+     },
+     {
+      "label": "3-bet to 11",
+      "pct": 15.3
+     }
+    ],
+    "heroTopClassesByOption": {
+     "Fold": [
+      {
+       "class": "32o",
+       "combos": 12.0,
+       "freq": 100.0
+      },
+      {
+       "class": "42o",
+       "combos": 12.0,
+       "freq": 100.0
+      },
+      {
+       "class": "43o",
+       "combos": 12.0,
+       "freq": 100.0
+      },
+      {
+       "class": "52o",
+       "combos": 12.0,
+       "freq": 100.0
+      },
+      {
+       "class": "53o",
+       "combos": 12.0,
+       "freq": 100.0
+      },
+      {
+       "class": "54o",
+       "combos": 12.0,
+       "freq": 100.0
+      },
+      {
+       "class": "62o",
+       "combos": 12.0,
+       "freq": 100.0
+      },
+      {
+       "class": "63o",
+       "combos": 12.0,
+       "freq": 100.0
+      }
+     ],
+     "3-bet to 11": [
+      {
+       "class": "AJo",
+       "combos": 12.0,
+       "freq": 100.0
+      },
+      {
+       "class": "AKo",
+       "combos": 12.0,
+       "freq": 100.0
+      },
+      {
+       "class": "AQo",
+       "combos": 12.0,
+       "freq": 100.0
+      },
+      {
+       "class": "KQo",
+       "combos": 12.0,
+       "freq": 100.0
+      },
+      {
+       "class": "KJo",
+       "combos": 7.18,
+       "freq": 59.8
+      },
+      {
+       "class": "66",
+       "combos": 6.0,
+       "freq": 100.0
+      },
+      {
+       "class": "77",
+       "combos": 6.0,
+       "freq": 100.0
+      },
+      {
+       "class": "88",
+       "combos": 6.0,
+       "freq": 100.0
+      }
+     ]
+    },
+    "heroClassInRange": {
+     "class": "QQ",
+     "weightPct": 100.0,
+     "freqPctByOption": {
+      "Fold": 0.0,
+      "3-bet to 11": 100.0
+     }
+    },
+    "villainTopClasses": null,
+    "villainNote": "no villain range in the file at a preflop chart decision"
+   },
+   "strategic": {
+    "position": {
+     "heroInPosition": false,
+     "text": "preflop chart decision; after the flop hero is out of position (acts first)"
+    },
+    "initiative": "on this street so far: villain (BTN raise 2.5)",
+    "sprBand": "deep (SPR above 6)"
+   },
+   "eventsSinceLastDecision": []
+  },
+  {
+   "index": 1,
+   "street": "flop",
+   "source": "solver",
+   "chart": null,
+   "situation": {
+    "street": "flop",
+    "board": [
+     "Kd",
+     "9d",
+     "5d"
+    ],
+    "pot": 23.0,
+    "toCall": 0,
+    "heroStack": 89.0,
+    "villainStack": 89.0,
+    "heroBetThisStreet": 0.0,
+    "villainBetThisStreet": 0.0,
+    "spr": 3.87
+   },
+   "heroHand": {
+    "made": {
+     "category": "pair",
+     "bestFive": [
+      "Kd",
+      "Qh",
+      "Qc",
+      "9d",
+      "5d"
+     ],
+     "holeCardsUsed": [
+      "Qh",
+      "Qc"
+     ],
+     "playsTheBoard": false,
+     "description": "pocket queens below the top card (underpair to one board card: K; above 9 5)"
+    },
+    "draws": {
+     "street": "flop",
+     "flushDraw": null,
+     "straightDraw": null,
+     "comboDraw": false,
+     "backdoorFlushDraws": [],
+     "backdoorStraightDraw": [
+      "J-T"
+     ],
+     "overcards": [],
+     "list": [
+      "backdoor straight draw: needs runner-runner J-T"
+     ],
+     "summary": "backdoor straight draw: needs runner-runner J-T"
+    },
+    "outs": {
+     "straightOrBetter": {
+      "cards": [],
+      "count": 0,
+      "label": "to a straight or better"
+     },
+     "twoPairOrTrips": {
+      "cards": [
+       "Qs",
+       "Qd"
+      ],
+      "count": 2
+     },
+     "topPair": {
+      "cards": [],
+      "count": 0
+     },
+     "otherPair": {
+      "cards": [],
+      "count": 0
+     },
+     "unseenCount": 47
+    },
+    "texture": {
+     "pairing": "unpaired board",
+     "suits": "monotone",
+     "suitCounts": {
+      "diamonds": 3
+     },
+     "flush": "three to a flush (diamonds): two diamonds in hand make a flush",
+     "straight": "no straight possible yet",
+     "maxRanksInAStraightWindow": 2,
+     "straightSingleCards": [],
+     "straightTwoCardCombos": [],
+     "summary": "unpaired board; monotone; three to a flush (diamonds): two diamonds in hand make a flush; no straight possible yet"
+    }
+   },
+   "solver": {
+    "options": [
+     {
+      "id": "check",
+      "label": "Check",
+      "freq": 0.761,
+      "freqPct": 76.1,
+      "grade": "Best",
+      "points": 100.0,
+      "mainLine": true,
+      "rangeFreqPct": 49.8,
+      "ev": 7.15,
+      "evLossBb": 0.0,
+      "evLossPctPot": 0.0
+     },
+     {
+      "id": "bet_58",
+      "label": "Bet 5.8 (25%)",
+      "freq": 0.239,
+      "freqPct": 23.9,
+      "grade": "Correct",
+      "points": 72.56,
+      "mainLine": false,
+      "rangeFreqPct": 43.9,
+      "ev": 7.13,
+      "evLossBb": 0.02,
+      "evLossPctPot": 0.09
+     },
+     {
+      "id": "bet_138",
+      "label": "Bet 13.8 (60%)",
+      "freq": 0.0,
+      "freqPct": 0.0,
+      "grade": "Wrong",
+      "points": 15.0,
+      "mainLine": false,
+      "rangeFreqPct": 6.4,
+      "ev": 6.54,
+      "evLossBb": 0.61,
+      "evLossPctPot": 2.7
+     }
+    ],
+    "bestByEv": "Check",
+    "secondByEv": "Bet 5.8 (25%)",
+    "gapBestSecondBb": 0.02,
+    "gapBestSecondPctPot": 0.09,
+    "mostFrequent": "Check",
+    "handEquityPct": 56.8,
+    "rangeEquityPct": 54.4,
+    "villainRangeEquityPct": 45.6,
+    "verdict": "close"
+   },
+   "ranges": {
+    "heroRangeCombos": 176.19,
+    "heroRangeSplit": [
+     {
+      "label": "Check",
+      "pct": 49.8
+     },
+     {
+      "label": "Bet 5.8 (25%)",
+      "pct": 43.9
+     },
+     {
+      "label": "Bet 13.8 (60%)",
+      "pct": 6.4
+     }
+    ],
+    "heroTopClassesByOption": {
+     "Check": [
+      {
+       "class": "AQo",
+       "combos": 6.71,
+       "freq": 55.9
+      },
+      {
+       "class": "AJo",
+       "combos": 5.6,
+       "freq": 46.7
+      },
+      {
+       "class": "AKo",
+       "combos": 4.79,
+       "freq": 53.2
+      },
+      {
+       "class": "88",
+       "combos": 4.42,
+       "freq": 73.7
+      },
+      {
+       "class": "QQ",
+       "combos": 4.03,
+       "freq": 67.2
+      },
+      {
+       "class": "66",
+       "combos": 3.7,
+       "freq": 61.7
+      },
+      {
+       "class": "77",
+       "combos": 3.59,
+       "freq": 59.8
+      },
+      {
+       "class": "JJ",
+       "combos": 3.44,
+       "freq": 57.4
+      }
+     ],
+     "Bet 5.8 (25%)": [
+      {
+       "class": "AJo",
+       "combos": 5.59,
+       "freq": 46.6
+      },
+      {
+       "class": "KQo",
+       "combos": 5.38,
+       "freq": 59.8
+      },
+      {
+       "class": "AQo",
+       "combos": 4.42,
+       "freq": 36.8
+      },
+      {
+       "class": "AKo",
+       "combos": 3.6,
+       "freq": 40.0
+      },
+      {
+       "class": "AA",
+       "combos": 3.22,
+       "freq": 53.7
+      },
+      {
+       "class": "TT",
+       "combos": 2.88,
+       "freq": 48.0
+      },
+      {
+       "class": "KJo",
+       "combos": 2.61,
+       "freq": 48.5
+      },
+      {
+       "class": "JJ",
+       "combos": 2.52,
+       "freq": 42.0
+      }
+     ],
+     "Bet 13.8 (60%)": [
+      {
+       "class": "AA",
+       "combos": 1.99,
+       "freq": 33.2
+      },
+      {
+       "class": "AQo",
+       "combos": 0.86,
+       "freq": 7.2
+      },
+      {
+       "class": "A5s",
+       "combos": 0.8,
+       "freq": 26.8
+      },
+      {
+       "class": "AJo",
+       "combos": 0.79,
+       "freq": 6.6
+      },
+      {
+       "class": "55",
+       "combos": 0.77,
+       "freq": 57.6
+      },
+      {
+       "class": "A4s",
+       "combos": 0.7,
+       "freq": 17.5
+      },
+      {
+       "class": "AKo",
+       "combos": 0.61,
+       "freq": 6.8
+      },
+      {
+       "class": "JTs",
+       "combos": 0.37,
+       "freq": 9.2
+      }
+     ]
+    },
+    "heroClassInRange": {
+     "class": "QQ",
+     "weightPct": 100.0,
+     "freqPctByOption": {
+      "Check": 67.2,
+      "Bet 5.8 (25%)": 31.8,
+      "Bet 13.8 (60%)": 1.0
+     }
+    },
+    "villainRangeCombos": 159.94,
+    "villainTopClasses": [
+     {
+      "class": "AQo",
+      "combos": 8.88,
+      "weightPct": 74.0
+     },
+     {
+      "class": "AJo",
+      "combos": 7.63,
+      "weightPct": 63.6
+     },
+     {
+      "class": "KQo",
+      "combos": 7.31,
+      "weightPct": 60.9
+     },
+     {
+      "class": "66",
+      "combos": 5.87,
+      "weightPct": 97.8
+     },
+     {
+      "class": "77",
+      "combos": 5.36,
+      "weightPct": 89.4
+     },
+     {
+      "class": "88",
+      "combos": 5.05,
+      "weightPct": 84.2
+     },
+     {
+      "class": "AKo",
+      "combos": 4.76,
+      "weightPct": 39.7
+     },
+     {
+      "class": "76s",
+      "combos": 4.0,
+      "weightPct": 100.0
+     },
+     {
+      "class": "A4s",
+      "combos": 4.0,
+      "weightPct": 100.0
+     },
+     {
+      "class": "AJs",
+      "combos": 4.0,
+      "weightPct": 100.0
+     }
+    ]
+   },
+   "strategic": {
+    "position": {
+     "heroInPosition": false,
+     "text": "hero is out of position: hero acts first and villain acts last on the flop"
+    },
+    "previousStreetAggressor": "hero",
+    "initiative": "last bet or raise on the preflop: hero (SB 3-bet to 11); no bet yet on this street",
+    "sprBand": "medium (SPR 3 to 6)",
+    "blockers": [
+     "no relevant blockers"
+    ],
+    "heroRangeTypes": {
+     "combos": 176.18,
+     "types": [
+      {
+       "type": "straight or better",
+       "pct": 6.0,
+       "combos": 10.59,
+       "split": {
+        "Check": 43.0,
+        "Bet 5.8 (25%)": 51.3,
+        "Bet 13.8 (60%)": 5.8
+       }
+      },
+      {
+       "type": "set or trips",
+       "pct": 4.2,
+       "combos": 7.34,
+       "split": {
+        "Check": 39.4,
+        "Bet 5.8 (25%)": 45.7,
+        "Bet 13.8 (60%)": 14.9
+       }
+      },
+      {
+       "type": "two pair",
+       "pct": 1.7,
+       "combos": 3.0,
+       "split": {
+        "Check": 50.7,
+        "Bet 5.8 (25%)": 44.2,
+        "Bet 13.8 (60%)": 5.1
+       }
+      },
+      {
+       "type": "overpair",
+       "pct": 3.4,
+       "combos": 6.0,
+       "withStrongDrawPct": 50.0,
+       "split": {
+        "Check": 13.1,
+        "Bet 5.8 (25%)": 53.7,
+        "Bet 13.8 (60%)": 33.2
+       }
+      },
+      {
+       "type": "top pair, good kicker",
+       "pct": 18.4,
+       "combos": 32.38,
+       "withStrongDrawPct": 24.1,
+       "split": {
+        "Check": 46.5,
+        "Bet 5.8 (25%)": 49.6,
+        "Bet 13.8 (60%)": 3.9
+       }
+      },
+      {
+       "type": "top pair, weak kicker",
+       "pct": 3.0,
+       "combos": 5.28,
+       "withStrongDrawPct": 7.3,
+       "split": {
+        "Check": 57.1,
+        "Bet 5.8 (25%)": 42.5,
+        "Bet 13.8 (60%)": 0.3
+       }
+      },
+      {
+       "type": "middle or bottom pair, underpair",
+       "pct": 30.1,
+       "combos": 52.99,
+       "withStrongDrawPct": 34.5,
+       "split": {
+        "Check": 60.8,
+        "Bet 5.8 (25%)": 34.7,
+        "Bet 13.8 (60%)": 4.5
+       }
+      },
+      {
+       "type": "strong draw",
+       "pct": 7.6,
+       "combos": 13.42,
+       "split": {
+        "Check": 52.2,
+        "Bet 5.8 (25%)": 40.9,
+        "Bet 13.8 (60%)": 6.9
+       }
+      },
+      {
+       "type": "weak draw",
+       "pct": 25.6,
+       "combos": 45.18,
+       "split": {
+        "Check": 45.7,
+        "Bet 5.8 (25%)": 48.2,
+        "Bet 13.8 (60%)": 6.1
+       }
+      }
+     ],
+     "optionCombos": {
+      "Check": 87.68,
+      "Bet 5.8 (25%)": 77.31,
+      "Bet 13.8 (60%)": 11.18
+     },
+     "optionMakeup": {
+      "Check": [
+       {
+        "type": "straight or better",
+        "pct": 5.2
+       },
+       {
+        "type": "set or trips",
+        "pct": 3.3
+       },
+       {
+        "type": "two pair",
+        "pct": 1.7
+       },
+       {
+        "type": "overpair",
+        "pct": 0.9
+       },
+       {
+        "type": "top pair, good kicker",
+        "pct": 17.2
+       },
+       {
+        "type": "top pair, weak kicker",
+        "pct": 3.4
+       },
+       {
+        "type": "middle or bottom pair, underpair",
+        "pct": 36.8
+       },
+       {
+        "type": "strong draw",
+        "pct": 8.0
+       },
+       {
+        "type": "weak draw",
+        "pct": 23.5
+       }
+      ],
+      "Bet 5.8 (25%)": [
+       {
+        "type": "straight or better",
+        "pct": 7.0
+       },
+       {
+        "type": "set or trips",
+        "pct": 4.3
+       },
+       {
+        "type": "two pair",
+        "pct": 1.7
+       },
+       {
+        "type": "overpair",
+        "pct": 4.2
+       },
+       {
+        "type": "top pair, good kicker",
+        "pct": 20.8
+       },
+       {
+        "type": "top pair, weak kicker",
+        "pct": 2.9
+       },
+       {
+        "type": "middle or bottom pair, underpair",
+        "pct": 23.8
+       },
+       {
+        "type": "strong draw",
+        "pct": 7.1
+       },
+       {
+        "type": "weak draw",
+        "pct": 28.2
+       }
+      ],
+      "Bet 13.8 (60%)": [
+       {
+        "type": "straight or better",
+        "pct": 5.5
+       },
+       {
+        "type": "set or trips",
+        "pct": 9.8
+       },
+       {
+        "type": "two pair",
+        "pct": 1.4
+       },
+       {
+        "type": "overpair",
+        "pct": 17.8
+       },
+       {
+        "type": "top pair, good kicker",
+        "pct": 11.4
+       },
+       {
+        "type": "top pair, weak kicker",
+        "pct": 0.2
+       },
+       {
+        "type": "middle or bottom pair, underpair",
+        "pct": 21.1
+       },
+       {
+        "type": "strong draw",
+        "pct": 8.2
+       },
+       {
+        "type": "weak draw",
+        "pct": 24.7
+       }
+      ]
+     }
+    },
+    "heroHandType": {
+     "type": "middle or bottom pair, underpair",
+     "withStrongDraw": false,
+     "groupPctOfRange": 30.1,
+     "groupSplit": {
+      "Check": 60.8,
+      "Bet 5.8 (25%)": 34.7,
+      "Bet 13.8 (60%)": 4.5
+     }
+    },
+    "villainRangeTypes": {
+     "combos": 140.94,
+     "types": [
+      {
+       "type": "straight or better",
+       "pct": 9.2,
+       "combos": 12.94
+      },
+      {
+       "type": "set or trips",
+       "pct": 3.9,
+       "combos": 5.53
+      },
+      {
+       "type": "two pair",
+       "pct": 1.8,
+       "combos": 2.6
+      },
+      {
+       "type": "top pair, good kicker",
+       "pct": 10.9,
+       "combos": 15.31,
+       "withStrongDrawPct": 31.7
+      },
+      {
+       "type": "top pair, weak kicker",
+       "pct": 4.2,
+       "combos": 5.9
+      },
+      {
+       "type": "middle or bottom pair, underpair",
+       "pct": 38.0,
+       "combos": 53.61,
+       "withStrongDrawPct": 30.4
+      },
+      {
+       "type": "strong draw",
+       "pct": 4.9,
+       "combos": 6.85
+      },
+      {
+       "type": "weak draw",
+       "pct": 27.1,
+       "combos": 38.19
+      }
+     ]
+    },
+    "villainVsHeroType": {
+     "strongerTypePct": 30.0,
+     "sameTypePct": 38.0,
+     "weakerMadePct": 0.0,
+     "drawsPct": 32.0,
+     "nothingPct": 0.0
+    }
+   },
+   "eventsSinceLastDecision": [
+    {
+     "type": "deal",
+     "street": "flop",
+     "cards": [
+      "Kd",
+      "9d",
+      "5d"
+     ],
+     "pot": 23.0,
+     "text": "FLOP dealt: Kd 9d 5d (board Kd 9d 5d; pot 23)"
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "street": "turn",
+   "source": "solver",
+   "chart": null,
+   "situation": {
+    "street": "turn",
+    "board": [
+     "Kd",
+     "9d",
+     "5d",
+     "2s"
+    ],
+    "pot": 23.0,
+    "toCall": 0,
+    "heroStack": 89.0,
+    "villainStack": 89.0,
+    "heroBetThisStreet": 0.0,
+    "villainBetThisStreet": 0.0,
+    "spr": 3.87
+   },
+   "heroHand": {
+    "made": {
+     "category": "pair",
+     "bestFive": [
+      "Kd",
+      "Qh",
+      "Qc",
+      "9d",
+      "5d"
+     ],
+     "holeCardsUsed": [
+      "Qh",
+      "Qc"
+     ],
+     "playsTheBoard": false,
+     "description": "pocket queens below the top card (underpair to one board card: K; above 9 5 2)"
+    },
+    "draws": {
+     "street": "turn",
+     "flushDraw": null,
+     "straightDraw": null,
+     "comboDraw": false,
+     "backdoorFlushDraws": [],
+     "backdoorStraightDraw": null,
+     "overcards": [],
+     "list": [],
+     "summary": "no draw"
+    },
+    "outs": {
+     "straightOrBetter": {
+      "cards": [],
+      "count": 0,
+      "label": "to a straight or better"
+     },
+     "twoPairOrTrips": {
+      "cards": [
+       "Qs",
+       "Qd"
+      ],
+      "count": 2
+     },
+     "topPair": {
+      "cards": [],
+      "count": 0
+     },
+     "otherPair": {
+      "cards": [],
+      "count": 0
+     },
+     "unseenCount": 46
+    },
+    "texture": {
+     "pairing": "unpaired board",
+     "suits": "three of one suit",
+     "suitCounts": {
+      "spades": 1,
+      "diamonds": 3
+     },
+     "flush": "three to a flush (diamonds): two diamonds in hand make a flush",
+     "straight": "no straight possible yet",
+     "maxRanksInAStraightWindow": 2,
+     "straightSingleCards": [],
+     "straightTwoCardCombos": [],
+     "summary": "unpaired board; three of one suit; three to a flush (diamonds): two diamonds in hand make a flush; no straight possible yet"
+    },
+    "newCard": {
+     "card": "2s",
+     "pairsBoard": false,
+     "newTopCard": false,
+     "overcardToYourPair": false,
+     "flushChange": null,
+     "straightChange": null,
+     "heroCategoryBefore": "pair",
+     "heroCategoryAfter": "pair",
+     "heroHandBefore": "pocket queens below the top card (underpair to one board card: K; above 9 5)",
+     "heroHandAfter": "pocket queens below the top card (underpair to one board card: K; above 9 5 2)",
+     "pickedUpDraws": [],
+     "heroImproved": false,
+     "brick": true,
+     "previousDraws": [],
+     "summary": "brick: changes nothing on the board and does not improve your hand"
+    }
+   },
+   "solver": {
+    "options": [
+     {
+      "id": "check",
+      "label": "Check",
+      "freq": 1.0,
+      "freqPct": 100.0,
+      "grade": "Best",
+      "points": 100.0,
+      "mainLine": true,
+      "rangeFreqPct": 67.1,
+      "ev": 11.51,
+      "evLossBb": 0.0,
+      "evLossPctPot": 0.0
+     },
+     {
+      "id": "bet_115",
+      "label": "Bet 11.5 (50%)",
+      "freq": 0.0,
+      "freqPct": 0.0,
+      "grade": "Inaccuracy",
+      "points": 40.0,
+      "mainLine": false,
+      "rangeFreqPct": 21.5,
+      "ev": 11.29,
+      "evLossBb": 0.22,
+      "evLossPctPot": 0.96
+     },
+     {
+      "id": "bet_230",
+      "label": "Bet 23 (100%)",
+      "freq": 0.0,
+      "freqPct": 0.0,
+      "grade": "Wrong",
+      "points": 15.0,
+      "mainLine": false,
+      "rangeFreqPct": 11.4,
+      "ev": 10.37,
+      "evLossBb": 1.14,
+      "evLossPctPot": 5.0
+     }
+    ],
+    "bestByEv": "Check",
+    "secondByEv": "Bet 11.5 (50%)",
+    "gapBestSecondBb": 0.22,
+    "gapBestSecondPctPot": 0.96,
+    "mostFrequent": "Check",
+    "handEquityPct": 66.0,
+    "rangeEquityPct": 55.1,
+    "villainRangeEquityPct": 44.9,
+    "verdict": "lean"
+   },
+   "ranges": {
+    "heroRangeCombos": 87.69,
+    "heroRangeSplit": [
+     {
+      "label": "Check",
+      "pct": 67.1
+     },
+     {
+      "label": "Bet 11.5 (50%)",
+      "pct": 21.5
+     },
+     {
+      "label": "Bet 23 (100%)",
+      "pct": 11.4
+     }
+    ],
+    "heroTopClassesByOption": {
+     "Check": [
+      {
+       "class": "AQo",
+       "combos": 4.95,
+       "freq": 73.8
+      },
+      {
+       "class": "88",
+       "combos": 4.4,
+       "freq": 99.5
+      },
+      {
+       "class": "QQ",
+       "combos": 4.01,
+       "freq": 99.5
+      },
+      {
+       "class": "66",
+       "combos": 3.45,
+       "freq": 93.2
+      },
+      {
+       "class": "77",
+       "combos": 3.31,
+       "freq": 92.3
+      },
+      {
+       "class": "JJ",
+       "combos": 2.96,
+       "freq": 86.0
+      },
+      {
+       "class": "AJo",
+       "combos": 2.89,
+       "freq": 51.5
+      },
+      {
+       "class": "TT",
+       "combos": 2.6,
+       "freq": 86.1
+      }
+     ],
+     "Bet 11.5 (50%)": [
+      {
+       "class": "KQo",
+       "combos": 2.53,
+       "freq": 75.7
+      },
+      {
+       "class": "AKo",
+       "combos": 2.31,
+       "freq": 48.3
+      },
+      {
+       "class": "A8s",
+       "combos": 1.23,
+       "freq": 51.4
+      },
+      {
+       "class": "AJo",
+       "combos": 1.17,
+       "freq": 20.9
+      },
+      {
+       "class": "AKs",
+       "combos": 0.99,
+       "freq": 59.1
+      },
+      {
+       "class": "QJs",
+       "combos": 0.92,
+       "freq": 64.2
+      },
+      {
+       "class": "KQs",
+       "combos": 0.92,
+       "freq": 82.7
+      },
+      {
+       "class": "ATs",
+       "combos": 0.7,
+       "freq": 40.7
+      }
+     ],
+     "Bet 23 (100%)": [
+      {
+       "class": "AJo",
+       "combos": 1.55,
+       "freq": 27.6
+      },
+      {
+       "class": "A4s",
+       "combos": 1.27,
+       "freq": 90.3
+      },
+      {
+       "class": "AQo",
+       "combos": 1.15,
+       "freq": 17.2
+      },
+      {
+       "class": "AKo",
+       "combos": 0.74,
+       "freq": 15.4
+      },
+      {
+       "class": "AA",
+       "combos": 0.65,
+       "freq": 82.5
+      },
+      {
+       "class": "QTs",
+       "combos": 0.56,
+       "freq": 34.4
+      },
+      {
+       "class": "A8s",
+       "combos": 0.54,
+       "freq": 22.4
+      },
+      {
+       "class": "QJs",
+       "combos": 0.47,
+       "freq": 32.9
+      }
+     ]
+    },
+    "heroClassInRange": {
+     "class": "QQ",
+     "weightPct": 67.2,
+     "freqPctByOption": {
+      "Check": 99.5,
+      "Bet 11.5 (50%)": 0.5,
+      "Bet 23 (100%)": 0.0
+     }
+    },
+    "villainRangeCombos": 98.2,
+    "villainTopClasses": [
+     {
+      "class": "AQo",
+      "combos": 6.41,
+      "weightPct": 53.4
+     },
+     {
+      "class": "AJo",
+      "combos": 4.74,
+      "weightPct": 39.5
+     },
+     {
+      "class": "66",
+      "combos": 4.73,
+      "weightPct": 78.8
+     },
+     {
+      "class": "77",
+      "combos": 4.72,
+      "weightPct": 78.7
+     },
+     {
+      "class": "88",
+      "combos": 3.95,
+      "weightPct": 65.9
+     },
+     {
+      "class": "KQo",
+      "combos": 3.46,
+      "weightPct": 28.8
+     },
+     {
+      "class": "AQs",
+      "combos": 3.45,
+      "weightPct": 86.2
+     },
+     {
+      "class": "AKo",
+      "combos": 3.2,
+      "weightPct": 26.7
+     },
+     {
+      "class": "AJs",
+      "combos": 3.05,
+      "weightPct": 76.3
+     },
+     {
+      "class": "TT",
+      "combos": 2.91,
+      "weightPct": 48.5
+     }
+    ]
+   },
+   "strategic": {
+    "position": {
+     "heroInPosition": false,
+     "text": "hero is out of position: hero acts first and villain acts last on the turn"
+    },
+    "previousStreetAggressor": null,
+    "initiative": "nobody bet the flop (checked through); no bet yet on this street",
+    "sprBand": "medium (SPR 3 to 6)",
+    "blockers": [
+     "no relevant blockers"
+    ],
+    "heroRangeTypes": {
+     "combos": 87.69,
+     "types": [
+      {
+       "type": "straight or better",
+       "pct": 5.2,
+       "combos": 4.55,
+       "split": {
+        "Check": 45.9,
+        "Bet 11.5 (50%)": 28.4,
+        "Bet 23 (100%)": 25.7
+       }
+      },
+      {
+       "type": "set or trips",
+       "pct": 3.3,
+       "combos": 2.9,
+       "split": {
+        "Check": 59.5,
+        "Bet 11.5 (50%)": 22.2,
+        "Bet 23 (100%)": 18.3
+       }
+      },
+      {
+       "type": "two pair",
+       "pct": 1.7,
+       "combos": 1.52,
+       "split": {
+        "Check": 76.0,
+        "Bet 11.5 (50%)": 22.4,
+        "Bet 23 (100%)": 1.6
+       }
+      },
+      {
+       "type": "overpair",
+       "pct": 0.9,
+       "combos": 0.79,
+       "withStrongDrawPct": 50.0,
+       "split": {
+        "Check": 0.0,
+        "Bet 11.5 (50%)": 17.5,
+        "Bet 23 (100%)": 82.5
+       }
+      },
+      {
+       "type": "top pair, good kicker",
+       "pct": 17.2,
+       "combos": 15.04,
+       "withStrongDrawPct": 24.0,
+       "split": {
+        "Check": 42.3,
+        "Bet 11.5 (50%)": 50.9,
+        "Bet 23 (100%)": 6.9
+       }
+      },
+      {
+       "type": "top pair, weak kicker",
+       "pct": 3.4,
+       "combos": 3.02,
+       "withStrongDrawPct": 9.0,
+       "split": {
+        "Check": 93.7,
+        "Bet 11.5 (50%)": 6.3,
+        "Bet 23 (100%)": 0.0
+       }
+      },
+      {
+       "type": "middle or bottom pair, underpair",
+       "pct": 36.8,
+       "combos": 32.23,
+       "withStrongDrawPct": 35.1,
+       "split": {
+        "Check": 91.1,
+        "Bet 11.5 (50%)": 8.6,
+        "Bet 23 (100%)": 0.3
+       }
+      },
+      {
+       "type": "strong draw",
+       "pct": 8.0,
+       "combos": 7.0,
+       "split": {
+        "Check": 64.5,
+        "Bet 11.5 (50%)": 14.1,
+        "Bet 23 (100%)": 21.4
+       }
+      },
+      {
+       "type": "weak draw",
+       "pct": 22.5,
+       "combos": 19.69,
+       "split": {
+        "Check": 50.2,
+        "Bet 11.5 (50%)": 24.4,
+        "Bet 23 (100%)": 25.4
+       }
+      },
+      {
+       "type": "nothing",
+       "pct": 1.1,
+       "combos": 0.95,
+       "split": {
+        "Check": 92.6,
+        "Bet 11.5 (50%)": 7.3,
+        "Bet 23 (100%)": 0.1
+       }
+      }
+     ],
+     "optionCombos": {
+      "Check": 58.8,
+      "Bet 11.5 (50%)": 18.89,
+      "Bet 23 (100%)": 9.99
+     },
+     "optionMakeup": {
+      "Check": [
+       {
+        "type": "straight or better",
+        "pct": 3.5
+       },
+       {
+        "type": "set or trips",
+        "pct": 2.9
+       },
+       {
+        "type": "two pair",
+        "pct": 2.0
+       },
+       {
+        "type": "top pair, good kicker",
+        "pct": 10.8
+       },
+       {
+        "type": "top pair, weak kicker",
+        "pct": 4.8
+       },
+       {
+        "type": "middle or bottom pair, underpair",
+        "pct": 49.9
+       },
+       {
+        "type": "strong draw",
+        "pct": 7.7
+       },
+       {
+        "type": "weak draw",
+        "pct": 16.8
+       },
+       {
+        "type": "nothing",
+        "pct": 1.5
+       }
+      ],
+      "Bet 11.5 (50%)": [
+       {
+        "type": "straight or better",
+        "pct": 6.8
+       },
+       {
+        "type": "set or trips",
+        "pct": 3.4
+       },
+       {
+        "type": "two pair",
+        "pct": 1.8
+       },
+       {
+        "type": "overpair",
+        "pct": 0.7
+       },
+       {
+        "type": "top pair, good kicker",
+        "pct": 40.5
+       },
+       {
+        "type": "top pair, weak kicker",
+        "pct": 1.0
+       },
+       {
+        "type": "middle or bottom pair, underpair",
+        "pct": 14.7
+       },
+       {
+        "type": "strong draw",
+        "pct": 5.2
+       },
+       {
+        "type": "weak draw",
+        "pct": 25.4
+       },
+       {
+        "type": "nothing",
+        "pct": 0.4
+       }
+      ],
+      "Bet 23 (100%)": [
+       {
+        "type": "straight or better",
+        "pct": 11.7
+       },
+       {
+        "type": "set or trips",
+        "pct": 5.3
+       },
+       {
+        "type": "two pair",
+        "pct": 0.2
+       },
+       {
+        "type": "overpair",
+        "pct": 6.5
+       },
+       {
+        "type": "top pair, good kicker",
+        "pct": 10.3
+       },
+       {
+        "type": "middle or bottom pair, underpair",
+        "pct": 0.9
+       },
+       {
+        "type": "strong draw",
+        "pct": 15.0
+       },
+       {
+        "type": "weak draw",
+        "pct": 50.0
+       }
+      ]
+     }
+    },
+    "heroHandType": {
+     "type": "middle or bottom pair, underpair",
+     "withStrongDraw": false,
+     "groupPctOfRange": 36.8,
+     "groupSplit": {
+      "Check": 91.1,
+      "Bet 11.5 (50%)": 8.6,
+      "Bet 23 (100%)": 0.3
+     }
+    },
+    "villainRangeTypes": {
+     "combos": 85.9,
+     "types": [
+      {
+       "type": "straight or better",
+       "pct": 8.1,
+       "combos": 6.99
+      },
+      {
+       "type": "set or trips",
+       "pct": 2.9,
+       "combos": 2.47,
+       "withStrongDrawPct": 18.8
+      },
+      {
+       "type": "two pair",
+       "pct": 1.3,
+       "combos": 1.12
+      },
+      {
+       "type": "top pair, good kicker",
+       "pct": 10.2,
+       "combos": 8.77,
+       "withStrongDrawPct": 31.0
+      },
+      {
+       "type": "top pair, weak kicker",
+       "pct": 5.5,
+       "combos": 4.74
+      },
+      {
+       "type": "middle or bottom pair, underpair",
+       "pct": 42.6,
+       "combos": 36.59,
+       "withStrongDrawPct": 30.5
+      },
+      {
+       "type": "strong draw",
+       "pct": 5.3,
+       "combos": 4.55
+      },
+      {
+       "type": "weak draw",
+       "pct": 22.0,
+       "combos": 18.92
+      },
+      {
+       "type": "nothing",
+       "pct": 2.0,
+       "combos": 1.73
+      }
+     ]
+    },
+    "villainVsHeroType": {
+     "strongerTypePct": 28.1,
+     "sameTypePct": 42.6,
+     "weakerMadePct": 0.0,
+     "drawsPct": 27.3,
+     "nothingPct": 2.0
+    }
+   },
+   "eventsSinceLastDecision": [
+    {
+     "type": "villain",
+     "street": "flop",
+     "seat": "BTN",
+     "action": "Check",
+     "freqPct": 61.6,
+     "alternatives": [
+      {
+       "label": "Bet 5.8 (25%)",
+       "freqPct": 34.7
+      },
+      {
+       "label": "Bet 13.8 (60%)",
+       "freqPct": 3.7
+      }
+     ],
+     "rangeCombos": 159.94,
+     "topClassesTakingThisAction": [
+      {
+       "class": "AQo",
+       "combos": 6.41,
+       "freq": 72.2
+      },
+      {
+       "class": "AJo",
+       "combos": 4.74,
+       "freq": 62.1
+      },
+      {
+       "class": "66",
+       "combos": 4.73,
+       "freq": 80.6
+      },
+      {
+       "class": "77",
+       "combos": 4.73,
+       "freq": 88.1
+      },
+      {
+       "class": "88",
+       "combos": 3.96,
+       "freq": 78.3
+      },
+      {
+       "class": "KQo",
+       "combos": 3.46,
+       "freq": 47.3
+      },
+      {
+       "class": "AQs",
+       "combos": 3.45,
+       "freq": 86.2
+      },
+      {
+       "class": "AKo",
+       "combos": 3.21,
+       "freq": 67.3
+      }
+     ],
+     "potAfter": 23.0,
+     "handTypes": {
+      "action": "Check",
+      "actionPctOfRange": 61.6,
+      "combos": 86.32,
+      "types": [
+       {
+        "type": "straight or better",
+        "pctOfAction": 8.1,
+        "takesItPct": 54.0
+       },
+       {
+        "type": "set or trips",
+        "pctOfAction": 2.1,
+        "takesItPct": 32.2
+       },
+       {
+        "type": "two pair",
+        "pctOfAction": 1.3,
+        "takesItPct": 43.2
+       },
+       {
+        "type": "top pair, good kicker",
+        "pctOfAction": 10.2,
+        "takesItPct": 57.3
+       },
+       {
+        "type": "top pair, weak kicker",
+        "pctOfAction": 5.5,
+        "takesItPct": 80.3
+       },
+       {
+        "type": "middle or bottom pair, underpair",
+        "pctOfAction": 43.7,
+        "takesItPct": 70.3
+       },
+       {
+        "type": "strong draw",
+        "pctOfAction": 5.3,
+        "takesItPct": 66.5
+       },
+       {
+        "type": "weak draw",
+        "pctOfAction": 23.9,
+        "takesItPct": 54.1
+       }
+      ]
+     },
+     "alternativeHandTypes": {
+      "action": "Bet 5.8 (25%)",
+      "actionPctOfRange": 34.7,
+      "combos": 49.17,
+      "types": [
+       {
+        "type": "straight or better",
+        "pctOfAction": 10.7,
+        "takesItPct": 40.8
+       },
+       {
+        "type": "set or trips",
+        "pctOfAction": 6.4,
+        "takesItPct": 57.3
+       },
+       {
+        "type": "two pair",
+        "pctOfAction": 2.7,
+        "takesItPct": 50.7
+       },
+       {
+        "type": "top pair, good kicker",
+        "pctOfAction": 12.8,
+        "takesItPct": 41.2
+       },
+       {
+        "type": "top pair, weak kicker",
+        "pctOfAction": 2.4,
+        "takesItPct": 19.7
+       },
+       {
+        "type": "middle or bottom pair, underpair",
+        "pctOfAction": 29.2,
+        "takesItPct": 26.8
+       },
+       {
+        "type": "strong draw",
+        "pctOfAction": 4.2,
+        "takesItPct": 29.9
+       },
+       {
+        "type": "weak draw",
+        "pctOfAction": 31.5,
+        "takesItPct": 40.6
+       }
+      ]
+     },
+     "text": "Villain BTN: Check (61.6% of villain's range; Bet 5.8 (25%) 34.7%, Bet 13.8 (60%) 3.7%) [range 159.94 combos]"
+    },
+    {
+     "type": "deal",
+     "street": "turn",
+     "cards": [
+      "2s"
+     ],
+     "pot": 23.0,
+     "text": "TURN dealt: 2s (board Kd 9d 5d 2s; pot 23)"
+    }
+   ]
+  },
+  {
+   "index": 3,
+   "street": "river",
+   "source": "solver",
+   "chart": null,
+   "situation": {
+    "street": "river",
+    "board": [
+     "Kd",
+     "9d",
+     "5d",
+     "2s",
+     "Jh"
+    ],
+    "pot": 23.0,
+    "toCall": 0,
+    "heroStack": 89.0,
+    "villainStack": 89.0,
+    "heroBetThisStreet": 0.0,
+    "villainBetThisStreet": 0.0,
+    "spr": 3.87
+   },
+   "heroHand": {
+    "made": {
+     "category": "pair",
+     "bestFive": [
+      "Kd",
+      "Qh",
+      "Qc",
+      "Jh",
+      "9d"
+     ],
+     "holeCardsUsed": [
+      "Qh",
+      "Qc"
+     ],
+     "playsTheBoard": false,
+     "description": "pocket queens below the top card (underpair to one board card: K; above J 9 5 2)"
+    },
+    "draws": {
+     "street": "river",
+     "flushDraw": null,
+     "straightDraw": null,
+     "comboDraw": false,
+     "backdoorFlushDraws": [],
+     "backdoorStraightDraw": null,
+     "overcards": [],
+     "list": [],
+     "summary": "no draws: river (no cards to come)"
+    },
+    "outs": null,
+    "texture": {
+     "pairing": "unpaired board",
+     "suits": "at most 3 of one suit",
+     "suitCounts": {
+      "spades": 1,
+      "hearts": 1,
+      "diamonds": 3
+     },
+     "flush": "three to a flush (diamonds): two diamonds in hand make a flush",
+     "straight": "three to a straight: two-card straights possible (straights with two cards: QT)",
+     "maxRanksInAStraightWindow": 3,
+     "straightSingleCards": [],
+     "straightTwoCardCombos": [
+      "QT"
+     ],
+     "summary": "unpaired board; at most 3 of one suit; three to a flush (diamonds): two diamonds in hand make a flush; three to a straight: two-card straights possible (straights with two cards: QT)"
+    },
+    "newCard": {
+     "card": "Jh",
+     "pairsBoard": false,
+     "newTopCard": false,
+     "overcardToYourPair": false,
+     "flushChange": null,
+     "straightChange": "makes new straights possible (two cards: QT)",
+     "heroCategoryBefore": "pair",
+     "heroCategoryAfter": "pair",
+     "heroHandBefore": "pocket queens below the top card (underpair to one board card: K; above 9 5 2)",
+     "heroHandAfter": "pocket queens below the top card (underpair to one board card: K; above J 9 5 2)",
+     "pickedUpDraws": [],
+     "heroImproved": false,
+     "brick": false,
+     "previousDraws": [],
+     "summary": "makes new straights possible (two cards: QT); your hand: pocket queens below the top card (underpair to one board card: K; above 9 5 2) -> pocket queens below the top card (underpair to one board card: K; above J 9 5 2) (no improvement)"
+    }
+   },
+   "solver": {
+    "options": [
+     {
+      "id": "check",
+      "label": "Check",
+      "freq": 0.031,
+      "freqPct": 3.1,
+      "grade": "Correct",
+      "points": 61.28,
+      "mainLine": false,
+      "rangeFreqPct": 54.7,
+      "ev": 16.68,
+      "evLossBb": 0.01,
+      "evLossPctPot": 0.04
+     },
+     {
+      "id": "bet_115",
+      "label": "Bet 11.5 (50%)",
+      "freq": 0.969,
+      "freqPct": 96.9,
+      "grade": "Best",
+      "points": 100.0,
+      "mainLine": true,
+      "rangeFreqPct": 30.2,
+      "ev": 16.69,
+      "evLossBb": 0.0,
+      "evLossPctPot": 0.0
+     },
+     {
+      "id": "bet_230",
+      "label": "Bet 23 (100%)",
+      "freq": 0.0,
+      "freqPct": 0.0,
+      "grade": "Blunder",
+      "points": 0.0,
+      "mainLine": false,
+      "rangeFreqPct": 15.0,
+      "ev": 15.2,
+      "evLossBb": 1.49,
+      "evLossPctPot": 6.5
+     }
+    ],
+    "bestByEv": "Bet 11.5 (50%)",
+    "secondByEv": "Check",
+    "gapBestSecondBb": 0.01,
+    "gapBestSecondPctPot": 0.04,
+    "mostFrequent": "Bet 11.5 (50%)",
+    "handEquityPct": 74.4,
+    "rangeEquityPct": 54.7,
+    "villainRangeEquityPct": 45.3,
+    "verdict": "close"
+   },
+   "ranges": {
+    "heroRangeCombos": 54.44,
+    "heroRangeSplit": [
+     {
+      "label": "Check",
+      "pct": 54.7
+     },
+     {
+      "label": "Bet 11.5 (50%)",
+      "pct": 30.2
+     },
+     {
+      "label": "Bet 23 (100%)",
+      "pct": 15.0
+     }
+    ],
+    "heroTopClassesByOption": {
+     "Check": [
+      {
+       "class": "88",
+       "combos": 4.4,
+       "freq": 100.0
+      },
+      {
+       "class": "66",
+       "combos": 3.45,
+       "freq": 99.7
+      },
+      {
+       "class": "AQo",
+       "combos": 3.11,
+       "freq": 62.7
+      },
+      {
+       "class": "77",
+       "combos": 2.89,
+       "freq": 87.3
+      },
+      {
+       "class": "A9s",
+       "combos": 2.03,
+       "freq": 91.6
+      },
+      {
+       "class": "TT",
+       "combos": 1.97,
+       "freq": 75.5
+      },
+      {
+       "class": "A5s",
+       "combos": 1.86,
+       "freq": 100.0
+      },
+      {
+       "class": "T9s",
+       "combos": 1.77,
+       "freq": 99.9
+      }
+     ],
+     "Bet 11.5 (50%)": [
+      {
+       "class": "QQ",
+       "combos": 3.72,
+       "freq": 92.6
+      },
+      {
+       "class": "AJo",
+       "combos": 1.91,
+       "freq": 99.5
+      },
+      {
+       "class": "AQo",
+       "combos": 1.12,
+       "freq": 22.5
+      },
+      {
+       "class": "KTs",
+       "combos": 1.08,
+       "freq": 65.5
+      },
+      {
+       "class": "T8s",
+       "combos": 0.99,
+       "freq": 85.9
+      },
+      {
+       "class": "ATo",
+       "combos": 0.83,
+       "freq": 69.1
+      },
+      {
+       "class": "TT",
+       "combos": 0.64,
+       "freq": 24.5
+      },
+      {
+       "class": "AQs",
+       "combos": 0.61,
+       "freq": 31.1
+      }
+     ],
+     "Bet 23 (100%)": [
+      {
+       "class": "AKo",
+       "combos": 1.71,
+       "freq": 98.0
+      },
+      {
+       "class": "KJo",
+       "combos": 0.92,
+       "freq": 57.9
+      },
+      {
+       "class": "KK",
+       "combos": 0.81,
+       "freq": 89.1
+      },
+      {
+       "class": "AQo",
+       "combos": 0.73,
+       "freq": 14.8
+      },
+      {
+       "class": "A8s",
+       "combos": 0.62,
+       "freq": 98.2
+      },
+      {
+       "class": "AKs",
+       "combos": 0.54,
+       "freq": 99.1
+      },
+      {
+       "class": "JJ",
+       "combos": 0.48,
+       "freq": 36.0
+      },
+      {
+       "class": "ATo",
+       "combos": 0.37,
+       "freq": 30.7
+      }
+     ]
+    },
+    "heroClassInRange": {
+     "class": "QQ",
+     "weightPct": 66.9,
+     "freqPctByOption": {
+      "Check": 7.4,
+      "Bet 11.5 (50%)": 92.6,
+      "Bet 23 (100%)": 0.0
+     }
+    },
+    "villainRangeCombos": 66.65,
+    "villainTopClasses": [
+     {
+      "class": "66",
+      "combos": 4.73,
+      "weightPct": 78.8
+     },
+     {
+      "class": "77",
+      "combos": 4.72,
+      "weightPct": 78.7
+     },
+     {
+      "class": "AQo",
+      "combos": 4.44,
+      "weightPct": 37.0
+     },
+     {
+      "class": "88",
+      "combos": 3.22,
+      "weightPct": 53.7
+     },
+     {
+      "class": "KQo",
+      "combos": 3.0,
+      "weightPct": 25.0
+     },
+     {
+      "class": "AQs",
+      "combos": 3.0,
+      "weightPct": 74.9
+     },
+     {
+      "class": "A5s",
+      "combos": 2.68,
+      "weightPct": 66.9
+     },
+     {
+      "class": "A9s",
+      "combos": 2.4,
+      "weightPct": 59.9
+     },
+     {
+      "class": "T9s",
+      "combos": 2.36,
+      "weightPct": 58.9
+     },
+     {
+      "class": "KTs",
+      "combos": 2.3,
+      "weightPct": 57.5
+     }
+    ]
+   },
+   "strategic": {
+    "position": {
+     "heroInPosition": false,
+     "text": "hero is out of position: hero acts first and villain acts last on the river"
+    },
+    "previousStreetAggressor": null,
+    "initiative": "nobody bet the turn (checked through); no bet yet on this street",
+    "sprBand": "medium (SPR 3 to 6)",
+    "blockers": [
+     "you hold a queen: a card of the two-card straights QT, so villain has fewer of them"
+    ],
+    "heroRangeTypes": {
+     "combos": 54.44,
+     "types": [
+      {
+       "type": "straight or better",
+       "pct": 4.6,
+       "combos": 2.49,
+       "split": {
+        "Check": 27.6,
+        "Bet 11.5 (50%)": 55.7,
+        "Bet 23 (100%)": 16.7
+       }
+      },
+      {
+       "type": "set or trips",
+       "pct": 5.6,
+       "combos": 3.06,
+       "split": {
+        "Check": 44.2,
+        "Bet 11.5 (50%)": 13.7,
+        "Bet 23 (100%)": 42.1
+       }
+      },
+      {
+       "type": "two pair",
+       "pct": 8.2,
+       "combos": 4.46,
+       "split": {
+        "Check": 44.8,
+        "Bet 11.5 (50%)": 25.0,
+        "Bet 23 (100%)": 30.2
+       }
+      },
+      {
+       "type": "top pair, good kicker",
+       "pct": 10.3,
+       "combos": 5.62,
+       "split": {
+        "Check": 14.4,
+        "Bet 11.5 (50%)": 39.2,
+        "Bet 23 (100%)": 46.5
+       }
+      },
+      {
+       "type": "top pair, weak kicker",
+       "pct": 0.8,
+       "combos": 0.43,
+       "split": {
+        "Check": 94.8,
+        "Bet 11.5 (50%)": 5.2,
+        "Bet 23 (100%)": 0.0
+       }
+      },
+      {
+       "type": "middle or bottom pair, underpair",
+       "pct": 50.8,
+       "combos": 27.68,
+       "split": {
+        "Check": 72.2,
+        "Bet 11.5 (50%)": 27.0,
+        "Bet 23 (100%)": 0.8
+       }
+      },
+      {
+       "type": "nothing",
+       "pct": 19.6,
+       "combos": 10.69,
+       "split": {
+        "Check": 42.6,
+        "Bet 11.5 (50%)": 35.8,
+        "Bet 23 (100%)": 21.6
+       }
+      }
+     ],
+     "optionCombos": {
+      "Check": 29.8,
+      "Bet 11.5 (50%)": 16.45,
+      "Bet 23 (100%)": 8.19
+     },
+     "optionMakeup": {
+      "Check": [
+       {
+        "type": "straight or better",
+        "pct": 2.3
+       },
+       {
+        "type": "set or trips",
+        "pct": 4.5
+       },
+       {
+        "type": "two pair",
+        "pct": 6.7
+       },
+       {
+        "type": "top pair, good kicker",
+        "pct": 2.7
+       },
+       {
+        "type": "top pair, weak kicker",
+        "pct": 1.4
+       },
+       {
+        "type": "middle or bottom pair, underpair",
+        "pct": 67.1
+       },
+       {
+        "type": "nothing",
+        "pct": 15.3
+       }
+      ],
+      "Bet 11.5 (50%)": [
+       {
+        "type": "straight or better",
+        "pct": 8.4
+       },
+       {
+        "type": "set or trips",
+        "pct": 2.5
+       },
+       {
+        "type": "two pair",
+        "pct": 6.8
+       },
+       {
+        "type": "top pair, good kicker",
+        "pct": 13.4
+       },
+       {
+        "type": "top pair, weak kicker",
+        "pct": 0.1
+       },
+       {
+        "type": "middle or bottom pair, underpair",
+        "pct": 45.4
+       },
+       {
+        "type": "nothing",
+        "pct": 23.3
+       }
+      ],
+      "Bet 23 (100%)": [
+       {
+        "type": "straight or better",
+        "pct": 5.1
+       },
+       {
+        "type": "set or trips",
+        "pct": 15.8
+       },
+       {
+        "type": "two pair",
+        "pct": 16.5
+       },
+       {
+        "type": "top pair, good kicker",
+        "pct": 31.9
+       },
+       {
+        "type": "middle or bottom pair, underpair",
+        "pct": 2.6
+       },
+       {
+        "type": "nothing",
+        "pct": 28.2
+       }
+      ]
+     }
+    },
+    "heroHandType": {
+     "type": "middle or bottom pair, underpair",
+     "withStrongDraw": false,
+     "groupPctOfRange": 50.8,
+     "groupSplit": {
+      "Check": 72.2,
+      "Bet 11.5 (50%)": 27.0,
+      "Bet 23 (100%)": 0.8
+     }
+    },
+    "villainRangeTypes": {
+     "combos": 57.42,
+     "types": [
+      {
+       "type": "straight or better",
+       "pct": 6.2,
+       "combos": 3.57
+      },
+      {
+       "type": "set or trips",
+       "pct": 2.0,
+       "combos": 1.12
+      },
+      {
+       "type": "two pair",
+       "pct": 7.3,
+       "combos": 4.22
+      },
+      {
+       "type": "top pair, good kicker",
+       "pct": 10.5,
+       "combos": 6.04
+      },
+      {
+       "type": "top pair, weak kicker",
+       "pct": 4.2,
+       "combos": 2.44
+      },
+      {
+       "type": "middle or bottom pair, underpair",
+       "pct": 57.0,
+       "combos": 32.75
+      },
+      {
+       "type": "nothing",
+       "pct": 12.7,
+       "combos": 7.28
+      }
+     ]
+    },
+    "villainVsHeroType": {
+     "strongerTypePct": 30.3,
+     "sameTypePct": 57.0,
+     "weakerMadePct": 0.0,
+     "drawsPct": 0.0,
+     "nothingPct": 12.7
+    }
+   },
+   "eventsSinceLastDecision": [
+    {
+     "type": "villain",
+     "street": "turn",
+     "seat": "BTN",
+     "action": "Check",
+     "freqPct": 73.4,
+     "alternatives": [
+      {
+       "label": "Bet 11.5 (50%)",
+       "freqPct": 0.4
+      },
+      {
+       "label": "Bet 23 (100%)",
+       "freqPct": 26.2
+      }
+     ],
+     "rangeCombos": 98.2,
+     "topClassesTakingThisAction": [
+      {
+       "class": "66",
+       "combos": 4.73,
+       "freq": 100.0
+      },
+      {
+       "class": "77",
+       "combos": 4.72,
+       "freq": 99.9
+      },
+      {
+       "class": "AQo",
+       "combos": 4.43,
+       "freq": 69.2
+      },
+      {
+       "class": "88",
+       "combos": 3.22,
+       "freq": 81.4
+      },
+      {
+       "class": "KQo",
+       "combos": 3.0,
+       "freq": 86.8
+      },
+      {
+       "class": "AQs",
+       "combos": 3.0,
+       "freq": 86.9
+      },
+      {
+       "class": "AJo",
+       "combos": 2.78,
+       "freq": 58.6
+      },
+      {
+       "class": "A5s",
+       "combos": 2.68,
+       "freq": 100.0
+      }
+     ],
+     "potAfter": 23.0,
+     "handTypes": {
+      "action": "Check",
+      "actionPctOfRange": 73.4,
+      "combos": 62.73,
+      "types": [
+       {
+        "type": "straight or better",
+        "pctOfAction": 5.7,
+        "takesItPct": 50.8
+       },
+       {
+        "type": "two pair",
+        "pctOfAction": 0.8,
+        "takesItPct": 42.8
+       },
+       {
+        "type": "top pair, good kicker",
+        "pctOfAction": 11.0,
+        "takesItPct": 78.6
+       },
+       {
+        "type": "top pair, weak kicker",
+        "pctOfAction": 7.6,
+        "takesItPct": 100.0
+       },
+       {
+        "type": "middle or bottom pair, underpair",
+        "pctOfAction": 53.3,
+        "takesItPct": 91.4
+       },
+       {
+        "type": "strong draw",
+        "pctOfAction": 4.6,
+        "takesItPct": 63.8
+       },
+       {
+        "type": "weak draw",
+        "pctOfAction": 15.3,
+        "takesItPct": 50.7
+       },
+       {
+        "type": "nothing",
+        "pctOfAction": 1.8,
+        "takesItPct": 65.3
+       }
+      ]
+     },
+     "alternativeHandTypes": {
+      "action": "Bet 23 (100%)",
+      "actionPctOfRange": 26.2,
+      "combos": 22.83,
+      "types": [
+       {
+        "type": "straight or better",
+        "pctOfAction": 14.9,
+        "takesItPct": 48.7
+       },
+       {
+        "type": "set or trips",
+        "pctOfAction": 10.8,
+        "takesItPct": 99.8
+       },
+       {
+        "type": "two pair",
+        "pctOfAction": 2.7,
+        "takesItPct": 55.5
+       },
+       {
+        "type": "top pair, good kicker",
+        "pctOfAction": 8.0,
+        "takesItPct": 20.8
+       },
+       {
+        "type": "middle or bottom pair, underpair",
+        "pctOfAction": 13.4,
+        "takesItPct": 8.4
+       },
+       {
+        "type": "strong draw",
+        "pctOfAction": 7.1,
+        "takesItPct": 35.6
+       },
+       {
+        "type": "weak draw",
+        "pctOfAction": 40.5,
+        "takesItPct": 48.9
+       },
+       {
+        "type": "nothing",
+        "pctOfAction": 2.5,
+        "takesItPct": 32.6
+       }
+      ]
+     },
+     "text": "Villain BTN: Check (73.4% of villain's range; Bet 11.5 (50%) 0.4%, Bet 23 (100%) 26.2%) [range 98.2 combos]"
+    },
+    {
+     "type": "deal",
+     "street": "river",
+     "cards": [
+      "Jh"
+     ],
+     "pot": 23.0,
+     "text": "RIVER dealt: Jh (board Kd 9d 5d 2s Jh; pot 23)"
+    }
+   ]
+  }
+ ],
+ "afterLastDecision": [
+  {
+   "type": "villain",
+   "street": "river",
+   "seat": "BTN",
+   "action": "Call 11.5",
+   "freqPct": 45.2,
+   "alternatives": [
+    {
+     "label": "Fold",
+     "freqPct": 39.2
+    },
+    {
+     "label": "Raise to 28.8",
+     "freqPct": 15.6
+    }
+   ],
+   "rangeCombos": 66.65,
+   "topClassesTakingThisAction": [
+    {
+     "class": "66",
+     "combos": 3.89,
+     "freq": 82.3
+    },
+    {
+     "class": "77",
+     "combos": 2.62,
+     "freq": 55.5
+    },
+    {
+     "class": "KTs",
+     "combos": 2.3,
+     "freq": 99.8
+    },
+    {
+     "class": "QQ",
+     "combos": 1.97,
+     "freq": 100.0
+    },
+    {
+     "class": "KQo",
+     "combos": 1.91,
+     "freq": 63.6
+    },
+    {
+     "class": "AJo",
+     "combos": 1.74,
+     "freq": 94.4
+    },
+    {
+     "class": "Q9s",
+     "combos": 1.7,
+     "freq": 100.0
+    },
+    {
+     "class": "AJs",
+     "combos": 1.62,
+     "freq": 95.0
+    }
+   ],
+   "potAfter": 46.0,
+   "handTypes": {
+    "action": "Call 11.5",
+    "actionPctOfRange": 45.2,
+    "combos": 25.63,
+    "types": [
+     {
+      "type": "straight or better",
+      "pctOfAction": 4.2,
+      "takesItPct": 29.8
+     },
+     {
+      "type": "top pair, good kicker",
+      "pctOfAction": 18.3,
+      "takesItPct": 77.7
+     },
+     {
+      "type": "top pair, weak kicker",
+      "pctOfAction": 9.5,
+      "takesItPct": 100.0
+     },
+     {
+      "type": "middle or bottom pair, underpair",
+      "pctOfAction": 68.0,
+      "takesItPct": 53.2
+     }
+    ]
+   },
+   "text": "Villain BTN: Call 11.5 (45.2% of villain's range; Fold 39.2%, Raise to 28.8 15.6%) [range 66.65 combos]"
+  }
+ ],
+ "result": {
+  "reason": "showdown",
+  "heroNet": 23.5,
+  "finalPot": 46.0,
+  "showdown": {
+   "villainHand": [
+    "Ah",
+    "Jc"
+   ],
+   "winner": "hero",
+   "heroHandName": "Pair of queens",
+   "villainHandName": "Pair of jacks"
+  },
+  "computed": {
+   "heroCategory": "pair",
+   "villainCategory": "pair",
+   "winner": "hero"
+  }
+ }
+}

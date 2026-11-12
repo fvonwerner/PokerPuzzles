@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "King-jack offsuit is a borderline hand against an under-the-gun open, which comes from a strong range: it calls most of the time and folds some. It does not 3-bet, because the hands that would call a 3-bet are mostly better.",
+    "1": "Top pair with a jack kicker is ahead of most of the under-the-gun player's small bets, but its strong range holds better kings. Calling keeps its weaker hands and bluffs in and the pot small; raising folds those and gets called by better kings. So calling is the natural play, and folding would be a big mistake.",
+    "2": "The five pairs the board, which changes little: your kings still beat the weaker pairs and lose to better kings. Out of position, checking lets the under-the-gun player keep betting its weaker hands, which it does about half the time; a bet of your own folds those and gets called by better hands. Checking is a little better.",
+    "3": "Now facing a bet, your kings are a bluff-catcher against a strong range: they beat the bluffs and draws and lose to better kings. You need 30% and you win about 55%, so calling is right. Raising is about as good in money, but it folds the bluffs you beat, so calling is the natural play.",
+    "4": "The ace hits the under-the-gun player's range hard, since it holds many aces, and your kings are now behind most of it, with 21.1% equity. Checking is right: a bet folds the few hands you beat and gets called by aces, costing 1.52 bb."
+  },
+  "takeaway": "When an overcard hits the opponent's range hard, check your one pair and keep the pot small."
+}

@@ -1,0 +1,37 @@
+p042 - Suited connector against a small-blind 3-bet  [draw, value]
+Scenario: BTN opens, SB 3-bets, BTN calls (3BP, tree 3BP_OOP_AGGRESSOR)
+Hero: BTN (ip) 8s7s [87s]   Villain: SB (oop)
+Board: 9s 6d 2c | Ts | Kh
+Solver: 290 iterations, exploitability 0.14% pot, 1706 MB (16-bit compressed), 178 s
+  UTG fold, HJ fold, CO fold
+  HERO DECISION #0 (preflop, chart BTN_RFI) - pot 1.5, hero 100 behind, villain 99.5 behind, to call 1
+      Fold                   hand   0.0%   (range  58.5%)
+      Raise to 2.5           hand 100.0%   (range  41.5%)  <- main line
+  SB raise 11, BB fold
+  HERO DECISION #1 (preflop, chart BTN_vs_SB_3bet) - pot 14.5, hero 97.5 behind, villain 89 behind, to call 8.5
+      Fold                   hand   0.0%   (range  56.2%)
+      Call                   hand  88.4%   (range  33.2%)  <- main line
+      4-bet to 24            hand  11.6%   (range  10.6%)
+FLOP: 9s 6d 2c   (pot 23, hero 89 behind, villain 89 behind)
+  Villain SB: Bet 13.8 (60%) (62% of range; else Check 38%, Bet 5.8 (25%) 0%)  [range 190.5 combos]
+  HERO DECISION #2 (flop, solver) - pot 36.8, hero 89 behind, villain 75.2 behind, to call 13.8
+      Fold                   hand   0.0%  EV    0.00   (range  24.8%)
+      Call 13.8              hand 100.0%  EV   16.32   (range  71.1%)  <- main line
+      Raise to 34.5          hand   0.0%  EV   12.42   (range   4.1%)
+      All-in 89              hand   0.0%  EV   13.67   (range   0.0%)
+      best-second EV gap 2.65 bb (7.2% pot); hand equity 43.1%; range equity 45.7% vs villain 54.3%; combos hero 167.4 / villain 117.2
+TURN: Ts   (pot 50.6, hero 75.2 behind, villain 75.2 behind)
+  Villain SB: Bet 25.3 (50%) (54% of range; else Check 38%, Bet 50.6 (100%) 0%, All-in 75.2 7%)  [range 110.0 combos]
+  HERO DECISION #3 (turn, solver) - pot 75.9, hero 75.2 behind, villain 49.9 behind, to call 25.3
+      Fold                   hand   0.0%  EV    0.00   (range  29.9%)
+      Call 25.3              hand 100.0%  EV  107.10   (range  58.8%)  <- main line
+      All-in 75.2            hand   0.0%  EV  104.49   (range  11.3%)
+      best-second EV gap 2.61 bb (3.4% pot); hand equity 95.6%; range equity 44.4% vs villain 55.6%; combos hero 113.8 / villain 59.7
+RIVER: Kh   (pot 101.2, hero 49.9 behind, villain 49.9 behind)
+  Villain SB: All-in 49.9 (52% of range; else Check 48%)  [range 54.1 combos]
+  HERO DECISION #4 (river, solver) - pot 151.1, hero 49.9 behind, villain 0 behind, to call 49.9
+      Fold                   hand   0.0%  EV    0.00   (range  38.9%)
+      Call 49.9              hand 100.0%  EV  141.59   (range  61.1%)  <- main line
+      best-second EV gap 141.59 bb (93.7% pot); hand equity 95.3%; range equity 47.5% vs villain 52.5%; combos hero 63.0 / villain 28.3
+END: showdown, pot 201, hero 0 behind, villain 0 behind; villain shows AhAd (Pair of aces) vs hero Straight, ten-high -> hero; hero net +101.00 bb
+Warnings: none

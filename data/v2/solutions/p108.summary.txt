@@ -1,0 +1,31 @@
+p108 - Top pair, top kicker on a monotone flop  [monotone, pot control]
+Scenario: SB opens, BB calls (SRP, tree SRP_OOP_AGGRESSOR)
+Hero: SB (oop) AsKc [AKo]   Villain: BB (ip)
+Board: Kd 7d 2d | Jh | 5s
+Solver: 370 iterations, exploitability 0.15% pot, 2162 MB, 45 s
+  UTG fold, HJ fold, CO fold, BTN fold
+  HERO DECISION #0 (preflop, chart SB_RFI) - pot 1.5, hero 99.5 behind, villain 99 behind, to call 0.5
+      Fold                   hand   0.0%   (range  57.3%)
+      Raise to 3             hand 100.0%   (range  42.7%)  <- main line
+  BB call 3
+FLOP: Kd 7d 2d   (pot 6, hero 97 behind, villain 97 behind)
+  HERO DECISION #1 (flop, solver) - pot 6, hero 97 behind, villain 97 behind, to call 0
+      Check                  hand  97.8%  EV    4.33   (range  85.4%)  <- main line
+      Bet 3 (50%)            hand   2.2%  EV    4.33   (range  14.6%)
+      best-second EV gap 0.00 bb (0.0% pot); hand equity 73.9%; range equity 54.3% vs villain 45.7%; combos hero 513.9 / villain 470.1
+  Villain BB: Check (83% of range; else Bet 3 (50%) 17%)  [range 470.1 combos]
+TURN: Jh   (pot 6, hero 97 behind, villain 97 behind)
+  HERO DECISION #2 (turn, solver) - pot 6, hero 97 behind, villain 97 behind, to call 0
+      Check                  hand  54.0%  EV    5.20   (range  71.1%)  <- main line
+      Bet 4.5 (75%)          hand  46.0%  EV    5.21   (range  28.9%)
+      best-second EV gap 0.01 bb (0.2% pot); hand equity 80.0%; range equity 55.7% vs villain 44.3%; combos hero 415.4 / villain 372.2
+  Villain BB: Check (77% of range; else Bet 4.5 (75%) 23%)  [range 372.2 combos]
+RIVER: 5s   (pot 6, hero 97 behind, villain 97 behind)
+  HERO DECISION #3 (river, solver) - pot 6, hero 97 behind, villain 97 behind, to call 0
+      Check                  hand  58.2%  EV    6.32   (range  40.7%)  <- main line
+      Bet 3 (50%)            hand   0.0%  EV    6.27   (range  48.7%)
+      Bet 7.5 (125%)         hand  41.8%  EV    6.30   (range  10.6%)
+      best-second EV gap 0.02 bb (0.3% pot); hand equity 90.2%; range equity 56.8% vs villain 43.2%; combos hero 285.4 / villain 274.5
+  Villain BB: Check (49% of range; else Bet 3 (50%) 41%, Bet 7.5 (125%) 10%)  [range 274.5 combos]
+END: showdown, pot 6, hero 97 behind, villain 97 behind; villain shows AhTd (High card, ace) vs hero Pair of kings -> hero; hero net +3.00 bb
+Warnings: none

@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Pocket fives open from the button every time: only the blinds are left to act, and a pair is ahead of their ranges often enough.",
+    "1": "Against the big blind's 3-bet, pocket fives usually call: with position they see a flop and can win a big pot when a third five comes. A 4-bet now and then is fine; folding is the mistake.",
+    "2": "You flopped a set of fives on ace-jack-five, a board where the big blind's aces and big pairs will put money in. Raising builds the pot now while those hands are willing to continue; calling hides your hand and keeps the bluffs in. Both are worth about the same, and raising is the usual choice. Folding would be a huge mistake.",
+    "3": "The eight adds a possible flush draw, and your set is still far ahead. The big blind called your raise with aces like ace-queen and ace-ten, and those will call a half-pot bet, while a bigger bet folds more of them. Checking gives up 1.39 bb, so keep betting.",
+    "4": "The king lets queen-ten make a straight, but your set still beats most of the big blind's range, which is full of aces that have called twice. With less than a pot left behind, moving all-in gets called by many of those aces; checking gives up 17.33 bb."
+  },
+  "takeaway": "With a set against a range full of top pairs, keep betting every street; those hands will pay."
+}

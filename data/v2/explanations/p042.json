@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Eight-seven suited opens from the button every time: with only the blinds left to act, a suited connector plays well and can make strong hands.",
+    "1": "Against the small blind's 3-bet, eight-seven suited usually calls: with position it sees a flop and wins big pots when it hits. It also 4-bets now and then; only folding is a mistake.",
+    "2": "On nine-six-two you have an open-ended straight draw: any ten or five gives you a straight. You need 27% and you have 43%, so call. Raising is a mistake against a 3-bettor whose range is full of overpairs: they will not fold, and you would be putting a lot of money in with only a draw.",
+    "3": "The ten gives you the nut straight, and now you want all the money in. The small blind is betting for you: calling keeps its weaker hands, like overpairs and draws, in the pot and lets it bet again on the river. Moving all-in now would make many of those fold, which is why it earns 2.61 bb less.",
+    "4": "The king lets queen-jack make a higher straight, but the small blind's all-in range is led by aces, king-queen and other hands you beat. You need 24.8% and you win about 95% of the time, so this is an easy call."
+  },
+  "takeaway": "When you make a strong hand and the opponent is betting, call and let them keep betting rather than raising them out."
+}

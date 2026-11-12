@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Ace-nine suited calls the button's open from the big blind: the price is cheap, and a suited ace can make the strongest hands of its suit and good pairs. It sometimes 3-bets, but it plays well enough after the flop that calling is the usual choice.",
+    "1": "You have ace-high with the nut flush draw and the ace as an overcard: a diamond gives you the best flush and an ace gives you top pair. Calling keeps the pot small while you draw and keeps the button's weaker hands in; raising wins the pot at once more often but builds a big pot before you have made anything. Both are fine, and calling is the usual choice. Folding a draw this strong would be a big mistake.",
+    "2": "The king misses you, but you still have ace-high and the nut flush draw. Out of position, a bet would fold the weaker hands and get called by the pairs, while you have one card left to hit. Checking lets the button bet, and with this draw you are glad to call, so checking is right and betting three quarters of the pot is a mistake.",
+    "3": "Your nut flush draw wins two ways: any diamond gives you the best flush, and an ace gives you top pair. You need 30% and you have 46.7%, so calling is clearly right. Raising puts far more money in against made hands that will not fold, which is why it costs 0.59 bb more than calling.",
+    "4": "The three misses: your flush draw missed and you are left with ace-high. Ace-high can still win at showdown against the button's own missed draws, but if you bet, those hands fold and the pairs call. So check: a bet turns a hand that can win at showdown into a bluff, and betting half the pot costs 2.36 bb."
+  },
+  "takeaway": "A big draw out of position plays well as a call; if it misses on the river, check the hands that can still win at showdown instead of bluffing them."
+}

@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "With ace-queen against the cutoff's open, a 3-bet is the usual play: it is ahead of most of the cutoff's range and wins a bigger pot when it pairs. Calling now and then is fine; folding is the mistake.",
+    "1": "Jack-eight-seven with two hearts hits the cutoff's calling range hard: most of its hands already have a pair or a draw, and your ace-high with two overcards beats only its misses. A bet would fold those misses and get called by the pairs and draws, so checking behind and taking a free card is better; betting a quarter of the pot costs 0.18 bb.",
+    "2": "The three changes nothing, and after the cutoff checks, its range is still mostly pairs, which your ace-high does not beat. Betting would only fold hands that are behind you anyway, while the pairs call; checking behind gives you a free chance to hit an ace or a queen. Betting either size costs about 0.3 bb.",
+    "3": "The two of hearts makes a flush possible, and ace-high wins only 9.0% of the time here. A bluff does not work well: the cutoff checked to you with a range that is mostly pairs, and pairs call a bet on this board. Checking still wins sometimes at showdown; betting half the pot costs 2.20 bb."
+  },
+  "takeaway": "When the board hits the caller's range and you hold only high cards, check and take free cards instead of betting into pairs."
+}

@@ -1,0 +1,32 @@
+p087 - Sevens on an eight-high flop  [showdown value, pot control]
+Scenario: HJ opens, BB calls (SRP, tree SRP_IP_AGGRESSOR)
+Hero: HJ (ip) 7h7s [77]   Villain: BB (oop)
+Board: 8c 5d 3s | Ah | 9c
+Solver: 440 iterations, exploitability 0.15% pot, 2227 MB (16-bit compressed), 374 s
+  UTG fold
+  HERO DECISION #0 (preflop, chart HJ_RFI) - pot 1.5, hero 100 behind, villain 99 behind, to call 1
+      Fold                   hand   0.0%   (range  78.5%)
+      Raise to 2.5           hand 100.0%   (range  21.5%)  <- main line
+  CO fold, BTN fold, SB fold, BB call 2.5
+FLOP: 8c 5d 3s   (pot 5.5, hero 97.5 behind, villain 97.5 behind)
+  BB check (forced)
+  HERO DECISION #1 (flop, solver) - pot 5.5, hero 97.5 behind, villain 97.5 behind, to call 0
+      Check                  hand  68.2%  EV    4.02   (range  64.2%)  <- main line
+      Bet 1.8 (33%)          hand  27.6%  EV    4.02   (range  26.2%)
+      Bet 4.1 (75%)          hand   4.2%  EV    4.02   (range   9.6%)
+      best-second EV gap 0.00 bb (0.0% pot); hand equity 65.4%; range equity 51.7% vs villain 48.3%; combos hero 272.0 / villain 262.6
+TURN: Ah   (pot 5.5, hero 97.5 behind, villain 97.5 behind)
+  Villain BB: Check (84% of range; else Bet 4.1 (75%) 16%)  [range 245.8 combos]
+  HERO DECISION #2 (turn, solver) - pot 5.5, hero 97.5 behind, villain 97.5 behind, to call 0
+      Check                  hand 100.0%  EV    2.75   (range  80.1%)  <- main line
+      Bet 4.1 (75%)          hand   0.0%  EV    2.55   (range  19.9%)
+      best-second EV gap 0.20 bb (3.6% pot); hand equity 56.3%; range equity 56.1% vs villain 43.9%; combos hero 153.7 / villain 207.3
+RIVER: 9c   (pot 5.5, hero 97.5 behind, villain 97.5 behind)
+  Villain BB: Check (75% of range; else Bet 2.8 (51%) 16%, Bet 6.9 (125%) 9%)  [range 199.5 combos]
+  HERO DECISION #3 (river, solver) - pot 5.5, hero 97.5 behind, villain 97.5 behind, to call 0
+      Check                  hand 100.0%  EV    3.74   (range  40.0%)  <- main line
+      Bet 2.8 (51%)          hand   0.0%  EV    3.66   (range  47.9%)
+      Bet 6.9 (125%)         hand   0.0%  EV    3.09   (range  12.1%)
+      best-second EV gap 0.08 bb (1.5% pot); hand equity 68.0%; range equity 58.3% vs villain 41.7%; combos hero 119.9 / villain 150.1
+END: showdown, pot 5.5, hero 97.5 behind, villain 97.5 behind; villain shows Td8d (Pair of eights) vs hero Pair of sevens -> villain; hero net -2.50 bb
+Warnings: none

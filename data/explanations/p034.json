@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket tens 3-bet the button's open every time: they are usually ahead of the button's wide range and want a bigger pot. Just calling would let the button see a cheap flop with many hands that could outdraw you.",
+    "1": "The ace is a bad card for your tens, but the button does not always have one, and after your 3-bet it expects strong hands from you. A small bet gets called by smaller pairs and folds hands that could catch up; checking keeps the pot small when you are behind an ace. Both are fine, and the small bet is a little more common.",
+    "2": "The nine changes nothing: your tens beat the button's smaller pairs and lose to every ace. That is a hand for a cheap showdown, not for building a pot: a bet folds the smaller pairs and gets called by aces. Checking keeps the pot small; betting half the pot costs 0.53 bb.",
+    "3": "After the button checks back the turn, your tens are ahead more often than not, but they are still a bluff-catcher against a range that holds some aces. Checking takes the showdown and is the usual choice; a small bet can get called by smaller pairs, so it is fine too. A full-pot bet is the mistake: it folds the smaller pairs and gets called by aces, costing 1.83 bb."
+  },
+  "takeaway": "A pair below the top card is a showdown hand: keep the pot small and let the opponent do the bluffing."
+}

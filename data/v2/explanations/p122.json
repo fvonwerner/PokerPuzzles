@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Ace-king 3-bets the button's open every time: it is one of the best hands and wants a bigger pot. Just calling would let many weaker hands see a cheap flop.",
+    "1": "Nine-nine-four missed you, but as the 3-bettor you hold more big pairs than the button, so a bet looks strong. A bet of 60% of the pot can fold the button's small pairs and high cards, and your ace and king can still pair up if called; checking keeps the pot small and loses less when you are behind. Both are about equally good, and betting is more common.",
+    "2": "The two changes nothing, and the button called your flop bet, so it now holds many pairs. Your ace-high wins against its misses but loses to those pairs. Checking keeps the pot small and reaches showdown cheaply; a half-pot bet to fold the small pairs is about as good. Checking is the usual choice, and a full-pot bet is the mistake.",
+    "3": "The jack does not help you. Your ace-king beats the button's ace-queen and weaker aces, but its jacks and small pairs beat you. A bet would fold the hands you beat and get called by those pairs, so checking is better; betting half the pot costs 0.34 bb."
+  },
+  "takeaway": "As the preflop raiser you can bet once when you miss, but stop building the pot when the opponent keeps calling."
+}

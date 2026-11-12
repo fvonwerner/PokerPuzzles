@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Pocket jacks open from the button every time: only the blinds are left to act, and jacks are well ahead of their ranges.",
+    "1": "Against the small blind's 3-bet, pocket jacks are strong enough to 4-bet and good enough to call. Calling keeps the 3-bettor's weaker hands in and plays the flop in position; 4-betting builds the pot while jacks are ahead. Both choices are equally good; only folding is a mistake.",
+    "2": "The king puts your jacks below the top card. They beat the small blind's bluffs and smaller pairs but lose to every king, which makes them a bluff-catcher. You need 27% and you have 52.5%, so call. Raising is a mistake: the hands you beat fold and the kings call, which costs 2.85 bb.",
+    "3": "After the small blind checks, your jacks are ahead of most of its range, which is now mostly ace-high, draws and smaller pairs. Checking behind keeps the pot small and takes a free card; a half-pot bet gets a little value but folds many of the hands you beat. Checking is the usual choice and the half-pot bet is only slightly worse. Big bets are the mistake: they fold the weak hands and only better ones call.",
+    "4": "After another check, your jacks are ahead of most of what the small blind holds, but much of its range is ace-high that will not call a bet. Checking wins at showdown against those hands, while betting gets called mostly by better pairs. Checking is a little better, and moving all-in costs the most."
+  },
+  "takeaway": "A pair below the top card wants a cheap showdown: call bets, check behind, and avoid building a big pot."
+}

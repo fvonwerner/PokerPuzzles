@@ -1,0 +1,206 @@
+p074 - A flopped nut flush
+Scenario: CO opens, BB calls (SRP, key CO_BB_SRP)
+Hero: CO (ip) Ah Jh [AJs]   Villain: BB (oop)
+Preflop: UTG fold, HJ fold, CO (hero) Raise to 2.5, BTN fold, SB fold, BB call 2.5
+Final board: 9h 5h 2h Ks 5c
+Solver accuracy: 490 iterations, exploitability 0.15% of the pot (target 0.15%), 41 s
+
+HOW TO READ THIS FILE
+- All money is in big blinds (bb). "pot" is everything in the middle, including
+  bets already made on this street. Price when facing a bet: "call X to win Y"
+  where Y is that pot; equity needed = X / (Y + X).
+- SPR = the smaller stack behind / pot.
+- Hero's hand, draws, outs and board texture are computed from the cards only.
+  Outs can be dirty: the tool does not know villain's cards; an out may also
+  improve villain or still lose. Each unseen card is counted in one bucket only.
+  "straight or better" = the card gives hero a straight, flush, full house,
+  quads or straight flush that the board alone does not give everyone.
+  Backdoor draws are listed on the flop only; a backdoor straight draw is
+  listed only when there is no regular straight draw. River: no draws.
+- Solver numbers are for hero's exact two cards. EV loss = best EV - this EV;
+  % of pot uses the pot above. Grades and points are what the site awards.
+  An option losing at most 0.2% of the pot is graded at least Correct.
+  "<- main line" marks the option the hand continues with (normally the most
+  frequent one); grades follow frequency first, so "Best by EV" can name a
+  different option than the main line or the Best grade: that is how the site
+  grades, not an error.
+  Verdict rule: "clear" = best-EV option played >= 70% and every other option
+  loses >= 1.5% of the pot; "close" = top two options within 0.5% of the pot
+  in EV; "lean" = everything else.
+- Range sections: hand classes like AKs (suited, 4 combos), AKo (offsuit, 12),
+  QQ (pair, 6). "combos" = how many combos of that class are in the range,
+  weighted by how often they get there; "freq" = how often that class takes
+  the option. Hero's range split = share of hero's whole range taking each
+  option. Villain's heaviest classes = the classes with the most combos in
+  villain's range at that moment (cards in hero's hand are not removed).
+- Hand types: every combo of a range is put in one type, strongest first:
+  straight or better; set or trips; two pair (both hole cards pair the board);
+  overpair; top pair, good kicker (kicker is one of the three highest ranks not
+  on the board) or weak kicker; middle or bottom pair, underpair; strong draw
+  (flush draw or 8-out straight draw, no pair); weak draw (gutshot, overcard,
+  or on the flop a backdoor draw, no pair); nothing. A hand that only uses the
+  board's pair counts as no pair. Computed exactly per suit combination against
+  the board (combos that use a board card are not counted; in villain's range
+  hero's two cards are removed too). Approximation: the range grid gives one
+  weight and one option split per hand class, so every combo of a class gets
+  the class average (e.g. the flush-draw suits of 98s are assumed to play like
+  its other suits). "Against your hand type" orders villain's range by type
+  only; the exact number is the equity line.
+- Position: postflop the player in position acts last on every street.
+  Stack depth: deep = SPR above 6, medium = 3 to 6, shallow = below 3.
+
+
+=== DECISION #0 (preflop, chart, chart CO_RFI) ===
+Board: (none)
+Pot 1.5, to call 1, hero 100 behind, villain 99 behind, SPR 66.0
+Hero's hand: ace-jack suited (2-gap); no board yet, so no made hand or draws
+Options (hero's exact hand):
+  Fold                     0.0%  grade Wrong 15 pts  (range 72.2%)
+  Raise to 2.5           100.0%  grade Best 100 pts  (range 27.8%)  <- main line
+  preflop chart decision: frequencies only, no EV and no equity; most frequent: Raise to 2.5
+Hero's range (1326.0 combos) splits: Fold 72.2%, Raise to 2.5 27.8%
+  Fold: 32o 12.0 (100.0%), 42o 12.0 (100.0%), 43o 12.0 (100.0%), 52o 12.0 (100.0%), 53o 12.0 (100.0%), 54o 12.0 (100.0%), 62o 12.0 (100.0%), 63o 12.0 (100.0%)
+  Raise to 2.5: A9o 12.0 (100.0%), AJo 12.0 (100.0%), AKo 12.0 (100.0%), AQo 12.0 (100.0%), ATo 12.0 (100.0%), JTo 12.0 (100.0%), KJo 12.0 (100.0%), KQo 12.0 (100.0%)
+  Hero's class AJs as a whole: Fold 0.0%, Raise to 2.5 100.0%
+Position: preflop chart decision; after the flop hero is in position (acts last); initiative: ; stack depth: deep (SPR above 6)
+Villain's range: no villain range in the file at a preflop chart decision
+  FLOP dealt: 9h 5h 2h (board 9h 5h 2h; pot 5.5)
+  BB check (forced: the only legal option)
+
+=== DECISION #1 (flop, solver) ===
+Board: 9h 5h 2h
+Pot 5.5, to call 0, hero 97.5 behind, villain 97.5 behind, SPR 17.73
+Hero's hand: flush (hearts) with both hole cards (Ah Jh); the nut flush  [best five: Ah Jh 9h 5h 2h]
+Draws: no draw
+Overcards to the board: ace, jack
+Outs (of 47 unseen cards; may be dirty): none
+Board: unpaired board; monotone; three to a flush (hearts): two hearts in hand make a flush; no straight possible yet
+Options (hero's exact hand):
+  Check                   16.6%  EV   12.93  loss 0.01 bb (0.18% pot)  grade Correct 67.96 pts  (range 39.5%)
+  Bet 1.8 (33%)           83.4%  EV   12.94  loss 0.00 bb (0.0% pot)  grade Best 100 pts  (range 60.5%)  <- main line
+  Bet 4.1 (75%)            0.0%  EV   12.85  loss 0.09 bb (1.6% pot)  grade Wrong 15 pts  (range 0.0%)
+  Best by EV: Bet 1.8 (33%); second: Check; gap 0.01 bb (0.18% pot); most frequent: Bet 1.8 (33%)
+  Hand equity 97.8%; range equity hero 52.8% vs villain 47.2%; verdict: close
+Hero's range (346.12 combos) splits: Check 39.5%, Bet 1.8 (33%) 60.5%, Bet 4.1 (75%) 0.0%
+  Check: AQo 7.56 (63.0%), AJo 7.34 (61.2%), AKo 7.22 (60.2%), ATo 7.04 (58.7%), KQo 6.01 (50.1%), AA 4.0 (66.6%), KJo 3.78 (31.5%), 44 3.68 (61.4%)
+  Bet 1.8 (33%): JTo 9.4 (78.3%), QTo 8.95 (74.6%), KTo 8.83 (73.6%), QJo 8.82 (73.5%), KJo 8.22 (68.5%), A9o 8.13 (90.3%), KQo 5.99 (49.9%), TT 5.56 (92.6%)
+  Bet 4.1 (75%): (no hands)
+  Hero's class AJs as a whole: Check 64.9%, Bet 1.8 (33%) 35.1%, Bet 4.1 (75%) 0.0%
+Position: hero is in position: villain acts first and hero acts last on the flop; initiative: last bet or raise on the preflop: hero (CO Raise to 2.5); no bet yet on this street; stack depth: deep (SPR above 6)
+Blockers: you hold the Ah, the highest heart not on the board: villain cannot have the nut flush
+Hand types in hero's range (346.13 combos):
+  straight or better 7.7%: Check 39.1%, Bet 1.8 (33%) 60.9%, Bet 4.1 (75%) 0.0%
+  set or trips 1.9%: Check 18.7%, Bet 1.8 (33%) 81.3%, Bet 4.1 (75%) 0.0%
+  overpair 8.7% (of which 50.0% also with a strong draw): Check 40.1%, Bet 1.8 (33%) 59.9%, Bet 4.1 (75%) 0.0%
+  top pair, good kicker 5.7% (of which 18.2% also with a strong draw): Check 18.0%, Bet 1.8 (33%) 82.0%, Bet 4.1 (75%) 0.0%
+  top pair, weak kicker 3.7% (of which 2.0% also with a strong draw): Check 40.9%, Bet 1.8 (33%) 59.1%, Bet 4.1 (75%) 0.0%
+  middle or bottom pair, underpair 12.2% (of which 33.8% also with a strong draw): Check 45.8%, Bet 1.8 (33%) 54.2%, Bet 4.1 (75%) 0.0%
+  strong draw 18.5%: Check 41.9%, Bet 1.8 (33%) 58.1%, Bet 4.1 (75%) 0.0%
+  weak draw 41.6%: Check 40.3%, Bet 1.8 (33%) 59.7%, Bet 4.1 (75%) 0.0%
+Each option by hand type:
+  Check (136.73 combos): straight or better 7.6%, set or trips 0.9%, overpair 8.8%, top pair, good kicker 2.6%, top pair, weak kicker 3.8%, middle or bottom pair, underpair 14.2%, strong draw 19.7%, weak draw 42.4%
+  Bet 1.8 (33%) (209.38 combos): straight or better 7.7%, set or trips 2.6%, overpair 8.6%, top pair, good kicker 7.8%, top pair, weak kicker 3.6%, middle or bottom pair, underpair 11.0%, strong draw 17.8%, weak draw 41.0%
+  Bet 4.1 (75%) (0.0 combos): (no hands)
+Your hand type: straight or better; that type is 7.7% of hero's range and plays: Check 39.1%, Bet 1.8 (33%) 60.9%, Bet 4.1 (75%) 0.0%
+Hand types in villain's range (252.87 combos, your cards removed): straight or better 6.2%, set or trips 3.2%, two pair 0.7%, overpair 0.7%, top pair, good kicker 4.6%, top pair, weak kicker 5.9%, middle or bottom pair, underpair 22.3%, strong draw 12.4%, weak draw 44.1%
+Against your hand type (approximate, by hand type; the exact number is the equity line): stronger types 0.0%, same type 6.2%, weaker made hands 37.4%, draws 56.5%, nothing 0.0% of villain's range
+Villain's range (282.34 combos), heaviest classes: JTo 11.47, QTo 10.97, AJo 10.73, KTo 10.7, ATo 10.1, KQo 9.55, QJo 9.48, KJo 9.02, A9o 8.78, AQo 6.43
+  Villain BB: Call 1.8 (55.8% of villain's range; Fold 31.5%, Raise to 5.4 12.7%) [range 282.34 combos]
+    villain classes taking this action: AJo 7.97 (74.3%), A9o 7.04 (80.2%), AQo 6.21 (96.6%), 44 5.96 (99.3%), 33 5.51 (91.9%), 66 5.36 (100.0%), 77 5.2 (99.6%), 88 5.0 (99.5%)
+    villain hand types taking this action: CALL 1.8 (the action villain took, 55.8% of his range) is made of straight or better 3.3% (takes it 29.6% of the time), set or trips 3.5% (takes it 61.1% of the time), two pair 1.3% (takes it 97.7% of the time), overpair 1.3% (takes it 98.7% of the time), top pair, good kicker 7.1% (takes it 86.6% of the time), top pair, weak kicker 9.0% (takes it 86.0% of the time), middle or bottom pair, underpair 36.3% (takes it 91.2% of the time), strong draw 9.5% (takes it 43.1% of the time), weak draw 28.9% (takes it 36.7% of the time)
+  TURN dealt: Ks (board 9h 5h 2h Ks; pot 9.1)
+  Villain BB: Check (99.9% of villain's range; Bet 6.8 (75%) 0.1%) [range 152.74 combos]
+    villain classes taking this action: AJo 7.97 (100.0%), A9o 7.04 (100.0%), AQo 6.22 (100.0%), 44 5.96 (100.0%), 33 5.51 (100.0%), 66 5.36 (100.0%), 77 5.2 (100.0%), 88 5.0 (100.0%)
+    villain hand types taking this action: CHECK (the action villain took, 99.9% of his range) is made of straight or better 3.5% (takes it 99.7% of the time), set or trips 3.6% (takes it 99.7% of the time), two pair 5.2% (takes it 100.0% of the time), top pair, good kicker 4.2% (takes it 99.9% of the time), top pair, weak kicker 3.4% (takes it 99.9% of the time), middle or bottom pair, underpair 49.7% (takes it 100.0% of the time), strong draw 6.3% (takes it 99.5% of the time), weak draw 20.4% (takes it 99.8% of the time), nothing 3.7% (takes it 99.8% of the time)
+
+=== DECISION #2 (turn, solver) ===
+Board: 9h 5h 2h Ks
+Pot 9.1, to call 0, hero 95.7 behind, villain 95.7 behind, SPR 10.52
+Hero's hand: flush (hearts) with both hole cards (Ah Jh); the nut flush  [best five: Ah Jh 9h 5h 2h]
+Draws: no draw
+Overcards to the board: ace
+Outs (of 46 unseen cards; may be dirty): none
+Board: unpaired board; three of one suit; three to a flush (hearts): two hearts in hand make a flush; no straight possible yet
+New card Ks: overcard to the board (new top card, king); your hand: flush (hearts) with both hole cards (Ah Jh); the nut flush -> flush (hearts) with both hole cards (Ah Jh); the nut flush (no improvement)
+Options (hero's exact hand):
+  Check                   26.2%  EV   18.06  loss 0.02 bb (0.22% pot)  grade Correct 74.2 pts  (range 53.5%)
+  Bet 6.8 (75%)           73.8%  EV   18.08  loss 0.00 bb (0.0% pot)  grade Best 100 pts  (range 46.5%)  <- main line
+  Best by EV: Bet 6.8 (75%); second: Check; gap 0.02 bb (0.22% pot); most frequent: Bet 6.8 (75%)
+  Hand equity 98.6%; range equity hero 49.9% vs villain 50.1%; verdict: close
+Hero's range (195.79 combos) splits: Check 53.5%, Bet 6.8 (75%) 46.5%
+  Check: A9o 6.03 (74.2%), JTo 4.19 (44.6%), TT 4.18 (75.3%), JJ 4.03 (94.1%), A5o 3.51 (90.5%), QQ 3.3 (100.0%), A8o 3.24 (59.8%), QTo 3.05 (34.1%)
+  Bet 6.8 (75%): QJo 7.14 (81.0%), QTo 5.9 (65.9%), JTo 5.21 (55.4%), KJo 4.55 (73.0%), KTo 3.86 (57.2%), KQo 3.77 (81.5%), ATo 2.86 (57.9%), QJs 2.49 (97.6%)
+  Hero's class AJs as a whole: Check 55.8%, Bet 6.8 (75%) 44.2%
+Position: hero is in position: villain acts first and hero acts last on the turn; initiative: last bet or raise on the flop: hero (CO Bet 1.8 (33%)); no bet yet on this street; stack depth: deep (SPR above 6)
+Blockers: you hold the Ah, the highest heart not on the board: villain cannot have the nut flush
+Hand types in hero's range (195.74 combos):
+  straight or better 8.4%: Check 45.2%, Bet 6.8 (75%) 54.8%
+  set or trips 3.6% (of which 15.6% also with a strong draw): Check 25.2%, Bet 6.8 (75%) 74.8%
+  two pair 1.8% (of which 11.9% also with a strong draw): Check 64.0%, Bet 6.8 (75%) 36.0%
+  overpair 1.0% (of which 50.0% also with a strong draw): Check 9.8%, Bet 6.8 (75%) 90.2%
+  top pair, good kicker 8.5% (of which 48.3% also with a strong draw): Check 30.2%, Bet 6.8 (75%) 69.8%
+  top pair, weak kicker 7.5% (of which 25.5% also with a strong draw): Check 54.1%, Bet 6.8 (75%) 45.9%
+  middle or bottom pair, underpair 28.0% (of which 29.2% also with a strong draw): Check 87.8%, Bet 6.8 (75%) 12.2%
+  strong draw 11.9%: Check 39.9%, Bet 6.8 (75%) 60.1%
+  weak draw 23.5%: Check 42.6%, Bet 6.8 (75%) 57.4%
+  nothing 5.7%: Check 27.5%, Bet 6.8 (75%) 72.5%
+Each option by hand type:
+  Check (104.72 combos): straight or better 7.1%, set or trips 1.7%, two pair 2.1%, overpair 0.2%, top pair, good kicker 4.8%, top pair, weak kicker 7.6%, middle or bottom pair, underpair 46.0%, strong draw 8.9%, weak draw 18.7%, nothing 2.9%
+  Bet 6.8 (75%) (91.02 combos): straight or better 9.9%, set or trips 5.8%, two pair 1.4%, overpair 2.0%, top pair, good kicker 12.8%, top pair, weak kicker 7.4%, middle or bottom pair, underpair 7.4%, strong draw 15.4%, weak draw 29.0%, nothing 8.9%
+Your hand type: straight or better; that type is 8.4% of hero's range and plays: Check 45.2%, Bet 6.8 (75%) 54.8%
+Hand types in villain's range (136.9 combos, your cards removed): straight or better 3.5%, set or trips 3.6%, two pair 5.2%, top pair, good kicker 4.2%, top pair, weak kicker 3.4%, middle or bottom pair, underpair 49.7%, strong draw 6.3%, weak draw 20.4%, nothing 3.7%
+Against your hand type (approximate, by hand type; the exact number is the equity line): stronger types 0.0%, same type 3.5%, weaker made hands 66.0%, draws 26.7%, nothing 3.7% of villain's range
+Villain's range (152.57 combos), heaviest classes: AJo 7.97, A9o 7.04, AQo 6.22, 44 5.96, 33 5.51, 66 5.36, 77 5.2, 88 5.0, JTo 4.76, QTo 4.07
+  Villain BB: Call 6.8 (46.8% of villain's range; Fold 46.3%, Raise to 20.4 6.8%) [range 152.57 combos]
+    villain classes taking this action: A9o 6.67 (94.7%), AJo 3.37 (42.3%), KQo 3.29 (100.0%), 44 2.99 (50.2%), 33 2.99 (54.2%), KTo 2.96 (98.7%), KJo 2.87 (100.0%), 66 2.68 (49.9%)
+    villain hand types taking this action: CALL 6.8 (the action villain took, 46.8% of his range) is made of straight or better 4.3% (takes it 57.3% of the time), set or trips 5.1% (takes it 67.6% of the time), two pair 10.9% (takes it 100.0% of the time), top pair, good kicker 8.7% (takes it 99.0% of the time), top pair, weak kicker 6.6% (takes it 90.8% of the time), middle or bottom pair, underpair 43.9% (takes it 41.7% of the time), strong draw 2.8% (takes it 20.7% of the time), weak draw 10.7% (takes it 24.7% of the time), nothing 7.1% (takes it 90.9% of the time)
+  RIVER dealt: 5c (board 9h 5h 2h Ks 5c; pot 22.7)
+  Villain BB: Check (92.5% of villain's range; Bet 11.4 (50%) 7.5%, Bet 28.4 (125%) 0.0%) [range 69.1 combos]
+    villain classes taking this action: A9o 6.65 (99.7%), AJo 3.37 (100.0%), KQo 3.29 (100.0%), 44 2.99 (100.0%), 33 2.99 (100.0%), KTo 2.96 (100.0%), KJo 2.87 (100.0%), 66 2.68 (100.0%)
+    villain hand types taking this action: CHECK (the action villain took, 92.5% of his range) is made of straight or better 10.6% (takes it 84.2% of the time), two pair 6.1% (takes it 99.8% of the time), top pair, good kicker 9.7% (takes it 99.6% of the time), top pair, weak kicker 7.4% (takes it 100.0% of the time), middle or bottom pair, underpair 48.9% (takes it 99.9% of the time), nothing 17.2% (takes it 74.6% of the time)
+
+=== DECISION #3 (river, solver) ===
+Board: 9h 5h 2h Ks 5c
+Pot 22.7, to call 0, hero 88.9 behind, villain 88.9 behind, SPR 3.92
+Hero's hand: flush (hearts) with both hole cards (Ah Jh); the nut flush  [best five: Ah Jh 9h 5h 2h]
+Draws: no draws: river (no cards to come)
+Overcards to the board: ace
+Board: paired board (fives); at most 3 of one suit; three to a flush (hearts): two hearts in hand make a flush; no straight possible
+New card 5c: pairs the board (fives); your hand: flush (hearts) with both hole cards (Ah Jh); the nut flush -> flush (hearts) with both hole cards (Ah Jh); the nut flush (no improvement)
+Options (hero's exact hand):
+  Check                    0.0%  EV   21.04  loss 5.67 bb (25.0% pot)  grade Blunder 0 pts  (range 64.4%)
+  Bet 11.4 (50%)           0.4%  EV   26.50  loss 0.21 bb (0.93% pot)  grade Inaccuracy 40 pts  (range 11.4%)
+  Bet 28.4 (125%)         99.6%  EV   26.71  loss 0.00 bb (0.0% pot)  grade Best 100 pts  (range 24.1%)  <- main line
+  Best by EV: Bet 28.4 (125%); second: Bet 11.4 (50%); gap 0.21 bb (0.93% pot); most frequent: Bet 28.4 (125%)
+  Hand equity 92.7%; range equity hero 37.2% vs villain 62.8%; verdict: lean
+Hero's range (89.19 combos) splits: Check 64.4%, Bet 11.4 (50%) 11.4%, Bet 28.4 (125%) 24.1%
+  Check: QJo 4.76 (66.7%), JTo 4.59 (88.3%), KJo 4.55 (100.0%), QTo 3.94 (66.8%), KTo 3.86 (100.0%), KQo 3.75 (99.4%), AQo 2.41 (99.9%), AJo 2.26 (96.3%)
+  Bet 11.4 (50%): AA 1.15 (63.8%), A8o 0.92 (42.3%), T8s 0.74 (40.3%), KK 0.52 (47.3%), 87s 0.5 (83.2%), K6s 0.49 (77.9%), Q7s 0.46 (22.7%), K8s 0.46 (91.3%)
+  Bet 28.4 (125%): QJo 2.36 (33.1%), QTo 1.83 (31.1%), ATo 1.75 (61.1%), 99 0.99 (76.2%), QTs 0.95 (45.5%), QJs 0.93 (37.3%), Q7s 0.74 (36.4%), 55 0.74 (99.1%)
+  Hero's class AJs as a whole: Check 0.7%, Bet 11.4 (50%) 0.4%, Bet 28.4 (125%) 98.8%
+Position: hero is in position: villain acts first and hero acts last on the river; initiative: last bet or raise on the turn: hero (CO Bet 6.8 (75%)); no bet yet on this street; stack depth: medium (SPR 3 to 6)
+Blockers: you hold the Ah, the highest heart not on the board: villain cannot have the nut flush
+Hand types in hero's range (89.18 combos):
+  straight or better 14.4%: Check 34.1%, Bet 11.4 (50%) 18.2%, Bet 28.4 (125%) 47.8%
+  set or trips 0.4%: Check 0.1%, Bet 11.4 (50%) 99.8%, Bet 28.4 (125%) 0.1%
+  two pair 1.2%: Check 41.7%, Bet 11.4 (50%) 58.2%, Bet 28.4 (125%) 0.1%
+  overpair 2.0%: Check 36.2%, Bet 11.4 (50%) 63.8%, Bet 28.4 (125%) 0.0%
+  top pair, good kicker 13.1%: Check 90.7%, Bet 11.4 (50%) 3.5%, Bet 28.4 (125%) 5.7%
+  top pair, weak kicker 7.6%: Check 71.7%, Bet 11.4 (50%) 15.5%, Bet 28.4 (125%) 12.8%
+  middle or bottom pair, underpair 6.9%: Check 100.0%, Bet 11.4 (50%) 0.0%, Bet 28.4 (125%) 0.0%
+  nothing 54.5%: Check 62.6%, Bet 11.4 (50%) 8.9%, Bet 28.4 (125%) 28.5%
+Each option by hand type:
+  Check (57.45 combos): straight or better 7.6%, two pair 0.8%, overpair 1.1%, top pair, good kicker 18.4%, top pair, weak kicker 8.4%, middle or bottom pair, underpair 10.7%, nothing 52.9%
+  Bet 11.4 (50%) (10.19 combos): straight or better 22.9%, set or trips 3.1%, two pair 6.0%, overpair 11.3%, top pair, good kicker 4.0%, top pair, weak kicker 10.2%, nothing 42.5%
+  Bet 28.4 (125%) (21.54 combos): straight or better 28.5%, top pair, good kicker 3.1%, top pair, weak kicker 4.0%, nothing 64.4%
+Your hand type: straight or better; that type is 14.4% of hero's range and plays: Check 34.1%, Bet 11.4 (50%) 18.2%, Bet 28.4 (125%) 47.8%
+Hand types in villain's range (57.71 combos, your cards removed): straight or better 10.6%, two pair 6.1%, top pair, good kicker 9.7%, top pair, weak kicker 7.4%, middle or bottom pair, underpair 48.9%, nothing 17.2%
+Against your hand type (approximate, by hand type; the exact number is the equity line): stronger types 0.0%, same type 10.6%, weaker made hands 72.1%, draws 0.0%, nothing 17.2% of villain's range
+Villain's range (63.9 combos), heaviest classes: A9o 6.65, AJo 3.37, KQo 3.29, 44 2.99, 33 2.99, KTo 2.96, KJo 2.87, 66 2.68, 77 2.54, 88 2.48
+
+After the last decision:
+  Villain BB: Call 28.4 (35.3% of villain's range; Fold 55.8%, All-in 88.9 8.8%) [range 63.9 combos]
+    villain hand types taking this action: CALL 28.4 (the action villain took, 35.3% of his range) is made of straight or better 10.5% (takes it 35.8% of the time), two pair 0.1% (takes it 0.6% of the time), top pair, good kicker 21.2% (takes it 78.8% of the time), top pair, weak kicker 12.2% (takes it 60.1% of the time), middle or bottom pair, underpair 27.4% (takes it 20.3% of the time), nothing 28.6% (takes it 60.0% of the time)
+
+RESULT: showdown, pot 79.5, hero net +40.00 bb; villain shows 8s 8h (Two pair, eights and fives) vs hero Flush, ace-high; winner hero
+  (computed from the cards: hero flush, villain two pair, winner hero)

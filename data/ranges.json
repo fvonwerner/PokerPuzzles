@@ -1,0 +1,930 @@
+{
+ "_comment": "Preflop library for 6-max, 100bb. Charts are a real solver solution: the \"100bb 2.5x 500rake\" ranges bundled with the open-source TexasSolver v0.2.0 release, imported by tools/import-preflop.py (source files in data/preflop-source). Range strings use the postflop-solver syntax: comma-separated classes with an optional ':weight'. In a chart, 'fold' is always the remainder. A 'facing a 3-bet' chart holds frequencies given that the hand opened; the solver multiplies a seat's chart actions together for its postflop range. Postflop is solved without rake.",
+ "chipsPerBb": 10,
+ "seats": [
+  "UTG",
+  "HJ",
+  "CO",
+  "BTN",
+  "SB",
+  "BB"
+ ],
+ "charts": {
+  "UTG_RFI": {
+   "title": "UTG, folded to you",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 2.5,
+     "label": "Raise to 2.5"
+    }
+   ],
+   "ranges": {
+    "raise": "AA,KK,QQ,JJ,TT,99,88,77,66:0.646,55:0.23,44:0.126,33:0.068,22:0.056,AKs,AQs,AJs,ATs,A9s,A8s,A7s,A6s,A5s,A4s,A3s,A2s:0.778,KQs,KJs,KTs,K9s,K8s:0.892,K7s:0.246,K6s:0.41,K5s:0.476,QJs,QTs,Q9s,JTs,J9s:0.326,T9s:0.77,T8s:0.002,98s:0.118,87s:0.212,86s:0.002,76s:0.27,65s:0.258,54s:0.252,AKo,AQo,AJo,ATo,KQo,KJo,KTo:0.314,QJo:0.556,QTo:0.056"
+   }
+  },
+  "HJ_RFI": {
+   "title": "HJ, folded to you",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 2.5,
+     "label": "Raise to 2.5"
+    }
+   ],
+   "ranges": {
+    "raise": "AA,KK,QQ,JJ,TT,99,88,77,66,55:0.702,44:0.214,33:0.118,22:0.128,AKs,AQs,AJs,ATs,A9s,A8s,A7s,A6s,A5s,A4s,A3s,A2s,KQs,KJs,KTs,K9s,K8s,K7s,K6s:0.994,K5s:0.9,QJs,QTs,Q9s,Q8s:0.572,JTs,J9s,J8s:0.082,T9s,T8s:0.382,98s:0.496,87s:0.394,86s:0.02,76s:0.276,65s:0.324,54s:0.302,AKo,AQo,AJo,ATo,A9o:0.374,KQo,KJo,KTo:0.97,QJo,QTo:0.562,JTo:0.176"
+   }
+  },
+  "CO_RFI": {
+   "title": "CO, folded to you",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 2.5,
+     "label": "Raise to 2.5"
+    }
+   ],
+   "ranges": {
+    "raise": "AA,KK,QQ,JJ,TT,99,88,77,66,55,44,33:0.26,22:0.226,AKs,AQs,AJs,ATs,A9s,A8s,A7s,A6s,A5s,A4s,A3s,A2s,KQs,KJs,KTs,K9s,K8s,K7s,K6s,K5s,K4s,K3s:0.706,QJs,QTs,Q9s,Q8s,Q7s,Q6s:0.91,Q5s:0.152,JTs,J9s,J8s,J7s:0.17,T9s,T8s,T7s:0.328,98s,97s,87s:0.886,86s:0.04,76s:0.536,65s:0.442,54s:0.476,AKo,AQo,AJo,ATo,A9o,A8o:0.678,A7o:0.01,A5o:0.504,KQo,KJo,KTo,K9o:0.202,QJo,QTo,JTo,T9o:0.084"
+   }
+  },
+  "BTN_RFI": {
+   "title": "BTN, folded to you",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 2.5,
+     "label": "Raise to 2.5"
+    }
+   ],
+   "ranges": {
+    "raise": "AA,KK,QQ,JJ,TT,99,88,77,66,55,44,33,22,AKs,AQs,AJs,ATs,A9s,A8s,A7s,A6s,A5s,A4s,A3s,A2s,KQs,KJs,KTs,K9s,K8s,K7s,K6s,K5s,K4s,K3s,K2s,QJs,QTs,Q9s,Q8s,Q7s,Q6s,Q5s,Q4s,Q3s,Q2s:0.066,JTs,J9s,J8s,J7s,J6s,J5s,J4s:0.256,T9s,T8s,T7s,T6s,98s,97s,96s,87s,86s,85s:0.09,76s,75s,65s,54s,AKo,AQo,AJo,ATo,A9o,A8o,A7o,A6o,A5o,A4o,A3o:0.016,KQo,KJo,KTo,K9o,K8o:0.7,QJo,QTo,Q9o,Q8o:0.082,JTo,J9o,J8o:0.43,T9o,T8o:0.558,98o:0.486"
+   }
+  },
+  "SB_RFI": {
+   "title": "SB, folded to you",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 3,
+     "label": "Raise to 3"
+    }
+   ],
+   "ranges": {
+    "raise": "AA,KK,QQ,JJ,TT,99,88,77,66,55,44,33,22,AKs,AQs,AJs,ATs,A9s,A8s,A7s,A6s,A5s,A4s,A3s,A2s,KQs,KJs,KTs,K9s,K8s,K7s,K6s,K5s,K4s,K3s,K2s,QJs,QTs,Q9s,Q8s,Q7s,Q6s,Q5s,Q4s,Q3s,Q2s:0.812,JTs,J9s,J8s,J7s,J6s,J5s,J4s:0.84,T9s,T8s,T7s,T6s,98s,97s,96s,87s,86s,85s,76s,75s,74s:0.028,65s,64s,54s,53s:0.098,AKo,AQo,AJo,ATo,A9o,A8o,A7o,A6o,A5o,A4o:0.896,KQo,KJo,KTo,K9o,K8o,QJo,QTo,Q9o,JTo,J9o,J8o:0.144,T9o,T8o:0.558,98o:0.636,87o:0.204"
+   }
+  },
+  "BB_vs_BTN": {
+   "title": "BB facing a BTN open to 2.5",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "call",
+     "kind": "call",
+     "amount": 2.5,
+     "label": "Call"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 11,
+     "label": "3-bet to 11"
+    }
+   ],
+   "ranges": {
+    "call": "99:0.084,88:0.486,77:0.704,66:0.832,55:0.972,44,33,22,ATs:0.13,A9s:0.818,A8s:0.616,A7s:0.412,A6s:0.766,A4s:0.282,A3s:0.822,A2s,KTs:0.026,K9s:0.306,K8s:0.64,K7s:0.856,K6s:0.736,K5s:0.898,K4s,K3s,K2s,QJs:0.06,QTs:0.122,Q9s:0.068,Q8s:0.766,Q7s:0.992,Q6s:0.932,Q5s:0.98,Q4s,Q3s,Q2s,J8s:0.606,J7s:0.55,J6s:0.84,J5s:0.802,J4s:0.996,J3s,J2s:0.782,T8s:0.248,T7s:0.726,T6s:0.758,T5s:0.622,T4s:0.252,T3s:0.23,98s:0.338,97s:0.818,96s:0.924,95s:0.22,87s:0.212,86s:0.824,85s,84s:0.136,76s:0.346,75s:0.82,74s,73s:0.032,65s:0.456,64s:0.904,63s,54s:0.396,53s:0.904,52s,43s,42s:0.796,32s:0.278,AQo:0.03,AJo:0.526,ATo:0.918,A9o:0.876,A8o:0.928,A7o:0.976,A6o:0.432,A5o:0.93,A4o:0.48,KQo:0.474,KJo:0.696,KTo:0.802,K9o:0.91,K8o:0.442,QJo:0.904,QTo:0.796,Q9o,JTo:0.776,J9o:0.89,J8o:0.038,T9o:0.876,T8o:0.42,98o:0.372,87o:0.382,76o:0.224",
+    "raise": "AA,KK,QQ,JJ,TT,99:0.916,88:0.514,77:0.296,66:0.168,55:0.028,AKs,AQs,AJs,ATs:0.87,A9s:0.182,A8s:0.384,A7s:0.588,A6s:0.234,A5s,A4s:0.718,A3s:0.178,KQs,KJs,KTs:0.974,K9s:0.694,K8s:0.36,K7s:0.144,K6s:0.264,K5s:0.102,QJs:0.94,QTs:0.878,Q9s:0.932,Q8s:0.234,Q7s:0.008,Q6s:0.068,Q5s:0.02,JTs,J9s,J8s:0.394,J7s:0.45,J6s:0.16,J5s:0.198,J4s:0.004,T9s,T8s:0.752,T7s:0.274,T6s:0.242,98s:0.662,97s:0.182,96s:0.076,87s:0.788,86s:0.176,76s:0.654,75s:0.18,65s:0.544,64s:0.096,54s:0.604,53s:0.096,AKo,AQo:0.97,AJo:0.474,ATo:0.082,A9o:0.124,A8o:0.072,A7o:0.024,A5o:0.07,KQo:0.526,KJo:0.304,KTo:0.198,K9o:0.09,QJo:0.096,QTo:0.204,JTo:0.224,J9o:0.11,T9o:0.124"
+   }
+  },
+  "BB_vs_CO": {
+   "title": "BB facing a CO open to 2.5",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "call",
+     "kind": "call",
+     "amount": 2.5,
+     "label": "Call"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 11,
+     "label": "3-bet to 11"
+    }
+   ],
+   "ranges": {
+    "call": "TT:0.31,99:0.68,88:0.838,77:0.87,66:0.894,55,44,33,22,AJs:0.042,ATs:0.656,A9s:0.44,A8s:0.774,A7s:0.898,A6s:0.878,A5s:0.294,A4s:0.714,A3s:0.844,A2s,KQs:0.028,KJs:0.284,KTs:0.108,K9s:0.788,K8s:0.902,K7s:0.772,K6s:0.79,K5s:0.878,K4s:0.816,K3s,K2s,Q9s:0.672,Q8s:0.688,Q7s:0.922,Q6s:0.788,Q5s:0.872,Q4s:0.986,Q3s:0.408,Q2s:0.32,J9s:0.394,J8s:0.666,J7s:0.892,J6s:0.432,J5s:0.212,T9s:0.422,T8s:0.812,T7s:0.906,T6s:0.192,98s:0.76,97s:0.872,96s:0.98,95s:0.08,87s:0.714,86s:0.88,85s,76s:0.566,75s:0.88,74s:0.852,65s:0.598,64s:0.844,63s:0.652,54s:0.606,53s:0.878,52s:0.526,43s:0.99,42s:0.464,AQo:0.536,AJo:0.894,ATo:0.842,A9o:0.976,A8o:0.36,A5o:0.282,KQo:0.796,KJo:0.752,KTo:0.892,QJo:0.79,QTo:0.914,JTo:0.956,J9o:0.18,T9o:0.294,98o:0.096",
+    "raise": "AA,KK,QQ,JJ,TT:0.69,99:0.32,88:0.162,77:0.13,66:0.106,AKs,AQs,AJs:0.958,ATs:0.344,A9s:0.56,A8s:0.226,A7s:0.102,A6s:0.122,A5s:0.706,A4s:0.286,A3s:0.156,KQs:0.972,KJs:0.716,KTs:0.892,K9s:0.212,K8s:0.098,K7s:0.228,K6s:0.21,K5s:0.122,K4s:0.184,QJs,QTs,Q9s:0.328,Q8s:0.312,Q7s:0.078,Q6s:0.212,Q5s:0.128,Q4s:0.014,JTs,J9s:0.606,J8s:0.334,J7s:0.108,T9s:0.578,T8s:0.188,T7s:0.094,98s:0.24,97s:0.128,96s:0.02,87s:0.286,86s:0.12,76s:0.434,75s:0.12,65s:0.402,64s:0.156,54s:0.394,53s:0.122,43s:0.01,AKo,AQo:0.464,AJo:0.106,ATo:0.158,A9o:0.024,KQo:0.204,KJo:0.248,KTo:0.108,QJo:0.21,QTo:0.086,JTo:0.044"
+   }
+  },
+  "BB_vs_HJ": {
+   "title": "BB facing an HJ open to 2.5",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "call",
+     "kind": "call",
+     "amount": 2.5,
+     "label": "Call"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 11,
+     "label": "3-bet to 11"
+    }
+   ],
+   "ranges": {
+    "call": "JJ:0.22,TT:0.672,99:0.852,88:0.914,77:0.92,66:0.932,55:0.99,44:0.99,33,22,AJs:0.404,ATs:0.534,A9s:0.796,A8s:0.832,A7s:0.85,A6s:0.812,A5s:0.652,A4s:0.622,A3s:0.836,A2s:0.956,KQs:0.146,KTs:0.308,K9s:0.938,K8s:0.938,K7s:0.788,K6s:0.828,K5s:0.826,K4s:0.81,K3s,K2s,QTs:0.25,Q9s:0.656,Q8s:0.676,Q7s:0.708,Q6s:0.86,Q5s:0.626,Q4s:0.276,JTs:0.486,J9s:0.732,J8s:0.816,J7s:0.518,T9s:0.68,T8s:0.788,T7s:0.946,T6s:0.028,98s:0.892,97s:0.9,96s,95s:0.154,87s:0.704,86s:0.916,85s,76s:0.69,75s:0.824,74s:0.674,65s:0.622,64s:0.784,63s:0.604,54s:0.668,53s:0.824,52s:0.524,43s:0.87,42s:0.466,32s:0.102,AQo:0.86,AJo,ATo:0.94,A9o:0.328,A5o:0.044,KQo:0.91,KJo,KTo:0.598,QJo:0.858,QTo:0.452,JTo:0.48,T9o:0.068",
+    "raise": "AA,KK,QQ,JJ:0.78,TT:0.328,99:0.148,88:0.086,77:0.08,66:0.068,55:0.01,44:0.01,AKs,AQs,AJs:0.596,ATs:0.466,A9s:0.204,A8s:0.168,A7s:0.15,A6s:0.188,A5s:0.348,A4s:0.378,A3s:0.164,A2s:0.044,KQs:0.854,KJs,KTs:0.692,K9s:0.062,K8s:0.062,K7s:0.212,K6s:0.172,K5s:0.174,K4s:0.19,QJs,QTs:0.75,Q9s:0.344,Q8s:0.324,Q7s:0.048,Q6s:0.112,JTs:0.514,J9s:0.268,J8s:0.184,T9s:0.32,T8s:0.212,T7s:0.054,98s:0.108,97s:0.1,87s:0.296,86s:0.084,76s:0.31,75s:0.176,65s:0.378,64s:0.216,54s:0.332,53s:0.176,43s:0.13,AKo,AQo:0.14,ATo:0.06,KQo:0.09,QJo:0.142"
+   }
+  },
+  "BB_vs_UTG": {
+   "title": "BB facing a UTG open to 2.5",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "call",
+     "kind": "call",
+     "amount": 2.5,
+     "label": "Call"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 11,
+     "label": "3-bet to 11"
+    }
+   ],
+   "ranges": {
+    "call": "JJ:0.586,TT:0.798,99:0.932,88:0.924,77:0.948,66:0.916,55:0.96,44:0.996,33,22,AQs:0.132,AJs:0.556,ATs:0.58,A9s:0.974,A8s:0.782,A7s:0.798,A6s:0.762,A5s:0.616,A4s:0.648,A3s:0.786,A2s:0.922,KQs:0.066,KJs:0.238,KTs:0.642,K9s:0.93,K8s:0.942,K7s:0.862,K6s:0.834,K5s:0.834,K4s:0.824,K3s:0.616,K2s:0.52,QJs:0.12,QTs:0.508,Q9s:0.736,Q8s:0.83,Q7s:0.606,Q6s:0.578,Q5s:0.436,Q4s:0.13,JTs:0.718,J9s:0.846,J8s:0.908,J7s:0.102,T9s:0.786,T8s:0.85,T7s:0.984,T6s:0.098,98s:0.91,97s:0.942,96s,95s:0.1,87s:0.776,86s:0.894,85s:0.748,76s:0.724,75s:0.832,74s:0.596,65s:0.662,64s:0.796,63s:0.564,54s:0.676,53s:0.846,52s:0.552,43s:0.928,42s:0.524,32s:0.13,AKo:0.23,AQo:0.964,AJo:0.99,ATo:0.942,KQo:0.93,KJo:0.85,KTo:0.17,QJo:0.576,QTo:0.34,JTo:0.32,T9o:0.038",
+    "raise": "AA,KK,QQ,JJ:0.414,TT:0.202,99:0.068,88:0.076,77:0.052,66:0.084,55:0.04,44:0.004,AKs,AQs:0.868,AJs:0.444,ATs:0.42,A9s:0.026,A8s:0.218,A7s:0.202,A6s:0.238,A5s:0.384,A4s:0.352,A3s:0.214,A2s:0.078,KQs:0.934,KJs:0.762,KTs:0.358,K9s:0.07,K8s:0.058,K7s:0.138,K6s:0.166,K5s:0.166,K4s:0.176,QJs:0.88,QTs:0.492,Q9s:0.264,Q8s:0.17,JTs:0.282,J9s:0.154,J8s:0.092,T9s:0.214,T8s:0.15,T7s:0.016,98s:0.09,97s:0.058,87s:0.224,86s:0.106,76s:0.276,75s:0.168,65s:0.338,64s:0.204,54s:0.324,53s:0.154,43s:0.072,AKo:0.77,AQo:0.036,AJo:0.01,ATo:0.058,KQo:0.07"
+   }
+  },
+  "BB_vs_SB": {
+   "title": "BB facing an SB open to 3",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "call",
+     "kind": "call",
+     "amount": 3,
+     "label": "Call"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 9,
+     "label": "3-bet to 9"
+    }
+   ],
+   "ranges": {
+    "call": "99:0.16,88:0.426,77:0.662,66:0.732,55:0.884,44,33,22,ATs:0.004,A9s:0.874,A8s:0.744,A7s:0.88,A6s,A4s:0.184,A3s:0.364,A2s:0.812,KTs:0.112,K9s:0.546,K8s:0.798,K7s:0.65,K6s:0.488,K5s:0.888,K4s:0.932,K3s,K2s,QJs:0.134,QTs:0.378,Q9s:0.906,Q8s,Q7s,Q6s,Q5s,Q4s,Q3s,Q2s,JTs:0.102,J9s:0.436,J8s,J7s,J6s:0.898,J5s:0.88,J4s:0.784,J3s:0.756,J2s:0.884,T9s:0.12,T8s:0.732,T7s,T6s:0.796,T5s:0.552,T4s:0.568,T3s:0.532,T2s:0.644,98s:0.132,97s:0.772,96s,95s:0.978,94s:0.718,93s:0.736,87s:0.076,86s,85s,84s,76s:0.14,75s,74s,73s,65s:0.222,64s,63s,62s:0.33,54s:0.11,53s,52s,43s,42s,32s,AQo:0.042,AJo:0.622,ATo,A9o:0.996,A8o:0.89,A7o:0.632,A6o:0.564,A5o:0.816,A4o:0.778,A3o:0.666,A2o:0.616,KQo:0.662,KJo:0.87,KTo,K9o:0.75,K8o:0.626,K7o:0.636,K6o:0.642,K5o:0.296,QJo,QTo,Q9o:0.696,Q8o:0.466,JTo,J9o:0.698,J8o:0.404,T9o:0.808,T8o:0.618,T7o:0.122,98o:0.914,97o:0.402,87o,86o:0.116,76o:0.768,65o:0.606,54o:0.562",
+    "raise": "AA,KK,QQ,JJ,TT,99:0.84,88:0.574,77:0.338,66:0.268,55:0.116,AKs,AQs,AJs,ATs:0.996,A9s:0.126,A8s:0.256,A7s:0.12,A5s,A4s:0.816,A3s:0.636,A2s:0.188,KQs,KJs,KTs:0.888,K9s:0.454,K8s:0.202,K7s:0.35,K6s:0.512,K5s:0.112,K4s:0.068,QJs:0.866,QTs:0.622,Q9s:0.094,JTs:0.898,J9s:0.564,J6s:0.102,J5s:0.12,J4s:0.216,J3s:0.244,J2s:0.116,T9s:0.88,T8s:0.268,T6s:0.204,T5s:0.448,T4s:0.432,T3s:0.468,T2s:0.356,98s:0.868,97s:0.228,95s:0.022,94s:0.196,93s:0.058,87s:0.924,76s:0.86,65s:0.778,54s:0.89,AKo,AQo:0.958,AJo:0.378,A9o:0.004,A8o:0.11,A7o:0.368,A6o:0.436,A5o:0.184,A4o:0.222,A3o:0.334,A2o:0.384,KQo:0.338,KJo:0.13,K9o:0.25,K8o:0.374,K7o:0.364,K6o:0.358,K5o:0.236,Q9o:0.304,Q8o:0.534,Q7o:0.01,Q6o:0.08,J9o:0.302,J8o:0.596,J7o:0.154,T9o:0.192,T8o:0.382,T7o:0.464,98o:0.086,97o:0.122"
+   }
+  },
+  "SB_vs_BTN": {
+   "title": "SB facing a BTN open to 2.5",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 11,
+     "label": "3-bet to 11"
+    }
+   ],
+   "ranges": {
+    "raise": "AA,KK,QQ,JJ,TT,99,88,77,66,55:0.448,44:0.098,AKs,AQs,AJs,ATs,A9s,A8s,A7s:0.74,A6s:0.03,A5s,A4s,A3s:0.276,KQs,KJs,KTs,K9s,K8s:0.114,K6s:0.258,QJs,QTs,Q9s,JTs,J9s,J8s:0.034,T9s,T8s:0.81,98s:0.256,87s:0.372,76s:0.326,65s:0.166,54s:0.046,AKo,AQo,AJo,ATo:0.218,KQo,KJo:0.598,KTo:0.13,QJo:0.008,JTo:0.01"
+   }
+  },
+  "BTN_vs_CO": {
+   "title": "BTN facing a CO open to 2.5",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "call",
+     "kind": "call",
+     "amount": 2.5,
+     "label": "Call"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 8.5,
+     "label": "3-bet to 8.5"
+    }
+   ],
+   "ranges": {
+    "call": "JJ:0.134,TT:0.368,99:0.46,88:0.514,77:0.546,66:0.422,55:0.282,44:0.214,33:0.182,22:0.184,AJs:0.44,ATs:0.598,A9s:0.378,A8s:0.238,A7s:0.17,A6s:0.07,A5s:0.358,A4s:0.32,A3s:0.216,A2s:0.01,KQs:0.256,KJs:0.194,KTs:0.368,K9s:0.322,K8s:0.028,K7s:0.022,K6s:0.112,K5s:0.016,QJs:0.37,QTs:0.468,Q9s:0.062,JTs:0.324,J9s:0.146,T9s:0.262,T8s:0.034,98s:0.152,87s:0.146,76s:0.114,65s:0.09,54s:0.144,AQo:0.372,AJo:0.184,KQo:0.258,KJo:0.164",
+    "raise": "AA,KK,QQ,JJ:0.866,TT:0.632,99:0.54,88:0.486,77:0.454,66:0.466,55:0.162,44:0.094,AKs,AQs,AJs:0.56,ATs:0.402,A9s:0.622,A8s:0.762,A7s:0.638,A6s:0.098,A5s:0.642,A4s:0.68,A3s:0.784,A2s:0.06,KQs:0.744,KJs:0.806,KTs:0.632,K9s:0.678,K6s:0.222,QJs:0.63,QTs:0.532,Q9s:0.884,JTs:0.676,J9s:0.134,T9s:0.394,87s:0.112,76s:0.148,65s:0.198,54s:0.326,AKo,AQo:0.628,AJo:0.816,ATo:0.722,KQo:0.742,KJo:0.54,KTo:0.104,QJo:0.318"
+   }
+  },
+  "BTN_vs_BB_3bet": {
+   "title": "BTN facing a BB 3-bet to 11",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "call",
+     "kind": "call",
+     "amount": 11,
+     "label": "Call"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 24,
+     "label": "4-bet to 24"
+    }
+   ],
+   "ranges": {
+    "call": "QQ:0.32,JJ:0.532,TT:0.756,99,88:0.93,77:0.892,66:0.94,55:0.882,44:0.686,33:0.39,22:0.332,AQs,AJs,ATs,A9s:0.922,A8s:0.762,A7s:0.846,A6s:0.708,A5s:0.94,A4s:0.93,A3s:0.984,A2s:0.316,KQs,KJs,KTs,K9s:0.896,K8s:0.51,K7s:0.304,K6s:0.718,K5s:0.136,QJs,QTs,Q9s:0.798,JTs,J9s:0.932,J8s:0.448,T9s,T8s:0.836,98s:0.828,97s:0.196,87s:0.888,76s:0.938,65s:0.68,54s:0.886,AKo:0.352,AQo:0.662,AJo:0.59,ATo:0.112,KQo:0.802,KJo:0.516,KTo:0.042,QJo:0.07,JTo:0.012",
+    "raise": "AA,KK,QQ:0.68,JJ:0.468,TT:0.244,88:0.07,77:0.108,66:0.06,55:0.118,AKs,A9s:0.078,A8s:0.238,A7s:0.154,A6s:0.292,A5s:0.06,A4s:0.07,A3s:0.016,K9s:0.104,K7s:0.02,K6s:0.052,K5s:0.006,Q9s:0.202,Q8s:0.03,J9s:0.068,J8s:0.034,T8s:0.164,98s:0.172,87s:0.112,76s:0.062,AKo:0.648,AQo:0.338,AJo:0.41,ATo:0.282,KQo:0.198,KJo:0.27,KTo:0.07,QJo:0.062,QTo:0.008"
+   }
+  },
+  "BTN_vs_SB_3bet": {
+   "title": "BTN facing an SB 3-bet to 11",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "call",
+     "kind": "call",
+     "amount": 11,
+     "label": "Call"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 24,
+     "label": "4-bet to 24"
+    }
+   ],
+   "ranges": {
+    "call": "QQ:0.374,JJ:0.524,TT:0.658,99:0.942,88:0.842,77:0.894,66:0.978,55:0.902,44:0.568,33:0.428,22:0.42,AQs,AJs,ATs,A9s:0.814,A8s:0.718,A7s:0.544,A5s:0.892,A4s,A3s:0.932,KQs,KJs,KTs,K9s:0.868,K8s:0.352,K7s:0.108,K6s:0.508,QJs,QTs,Q9s:0.722,JTs,J9s:0.87,J8s:0.464,T9s,T8s:0.868,T7s:0.278,98s:0.854,97s:0.52,87s:0.884,86s:0.252,76s,65s:0.93,54s,AKo:0.53,AQo:0.74,AJo:0.636,ATo:0.012,KQo:0.812,KJo:0.276",
+    "raise": "AA,KK,QQ:0.626,JJ:0.476,TT:0.342,99:0.058,88:0.158,77:0.106,66:0.022,55:0.046,AKs,A9s:0.186,A8s:0.282,A7s:0.108,A5s:0.108,K9s:0.132,Q9s:0.278,J9s:0.13,J8s:0.066,T8s:0.132,98s:0.146,87s:0.116,65s:0.07,AKo:0.47,AQo:0.26,AJo:0.364,ATo:0.348,KQo:0.188,KJo:0.254,KTo:0.06,QJo:0.034,QTo:0.028,JTo:0.026"
+   }
+  },
+  "CO_vs_BTN_3bet": {
+   "title": "CO facing a BTN 3-bet to 8.5",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "call",
+     "kind": "call",
+     "amount": 8.5,
+     "label": "Call"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 22,
+     "label": "4-bet to 22"
+    }
+   ],
+   "ranges": {
+    "call": "JJ:0.1,TT:0.316,99:0.586,88:0.598,77:0.492,66:0.45,55:0.302,44:0.324,33,22,AQs:0.94,AJs:0.866,ATs:0.32,A9s:0.24,A5s:0.302,A4s:0.216,KQs:0.682,KJs:0.238,KTs:0.25,K9s:0.146,K6s:0.09,QJs:0.366,QTs:0.338,JTs:0.434,J9s:0.046,T9s:0.31,T8s:0.112,98s:0.194,97s:0.024,87s:0.2144,86s,76s:0.4291,65s:0.543,54s:0.605,AKo:0.106,AQo:0.118,KQo:0.03",
+    "raise": "AA,KK,QQ,JJ:0.9,TT:0.684,99:0.414,88:0.402,77:0.106,AKs,AQs:0.06,AJs:0.134,ATs:0.68,A9s:0.444,A8s:0.12,A5s:0.276,KQs:0.318,KJs:0.762,KTs:0.75,K9s:0.078,QJs:0.634,QTs:0.064,JTs:0.48,AKo:0.894,AQo:0.882,AJo:0.118,KQo:0.094"
+   }
+  },
+  "SB_vs_BB_3bet": {
+   "title": "SB facing a BB 3-bet to 9",
+   "options": [
+    {
+     "id": "fold",
+     "kind": "fold",
+     "label": "Fold"
+    },
+    {
+     "id": "call",
+     "kind": "call",
+     "amount": 9,
+     "label": "Call"
+    },
+    {
+     "id": "raise",
+     "kind": "raise",
+     "amount": 22,
+     "label": "4-bet to 22"
+    }
+   ],
+   "ranges": {
+    "call": "TT:0.084,99:0.898,88:0.92,77:0.916,66:0.878,55:0.894,44:0.97,33:0.796,22:0.606,AJs,ATs:0.944,A9s,A8s,A7s:0.99,A6s:0.802,A5s:0.786,A4s:0.792,A3s:0.788,A2s:0.654,KQs,KJs:0.9,KTs:0.806,K9s:0.946,K8s,K7s:0.76,K6s:0.796,K5s:0.292,QJs,QTs:0.882,Q9s:0.872,Q8s:0.802,JTs:0.73,J9s:0.84,J8s:0.628,T9s:0.726,T8s:0.768,T7s:0.082,98s:0.662,97s:0.442,87s:0.46,76s:0.634,65s:0.472,54s:0.494,AQo:0.38,AJo:0.324,ATo:0.444,KQo:0.514,KJo:0.49,KTo:0.298,QJo:0.314,QTo:0.12,JTo:0.262",
+    "raise": "AA,KK,QQ,JJ,TT:0.916,99:0.102,88:0.08,77:0.084,66:0.122,55:0.106,44:0.03,AKs,AQs,ATs:0.056,A7s:0.01,A6s:0.198,A5s:0.214,A4s:0.208,A3s:0.212,A2s:0.346,KJs:0.1,KTs:0.194,K9s:0.054,K7s:0.072,K6s:0.166,K5s:0.084,QTs:0.118,Q9s:0.128,JTs:0.27,J9s:0.16,J8s:0.21,T9s:0.274,T8s:0.232,98s:0.338,76s:0.066,65s:0.026,AKo,AQo:0.62,AJo:0.676,ATo:0.556,KQo:0.486,KJo:0.51,KTo:0.202,QJo:0.178,JTo:0.106"
+   }
+  }
+ },
+ "trees": {
+  "SRP_IP_AGGRESSOR": {
+   "_comment": "Single-raised pot, preflop raiser in position. OOP caller cannot lead the flop.",
+   "flop": {
+    "oopBet": "",
+    "oopRaise": "3x",
+    "ipBet": "33%,75%",
+    "ipRaise": "3x"
+   },
+   "turn": {
+    "oopBet": "75%",
+    "oopRaise": "3x",
+    "ipBet": "75%",
+    "ipRaise": "3x"
+   },
+   "river": {
+    "oopBet": "50%,125%",
+    "oopRaise": "a",
+    "ipBet": "50%,125%",
+    "ipRaise": "a"
+   }
+  },
+  "SRP_OOP_AGGRESSOR": {
+   "_comment": "Single-raised pot, preflop raiser out of position (SB vs BB).",
+   "flop": {
+    "oopBet": "50%",
+    "oopRaise": "3x",
+    "ipBet": "50%",
+    "ipRaise": "3x"
+   },
+   "turn": {
+    "oopBet": "75%",
+    "oopRaise": "3x",
+    "ipBet": "75%",
+    "ipRaise": "3x"
+   },
+   "river": {
+    "oopBet": "50%,125%",
+    "oopRaise": "a",
+    "ipBet": "50%,125%",
+    "ipRaise": "a"
+   }
+  },
+  "3BP_OOP_AGGRESSOR": {
+   "_comment": "3-bet pot, 3-bettor out of position.",
+   "flop": {
+    "oopBet": "25%,60%",
+    "oopRaise": "2.5x",
+    "ipBet": "25%,60%",
+    "ipRaise": "2.5x"
+   },
+   "turn": {
+    "oopBet": "50%,100%",
+    "oopRaise": "2.5x",
+    "ipBet": "50%,100%",
+    "ipRaise": "2.5x"
+   },
+   "river": {
+    "oopBet": "50%,100%",
+    "oopRaise": "2.5x",
+    "ipBet": "50%,100%",
+    "ipRaise": "2.5x"
+   }
+  },
+  "3BP_IP_AGGRESSOR": {
+   "_comment": "3-bet pot, 3-bettor in position. OOP caller cannot lead the flop.",
+   "flop": {
+    "oopBet": "",
+    "oopRaise": "2.5x",
+    "ipBet": "25%,60%",
+    "ipRaise": "2.5x"
+   },
+   "turn": {
+    "oopBet": "50%,100%",
+    "oopRaise": "2.5x",
+    "ipBet": "50%,100%",
+    "ipRaise": "2.5x"
+   },
+   "river": {
+    "oopBet": "50%,100%",
+    "oopRaise": "2.5x",
+    "ipBet": "50%,100%",
+    "ipRaise": "2.5x"
+   }
+  }
+ },
+ "treeDefaults": {
+  "addAllinThreshold": 1.5,
+  "forceAllinThreshold": 0.15,
+  "mergingThreshold": 0.1,
+  "rakeRate": 0,
+  "rakeCap": 0
+ },
+ "scenarios": {
+  "BTN_BB_SRP": {
+   "name": "BTN opens, BB calls",
+   "potType": "SRP",
+   "tree": "SRP_IP_AGGRESSOR",
+   "ip": {
+    "seat": "BTN",
+    "chart": "BTN_RFI",
+    "action": "raise"
+   },
+   "oop": {
+    "seat": "BB",
+    "chart": "BB_vs_BTN",
+    "action": "call"
+   },
+   "potBb": 5.5,
+   "stackBb": 97.5,
+   "preflop": [
+    {
+     "seat": "UTG",
+     "kind": "fold"
+    },
+    {
+     "seat": "HJ",
+     "kind": "fold"
+    },
+    {
+     "seat": "CO",
+     "kind": "fold"
+    },
+    {
+     "seat": "BTN",
+     "kind": "raise",
+     "amount": 2.5,
+     "chart": "BTN_RFI"
+    },
+    {
+     "seat": "SB",
+     "kind": "fold"
+    },
+    {
+     "seat": "BB",
+     "kind": "call",
+     "amount": 2.5,
+     "chart": "BB_vs_BTN"
+    }
+   ]
+  },
+  "CO_BB_SRP": {
+   "name": "CO opens, BB calls",
+   "potType": "SRP",
+   "tree": "SRP_IP_AGGRESSOR",
+   "ip": {
+    "seat": "CO",
+    "chart": "CO_RFI",
+    "action": "raise"
+   },
+   "oop": {
+    "seat": "BB",
+    "chart": "BB_vs_CO",
+    "action": "call"
+   },
+   "potBb": 5.5,
+   "stackBb": 97.5,
+   "preflop": [
+    {
+     "seat": "UTG",
+     "kind": "fold"
+    },
+    {
+     "seat": "HJ",
+     "kind": "fold"
+    },
+    {
+     "seat": "CO",
+     "kind": "raise",
+     "amount": 2.5,
+     "chart": "CO_RFI"
+    },
+    {
+     "seat": "BTN",
+     "kind": "fold"
+    },
+    {
+     "seat": "SB",
+     "kind": "fold"
+    },
+    {
+     "seat": "BB",
+     "kind": "call",
+     "amount": 2.5,
+     "chart": "BB_vs_CO"
+    }
+   ]
+  },
+  "HJ_BB_SRP": {
+   "name": "HJ opens, BB calls",
+   "potType": "SRP",
+   "tree": "SRP_IP_AGGRESSOR",
+   "ip": {
+    "seat": "HJ",
+    "chart": "HJ_RFI",
+    "action": "raise"
+   },
+   "oop": {
+    "seat": "BB",
+    "chart": "BB_vs_HJ",
+    "action": "call"
+   },
+   "potBb": 5.5,
+   "stackBb": 97.5,
+   "preflop": [
+    {
+     "seat": "UTG",
+     "kind": "fold"
+    },
+    {
+     "seat": "HJ",
+     "kind": "raise",
+     "amount": 2.5,
+     "chart": "HJ_RFI"
+    },
+    {
+     "seat": "CO",
+     "kind": "fold"
+    },
+    {
+     "seat": "BTN",
+     "kind": "fold"
+    },
+    {
+     "seat": "SB",
+     "kind": "fold"
+    },
+    {
+     "seat": "BB",
+     "kind": "call",
+     "amount": 2.5,
+     "chart": "BB_vs_HJ"
+    }
+   ]
+  },
+  "UTG_BB_SRP": {
+   "name": "UTG opens, BB calls",
+   "potType": "SRP",
+   "tree": "SRP_IP_AGGRESSOR",
+   "ip": {
+    "seat": "UTG",
+    "chart": "UTG_RFI",
+    "action": "raise"
+   },
+   "oop": {
+    "seat": "BB",
+    "chart": "BB_vs_UTG",
+    "action": "call"
+   },
+   "potBb": 5.5,
+   "stackBb": 97.5,
+   "preflop": [
+    {
+     "seat": "UTG",
+     "kind": "raise",
+     "amount": 2.5,
+     "chart": "UTG_RFI"
+    },
+    {
+     "seat": "HJ",
+     "kind": "fold"
+    },
+    {
+     "seat": "CO",
+     "kind": "fold"
+    },
+    {
+     "seat": "BTN",
+     "kind": "fold"
+    },
+    {
+     "seat": "SB",
+     "kind": "fold"
+    },
+    {
+     "seat": "BB",
+     "kind": "call",
+     "amount": 2.5,
+     "chart": "BB_vs_UTG"
+    }
+   ]
+  },
+  "SB_BB_SRP": {
+   "name": "SB opens, BB calls",
+   "potType": "SRP",
+   "tree": "SRP_OOP_AGGRESSOR",
+   "ip": {
+    "seat": "BB",
+    "chart": "BB_vs_SB",
+    "action": "call"
+   },
+   "oop": {
+    "seat": "SB",
+    "chart": "SB_RFI",
+    "action": "raise"
+   },
+   "potBb": 6,
+   "stackBb": 97,
+   "preflop": [
+    {
+     "seat": "UTG",
+     "kind": "fold"
+    },
+    {
+     "seat": "HJ",
+     "kind": "fold"
+    },
+    {
+     "seat": "CO",
+     "kind": "fold"
+    },
+    {
+     "seat": "BTN",
+     "kind": "fold"
+    },
+    {
+     "seat": "SB",
+     "kind": "raise",
+     "amount": 3,
+     "chart": "SB_RFI"
+    },
+    {
+     "seat": "BB",
+     "kind": "call",
+     "amount": 3,
+     "chart": "BB_vs_SB"
+    }
+   ]
+  },
+  "BTN_BB_3BP": {
+   "name": "BTN opens, BB 3-bets, BTN calls",
+   "potType": "3BP",
+   "tree": "3BP_OOP_AGGRESSOR",
+   "ip": {
+    "seat": "BTN",
+    "chart": "BTN_vs_BB_3bet",
+    "action": "call"
+   },
+   "oop": {
+    "seat": "BB",
+    "chart": "BB_vs_BTN",
+    "action": "raise"
+   },
+   "potBb": 22.5,
+   "stackBb": 89,
+   "preflop": [
+    {
+     "seat": "UTG",
+     "kind": "fold"
+    },
+    {
+     "seat": "HJ",
+     "kind": "fold"
+    },
+    {
+     "seat": "CO",
+     "kind": "fold"
+    },
+    {
+     "seat": "BTN",
+     "kind": "raise",
+     "amount": 2.5,
+     "chart": "BTN_RFI"
+    },
+    {
+     "seat": "SB",
+     "kind": "fold"
+    },
+    {
+     "seat": "BB",
+     "kind": "raise",
+     "amount": 11,
+     "chart": "BB_vs_BTN"
+    },
+    {
+     "seat": "BTN",
+     "kind": "call",
+     "amount": 11,
+     "chart": "BTN_vs_BB_3bet"
+    }
+   ]
+  },
+  "BTN_SB_3BP": {
+   "name": "BTN opens, SB 3-bets, BTN calls",
+   "potType": "3BP",
+   "tree": "3BP_OOP_AGGRESSOR",
+   "ip": {
+    "seat": "BTN",
+    "chart": "BTN_vs_SB_3bet",
+    "action": "call"
+   },
+   "oop": {
+    "seat": "SB",
+    "chart": "SB_vs_BTN",
+    "action": "raise"
+   },
+   "potBb": 23,
+   "stackBb": 89,
+   "preflop": [
+    {
+     "seat": "UTG",
+     "kind": "fold"
+    },
+    {
+     "seat": "HJ",
+     "kind": "fold"
+    },
+    {
+     "seat": "CO",
+     "kind": "fold"
+    },
+    {
+     "seat": "BTN",
+     "kind": "raise",
+     "amount": 2.5,
+     "chart": "BTN_RFI"
+    },
+    {
+     "seat": "SB",
+     "kind": "raise",
+     "amount": 11,
+     "chart": "SB_vs_BTN"
+    },
+    {
+     "seat": "BB",
+     "kind": "fold"
+    },
+    {
+     "seat": "BTN",
+     "kind": "call",
+     "amount": 11,
+     "chart": "BTN_vs_SB_3bet"
+    }
+   ]
+  },
+  "CO_BTN_3BP": {
+   "name": "CO opens, BTN 3-bets, CO calls",
+   "potType": "3BP",
+   "tree": "3BP_IP_AGGRESSOR",
+   "ip": {
+    "seat": "BTN",
+    "chart": "BTN_vs_CO",
+    "action": "raise"
+   },
+   "oop": {
+    "seat": "CO",
+    "chart": "CO_vs_BTN_3bet",
+    "action": "call"
+   },
+   "potBb": 18.5,
+   "stackBb": 91.5,
+   "preflop": [
+    {
+     "seat": "UTG",
+     "kind": "fold"
+    },
+    {
+     "seat": "HJ",
+     "kind": "fold"
+    },
+    {
+     "seat": "CO",
+     "kind": "raise",
+     "amount": 2.5,
+     "chart": "CO_RFI"
+    },
+    {
+     "seat": "BTN",
+     "kind": "raise",
+     "amount": 8.5,
+     "chart": "BTN_vs_CO"
+    },
+    {
+     "seat": "SB",
+     "kind": "fold"
+    },
+    {
+     "seat": "BB",
+     "kind": "fold"
+    },
+    {
+     "seat": "CO",
+     "kind": "call",
+     "amount": 8.5,
+     "chart": "CO_vs_BTN_3bet"
+    }
+   ]
+  },
+  "SB_BB_3BP": {
+   "name": "SB opens, BB 3-bets, SB calls",
+   "potType": "3BP",
+   "tree": "3BP_IP_AGGRESSOR",
+   "ip": {
+    "seat": "BB",
+    "chart": "BB_vs_SB",
+    "action": "raise"
+   },
+   "oop": {
+    "seat": "SB",
+    "chart": "SB_vs_BB_3bet",
+    "action": "call"
+   },
+   "potBb": 18,
+   "stackBb": 91,
+   "preflop": [
+    {
+     "seat": "UTG",
+     "kind": "fold"
+    },
+    {
+     "seat": "HJ",
+     "kind": "fold"
+    },
+    {
+     "seat": "CO",
+     "kind": "fold"
+    },
+    {
+     "seat": "BTN",
+     "kind": "fold"
+    },
+    {
+     "seat": "SB",
+     "kind": "raise",
+     "amount": 3,
+     "chart": "SB_RFI"
+    },
+    {
+     "seat": "BB",
+     "kind": "raise",
+     "amount": 9,
+     "chart": "BB_vs_SB"
+    },
+    {
+     "seat": "SB",
+     "kind": "call",
+     "amount": 9,
+     "chart": "SB_vs_BB_3bet"
+    }
+   ]
+  }
+ }
+}

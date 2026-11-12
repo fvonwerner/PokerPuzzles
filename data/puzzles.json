@@ -1,0 +1,3098 @@
+[
+  {
+    "id": "p001",
+    "title": "Top pair on a dry queen-high board",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "AhQd",
+    "flop": "Qs7d2c",
+    "turn": "5h",
+    "river": "Kc",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p002",
+    "title": "Defending the big blind with a flush draw",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "9h8h",
+    "flop": "Kh7h3c",
+    "turn": "2s",
+    "river": "Jd",
+    "tags": [
+      "draw"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p003",
+    "title": "Kings in a 3-bet pot",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "KsKd",
+    "flop": "Jh8c4d",
+    "turn": "9h",
+    "river": "2c",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p004",
+    "title": "Jack-high on an ace-high flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "Jh9h",
+    "flop": "Ac8d3h",
+    "turn": "Th",
+    "river": "2s",
+    "tags": [
+      "bluff"
+    ]
+  },
+  {
+    "id": "p005",
+    "title": "Queens on a connected board",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "QcQd",
+    "flop": "9h8h6c",
+    "turn": "7s",
+    "river": "2d",
+    "tags": [
+      "value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p006",
+    "title": "Second pair with an ace kicker",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "Ad8d",
+    "flop": "Kc8h4s",
+    "turn": "2d",
+    "river": "Qs",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p007",
+    "title": "A set on a monotone flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "7c7d",
+    "flop": "Kh7h2h",
+    "turn": "4s",
+    "river": "9h",
+    "tags": [
+      "value",
+      "monotone"
+    ]
+  },
+  {
+    "id": "p008",
+    "title": "Top pair on a board full of draws",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "KdJd",
+    "flop": "Js9s5c",
+    "turn": "2h",
+    "river": "Ah",
+    "tags": [
+      "value",
+      "pot control"
+    ],
+    "heroLine": [
+      "bet_big"
+    ]
+  },
+  {
+    "id": "p009",
+    "title": "King with a weak kicker in the big blind",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "Kc6c",
+    "flop": "Kd9h4s",
+    "turn": "7d",
+    "river": "Qh",
+    "tags": [
+      "bluff catching"
+    ],
+    "villain": [
+      "bet",
+      "bet",
+      "bet"
+    ]
+  },
+  {
+    "id": "p010",
+    "title": "Flopping a set from the big blind",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "5s5d",
+    "flop": "Ah5c8d",
+    "turn": "Tc",
+    "river": "3h",
+    "tags": [
+      "value"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p011",
+    "title": "Open-ended in the big blind",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "JcTc",
+    "flop": "9d8s2c",
+    "turn": "Ac",
+    "river": "4h",
+    "tags": [
+      "draw"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p012",
+    "title": "The button checks back the flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "As7s",
+    "flop": "Td6c2s",
+    "turn": "7h",
+    "river": "Qd",
+    "tags": [
+      "probe"
+    ],
+    "villain": [
+      "check"
+    ]
+  },
+  {
+    "id": "p013",
+    "title": "Nut flush draw out of position",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "Ad9d",
+    "flop": "Jd6d2c",
+    "turn": "Kh",
+    "river": "3s",
+    "tags": [
+      "draw",
+      "bluff catching"
+    ],
+    "villain": [
+      "bet",
+      "bet"
+    ]
+  },
+  {
+    "id": "p014",
+    "title": "Ace-king on a low connected flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "ip",
+    "hand": "AsKs",
+    "flop": "7h6h5c",
+    "turn": "Kd",
+    "river": "2c",
+    "tags": [
+      "range disadvantage"
+    ]
+  },
+  {
+    "id": "p015",
+    "title": "Tens under an ace",
+    "scenario": "CO_BB_SRP",
+    "hero": "ip",
+    "hand": "TdTc",
+    "flop": "Ah9s4d",
+    "turn": "4c",
+    "river": "Jh",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p016",
+    "title": "Open-ended on a low board",
+    "scenario": "CO_BB_SRP",
+    "hero": "ip",
+    "hand": "8d7d",
+    "flop": "6d5c2h",
+    "turn": "Qd",
+    "river": "Ks",
+    "tags": [
+      "draw",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p017",
+    "title": "Top pair in the big blind against the cutoff",
+    "scenario": "CO_BB_SRP",
+    "hero": "oop",
+    "hand": "Kh9h",
+    "flop": "Ks8d3c",
+    "turn": "5s",
+    "river": "5d",
+    "tags": [
+      "value"
+    ],
+    "villain": [
+      "bet",
+      "check"
+    ]
+  },
+  {
+    "id": "p018",
+    "title": "Sixes that improve on the turn",
+    "scenario": "CO_BB_SRP",
+    "hero": "oop",
+    "hand": "6c6s",
+    "flop": "Jc7h2d",
+    "turn": "6h",
+    "river": "As",
+    "tags": [
+      "value"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p019",
+    "title": "A monster draw in the big blind",
+    "scenario": "CO_BB_SRP",
+    "hero": "oop",
+    "hand": "QdJd",
+    "flop": "Td9c3d",
+    "turn": "2s",
+    "river": "7h",
+    "tags": [
+      "draw"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p020",
+    "title": "Aces on a board that keeps getting worse",
+    "scenario": "UTG_BB_SRP",
+    "hero": "ip",
+    "hand": "AcAd",
+    "flop": "Kh8h7d",
+    "turn": "6c",
+    "river": "Qh",
+    "tags": [
+      "value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p021",
+    "title": "Ace-king misses the flop",
+    "scenario": "UTG_BB_SRP",
+    "hero": "ip",
+    "hand": "AdKd",
+    "flop": "Jc4s2h",
+    "turn": "Kc",
+    "river": "9d",
+    "tags": [
+      "c-bet"
+    ]
+  },
+  {
+    "id": "p022",
+    "title": "Jacks under a queen",
+    "scenario": "UTG_BB_SRP",
+    "hero": "ip",
+    "hand": "JsJh",
+    "flop": "Qd6c3s",
+    "turn": "8d",
+    "river": "2h",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p023",
+    "title": "Middle set against an early-position raiser",
+    "scenario": "UTG_BB_SRP",
+    "hero": "oop",
+    "hand": "7s7d",
+    "flop": "9c7c4h",
+    "turn": "Kd",
+    "river": "2c",
+    "tags": [
+      "value"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p024",
+    "title": "Top pair, top kicker against under the gun",
+    "scenario": "UTG_BB_SRP",
+    "hero": "oop",
+    "hand": "AhTh",
+    "flop": "Ts5d3c",
+    "turn": "Qc",
+    "river": "8s",
+    "tags": [
+      "value",
+      "pot control"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p025",
+    "title": "Top pair from the small blind",
+    "scenario": "SB_BB_SRP",
+    "hero": "oop",
+    "hand": "AdJc",
+    "flop": "Jh8s3d",
+    "turn": "3c",
+    "river": "9h",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p026",
+    "title": "A flush draw from the small blind",
+    "scenario": "SB_BB_SRP",
+    "hero": "oop",
+    "hand": "Kc4c",
+    "flop": "9c6c2s",
+    "turn": "Qh",
+    "river": "4d",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p027",
+    "title": "A gutshot on ace-king high",
+    "scenario": "SB_BB_SRP",
+    "hero": "oop",
+    "hand": "QsTs",
+    "flop": "AhKd5s",
+    "turn": "Js",
+    "river": "5h",
+    "tags": [
+      "draw",
+      "value"
+    ]
+  },
+  {
+    "id": "p028",
+    "title": "Nines on a ten-high flop",
+    "scenario": "SB_BB_SRP",
+    "hero": "oop",
+    "hand": "9d9h",
+    "flop": "Tc8c4h",
+    "turn": "2s",
+    "river": "Ac",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p029",
+    "title": "Top pair in position, blind against blind",
+    "scenario": "SB_BB_SRP",
+    "hero": "ip",
+    "hand": "Jh8h",
+    "flop": "8d5s2c",
+    "turn": "Kh",
+    "river": "3h",
+    "tags": [
+      "value"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p030",
+    "title": "A weak ace against the small blind",
+    "scenario": "SB_BB_SRP",
+    "hero": "ip",
+    "hand": "Ac3d",
+    "flop": "Ah7c6s",
+    "turn": "Td",
+    "river": "2h",
+    "tags": [
+      "bluff catching"
+    ],
+    "villain": [
+      "bet",
+      "check"
+    ]
+  },
+  {
+    "id": "p031",
+    "title": "Open-ended in position, blind against blind",
+    "scenario": "SB_BB_SRP",
+    "hero": "ip",
+    "hand": "6h5h",
+    "flop": "Kc7h4d",
+    "turn": "2h",
+    "river": "Qs",
+    "tags": [
+      "draw",
+      "bluff"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p032",
+    "title": "Ace-king misses in a 3-bet pot",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "AhKc",
+    "flop": "Qd7s2c",
+    "turn": "Ac",
+    "river": "8h",
+    "tags": [
+      "c-bet"
+    ]
+  },
+  {
+    "id": "p033",
+    "title": "Ace-five suited 3-bets and sees a flop",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "Ac5c",
+    "flop": "Kd9c4h",
+    "turn": "6c",
+    "river": "Js",
+    "tags": [
+      "bluff"
+    ]
+  },
+  {
+    "id": "p034",
+    "title": "Tens under an ace in a 3-bet pot",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "TsTh",
+    "flop": "As7d3h",
+    "turn": "9c",
+    "river": "2s",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p035",
+    "title": "Top pair against a 3-bettor",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "AdQd",
+    "flop": "Qc8d5s",
+    "turn": "2h",
+    "river": "Kd",
+    "tags": [
+      "facing aggression"
+    ],
+    "villain": [
+      "bet",
+      "bet"
+    ]
+  },
+  {
+    "id": "p036",
+    "title": "Nines in a 3-bet pot",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "9c9s",
+    "flop": "Jd6h3c",
+    "turn": "6s",
+    "river": "Ah",
+    "tags": [
+      "bluff catching"
+    ],
+    "villain": [
+      "bet",
+      "check"
+    ]
+  },
+  {
+    "id": "p037",
+    "title": "Open-ended against a 3-bettor",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "Th9h",
+    "flop": "8h7c2d",
+    "turn": "Ks",
+    "river": "3h",
+    "tags": [
+      "draw"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p038",
+    "title": "Top pair after 3-betting from the small blind",
+    "scenario": "BTN_SB_3BP",
+    "hero": "oop",
+    "hand": "AsQh",
+    "flop": "Ad9s6s",
+    "turn": "2c",
+    "river": "Jd",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p039",
+    "title": "King-queen suited misses the flop",
+    "scenario": "BTN_SB_3BP",
+    "hero": "oop",
+    "hand": "KhQh",
+    "flop": "Tc7c3d",
+    "turn": "Qs",
+    "river": "4h",
+    "tags": [
+      "c-bet"
+    ]
+  },
+  {
+    "id": "p040",
+    "title": "Jacks under a king in a 3-bet pot",
+    "scenario": "BTN_SB_3BP",
+    "hero": "ip",
+    "hand": "JcJs",
+    "flop": "Kd8s5h",
+    "turn": "3d",
+    "river": "9c",
+    "tags": [
+      "bluff catching"
+    ],
+    "villain": [
+      "bet",
+      "check"
+    ]
+  },
+  {
+    "id": "p041",
+    "title": "Nut flush draw in a 3-bet pot",
+    "scenario": "BTN_SB_3BP",
+    "hero": "ip",
+    "hand": "Ah5h",
+    "flop": "Kh6h2s",
+    "turn": "Tc",
+    "river": "4d",
+    "tags": [
+      "draw",
+      "bluff"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p042",
+    "title": "Suited connector against a small-blind 3-bet",
+    "scenario": "BTN_SB_3BP",
+    "hero": "ip",
+    "hand": "8s7s",
+    "flop": "9s6d2c",
+    "turn": "Ts",
+    "river": "Kh",
+    "tags": [
+      "draw",
+      "value"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p043",
+    "title": "Top pair out of position against a 3-bettor",
+    "scenario": "CO_BTN_3BP",
+    "hero": "oop",
+    "hand": "AcQc",
+    "flop": "Qh9d4c",
+    "turn": "7c",
+    "river": "2s",
+    "tags": [
+      "facing aggression"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p044",
+    "title": "An overpair out of position in a 3-bet pot",
+    "scenario": "CO_BTN_3BP",
+    "hero": "oop",
+    "hand": "TdTs",
+    "flop": "9c5h2d",
+    "turn": "Kc",
+    "river": "5s",
+    "tags": [
+      "bluff catching"
+    ],
+    "villain": [
+      "bet",
+      "bet"
+    ]
+  },
+  {
+    "id": "p045",
+    "title": "Top pair, top kicker as the 3-bettor",
+    "scenario": "CO_BTN_3BP",
+    "hero": "ip",
+    "hand": "AdKh",
+    "flop": "Ks7s4d",
+    "turn": "8s",
+    "river": "2c",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p046",
+    "title": "A 3-bet bluff flops a draw",
+    "scenario": "CO_BTN_3BP",
+    "hero": "ip",
+    "hand": "7h6h",
+    "flop": "Qd8c5s",
+    "turn": "2h",
+    "river": "Ah",
+    "tags": [
+      "bluff"
+    ]
+  },
+  {
+    "id": "p047",
+    "title": "Top pair from the small blind in a 3-bet pot",
+    "scenario": "SB_BB_3BP",
+    "hero": "oop",
+    "hand": "AhJd",
+    "flop": "Jc8h3s",
+    "turn": "Qd",
+    "river": "6c",
+    "tags": [
+      "value",
+      "pot control"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p048",
+    "title": "A set out of position in a 3-bet pot",
+    "scenario": "SB_BB_3BP",
+    "hero": "oop",
+    "hand": "8c8d",
+    "flop": "Ks8s2h",
+    "turn": "5d",
+    "river": "Ts",
+    "tags": [
+      "value"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p049",
+    "title": "Queens on an ace-high flop as the 3-bettor",
+    "scenario": "SB_BB_3BP",
+    "hero": "ip",
+    "hand": "QhQs",
+    "flop": "Ad8c4s",
+    "turn": "7d",
+    "river": "Kc",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p050",
+    "title": "A suited gapper after 3-betting the big blind",
+    "scenario": "SB_BB_3BP",
+    "hero": "ip",
+    "hand": "8d6d",
+    "flop": "9d5c2s",
+    "turn": "7h",
+    "river": "Jd",
+    "tags": [
+      "draw",
+      "value"
+    ]
+  },
+  {
+    "id": "p051",
+    "title": "Jacks on a paired low board",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "JdJc",
+    "flop": "7s7h3d",
+    "turn": "2c",
+    "river": "Kh",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p052",
+    "title": "Seven-six suited on a broadway flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "7d6d",
+    "flop": "AcKhJs",
+    "turn": "2s",
+    "river": "9c",
+    "tags": [
+      "bluff"
+    ]
+  },
+  {
+    "id": "p053",
+    "title": "Fours on a high connected flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "4c4d",
+    "flop": "QhJd8s",
+    "turn": "2h",
+    "river": "6c",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p054",
+    "title": "A combo draw in position",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "9c8c",
+    "flop": "Tc7c3d",
+    "turn": "As",
+    "river": "2h",
+    "tags": [
+      "draw",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p055",
+    "title": "Ace-queen without a spade on a monotone flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "AhQd",
+    "flop": "8s5s2s",
+    "turn": "Ks",
+    "river": "Jd",
+    "tags": [
+      "monotone",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p056",
+    "title": "Top two pair on a two-tone flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "Jd8d",
+    "flop": "Jc8h4h",
+    "turn": "Qh",
+    "river": "3s",
+    "tags": [
+      "value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p057",
+    "title": "Bottom set under ace-queen",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "3h3d",
+    "flop": "AsQd3c",
+    "turn": "9d",
+    "river": "5s",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p058",
+    "title": "Queen-jack suited on a low flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "QcJc",
+    "flop": "8d5c2h",
+    "turn": "Kc",
+    "river": "3s",
+    "tags": [
+      "bluff",
+      "draw"
+    ]
+  },
+  {
+    "id": "p059",
+    "title": "Top pair on a low two-tone flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "Qd9c",
+    "flop": "Qc5h4h",
+    "turn": "3s",
+    "river": "8h",
+    "tags": [
+      "value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p060",
+    "title": "Aces on a low dry flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "AsAh",
+    "flop": "8d4c2s",
+    "turn": "8h",
+    "river": "Kd",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p061",
+    "title": "Bottom two pair in the big blind",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "Th6h",
+    "flop": "JcTd6s",
+    "turn": "3c",
+    "river": "Ac",
+    "tags": [
+      "value"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p062",
+    "title": "Ace-nine offsuit on a ten-high flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "Ah9c",
+    "flop": "Ts8d3c",
+    "turn": "2h",
+    "river": "Kc",
+    "tags": [
+      "draw"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p063",
+    "title": "Eights under two overcards",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "8c8h",
+    "flop": "QsTh4c",
+    "turn": "3d",
+    "river": "7s",
+    "tags": [
+      "bluff catching"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p064",
+    "title": "Trips in the big blind",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "Td9h",
+    "flop": "9c9d4s",
+    "turn": "Kh",
+    "river": "2c",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p065",
+    "title": "Bottom pair on a king-jack flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "5c4c",
+    "flop": "KhJd5s",
+    "turn": "8d",
+    "river": "2h",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p066",
+    "title": "One high club on a monotone flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "Kc9d",
+    "flop": "Qc8c3c",
+    "turn": "7d",
+    "river": "2s",
+    "tags": [
+      "monotone",
+      "draw"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p067",
+    "title": "A gutshot in the big blind",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "6d4d",
+    "flop": "8h7c2d",
+    "turn": "As",
+    "river": "Qh",
+    "tags": [
+      "bluff",
+      "draw"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p068",
+    "title": "Ace-ten on a low two-tone flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "AcTd",
+    "flop": "6s4h3h",
+    "turn": "9c",
+    "river": "6d",
+    "tags": [
+      "probe"
+    ]
+  },
+  {
+    "id": "p069",
+    "title": "Top pair, queen kicker on a coordinated flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "QhTc",
+    "flop": "Th9c5d",
+    "turn": "6s",
+    "river": "8h",
+    "tags": [
+      "bluff catching"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p070",
+    "title": "A double gutshot under an ace",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "5s3s",
+    "flop": "Ah7d4c",
+    "turn": "Jh",
+    "river": "2d",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p071",
+    "title": "Top pair, weak kicker against the big blind",
+    "scenario": "CO_BB_SRP",
+    "hero": "ip",
+    "hand": "Kh7h",
+    "flop": "KdTc6c",
+    "turn": "3h",
+    "river": "Qc",
+    "tags": [
+      "pot control"
+    ]
+  },
+  {
+    "id": "p072",
+    "title": "Jacks on a paired ten flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "ip",
+    "hand": "JhJs",
+    "flop": "TdTc4h",
+    "turn": "7s",
+    "river": "Ad",
+    "tags": [
+      "value",
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p073",
+    "title": "Queen-nine suited on a low flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "ip",
+    "hand": "Qs9s",
+    "flop": "6c4d3h",
+    "turn": "9h",
+    "river": "2s",
+    "tags": [
+      "range disadvantage"
+    ]
+  },
+  {
+    "id": "p074",
+    "title": "A flopped nut flush",
+    "scenario": "CO_BB_SRP",
+    "hero": "ip",
+    "hand": "AhJh",
+    "flop": "9h5h2h",
+    "turn": "Ks",
+    "river": "5c",
+    "tags": [
+      "value",
+      "monotone"
+    ]
+  },
+  {
+    "id": "p075",
+    "title": "Ace-king on a paired ace flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "ip",
+    "hand": "AdKc",
+    "flop": "AcAh6s",
+    "turn": "9d",
+    "river": "3c",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p076",
+    "title": "A gutshot with two overcards",
+    "scenario": "CO_BB_SRP",
+    "hero": "ip",
+    "hand": "QhJh",
+    "flop": "9s8c2d",
+    "turn": "4h",
+    "river": "Ac",
+    "tags": [
+      "bluff"
+    ]
+  },
+  {
+    "id": "p077",
+    "title": "Seven-six suited flops two pair",
+    "scenario": "CO_BB_SRP",
+    "hero": "oop",
+    "hand": "7c6c",
+    "flop": "7d6h2s",
+    "turn": "Qs",
+    "river": "Qd",
+    "tags": [
+      "value",
+      "pot control"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p078",
+    "title": "Open-ended against the cutoff",
+    "scenario": "CO_BB_SRP",
+    "hero": "oop",
+    "hand": "5h4h",
+    "flop": "7s6d2h",
+    "turn": "Kh",
+    "river": "3c",
+    "tags": [
+      "draw"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p079",
+    "title": "Ace-jack on a dry king-high flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "oop",
+    "hand": "AdJs",
+    "flop": "Kh7c2d",
+    "turn": "Jh",
+    "river": "5c",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p080",
+    "title": "Middle set on a monotone flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "oop",
+    "hand": "9h9s",
+    "flop": "Jc9c3c",
+    "turn": "2d",
+    "river": "8c",
+    "tags": [
+      "monotone",
+      "value"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p081",
+    "title": "A pair of fives with a flush draw",
+    "scenario": "CO_BB_SRP",
+    "hero": "oop",
+    "hand": "Kd5d",
+    "flop": "Td5c3d",
+    "turn": "Qs",
+    "river": "4h",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p082",
+    "title": "Eights on a paired queen flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "oop",
+    "hand": "8d8c",
+    "flop": "QhQs5d",
+    "turn": "7c",
+    "river": "2h",
+    "tags": [
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p083",
+    "title": "Ace-king on an ace-high two-tone flop",
+    "scenario": "HJ_BB_SRP",
+    "hero": "ip",
+    "hand": "AsKh",
+    "flop": "AcTd7d",
+    "turn": "4d",
+    "river": "2c",
+    "tags": [
+      "value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p084",
+    "title": "Middle set on a broadway flop",
+    "scenario": "HJ_BB_SRP",
+    "hero": "ip",
+    "hand": "JcJd",
+    "flop": "KcJs5h",
+    "turn": "Tc",
+    "river": "2d",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p085",
+    "title": "Two overcards and a flush draw",
+    "scenario": "HJ_BB_SRP",
+    "hero": "ip",
+    "hand": "QcJc",
+    "flop": "7c3c2h",
+    "turn": "Kh",
+    "river": "9s",
+    "tags": [
+      "draw",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p086",
+    "title": "Top pair on a wet queen-high flop",
+    "scenario": "HJ_BB_SRP",
+    "hero": "ip",
+    "hand": "KdQs",
+    "flop": "QhTh8c",
+    "turn": "7h",
+    "river": "3d",
+    "tags": [
+      "pot control"
+    ]
+  },
+  {
+    "id": "p087",
+    "title": "Sevens on an eight-high flop",
+    "scenario": "HJ_BB_SRP",
+    "hero": "ip",
+    "hand": "7h7s",
+    "flop": "8c5d3s",
+    "turn": "Ah",
+    "river": "9c",
+    "tags": [
+      "showdown value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p088",
+    "title": "Ace-five suited on a king-queen flop",
+    "scenario": "HJ_BB_SRP",
+    "hero": "ip",
+    "hand": "Ac5c",
+    "flop": "KhQd8s",
+    "turn": "Jd",
+    "river": "2c",
+    "tags": [
+      "bluff"
+    ]
+  },
+  {
+    "id": "p089",
+    "title": "A low flush draw against the hijack",
+    "scenario": "HJ_BB_SRP",
+    "hero": "oop",
+    "hand": "6d5d",
+    "flop": "KdTd3c",
+    "turn": "2s",
+    "river": "Qh",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p090",
+    "title": "Top pair, ace kicker against the hijack",
+    "scenario": "HJ_BB_SRP",
+    "hero": "oop",
+    "hand": "Ac9c",
+    "flop": "9d7s3h",
+    "turn": "7c",
+    "river": "Kd",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p091",
+    "title": "Threes against a hijack c-bet",
+    "scenario": "HJ_BB_SRP",
+    "hero": "oop",
+    "hand": "3s3c",
+    "flop": "Qd8h6s",
+    "turn": "3h",
+    "river": "Jh",
+    "tags": [
+      "value"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p092",
+    "title": "A flopped straight in the big blind",
+    "scenario": "HJ_BB_SRP",
+    "hero": "oop",
+    "hand": "6s5s",
+    "flop": "8c7d4h",
+    "turn": "9s",
+    "river": "2d",
+    "tags": [
+      "value"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p093",
+    "title": "King-queen suited on a jack-high flop",
+    "scenario": "HJ_BB_SRP",
+    "hero": "oop",
+    "hand": "KhQh",
+    "flop": "Js5d4c",
+    "turn": "Th",
+    "river": "2s",
+    "tags": [
+      "draw",
+      "bluff"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p094",
+    "title": "A weak ace against the hijack",
+    "scenario": "HJ_BB_SRP",
+    "hero": "oop",
+    "hand": "As3s",
+    "flop": "AdQc6h",
+    "turn": "8s",
+    "river": "2h",
+    "tags": [
+      "bluff catching"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p095",
+    "title": "Kings on an ace-high flop",
+    "scenario": "UTG_BB_SRP",
+    "hero": "ip",
+    "hand": "KcKs",
+    "flop": "Ad8s5c",
+    "turn": "Jh",
+    "river": "4d",
+    "tags": [
+      "showdown value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p096",
+    "title": "Queens on a low monotone flop",
+    "scenario": "UTG_BB_SRP",
+    "hero": "ip",
+    "hand": "QhQd",
+    "flop": "7s5s2s",
+    "turn": "9h",
+    "river": "As",
+    "tags": [
+      "monotone"
+    ]
+  },
+  {
+    "id": "p097",
+    "title": "Ace-jack on a low connected flop",
+    "scenario": "UTG_BB_SRP",
+    "hero": "ip",
+    "hand": "AdJd",
+    "flop": "6c5h4s",
+    "turn": "9d",
+    "river": "2d",
+    "tags": [
+      "range disadvantage"
+    ]
+  },
+  {
+    "id": "p098",
+    "title": "Top set on a two-tone flop",
+    "scenario": "UTG_BB_SRP",
+    "hero": "ip",
+    "hand": "9s9d",
+    "flop": "9h6h5c",
+    "turn": "Kc",
+    "river": "7d",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p099",
+    "title": "Nine-eight suited from under the gun",
+    "scenario": "UTG_BB_SRP",
+    "hero": "ip",
+    "hand": "9c8c",
+    "flop": "Tc7h2s",
+    "turn": "Qd",
+    "river": "3h",
+    "tags": [
+      "draw",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p100",
+    "title": "King-jack against an under-the-gun c-bet",
+    "scenario": "UTG_BB_SRP",
+    "hero": "oop",
+    "hand": "KdJs",
+    "flop": "KhTh5s",
+    "turn": "5d",
+    "river": "Ac",
+    "tags": [
+      "bluff catching"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p101",
+    "title": "Bottom set on ace-king",
+    "scenario": "UTG_BB_SRP",
+    "hero": "oop",
+    "hand": "2c2d",
+    "flop": "AhKc2s",
+    "turn": "7d",
+    "river": "Td",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p102",
+    "title": "Top pair, queen kicker against under the gun",
+    "scenario": "UTG_BB_SRP",
+    "hero": "oop",
+    "hand": "Qs9s",
+    "flop": "9d8c5h",
+    "turn": "Td",
+    "river": "3c",
+    "tags": [
+      "showdown value"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p103",
+    "title": "A flopped wheel",
+    "scenario": "UTG_BB_SRP",
+    "hero": "oop",
+    "hand": "Ac3c",
+    "flop": "5c4d2h",
+    "turn": "Ks",
+    "river": "8d",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p104",
+    "title": "Ten-nine suited against under the gun",
+    "scenario": "UTG_BB_SRP",
+    "hero": "oop",
+    "hand": "Ts9s",
+    "flop": "Qd8h3c",
+    "turn": "7s",
+    "river": "2d",
+    "tags": [
+      "draw",
+      "bluff"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p105",
+    "title": "Tens on a paired low flop",
+    "scenario": "SB_BB_SRP",
+    "hero": "oop",
+    "hand": "TcTh",
+    "flop": "6s6d3c",
+    "turn": "9h",
+    "river": "Kh",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p106",
+    "title": "Queen-nine offsuit on a low connected flop",
+    "scenario": "SB_BB_SRP",
+    "hero": "oop",
+    "hand": "Qc9h",
+    "flop": "8s6s5d",
+    "turn": "Jc",
+    "river": "2h",
+    "tags": [
+      "range disadvantage"
+    ]
+  },
+  {
+    "id": "p107",
+    "title": "Nut flush draw with a wheel gutshot",
+    "scenario": "SB_BB_SRP",
+    "hero": "oop",
+    "hand": "Ad3d",
+    "flop": "Jd5d4s",
+    "turn": "9c",
+    "river": "2s",
+    "tags": [
+      "draw",
+      "value"
+    ]
+  },
+  {
+    "id": "p108",
+    "title": "Top pair, top kicker on a monotone flop",
+    "scenario": "SB_BB_SRP",
+    "hero": "oop",
+    "hand": "AsKc",
+    "flop": "Kd7d2d",
+    "turn": "Jh",
+    "river": "5s",
+    "tags": [
+      "monotone",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p109",
+    "title": "Second pair from the small blind",
+    "scenario": "SB_BB_SRP",
+    "hero": "oop",
+    "hand": "8c7c",
+    "flop": "Ts7d3h",
+    "turn": "2c",
+    "river": "Qs",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p110",
+    "title": "Aces on a jack-ten-nine flop",
+    "scenario": "SB_BB_SRP",
+    "hero": "oop",
+    "hand": "AhAc",
+    "flop": "JdTs9d",
+    "turn": "4c",
+    "river": "2h",
+    "tags": [
+      "value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p111",
+    "title": "King-queen on a low dry flop",
+    "scenario": "SB_BB_SRP",
+    "hero": "oop",
+    "hand": "KcQd",
+    "flop": "7h4c2d",
+    "turn": "Kh",
+    "river": "8s",
+    "tags": [
+      "c-bet"
+    ]
+  },
+  {
+    "id": "p112",
+    "title": "Trips with a weak kicker in the big blind",
+    "scenario": "SB_BB_SRP",
+    "hero": "ip",
+    "hand": "8s5s",
+    "flop": "8d8h3c",
+    "turn": "Qc",
+    "river": "Ks",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p113",
+    "title": "Fours facing the small blind",
+    "scenario": "SB_BB_SRP",
+    "hero": "ip",
+    "hand": "4c4h",
+    "flop": "Jd9h6c",
+    "turn": "2s",
+    "river": "Ac",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p114",
+    "title": "Nine-eight suited on an ace-high flop",
+    "scenario": "SB_BB_SRP",
+    "hero": "ip",
+    "hand": "9c8c",
+    "flop": "Ac7d2h",
+    "turn": "6c",
+    "river": "Kd",
+    "tags": [
+      "draw",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p115",
+    "title": "Ten-nine suited on an eight-high flop",
+    "scenario": "SB_BB_SRP",
+    "hero": "ip",
+    "hand": "Th9h",
+    "flop": "8h7s2c",
+    "turn": "3h",
+    "river": "Js",
+    "tags": [
+      "draw"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p116",
+    "title": "Ace-high against the small blind",
+    "scenario": "SB_BB_SRP",
+    "hero": "ip",
+    "hand": "Ad4c",
+    "flop": "Qs9c5h",
+    "turn": "3s",
+    "river": "Jd",
+    "tags": [
+      "bluff catching"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p117",
+    "title": "Top pair, weak kicker blind against blind",
+    "scenario": "SB_BB_SRP",
+    "hero": "ip",
+    "hand": "Kd2d",
+    "flop": "KcQh6h",
+    "turn": "6d",
+    "river": "9s",
+    "tags": [
+      "bluff catching",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p118",
+    "title": "Queen of spades on a monotone flop",
+    "scenario": "SB_BB_SRP",
+    "hero": "ip",
+    "hand": "QsTd",
+    "flop": "9s7s4s",
+    "turn": "Kd",
+    "river": "2c",
+    "tags": [
+      "monotone",
+      "draw"
+    ]
+  },
+  {
+    "id": "p119",
+    "title": "Aces on a king-high flop in a 3-bet pot",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "AsAd",
+    "flop": "KhTs6c",
+    "turn": "2d",
+    "river": "Qd",
+    "tags": [
+      "value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p120",
+    "title": "Jacks under a queen in a 3-bet pot",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "JhJs",
+    "flop": "Qc8d3d",
+    "turn": "5s",
+    "river": "2c",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p121",
+    "title": "Ace-four suited on a low connected flop",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "Ah4h",
+    "flop": "7c6d5s",
+    "turn": "Kc",
+    "river": "Td",
+    "tags": [
+      "draw",
+      "range disadvantage"
+    ]
+  },
+  {
+    "id": "p122",
+    "title": "Ace-king on a paired nine flop",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "AcKh",
+    "flop": "9s9c4d",
+    "turn": "2h",
+    "river": "Jc",
+    "tags": [
+      "c-bet",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p123",
+    "title": "Middle pair after a light 3-bet",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "7s6s",
+    "flop": "Js6c2d",
+    "turn": "Qs",
+    "river": "8h",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p124",
+    "title": "Top pair, top kicker on a wet flop in a 3-bet pot",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "AhQh",
+    "flop": "Qd9d6s",
+    "turn": "Td",
+    "river": "3c",
+    "tags": [
+      "pot control"
+    ]
+  },
+  {
+    "id": "p125",
+    "title": "A flopped flush in a 3-bet pot",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "KdQd",
+    "flop": "8d5d2d",
+    "turn": "4s",
+    "river": "Ad",
+    "tags": [
+      "monotone",
+      "value"
+    ]
+  },
+  {
+    "id": "p126",
+    "title": "Fives against a 3-bettor",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "5h5c",
+    "flop": "AdJc5s",
+    "turn": "8d",
+    "river": "Kh",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p127",
+    "title": "King-queen offsuit on a low flop in a 3-bet pot",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "KhQs",
+    "flop": "9c6c3d",
+    "turn": "Kc",
+    "river": "2s",
+    "tags": [
+      "facing aggression"
+    ]
+  },
+  {
+    "id": "p128",
+    "title": "A flopped straight against a 3-bettor",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "JcTc",
+    "flop": "Qh9d8s",
+    "turn": "3c",
+    "river": "Kd",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p129",
+    "title": "Eights under two broadway cards",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "8s8c",
+    "flop": "KdJd4h",
+    "turn": "2c",
+    "river": "6s",
+    "tags": [
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p130",
+    "title": "Six-five suited on a king-high flop",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "6h5h",
+    "flop": "4h3cKd",
+    "turn": "9h",
+    "river": "Ac",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p131",
+    "title": "Top pair, second kicker in a 3-bet pot",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "KsJs",
+    "flop": "Kc7d2h",
+    "turn": "4c",
+    "river": "Th",
+    "tags": [
+      "bluff catching",
+      "value"
+    ]
+  },
+  {
+    "id": "p132",
+    "title": "Queen-jack on a monotone flop",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "QsJs",
+    "flop": "9h6h2h",
+    "turn": "Th",
+    "river": "3c",
+    "tags": [
+      "monotone"
+    ]
+  },
+  {
+    "id": "p133",
+    "title": "Kings under an ace from the small blind",
+    "scenario": "BTN_SB_3BP",
+    "hero": "oop",
+    "hand": "KhKd",
+    "flop": "Ac8h2s",
+    "turn": "Jd",
+    "river": "6c",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p134",
+    "title": "Top pair on a wet flop after 3-betting",
+    "scenario": "BTN_SB_3BP",
+    "hero": "oop",
+    "hand": "AdJd",
+    "flop": "Jc9c7h",
+    "turn": "2s",
+    "river": "Qc",
+    "tags": [
+      "value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p135",
+    "title": "A light 3-bet on a king-queen flop",
+    "scenario": "BTN_SB_3BP",
+    "hero": "oop",
+    "hand": "As4s",
+    "flop": "KcQd8h",
+    "turn": "3s",
+    "river": "9d",
+    "tags": [
+      "c-bet",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p136",
+    "title": "Nines on a low flop from the small blind",
+    "scenario": "BTN_SB_3BP",
+    "hero": "oop",
+    "hand": "9c9s",
+    "flop": "8d5c2h",
+    "turn": "5s",
+    "river": "Ts",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p137",
+    "title": "King-ten suited with a flush draw",
+    "scenario": "BTN_SB_3BP",
+    "hero": "oop",
+    "hand": "KhTh",
+    "flop": "Jh8c4h",
+    "turn": "2d",
+    "river": "Qs",
+    "tags": [
+      "draw",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p138",
+    "title": "Bottom set on a wet flop",
+    "scenario": "BTN_SB_3BP",
+    "hero": "ip",
+    "hand": "6c6d",
+    "flop": "9c8c6h",
+    "turn": "Ts",
+    "river": "2d",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p139",
+    "title": "Top pair, ace kicker facing a 3-bettor",
+    "scenario": "BTN_SB_3BP",
+    "hero": "ip",
+    "hand": "AhJc",
+    "flop": "Js5d2c",
+    "turn": "9h",
+    "river": "Kd",
+    "tags": [
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p140",
+    "title": "Queen-jack suited with a flush draw",
+    "scenario": "BTN_SB_3BP",
+    "hero": "ip",
+    "hand": "QdJd",
+    "flop": "Td4d2s",
+    "turn": "8c",
+    "river": "3h",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p141",
+    "title": "Sevens on an ace-king flop",
+    "scenario": "BTN_SB_3BP",
+    "hero": "ip",
+    "hand": "7h7s",
+    "flop": "AhKd6c",
+    "turn": "2s",
+    "river": "9c",
+    "tags": [
+      "facing aggression"
+    ]
+  },
+  {
+    "id": "p142",
+    "title": "Top pair, nine kicker in a 3-bet pot",
+    "scenario": "BTN_SB_3BP",
+    "hero": "ip",
+    "hand": "Td9d",
+    "flop": "Tc5c3s",
+    "turn": "7d",
+    "river": "Ad",
+    "tags": [
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p143",
+    "title": "Queens on a jack-high flop as the 3-bettor",
+    "scenario": "CO_BTN_3BP",
+    "hero": "ip",
+    "hand": "QsQh",
+    "flop": "Jd7d3c",
+    "turn": "9s",
+    "river": "4h",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p144",
+    "title": "Ace-five suited on a paired flop",
+    "scenario": "CO_BTN_3BP",
+    "hero": "ip",
+    "hand": "Ad5d",
+    "flop": "8s8h3c",
+    "turn": "4d",
+    "river": "Ks",
+    "tags": [
+      "bluff"
+    ]
+  },
+  {
+    "id": "p145",
+    "title": "Ace-king suited with the nut flush draw",
+    "scenario": "CO_BTN_3BP",
+    "hero": "ip",
+    "hand": "AsKs",
+    "flop": "Ts7s3d",
+    "turn": "2h",
+    "river": "Jc",
+    "tags": [
+      "draw",
+      "c-bet"
+    ]
+  },
+  {
+    "id": "p146",
+    "title": "A suited 3-bet bluff on ace-king",
+    "scenario": "CO_BTN_3BP",
+    "hero": "ip",
+    "hand": "6c5c",
+    "flop": "AhKc9c",
+    "turn": "3d",
+    "river": "Qs",
+    "tags": [
+      "bluff"
+    ]
+  },
+  {
+    "id": "p147",
+    "title": "Kings on a low connected flop",
+    "scenario": "CO_BTN_3BP",
+    "hero": "ip",
+    "hand": "KcKd",
+    "flop": "8h6h5c",
+    "turn": "Ah",
+    "river": "2s",
+    "tags": [
+      "pot control"
+    ]
+  },
+  {
+    "id": "p148",
+    "title": "Eights as an overpair out of position",
+    "scenario": "CO_BTN_3BP",
+    "hero": "oop",
+    "hand": "8c8s",
+    "flop": "7d4h2c",
+    "turn": "Qs",
+    "river": "3d",
+    "tags": [
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p149",
+    "title": "King-queen suited on a dry king-high flop",
+    "scenario": "CO_BTN_3BP",
+    "hero": "oop",
+    "hand": "KcQc",
+    "flop": "Kd6s3h",
+    "turn": "5c",
+    "river": "8d",
+    "tags": [
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p150",
+    "title": "A big draw out of position in a 3-bet pot",
+    "scenario": "CO_BTN_3BP",
+    "hero": "oop",
+    "hand": "JhTh",
+    "flop": "9h8d3h",
+    "turn": "2c",
+    "river": "As",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p151",
+    "title": "Ace-jack on an ace-high flop against a 3-bettor",
+    "scenario": "CO_BTN_3BP",
+    "hero": "oop",
+    "hand": "AsJs",
+    "flop": "AdTh5c",
+    "turn": "8s",
+    "river": "4d",
+    "tags": [
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p152",
+    "title": "Top pair, top kicker as the big-blind 3-bettor",
+    "scenario": "SB_BB_3BP",
+    "hero": "ip",
+    "hand": "AdKc",
+    "flop": "Kh5h3c",
+    "turn": "9d",
+    "river": "9s",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p153",
+    "title": "Seven-five suited after 3-betting the small blind",
+    "scenario": "SB_BB_3BP",
+    "hero": "ip",
+    "hand": "7c5c",
+    "flop": "Jd4c3c",
+    "turn": "Kd",
+    "river": "8h",
+    "tags": [
+      "draw",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p154",
+    "title": "Jacks on a nine-high two-tone flop",
+    "scenario": "SB_BB_3BP",
+    "hero": "ip",
+    "hand": "JsJd",
+    "flop": "9c6c2d",
+    "turn": "Qh",
+    "river": "6s",
+    "tags": [
+      "pot control"
+    ]
+  },
+  {
+    "id": "p155",
+    "title": "Ace-jack on a paired low flop",
+    "scenario": "SB_BB_3BP",
+    "hero": "ip",
+    "hand": "AhJs",
+    "flop": "5s5d2c",
+    "turn": "Kc",
+    "river": "8h",
+    "tags": [
+      "c-bet",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p156",
+    "title": "Middle set from the small blind in a 3-bet pot",
+    "scenario": "SB_BB_3BP",
+    "hero": "oop",
+    "hand": "6h6c",
+    "flop": "Jd6d5s",
+    "turn": "8c",
+    "river": "Kh",
+    "tags": [
+      "value"
+    ]
+  },
+  {
+    "id": "p157",
+    "title": "King-jack on a paired board in a 3-bet pot",
+    "scenario": "SB_BB_3BP",
+    "hero": "oop",
+    "hand": "KsJh",
+    "flop": "Kc5d5h",
+    "turn": "9s",
+    "river": "Jd",
+    "tags": [
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p158",
+    "title": "Nut flush draw from the small blind",
+    "scenario": "SB_BB_3BP",
+    "hero": "oop",
+    "hand": "Ac8c",
+    "flop": "9c7c2h",
+    "turn": "Kd",
+    "river": "5s",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p159",
+    "title": "Open-ended from the small blind in a 3-bet pot",
+    "scenario": "SB_BB_3BP",
+    "hero": "oop",
+    "hand": "9s8s",
+    "flop": "Td7h2c",
+    "turn": "Ac",
+    "river": "6h",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p160",
+    "title": "Queen-jack offsuit misses the flop",
+    "scenario": "SB_BB_3BP",
+    "hero": "oop",
+    "hand": "QdJh",
+    "flop": "8c5s2h",
+    "turn": "Kh",
+    "river": "4c",
+    "tags": [
+      "bluff"
+    ]
+  },
+  {
+    "id": "p161",
+    "title": "Ace-ten suited on a paired nine flop",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "AdTd",
+    "flop": "9s9h5c",
+    "turn": "Kd",
+    "river": "3s",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p162",
+    "title": "Tens on a monotone flop in a 3-bet pot",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "TcTs",
+    "flop": "Qh7h4h",
+    "turn": "2c",
+    "river": "8d",
+    "tags": [
+      "monotone",
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p163",
+    "title": "King-nine suited on a jack-high flop",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "Kc9c",
+    "flop": "Jc8d3s",
+    "turn": "7c",
+    "river": "2h",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p164",
+    "title": "Ace-queen offsuit misses a low flop",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "AhQd",
+    "flop": "8c6c2d",
+    "turn": "Ac",
+    "river": "Kc",
+    "tags": [
+      "showdown value",
+      "facing aggression"
+    ]
+  },
+  {
+    "id": "p165",
+    "title": "Sevens under a ten in a 3-bet pot",
+    "scenario": "BTN_BB_3BP",
+    "hero": "ip",
+    "hand": "7c7h",
+    "flop": "Td6s3d",
+    "turn": "Jd",
+    "river": "Ah",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p166",
+    "title": "King-queen suited on an ace-high flop",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "KcQc",
+    "flop": "Ah9h3s",
+    "turn": "2d",
+    "river": "7h",
+    "tags": [
+      "c-bet"
+    ]
+  },
+  {
+    "id": "p167",
+    "title": "Tens on a paired eight flop",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "TdTh",
+    "flop": "8s8d2c",
+    "turn": "Ks",
+    "river": "5h",
+    "tags": [
+      "value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p168",
+    "title": "Five-four suited on a monotone flop",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "5d4d",
+    "flop": "Js9s6s",
+    "turn": "2c",
+    "river": "Ks",
+    "tags": [
+      "monotone",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p169",
+    "title": "Ace-king suited misses a ten-high flop",
+    "scenario": "BTN_BB_3BP",
+    "hero": "oop",
+    "hand": "AdKd",
+    "flop": "Tc9h4c",
+    "turn": "Qs",
+    "river": "3h",
+    "tags": [
+      "c-bet",
+      "draw"
+    ]
+  },
+  {
+    "id": "p170",
+    "title": "Eights on a monotone flop against a 3-bettor",
+    "scenario": "BTN_SB_3BP",
+    "hero": "ip",
+    "hand": "8h8d",
+    "flop": "Ts9s4s",
+    "turn": "2d",
+    "river": "Jc",
+    "tags": [
+      "monotone",
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p171",
+    "title": "Ace-ten suited on a king-high flop",
+    "scenario": "BTN_SB_3BP",
+    "hero": "ip",
+    "hand": "AsTs",
+    "flop": "Kd8d3c",
+    "turn": "Td",
+    "river": "5h",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p172",
+    "title": "Nine-eight suited facing a small-blind 3-bettor",
+    "scenario": "BTN_SB_3BP",
+    "hero": "ip",
+    "hand": "9h8h",
+    "flop": "Ac7c4d",
+    "turn": "Kh",
+    "river": "2s",
+    "tags": [
+      "bluff"
+    ]
+  },
+  {
+    "id": "p173",
+    "title": "King-queen suited on a paired queen flop",
+    "scenario": "BTN_SB_3BP",
+    "hero": "ip",
+    "hand": "KdQd",
+    "flop": "Qs6s6c",
+    "turn": "3h",
+    "river": "Ah",
+    "tags": [
+      "value",
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p174",
+    "title": "Ace-queen offsuit on a paired seven flop",
+    "scenario": "BTN_SB_3BP",
+    "hero": "oop",
+    "hand": "AcQs",
+    "flop": "7d7s4h",
+    "turn": "Jc",
+    "river": "2d",
+    "tags": [
+      "c-bet"
+    ]
+  },
+  {
+    "id": "p175",
+    "title": "Queens under a king on a monotone flop",
+    "scenario": "BTN_SB_3BP",
+    "hero": "oop",
+    "hand": "QhQc",
+    "flop": "Kd9d5d",
+    "turn": "2s",
+    "river": "Jh",
+    "tags": [
+      "monotone",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p176",
+    "title": "Jack-ten suited after 3-betting the button",
+    "scenario": "BTN_SB_3BP",
+    "hero": "oop",
+    "hand": "JsTs",
+    "flop": "9c8h2h",
+    "turn": "Kd",
+    "river": "4c",
+    "tags": [
+      "draw",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p177",
+    "title": "Ace-queen on a jack-high wet flop",
+    "scenario": "CO_BTN_3BP",
+    "hero": "ip",
+    "hand": "AcQd",
+    "flop": "Jh8h7s",
+    "turn": "3c",
+    "river": "2h",
+    "tags": [
+      "c-bet",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p178",
+    "title": "Jacks on a paired nine flop as the 3-bettor",
+    "scenario": "CO_BTN_3BP",
+    "hero": "ip",
+    "hand": "JcJh",
+    "flop": "9d9s6c",
+    "turn": "Ah",
+    "river": "Kd",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p179",
+    "title": "Seven-six suited on a monotone king-high flop",
+    "scenario": "CO_BTN_3BP",
+    "hero": "ip",
+    "hand": "7s6s",
+    "flop": "KdTd4d",
+    "turn": "2c",
+    "river": "8s",
+    "tags": [
+      "monotone",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p180",
+    "title": "Tens under a jack out of position",
+    "scenario": "CO_BTN_3BP",
+    "hero": "oop",
+    "hand": "TcTd",
+    "flop": "Jc7c5s",
+    "turn": "Qd",
+    "river": "9h",
+    "tags": [
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p181",
+    "title": "Top pair, ten kicker against a 3-bettor",
+    "scenario": "CO_BTN_3BP",
+    "hero": "oop",
+    "hand": "AhTh",
+    "flop": "Ac9s4s",
+    "turn": "Ks",
+    "river": "6d",
+    "tags": [
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p182",
+    "title": "Nine-eight suited on a king-queen flop",
+    "scenario": "CO_BTN_3BP",
+    "hero": "oop",
+    "hand": "9s8s",
+    "flop": "KhQc4s",
+    "turn": "7s",
+    "river": "2d",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p183",
+    "title": "Sixes on a monotone queen-high flop",
+    "scenario": "CO_BTN_3BP",
+    "hero": "oop",
+    "hand": "6d6h",
+    "flop": "Qs8s3s",
+    "turn": "2c",
+    "river": "Th",
+    "tags": [
+      "monotone",
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p184",
+    "title": "Kings on an ace-high flop as the big blind",
+    "scenario": "SB_BB_3BP",
+    "hero": "ip",
+    "hand": "KcKh",
+    "flop": "Ah7d3d",
+    "turn": "9s",
+    "river": "Qd",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p185",
+    "title": "Ten-seven suited after a light 3-bet",
+    "scenario": "SB_BB_3BP",
+    "hero": "ip",
+    "hand": "Ts7s",
+    "flop": "Qd9h2c",
+    "turn": "8s",
+    "river": "4h",
+    "tags": [
+      "draw",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p186",
+    "title": "Ace-queen on a paired eight flop",
+    "scenario": "SB_BB_3BP",
+    "hero": "ip",
+    "hand": "AsQd",
+    "flop": "Td8c8h",
+    "turn": "3s",
+    "river": "Kh",
+    "tags": [
+      "c-bet"
+    ]
+  },
+  {
+    "id": "p187",
+    "title": "Nine-six suited on a paired king flop",
+    "scenario": "SB_BB_3BP",
+    "hero": "ip",
+    "hand": "9h6h",
+    "flop": "KsKc4d",
+    "turn": "7h",
+    "river": "Jh",
+    "tags": [
+      "bluff"
+    ]
+  },
+  {
+    "id": "p188",
+    "title": "Ace-ten offsuit on a ten-high flop",
+    "scenario": "SB_BB_3BP",
+    "hero": "oop",
+    "hand": "AdTc",
+    "flop": "Td6h4h",
+    "turn": "Ah",
+    "river": "Kh",
+    "tags": [
+      "value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p189",
+    "title": "Sevens on a paired eight flop in a 3-bet pot",
+    "scenario": "SB_BB_3BP",
+    "hero": "oop",
+    "hand": "7d7c",
+    "flop": "Kh8s8d",
+    "turn": "3c",
+    "river": "2s",
+    "tags": [
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p190",
+    "title": "King-ten suited on a queen-jack flop",
+    "scenario": "SB_BB_3BP",
+    "hero": "oop",
+    "hand": "KhTh",
+    "flop": "QdJc3s",
+    "turn": "5c",
+    "river": "2d",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p191",
+    "title": "Ace-queen suited under a king",
+    "scenario": "UTG_BB_SRP",
+    "hero": "ip",
+    "hand": "AcQc",
+    "flop": "Kh8d3d",
+    "turn": "Jc",
+    "river": "6d",
+    "tags": [
+      "c-bet",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p192",
+    "title": "Tens on a paired nine flop",
+    "scenario": "UTG_BB_SRP",
+    "hero": "ip",
+    "hand": "TdTc",
+    "flop": "9s9h7c",
+    "turn": "Ac",
+    "river": "4d",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p193",
+    "title": "King-queen suited on a queen-high flop",
+    "scenario": "UTG_BB_SRP",
+    "hero": "ip",
+    "hand": "KhQh",
+    "flop": "Qc8c5d",
+    "turn": "Ac",
+    "river": "3c",
+    "tags": [
+      "value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p194",
+    "title": "Eights under jack-ten",
+    "scenario": "UTG_BB_SRP",
+    "hero": "ip",
+    "hand": "8s8h",
+    "flop": "JdTd2s",
+    "turn": "3c",
+    "river": "Qh",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p195",
+    "title": "Ace-jack on a paired six flop",
+    "scenario": "UTG_BB_SRP",
+    "hero": "oop",
+    "hand": "AdJh",
+    "flop": "Jc6s6h",
+    "turn": "Kd",
+    "river": "3c",
+    "tags": [
+      "bluff catching"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p196",
+    "title": "King-queen suited under an ace",
+    "scenario": "UTG_BB_SRP",
+    "hero": "oop",
+    "hand": "KsQs",
+    "flop": "Ah7s2d",
+    "turn": "Ts",
+    "river": "5c",
+    "tags": [
+      "draw"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p197",
+    "title": "Sixes on an eight-high flop against under the gun",
+    "scenario": "UTG_BB_SRP",
+    "hero": "oop",
+    "hand": "6c6h",
+    "flop": "8d5s3c",
+    "turn": "Kc",
+    "river": "7h",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p198",
+    "title": "Jack-nine suited against under the gun",
+    "scenario": "UTG_BB_SRP",
+    "hero": "oop",
+    "hand": "Jh9h",
+    "flop": "Th8s2h",
+    "turn": "3d",
+    "river": "4s",
+    "tags": [
+      "draw",
+      "bluff"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p199",
+    "title": "Ace-queen offsuit on a jack-high flop",
+    "scenario": "HJ_BB_SRP",
+    "hero": "ip",
+    "hand": "AdQs",
+    "flop": "Jh9c3d",
+    "turn": "Td",
+    "river": "2s",
+    "tags": [
+      "c-bet"
+    ]
+  },
+  {
+    "id": "p200",
+    "title": "Top pair, jack kicker against the big blind",
+    "scenario": "HJ_BB_SRP",
+    "hero": "ip",
+    "hand": "KcJc",
+    "flop": "KdQh7s",
+    "turn": "Ah",
+    "river": "Ts",
+    "tags": [
+      "value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p201",
+    "title": "Nines on a paired ten-six flop",
+    "scenario": "HJ_BB_SRP",
+    "hero": "ip",
+    "hand": "9d9c",
+    "flop": "Th6h6c",
+    "turn": "Jd",
+    "river": "2h",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p202",
+    "title": "Ten-nine suited on an ace-high flop",
+    "scenario": "HJ_BB_SRP",
+    "hero": "ip",
+    "hand": "Ts9s",
+    "flop": "As6d2c",
+    "turn": "Kh",
+    "river": "Qs",
+    "tags": [
+      "bluff"
+    ]
+  },
+  {
+    "id": "p203",
+    "title": "Top pair on a paired seven flop",
+    "scenario": "HJ_BB_SRP",
+    "hero": "oop",
+    "hand": "QsJs",
+    "flop": "Qd7c7h",
+    "turn": "2s",
+    "river": "Ah",
+    "tags": [
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p204",
+    "title": "King-eight suited on an eight-high flop",
+    "scenario": "HJ_BB_SRP",
+    "hero": "oop",
+    "hand": "Kh8h",
+    "flop": "8c6d2s",
+    "turn": "Qs",
+    "river": "Jc",
+    "tags": [
+      "showdown value"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p205",
+    "title": "Tens under two overcards against the hijack",
+    "scenario": "HJ_BB_SRP",
+    "hero": "oop",
+    "hand": "TdTs",
+    "flop": "KcJc5h",
+    "turn": "9c",
+    "river": "3d",
+    "tags": [
+      "bluff catching"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p206",
+    "title": "Seven-six suited on an ace-king flop",
+    "scenario": "HJ_BB_SRP",
+    "hero": "oop",
+    "hand": "7c6c",
+    "flop": "AcKd8h",
+    "turn": "5c",
+    "river": "Qd",
+    "tags": [
+      "draw",
+      "bluff"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p207",
+    "title": "Top pair, ace kicker on a wet flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "ip",
+    "hand": "AsTs",
+    "flop": "Td7c6d",
+    "turn": "8d",
+    "river": "Kh",
+    "tags": [
+      "pot control"
+    ]
+  },
+  {
+    "id": "p208",
+    "title": "King-queen suited on a paired low flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "ip",
+    "hand": "KdQd",
+    "flop": "5h5c3s",
+    "turn": "Jd",
+    "river": "9c",
+    "tags": [
+      "c-bet",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p209",
+    "title": "Sixes on an ace-queen flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "ip",
+    "hand": "6s6h",
+    "flop": "AcQc9d",
+    "turn": "4s",
+    "river": "8c",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p210",
+    "title": "Jack-ten suited on a paired king flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "ip",
+    "hand": "JdTd",
+    "flop": "KhKs8c",
+    "turn": "9d",
+    "river": "2h",
+    "tags": [
+      "draw",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p211",
+    "title": "Queen-ten suited on a queen-high flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "oop",
+    "hand": "QcTc",
+    "flop": "Qh9h4s",
+    "turn": "6d",
+    "river": "Ah",
+    "tags": [
+      "bluff catching"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p212",
+    "title": "Ace-nine suited on a broadway flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "oop",
+    "hand": "As9s",
+    "flop": "KdQh8c",
+    "turn": "Js",
+    "river": "3d",
+    "tags": [
+      "draw",
+      "bluff"
+    ],
+    "villain": [
+      "bet"
+    ]
+  },
+  {
+    "id": "p213",
+    "title": "Sevens on a paired five flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "oop",
+    "hand": "7h7d",
+    "flop": "Ts5h5d",
+    "turn": "Kc",
+    "river": "6s",
+    "tags": [
+      "showdown value"
+    ]
+  },
+  {
+    "id": "p214",
+    "title": "Eight-seven suited on a nine-six flop",
+    "scenario": "CO_BB_SRP",
+    "hero": "oop",
+    "hand": "8s7s",
+    "flop": "9s6s2d",
+    "turn": "Kd",
+    "river": "Jh",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p215",
+    "title": "King-ten on a paired five flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "ip",
+    "hand": "KcTd",
+    "flop": "Kh5d5s",
+    "turn": "Qh",
+    "river": "Ah",
+    "tags": [
+      "value",
+      "pot control"
+    ]
+  },
+  {
+    "id": "p216",
+    "title": "Jack-seven suited on a jack-high flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "Jh7h",
+    "flop": "Jc4d2s",
+    "turn": "Ad",
+    "river": "Kh",
+    "tags": [
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p217",
+    "title": "Nine-seven suited on an ace-king flop",
+    "scenario": "BTN_BB_SRP",
+    "hero": "oop",
+    "hand": "9s7s",
+    "flop": "AsKc8d",
+    "turn": "Td",
+    "river": "2c",
+    "tags": [
+      "draw",
+      "bluff"
+    ]
+  },
+  {
+    "id": "p218",
+    "title": "Queen-seven suited on a queen-high flop",
+    "scenario": "SB_BB_SRP",
+    "hero": "ip",
+    "hand": "Qh7h",
+    "flop": "Qd6c3s",
+    "turn": "4c",
+    "river": "Ac",
+    "tags": [
+      "showdown value",
+      "bluff catching"
+    ]
+  },
+  {
+    "id": "p219",
+    "title": "Jack-eight offsuit on a ten-nine flop",
+    "scenario": "SB_BB_SRP",
+    "hero": "ip",
+    "hand": "Jd8c",
+    "flop": "Td9c2h",
+    "turn": "Ks",
+    "river": "3s",
+    "tags": [
+      "draw"
+    ]
+  },
+  {
+    "id": "p220",
+    "title": "Ace-seven offsuit on a king-jack flop",
+    "scenario": "SB_BB_SRP",
+    "hero": "oop",
+    "hand": "Ac7h",
+    "flop": "KdJh4s",
+    "turn": "2c",
+    "river": "9d",
+    "tags": [
+      "c-bet",
+      "bluff"
+    ]
+  }
+]

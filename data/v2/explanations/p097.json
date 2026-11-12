@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Ace-jack suited opens from under the gun every time: it is one of the stronger hands even with five players still to act.",
+    "1": "On six-five-four the big blind's range is slightly ahead of yours, and your ace-high has two overcards but nothing made. A bet would fold the hands you beat and get called mostly by pairs and draws. Checking takes a free card and keeps the pot small; small bets are only slightly worse, and checking is the natural play here.",
+    "2": "The nine misses you. Your ace-high still beats the big blind's king-high hands and some weaker aces, so it can win at showdown; a bet would fold exactly those hands and get called by pairs. Checking keeps that showdown value; betting three quarters of the pot costs 0.42 bb.",
+    "3": "The two means any three makes a straight. After the big blind checks, your ace-high still wins against its king-high hands and weaker aces, which is why your equity is 60.9%. Those hands will not call a bet, though, so a bet gets called mainly by better hands; checking wins at showdown, and betting half the pot costs 0.23 bb."
+  },
+  "takeaway": "Ace-high can be a showdown hand: when a bet would only be called by better, check and let it win at showdown."
+}

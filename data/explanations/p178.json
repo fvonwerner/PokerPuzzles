@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "With pocket jacks against the cutoff's open, a 3-bet is the usual play: jacks are ahead of the cutoff's range and want a bigger pot. Calling now and then is fine; folding is the mistake.",
+    "1": "On nine-nine-six your jacks are an overpair, ahead of most of the cutoff's range of high cards and smaller pairs. A bet of 60% of the pot charges those hands, and a smaller bet earns almost the same. Checking is a little worse, because it lets the high cards see a free card.",
+    "2": "The ace is an overcard and gives the cutoff's ace-queen and ace-jack a pair of aces. Your jacks still beat its smaller pairs, but those will not call much more, so a bet gets called mostly by better hands. Checking behind keeps the pot small; betting half the pot costs 0.90 bb.",
+    "3": "The king is a second overcard. The cutoff checked again, and its range is mostly smaller pairs like eights and sevens, plus some ace-queen. Your jacks win at showdown against the small pairs but would not get a call from them, while a bet gets called by the aces. Checking is right; betting half the pot costs 5.92 bb."
+  },
+  "takeaway": "When overcards arrive, an overpair becomes a showdown hand: check behind and beat the smaller pairs at showdown."
+}

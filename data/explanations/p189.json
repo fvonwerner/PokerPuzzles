@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Pocket sevens open from the small blind every time: only the big blind is left to act, and a pair is ahead of its range often enough.",
+    "1": "Facing the big blind's 3-bet, pocket sevens usually call: they are ahead of its bluffs and can win a big pot with a third seven, but they do not want to put a lot in before the flop. A 4-bet now and then is fine; folding is the mistake.",
+    "2": "Your sevens sit below the king and the pair of eights, and the big blind bets this small with most of its range: about half of its bets are draws and high cards that your sevens beat, and about a third beat you. Calling keeps those weak hands in at a cheap price; raising folds them and gets called by the better hands. Calling is the usual choice and the raise is fine too. Folding is the mistake: you need 16.7% and you have 42.1%.",
+    "3": "The three changes nothing. Out of position, your sevens are a bluff-catcher: they beat the big blind's draws and misses but lose to its kings and eights. A bet folds the hands you beat and gets called by the better ones; checking lets the big blind bet its weak hands, which it does about half the time. Betting half the pot costs 0.41 bb.",
+    "4": "After the big blind checks back the turn, more than half of its range has nothing, and your sevens beat those hands. They will not call a bet, though, so checking takes the showdown and is the usual choice; a half-pot bet is about as good because some weaker pairs call it. A full-pot bet is the mistake: it gets called mainly by better hands."
+  },
+  "takeaway": "A small pair that beats the opponent's misses should check and reach showdown; the misses will not call a bet."
+}

@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Ten-nine suited opens from the button every time: with only the blinds left to act, a suited connector plays well and can make strong hands.",
+    "1": "Facing the 3-bet, ten-nine suited calls: with position it can see a flop and win big pots when it connects with the board. It is too weak to 4-bet, and folding would give up a profitable call.",
+    "2": "On eight-seven-two you have an open-ended straight draw, a backdoor flush draw and two overcards: a hand that can win in many ways but has made nothing yet. You need 27% and you have 44%, so calling is clearly right. Raising builds a big pot with a draw against a 3-bettor whose range is full of overpairs, which is why it costs 2.19 bb.",
+    "3": "The king misses you, so you still have ten-high and an open-ended straight draw. Your chance to win, 24.3%, is just below the 25.0% the price asks, but when a jack or six comes you can also win the money still behind, and that makes calling right. Going all-in instead is a mistake, because the kings and pairs that make up most of its betting range will call it.",
+    "4": "Your straight draw missed, and ten-high almost never wins against the big blind's all-in. Fold: calling would cost 43.67 bb."
+  },
+  "takeaway": "A strong draw can call when the price is close, because hitting also wins the money still behind; once it misses, fold."
+}

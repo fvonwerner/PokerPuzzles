@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Ace-jack suited opens from the cutoff every time: it is ahead of most hands behind you and can make very strong hands after the flop.",
+    "1": "You flopped the nut flush, the best possible hand. You want to build a pot, but on this board most of the big blind's hands are weak, so they cannot call big bets often. A small bet gets called by pairs and single high hearts; checking lets it catch up a little or bluff. The small bet is the more common choice and checking is fine too; a big bet folds the hands that would pay you.",
+    "2": "The king changes nothing for your nut flush, and the big blind checks again. A bigger bet now gets called by kings and pairs, while checking keeps them in and gives them a chance to bluff the river. Both are about equally good; betting is more common because it starts building the pot for the river.",
+    "3": "The board pairs, but your nut flush still beats almost everything the big blind has, which is mostly pairs and ace-high that called the turn. A bet bigger than the pot gets the most from those hands, since some will still call it; a half-pot bet is nearly as good. Checking gives up 5.67 bb."
+  },
+  "takeaway": "With the best possible hand, choose bet sizes the opponent's hands can still call, and grow the size on the river."
+}

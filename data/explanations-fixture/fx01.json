@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Ace-queen offsuit is a clear open from the button. It is near the top of the opening range and plays well against both blinds.",
+    "1": "On a dry queen-high board your range has every strong queen and overpair, so a small bet with most of it is the natural strategy. Top pair, top kicker bets almost always; checking occasionally keeps your checking range from being too weak.",
+    "2": "After the flop call, the five changes little but your hand has less to gain from big bets: worse queens and sevens will call one more bet, but rarely two. Checking back protects your checking range and controls the pot.",
+    "3": "The king on the river is a good card for the caller, who has many king-x hands, but villain also bluffs with missed hands. Folding top pair, top kicker gives up too much; raising only folds out worse."
+  },
+  "takeaway": "Top pair with a good kicker on a dry board wants a small bet on the flop, a check on the turn and a bluff-catch on the river."
+}

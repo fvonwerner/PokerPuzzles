@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket sixes call an under-the-gun open from the big blind: the price is cheap, and a small pair can win a big pot when a third six comes. Against such a strong opening range they 3-bet only rarely.",
+    "1": "The flop was checked through, and the king now puts a second card above your sixes. About a quarter of the under-the-gun player's range now has a pair of kings, and much of the rest is high cards and draws. Your sixes beat those, but they will not call a bet, while the kings will. Checking is right; betting three quarters of the pot costs 0.33 bb.",
+    "2": "The seven lets nine-six and six-four make a straight, and you hold a six, so the under-the-gun player has fewer of those. About half of its range has nothing, and your sixes beat it, but those hands will not call. Checking lets them bluff into you; a half-pot bet gets called by a few weaker pairs. Both are about equally good, and checking is more common; a bet bigger than the pot is the mistake.",
+    "3": "The under-the-gun player bets half the pot. Its bets are mostly kings and other pairs, but about a quarter of them are bluffs with nothing, and your sixes beat those. You need to win 25.2% and you win 25.6%, so calling and folding come out almost even, and calling is the usual choice. Moving all-in is the mistake: the bluffs fold and the kings call."
+  },
+  "takeaway": "A small pair is a bluff-catcher: check it, call when the opponent has enough bluffs, and do not turn it into a raise."
+}

@@ -1,0 +1,23 @@
+# Local and private: the player database, backups, logs, working copies
+server/data/
+dev/
+logs/
+data/archive/
+data/v2/STOP_PUBLISH
+handoff/incoming/
+handoff/*.zip
+/Explain_*.html
+.claude/*
+!.claude/launch.json
+
+# Build output
+solver/target/
+
+# OS and editor leftovers
+.DS_Store
+*.tmp
+*.swp
+
+# Python caches
+__pycache__/
+*.pyc

@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Ace-ten suited is strong enough to continue against an under-the-gun open, and in the big blind you get a cheap price. Against such a strong opening range it plays well as a call, so it calls a bit more often than it 3-bets.",
+    "1": "You have top pair with the best kicker, one of the strongest hands you can hold on ten-five-three. A check-raise builds the pot while you are likely ahead and charges the weaker pairs and draws now; calling keeps the pot smaller and keeps the bluffs in. Both work, and the check-raise is the more usual choice with a hand this strong. Folding top pair with the best kicker would be a big mistake.",
+    "2": "The queen is an overcard, so your tens become second pair, now behind any queen and the bigger pairs that called your raise. Your hand has moved from value toward showdown: checking keeps the pot small, while betting would mostly fold the hands you beat. A bet is not a real mistake, but checking is the natural choice.",
+    "3": "The eight lets jack-nine make a straight, and your tens are still second pair with an ace kicker. That is a bluff-catcher: it beats ace-high and smaller pairs and loses to queens and overpairs. Checking reaches showdown cheaply and is the usual choice; a small bet is fine too. A bet bigger than the pot is the mistake: it folds the worse hands and gets called by better ones."
+  },
+  "takeaway": "When an overcard turns your top pair into second pair, stop building the pot and aim for a cheap showdown."
+}

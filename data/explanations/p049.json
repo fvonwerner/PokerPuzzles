@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket queens 3-bet the small blind's open every time: they are far ahead of its range and want a bigger pot.",
+    "1": "The ace puts your queens below the top card, but the small blind has many hands without an ace, like smaller pairs and kings. A small bet gets called by those smaller pairs and folds hands that could catch up; checking keeps the pot small when you are behind an ace. Both are fine, and the small bet is a little more common.",
+    "2": "The seven makes a flush draw and a straight possible, and the small blind called your bet, so its range has caught up with yours. Your queens beat its smaller pairs but lose to aces, so they want a cheap showdown. Checking behind gets there; a big bet folds the pairs you beat and gets called by better hands, costing 4.67 bb.",
+    "3": "The king puts a second card above your queens. They still beat the small blind's many smaller pairs, like nines, fives and sixes, but those hands rarely call a bet with two overcards on the board. Checking behind wins against them at showdown; betting half the pot costs 2.19 bb."
+  },
+  "takeaway": "When overcards fall on your pair, check behind and beat the smaller pairs at showdown instead of betting them away."
+}

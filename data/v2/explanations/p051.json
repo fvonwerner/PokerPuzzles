@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket jacks open from the button every time: only the blinds are left to act, and jacks are well ahead of their ranges.",
+    "1": "On seven-seven-three your jacks are an overpair, well ahead of the big blind's range, which has mostly missed this board. A small bet gets called by ace-high, smaller pairs and high cards, and folds little you mind; checking keeps the pot small and can invite a bluff. Both are fine, and the small bet is the more common choice.",
+    "2": "The two changes nothing, and the big blind checked to you again. Your overpair is a value hand: a big bet gets called by ace-high hands like ace-ten and ace-nine that still hope to be good. Checking would let those hands see the river for free, which costs 0.15 bb.",
+    "3": "The king puts a card above your jacks, but the big blind's range is mostly ace-high and smaller pairs that called the turn, and your jacks still beat them. A half-pot bet still gets called by many of those hands, while a bet bigger than the pot would fold them. Betting half the pot earns 0.49 bb more than checking."
+  },
+  "takeaway": "With an overpair against a player who keeps calling with ace-high, keep betting, but use a smaller size once an overcard arrives."
+}

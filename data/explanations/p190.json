@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "King-ten suited opens from the small blind every time: only the big blind is left to act, and a suited king is ahead of its range often enough.",
+    "1": "Facing the big blind's 3-bet, king-ten suited usually calls: it is too good to fold and plays well after the flop. A 4-bet now and then is fine too.",
+    "2": "You have an open-ended straight draw, any ace or nine, plus an overcard: a strong draw. Calling sees the turn cheaply; raising can win the pot now and still has many outs if called. Both are about equally good, and calling is more common. Folding is the mistake: you need 27% and you win about half the time.",
+    "3": "The five misses you. Out of position with a draw, checking lets you see the river; when you check, the big blind checks behind almost half the time and gives you a free card. A big bet would fold its weak hands and get called by its strong ones, which costs 3.66 bb.",
+    "4": "Your straight draw missed, and king-high now wins only against the big blind's own misses. Your range as a whole is strong here, but this hand is not: a bet would fold the hands you beat and get called by pairs. Checking keeps the showdown value; betting half the pot costs 1.12 bb."
+  },
+  "takeaway": "When a draw misses, a hand that can still win at showdown checks; bluff with hands that cannot win any other way."
+}

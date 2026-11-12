@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Queen-seven suited calls the small blind's open: the price is good and you will have position for the rest of the hand. It is not strong enough to 3-bet.",
+    "1": "Top pair with a seven kicker is ahead of most of the small blind's bets, but any better queen beats it. With position, calling keeps the bluffs and weaker pairs in and the pot small; raising folds those and gets called by better queens. So calling is the natural play, and folding would be a big mistake.",
+    "2": "The four gives you a gutshot, any five, to go with top pair, and the small blind checks. Checking behind takes a free card and keeps the pot small with a medium hand; a bet gets value from weaker pairs and charges the draws. Both are about equally good, and checking is the usual choice.",
+    "3": "The ace makes your queens second pair and puts a third club on the board. The small blind checked again, and its range is mostly king-high, smaller pairs and weaker hands that your queens beat. Those hands will not call a bet on this board, so checking behind wins at showdown; betting half the pot costs 0.41 bb."
+  },
+  "takeaway": "When a scary river card arrives and you are probably still ahead, check behind instead of betting into hands that will not call."
+}

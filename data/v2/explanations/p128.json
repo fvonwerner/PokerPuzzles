@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Jack-ten suited opens from the button every time: with only the blinds left to act, it plays well and can make strong hands.",
+    "1": "Facing the 3-bet, jack-ten suited calls: with position it sees flops and can win big pots when it connects. It is not strong enough to 4-bet, and folding would give up a good hand.",
+    "2": "You flopped the nut straight, and you want a big pot. There are two ways to get it: raising builds it now and charges the big blind's pairs and draws, while calling keeps its weaker hands and bluffs betting on later streets. Both are about equally good. Folding would be a huge mistake.",
+    "3": "The three changes nothing, and the big blind checks. Your straight is far ahead, and its range still holds many pairs, like jacks, tens and queens, that will call a half-pot bet. A full-pot bet folds more of them, and checking gives them a free card, which costs 1.01 bb.",
+    "4": "The king makes your straight king-high, still the best possible straight, and the big blind checks again. With about one pot left behind, moving all-in gets called by the pairs that have come this far; a half-pot bet is only slightly worse. Checking is the big mistake, giving up 32.29 bb."
+  },
+  "takeaway": "With the best hand, plan your bets so that all the money is in by the river."
+}

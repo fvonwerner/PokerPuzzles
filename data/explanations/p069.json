@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Queen-ten offsuit calls the button's open from the big blind: the price is cheap, and it is ahead of much of the button's wide range. It 3-bets now and then; folding is the mistake.",
+    "1": "Top pair with a queen kicker is ahead of most of the button's small bets, but ten-nine-five gives many hands a straight draw. Calling keeps the pot small and keeps the button's weaker hands and bluffs in; raising charges the draws now but folds the weak hands and gets called by better ones. Calling is the usual choice and raising is fine too; folding would be a big mistake.",
+    "2": "The six lets eight-seven make a straight. Your top pair is still ahead most of the time, but out of position a big bet now folds the weaker hands and gets called by draws and better hands. Checking keeps the pot small and lets the button bet; betting three quarters of the pot is about as good, but checking is the natural play.",
+    "3": "The eight means any seven now makes a straight, yet your top pair is still ahead of most of the button's range, which checked back the turn with many weaker hands. A half-pot bet gets called by those weaker pairs and ace-high; a bet bigger than the pot folds them and costs 1.07 bb."
+  },
+  "takeaway": "On boards full of straight draws, keep the pot small with one pair until the draws miss, then bet small for value."
+}

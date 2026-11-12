@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket fours call the small blind's open: the price is good, you will have position, and a small pair plays well against a wide range. They are not strong enough to 3-bet here.",
+    "1": "Your fours are below every card on jack-nine-six, but the small blind bets here with many high cards that missed, like ace-ten and king-queen. You need 25% and you have about 39%, so calling is right, though only by a little. Raising would fold those high cards and get called by pairs, which is why it is worse than calling.",
+    "2": "After the small blind checks, its range is mostly ace-high and king-high hands, and your fours beat them. Those hands will not call a bet, though, so betting only gets called by pairs that beat you. Checking behind keeps your showdown value; betting three quarters of the pot costs 0.82 bb.",
+    "3": "The ace pairs some of the small blind's hands, but it checked again, and its range is now mostly king-high hands and small pairs. Your fours still win often at showdown, yet a bet gets called mostly by better hands. Checking behind is right; betting half the pot costs 0.45 bb."
+  },
+  "takeaway": "A small pair against a range of missed high cards wins by checking down, not by betting."
+}

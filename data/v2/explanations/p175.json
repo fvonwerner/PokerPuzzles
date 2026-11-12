@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "From the small blind, pocket queens 3-bet the button's open every time: they are far ahead of the button's range and want a bigger pot, and calling would also let the big blind in cheaply.",
+    "1": "On a king-high board with three diamonds, your queens beat the button's smaller pairs and many draws but lose to kings and flushes, and you hold no diamond. Checking keeps the pot small out of position and lets the button's draws and weaker pairs bet; a small bet charges those hands a little. Both are about equally good, and checking is more common. A bigger bet is the mistake: the weaker hands fold and the kings and flushes call.",
+    "2": "The two changes nothing. Your queens are still ahead of the button's many smaller pairs but behind its kings and flushes, which make up a big part of its range. Out of position, checking keeps the pot small; a bet folds the pairs you beat and gets called by the hands that beat you. Betting half the pot costs 0.22 bb.",
+    "3": "The jack lets queen-ten make a straight, but you hold two queens, so the button has fewer of those hands. After two checks, its range is mostly smaller pairs, and your queens beat them. A half-pot bet asks those pairs to pay; checking takes a safe showdown. Both are about equally good, and betting is the usual choice; a full-pot bet folds the pairs and costs 1.49 bb."
+  },
+  "takeaway": "Out of position with a pair below the top card, keep the pot small until the opponent's checks show you are ahead, then bet small."
+}

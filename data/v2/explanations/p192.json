@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket tens open from under the gun every time: they are strong enough even with five players still to act.",
+    "1": "On nine-nine-seven your tens are an overpair, and the big blind's range is mostly high cards and draws plus smaller pairs; only a few of its hands beat you. A small bet gets called by the smaller pairs and charges the high cards; checking keeps the pot small and lets them bluff. All three options work about equally well, and the small bet is the most common.",
+    "2": "The ace is an overcard, and after calling your flop bet the big blind now holds a pair of aces about a third of the time; it checked its whole range to you. Your tens still beat its smaller pairs, but those will not call a big bet, while the aces will. Checking behind keeps the pot small; betting three quarters of the pot costs 0.91 bb.",
+    "3": "After the big blind checks again, its range is mostly smaller pairs, which your tens beat. A half-pot bet asks them to pay once more, and many of them call; checking takes a safe showdown in case it holds an ace. Both are about equally good, and the bet is more common. A bet bigger than the pot is the mistake: the smaller pairs fold to it."
+  },
+  "takeaway": "When the opponent checks the turn and river, a medium pair that beats its smaller pairs can make one small value bet."
+}

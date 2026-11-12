@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket jacks are strong from any seat, so they open even from under the gun, where five players still act behind you. Folding them would give up one of the best starting hands.",
+    "1": "Your jacks sit below the queen but are still ahead of most of the big blind's hands, and this board suits your range more than his. A small bet charges the many weaker hands, like smaller pairs and ace-high, and protects against higher cards coming; checking keeps the pot small and lets you see a card. The small bet is the usual choice and checking is fine too; a big bet gains nothing, because it folds the very hands you want to keep in.",
+    "2": "The eight adds a possible flush draw but does not change your hand: jacks below the queen, ahead of smaller pairs and ace-high, behind any queen. The big blind called your flop bet, so its range is now a bit stronger than yours. Checking behind keeps the pot small and gets you to the river cheaply; a big bet folds the hands you beat and gets called by those that beat you, costing 0.31 bb.",
+    "3": "After the big blind checks again, your jacks are ahead of most of what is left, including its smaller pairs. A half-pot bet asks those pairs to pay one more time; checking takes a free showdown. They are worth about the same, and betting is the more usual choice. A bet bigger than the pot is the mistake: it folds the hands that would have called a smaller one."
+  },
+  "takeaway": "With a good but not great pair, small bets get paid by weaker hands; big bets mostly fold them."
+}

@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Ace-queen suited opens from the button every time: only the blinds are left to act, and a strong suited ace is ahead of most of their hands.",
+    "1": "Facing the big blind's 3-bet, ace-queen suited calls: it is too strong to fold, and calling with position keeps the big blind's weaker 3-bets in. A 4-bet would mostly fold those and get called by better hands.",
+    "2": "Top pair with an ace kicker is strong on queen-eight-five and ahead of most of the big blind's bets. With only about two pots left behind, calling keeps its bluffs and weaker pairs in and still gets the money in by the river; raising would fold those and get called by kings and aces. That is why calling is a little better, and folding would throw away a hand that wins about three times in four.",
+    "3": "The two changes nothing, and your top pair with the best kicker is still well ahead of the big blind's betting range. You need to win 25% and you win about 75%, so calling is clear. Moving all-in is slightly worse: the bluffs you beat would fold, while the overpairs call.",
+    "4": "The king is an overcard, so your queens are now second pair, and the big blind moves all-in. Its all-in range has some kings and aces that beat you, but also ace-queen that ties and many weaker hands. You need to win about a quarter of the time and you win about 62.7%, so calling is clearly right."
+  },
+  "takeaway": "When the stacks are short compared with the pot, call with a strong pair and let the opponent keep betting."
+}

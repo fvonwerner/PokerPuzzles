@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Queen-jack suited opens from the button every time: with only the blinds left to act, it plays well and can make strong hands.",
+    "1": "Against the small blind's 3-bet, queen-jack suited calls: in position it makes strong draws and pairs, and it plays better as a call than as a 4-bet. Folding would give up a good hand.",
+    "2": "You have a flush draw, two overcards and a backdoor straight draw: several ways to improve, but nothing made yet. Calling sees the turn cheaply with all those chances; moving all-in can win the pot now and still has many outs when called. Both are about equally good, but calling is the natural play. Folding would be a mistake: you need 27% and you have 49%.",
+    "3": "After the eight you have a gutshot, any nine, to go with your flush draw. After the small blind checks, a half-pot bet is a semi-bluff: it wins the pot at once when the small blind folds, which it does about half the time, and you still have many outs when called. Checking is almost as good; bigger bets risk too much and cost 2.37 bb or more.",
+    "4": "Both draws missed, and queen-high almost never wins at showdown. The small blind checked its whole range to you, so many of its hands are ace-high and pairs that can fold to a big bet, and your range here also holds many strong hands that bet the same way. That is why moving all-in as a bluff earns 3.61 bb more than giving up."
+  },
+  "takeaway": "Missed draws make good river bluffs when the opponent has checked and your betting range also holds strong hands."
+}

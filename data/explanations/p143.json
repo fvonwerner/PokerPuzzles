@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket queens 3-bet the cutoff's open every time: they are far ahead of its range and want a bigger pot.",
+    "1": "On jack-seven-three your queens are an overpair, a value hand. The cutoff's range is full of smaller pairs and ace-queen that can call a decent bet, and the board has flush draws you want to charge. A bet of 60% of the pot does both; a smaller bet earns 0.15 bb less, and checking gives free cards.",
+    "2": "The nine lets ten-eight make a straight, but your overpair is still ahead of most of the cutoff's pairs and draws. A half-pot bet keeps getting called by those hands; a full-pot bet earns about the same but puts more in against the straights. Checking gives a free card and costs 0.36 bb.",
+    "3": "The four lets six-five make a straight, but your queens still beat most of what the cutoff has, such as tens, jacks and draws that missed. With less than a pot left behind, moving all-in gets called by many of those hands; checking gives up 13.73 bb."
+  },
+  "takeaway": "An overpair against a range of smaller pairs and draws should keep betting until the money is in."
+}

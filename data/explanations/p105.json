@@ -1,0 +1,11 @@
+{
+  "decisions": {
+    "0": "Pocket tens open from the small blind every time: only the big blind is left to act, and tens are well ahead of its range.",
+    "1": "On six-six-three your tens are an overpair, ahead of most of the big blind's range. Out of position, checking lets the big blind bet its many weaker hands and bluffs, and you can call or raise; betting half the pot charges them right away. Both are about equally good, and checking is a little more common.",
+    "2": "The big blind bets after your check, with many high cards and draws that you beat plus a few stronger hands. Calling keeps all those weaker hands in; check-raising charges them more but folds many. Both work about equally well, and calling is more common. Folding is the mistake: you need 25% and you have about 76%.",
+    "3": "The nine is above the board but below your tens, so your overpair is still ahead of most hands. After the big blind's flop bet, checking again lets it keep betting with the hands you beat; betting yourself is about as good, but checking is the natural play.",
+    "4": "The big blind bets again, often with draws like eight-seven and five-four and with pairs like nine-eight that you beat. Check-raising charges those hands while you are ahead; calling keeps the bluffs in and the pot smaller. Both work about equally well, and the check-raise is more common here. Folding is the mistake: you need 30% and you have 73%.",
+    "5": "The king puts a card above your tens, and the big blind called your check-raise, so its range is stronger now. Your tens beat its missed draws and smaller pairs but lose to kings and better. Checking takes a showdown, and a half-pot bet is about as good; moving all-in is the mistake, because only better hands call it."
+  },
+  "takeaway": "Out of position with an overpair, checking and letting the opponent bet is often as good as betting yourself."
+}

@@ -1,0 +1,11 @@
+{
+  "decisions": {
+    "0": "King-eight suited calls the hijack's open from the big blind: the price is cheap and a suited king can make good pairs. It 3-bets only now and then.",
+    "1": "Top pair with a king kicker is a good hand here, and you hold one of the eights, so the hijack has fewer top pairs. Its big bet comes mostly from high cards and draws, with some overpairs and sets. Calling keeps all those weaker hands in; raising folds them and gets called by the overpairs and sets. That is why calling is the usual choice, and folding would throw away a hand that wins more often than not.",
+    "2": "The queen puts your eights in second pair. Out of position, a bet would fold the high cards and draws you beat and get called by queens, overpairs and sets. Checking lets the hijack bet those weaker hands into you, which it does about two times in three; betting three quarters of the pot costs 0.73 bb.",
+    "3": "The hijack bets three quarters of the pot. Its bets are made of strong hands, like queens and sets, but also many draws that you beat right now. You need 30% and you have 43.7%, so calling is right. Raising is a mistake: the draws fold and the strong hands call, which costs 0.39 bb.",
+    "4": "The jack puts a third card above your eights, which are now third pair. The hijack's range is mostly stronger hands and missed draws; the missed draws will not call a bet, and the strong hands beat you. Checking is right; betting half the pot costs 3.25 bb.",
+    "5": "The hijack bets more than the pot. Bets this big come from sets, two pairs and straights, and from bluffs with nothing; your third pair beats only the bluffs, about a third of its range. You need 35.7% and you have 34.3%, so fold; calling costs 1.69 bb."
+  },
+  "takeaway": "Call with one pair while the opponent still has draws; when a big river bet means mostly strong hands, fold."
+}

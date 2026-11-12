@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Queen-nine suited defends the big blind against an under-the-gun open: the price is cheap and a suited hand plays well after the flop. It 3-bets about a quarter of the time; folding is the mistake.",
+    "1": "Top pair with a queen kicker is ahead of most hands that bet here, and the under-the-gun player bets this flop less than half the time, so its bets include its overpairs. Calling keeps the pot small and keeps its weaker hands in; raising folds those and gets called by overpairs and straight draws. Calling is the usual choice and raising is fine too; folding would be a mistake.",
+    "2": "The ten makes your nines second pair but adds a gutshot: any jack gives you a straight. A medium pair with a draw wants to see the river cheaply. The under-the-gun player's range is ahead here, so a bet would fold the weaker hands and get called by better ones; checking lets it bet, and you can call. Betting three quarters of the pot costs 0.34 bb.",
+    "3": "Facing the bet, you have second pair and a gutshot: you can win by being ahead now or by hitting a jack. You need 30% and you have 47%, so calling is clear. Raising as a semi-bluff is about as good, since it can fold some better hands, but calling keeps the pot smaller and is the usual choice. Folding is the mistake.",
+    "4": "Your straight draw missed, and second pair is now a showdown hand. The under-the-gun player's range is full of high cards and overpairs; the high cards will not call a bet, and the overpairs beat you. Checking wins at showdown against the high cards; betting half the pot costs 1.76 bb."
+  },
+  "takeaway": "A pair with a draw can call bets, but when the draw misses, check and use the pair as a showdown hand."
+}

@@ -1,0 +1,11 @@
+{
+  "decisions": {
+    "0": "King-six suited is too good to fold in the big blind: your blind is already in, so you call only 1.5 more to win a pot of 4, and a suited king can make strong pairs. It is not strong enough to want a big pot before the flop, so calling is the usual play and a 3-bet is an occasional alternative.",
+    "1": "Top pair with a six kicker is ahead of most of the button's small bets, which it makes with almost every hand, but a weak kicker does not want a big pot. Calling keeps the weaker hands and bluffs in and lets you see the turn cheaply; raising would fold most of those and leave you against better kings. That is why this hand usually calls, and the raise is fine too. Folding would throw away a hand that wins about three times in four.",
+    "2": "The seven only adds a possible diamond draw, so your top pair is still a medium-strength hand. Out of position, a big bet mostly gets called by hands that beat you and folds the weaker hands you are ahead of. Checking lets the button keep betting its weaker hands and bluffs into you, so checking is right and betting three quarters of the pot is a mistake.",
+    "3": "Against this bet your top pair is a bluff-catcher: it beats the button's bluffs and draws but loses to better kings. You need to win 30% of the time and you win about 60%, so folding gives up far too much. Raising would fold the bluffs you beat and get called mostly by better hands, which is why calling is the better play.",
+    "4": "The queen lets jack-ten make a straight, and your six kicker no longer plays. Your top pair still beats bluffs and weaker pairs, but few worse hands would call a bet now, so a bet mostly gets called by better hands. Check and decide when you face a bet; betting half the pot costs 1.40 bb.",
+    "5": "The button now bets more than the pot. A bet this big comes from strong hands, including straights with jack-ten, and from bluffs; your top pair beats only the bluffs. You need to win 35.7% and you win 36.2%, so calling is barely better than folding. Going all-in is the real mistake: only the hands that beat you would call."
+  },
+  "takeaway": "With top pair and a weak kicker, keep the pot small: call rather than raise, and against a big river bet ask whether there are enough bluffs to call."
+}

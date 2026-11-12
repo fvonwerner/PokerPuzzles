@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Pocket jacks open from the cutoff every time: they are well ahead of the hands behind you and want a bigger pot.",
+    "1": "On ten-ten-four your jacks are an overpair, ahead of most of the big blind's range unless it holds a ten. A small bet gets called by ace-high, smaller pairs and high cards; checking keeps the pot small and avoids a check-raise. Both are about equally good, and the small bet is the more common choice.",
+    "2": "The big blind check-raises with tens, which beat you, and with smaller pairs and high cards, which you beat. Calling keeps those weaker hands in and the pot manageable; re-raising mostly folds them and gets called by tens. Calling is the usual choice and the re-raise is fine too. Folding is the mistake: you need 22% and you have 66%.",
+    "3": "The seven changes nothing, and the big blind checks. Its range is now mostly small pairs and some tens. Betting three quarters of the pot charges those small pairs, which often call; checking keeps the pot smaller in case it holds a ten. Both are about equally good, and betting is the more common choice.",
+    "4": "The ace is an overcard to your jacks. The big blind called the turn with small pairs and tens, so its range is now ahead of yours, and the small pairs that remain will not call another bet on this card. Checking takes a showdown against them; betting half the pot costs 3.87 bb and the big bet far more."
+  },
+  "takeaway": "When the opponent check-raises and keeps calling, a good overpair becomes a showdown hand; stop betting once overcards come."
+}

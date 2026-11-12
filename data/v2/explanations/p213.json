@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket sevens call the cutoff's open from the big blind: the price is cheap and a pair plays well after the flop. They 3-bet now and then; folding is the mistake.",
+    "1": "Your sevens, with the fives on the board, beat the cutoff's many high cards but lose to any ten and bigger pairs. Calling keeps the high cards in and the pot small; raising folds many of them and gets called by better hands, but can also win the pot at once. Both are about equally good, and calling is more common. Folding is the mistake: you need 20% and you win about half the time.",
+    "2": "The king is a second card above your sevens and hits many of the cutoff's hands, like king-jack and ace-king. Your hand now wants a cheap showdown: a bet folds the high cards you beat and gets called by kings and tens. Checking is right; betting three quarters of the pot costs 0.45 bb.",
+    "3": "The cutoff bets three quarters of the pot, with kings, tens and aces that beat you but also high cards that are bluffing. Your 39.8% looks better than the 30% price, but more betting can come on the river and your sevens rarely improve. That is why folding and calling come out about even, and folding is more common. Raising is the mistake."
+  },
+  "takeaway": "A weak pair facing bets on two streets often has to let go, even when the price looks fine, because more betting is still to come."
+}

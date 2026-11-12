@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket kings 3-bet the button's open every time from the small blind: they are far ahead of the button's range and want a bigger pot.",
+    "1": "The ace is the card you did not want, but the button does not always have one, and many of its hands are smaller pairs and king-high hands. A small bet gets called by those hands and keeps the pot modest if you are behind; checking keeps it smaller still. Both are about equally good, and the small bet is more common.",
+    "2": "The button called your small bet with many smaller pairs and some aces, and the jack changes little. Your kings beat its smaller pairs and lose to aces. Checking keeps the pot small and gets you to the river; a half-pot bet is about as good. A full-pot bet is the mistake: it folds the small pairs and gets called by aces.",
+    "3": "The button checked behind on the turn, and its range is now mostly pairs like nines, sevens and tens, which your kings beat. That makes your hand a value bet: a half-pot bet gets called by those pairs, while a full-pot bet folds them. Checking gives up 0.92 bb."
+  },
+  "takeaway": "A big pair under an ace can keep the pot small on the turn and bet for value on the river once the opponent checks back."
+}

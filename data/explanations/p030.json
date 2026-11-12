@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Ace-three offsuit calls the small blind's open: the price is good and you have position for the rest of the hand. An ace is strong against the small blind's wide range, so it also 3-bets some of the time.",
+    "1": "Top pair with a three kicker is ahead of most of the small blind's bets, but any better ace beats it. Calling keeps the pot small and keeps bluffs and weaker pairs in; raising mostly folds those and gets called by better aces. So calling is the natural play and raising is only a tiny bit worse. Folding would be a big mistake.",
+    "2": "The ten lets nine-eight make a straight, and your three kicker no longer plays, so your top pair is now a medium-strength hand. After the small blind checks, checking behind keeps the pot small and reaches the river cheaply; a big bet would fold the weaker hands and get called by better aces and straights. Checking is better by a small margin.",
+    "3": "The small blind bets half the pot on a river that changed nothing. Its bets here include many tens and missed draws, which your pair of aces beats; you need to win 25% and you win about 81%, so call. Going all-in is a big mistake: the weaker hands fold and only better hands call, which costs 9.41 bb."
+  },
+  "takeaway": "With a weak kicker, keep the pot small: call bets and check when checked to, rather than raise hands that only better hands will call."
+}

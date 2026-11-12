@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket threes open from the button every time: only the blinds are left to act, and even a small pair is ahead of their ranges often enough.",
+    "1": "You flopped a set on ace-queen-three, a board where the big blind holds many aces and queens that will pay you. A big bet builds the pot while those hands call; a small bet or a check lets them off too cheaply. Checking costs 0.75 bb.",
+    "2": "The nine adds a possible flush draw, one more reason to bet: the big blind's aces and its draws will both call. Your set is a value hand that wants the pot as big as possible, so bet three quarters of the pot again; checking costs 1.60 bb.",
+    "3": "Your set beats every hand the big blind can hold, and its range is full of aces that have called twice. Those aces will often call even a bet bigger than the pot, so the big bet earns the most and a half-pot bet is nearly as good. Checking is the big mistake, giving up 17.77 bb."
+  },
+  "takeaway": "When you have the best hand and the opponent holds strong second-best hands, bet big on every street."
+}

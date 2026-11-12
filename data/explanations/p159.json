@@ -1,0 +1,11 @@
+{
+  "decisions": {
+    "0": "Nine-eight suited opens from the small blind every time: only the big blind is left to act, and a suited connector plays well against one opponent.",
+    "1": "Facing the big blind's 3-bet, nine-eight suited usually calls: it connects with many boards and can win a big pot. It also 4-bets about a third of the time; folding is the mistake.",
+    "2": "You have an open-ended straight draw: any jack or six makes a straight. The big blind bets big here with its overpairs and with many weaker hands. You need 27% and you have 41%, so calling is clear. Raising is a little worse: the overpairs will call, and you would be putting most of your stack in with only a draw.",
+    "3": "The ace misses your straight draw, and it hits the big blind's range, which holds ace-king and ace-queen. Checking lets it bet its strong hands and its bluffs, and you can decide then; a half-pot bet is about as good, but every hand in your range checks here. A full-pot bet is the mistake, costing 2.99 bb.",
+    "4": "The big blind bets half the pot. You need 25% to call and you have 22.1%, but an open-ended draw can also win by raising: a check-raise folds the big blind's weaker hands and still has eight outs when called. Calling, check-raising and moving all-in come out about the same, and the check-raise is the most common. Folding is the mistake: even a call pays, because when a jack or six comes you can also win the rest of its stack.",
+    "5": "The big blind moves all-in over your raise. You need to win 15.3% of the time and your straight draw wins 17.8%, so with this much money already in the pot, calling is right; folding costs 4.93 bb."
+  },
+  "takeaway": "With a strong draw and short stacks, raising can be as good as calling, because the opponent's folds add to the times you hit."
+}

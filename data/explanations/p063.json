@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket eights are strong against the button's wide opening range, so they 3-bet about half the time and call the rest; both are good, and only folding is a mistake. Calling is cheap from the big blind, while a 3-bet builds the pot when you are likely ahead.",
+    "1": "Your eights sit below the queen and the ten, but the button bets this small with almost its whole range, so many of its bets come from weaker hands. You need to win 20% and you win about half the time, so call. Raising is a mistake: it folds the weaker hands and gets called by better pairs.",
+    "2": "The three changes nothing. Your eights are a medium hand that beats ace-high and loses to any queen or ten. Out of position, a big bet folds the hands you beat and gets called by the ones that beat you, costing 0.62 bb; checking lets the button bet its weaker hands into you.",
+    "3": "The seven lets six-five make a straight, but your eights are still ahead of most of the button's range, which checked back the turn. A half-pot bet gets paid by ace-high and smaller pairs; checking takes a showdown and invites a bluff. Both are about equally good: the bet charges the weaker hands, the check avoids a raise. A bet bigger than the pot is the weaker choice."
+  },
+  "takeaway": "A medium pair can call a small bet from a wide range, then let the opponent bet into it instead of leading out."
+}

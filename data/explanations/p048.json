@@ -1,0 +1,10 @@
+{
+  "decisions": {
+    "0": "Pocket eights open from the small blind every time: only the big blind is left to act, and a medium pair is ahead of its range.",
+    "1": "Facing the big blind's 3-bet, pocket eights usually call: they are ahead of its bluffs and sometimes hit a third eight, but they do not want to put a lot of money in before the flop. A 4-bet now and then is fine; folding is the mistake.",
+    "2": "You flopped a set of eights, far ahead of almost everything. Calling the small bet hides your strength and keeps the big blind's weaker hands and bluffs in; raising builds the pot right away and charges the flush draws. Both are about equally good, and calling is a little more common. Folding would be a huge mistake.",
+    "3": "The five changes nothing; your set is still far ahead. Out of position, checking lets the big blind keep betting the hands it bet on the flop, and you can call or raise. Leading out would fold many of those hands, which is why betting half the pot costs 0.75 bb.",
+    "4": "The ten of spades makes a flush possible, but your set still beats almost all of the big blind's hands. Checking is best: the big blind bets often when checked to, with weaker hands and bluffs, and you can then call or raise. Betting yourself mostly folds those hands."
+  },
+  "takeaway": "With a set out of position, let the aggressive player keep betting; leading out often folds the hands that would pay you."
+}

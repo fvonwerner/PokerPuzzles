@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "King-nine suited defends the big blind against the cutoff: the call is cheap, and a suited king makes strong pairs and can win big pots when its suit comes. It is not strong enough to want a big pot before the flop, so calling is the usual play and a 3-bet the occasional one.",
+    "1": "You have top pair with a nine kicker, and the cutoff bets small with almost its whole range, so you are well ahead of what it holds. Calling keeps all those weaker hands in and lets them keep betting; raising charges them now but folds many of them and gets called more often by stronger kings. Calling is the more usual choice and raising is fine too; folding would be a big mistake.",
+    "2": "The five only adds a possible spade draw. Your top pair is good but not strong enough to build a big pot out of position: a big bet folds the cutoff's weak hands and gets called by the better ones. Checking keeps the pot small and lets the cutoff bet its weaker hands into you, so it is the better play; betting three quarters of the pot is a mistake.",
+    "3": "The board pairs, so your kings now play as two pair with the board's fives, and you are ahead of almost everything the cutoff checked back on the turn. This is a value hand: a half-pot bet gets called by weaker pairs and ace-high, while a bet bigger than the pot would scare most of them away. Checking gives those hands a free showdown, which is why the half-pot bet earns more."
+  },
+  "takeaway": "When you are likely ahead on the river, bet a size that weaker hands can still call."
+}

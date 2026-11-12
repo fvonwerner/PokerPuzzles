@@ -1,0 +1,9 @@
+{
+  "decisions": {
+    "0": "Pocket eights open from under the gun every time: a medium pair is strong enough even with five players still to act.",
+    "1": "Your eights sit below the jack and the ten, ahead of the big blind's high cards and small pairs but behind any jack or ten. Checking keeps the pot small and gets a free card; a small bet charges the high cards and draws. Both are about equally good, and checking is a little more common because your hand wants a cheap showdown.",
+    "2": "The three changes nothing, and the big blind checks. Its range is now full of small pairs and ace-high, many of which your eights beat, but those hands will not call a bet. Checking behind keeps the pot small and wins at showdown; betting three quarters of the pot costs 0.15 bb.",
+    "3": "The queen is a third card above your eights. After the big blind checks, its range is mostly small pairs like sevens, sixes and fives, which your eights beat, but they will not call a bet on this board. Checking wins at showdown; betting half the pot costs 0.55 bb."
+  },
+  "takeaway": "A medium pair below the top cards wins by reaching showdown cheaply, not by betting."
+}
