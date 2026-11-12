@@ -190,3 +190,12 @@ Until a hand is finished nothing tells how many decisions it has: `decisionCount
 Before a decision is answered, the decision step carries only `type, index, street, source, state, toCall, options`,
 and villain steps carry only `type, street, seat, action, state`; their `freq`, `options` and `range` arrive once the
 next hero decision is answered (or the hand is over). Later streets are not sent at all. Raw solution files are never served.
+
+## Licence
+
+PokerPuzzles is free software under the GNU Affero General Public License,
+version 3 or later; the full text is in `LICENSE`. The solver exporter in
+`solver/` builds on [postflop-solver](https://github.com/b-inary/postflop-solver)
+(AGPL-3.0-or-later). The preflop ranges in `data/preflop-source/` come unchanged
+from the [TexasSolver](https://github.com/bupticybee/TexasSolver) v0.2.0 release
+(AGPL-3.0).
