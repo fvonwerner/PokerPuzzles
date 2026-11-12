@@ -62,7 +62,18 @@ const solution = (id) => JSON.parse(readFileSync(join(SOL, `${id}.json`), 'utf8'
 const hasTags = (obj) => findKeys(obj, ['tags']).length > 0;
 const SECRET_DECISION_KEYS = ['hand', 'mainLine', 'stateAfter', 'range', 'villainRange'];
 const SECRET_VILLAIN_KEYS = ['freq', 'options', 'range'];
-const SECRET_ANYWHERE = ['mainLine', 'stateAfter', 'villainRange', 'ev', 'equity', 'explanation', 'showdown', 'heroNet', 'villainHand', 'takeaway', 'w', 'f', 'combos'];
+const SECRET_ANYWHERE = ['mainLine', 'stateAfter', 'villainRange', 'ev', 'equity', 'explanation', 'showdown', 'heroNet', 'villainHand', 'takeaway', 'w', 'f', 'combos', 'optionGrades'];
+/** A reveal's per-option grades ("try another answer") as { optionId: [grade, points] }. */
+const gradesOf = (rv) => Object.fromEntries((rv?.optionGrades || []).map((g) => [g.id, [g.grade, g.points]]));
+/** The per-option grades line up with the decision's options and agree with the reveal for the chosen option. */
+function optionGradesOk(rv) {
+  const og = rv?.optionGrades;
+  if (!Array.isArray(og) || og.length !== rv.decision.options.length) return false;
+  if (!og.every((g, k) => g.id === rv.decision.options[k].id && typeof g.points === 'number' && g.label && 'loss' in g && 'lossPct' in g && g.freq === rv.decision.hand.freq[k])) return false;
+  if (rv.timeout) return true;
+  const mine = og.find((g) => g.id === rv.choice);
+  return !!mine && mine.grade === rv.grade && mine.points === rv.points && mine.loss === rv.loss && mine.lossPct === rv.lossPct;
+}
 
 function findKeys(obj, keys, path = '$', out = []) {
   if (Array.isArray(obj)) obj.forEach((x, i) => findKeys(x, keys, `${path}[${i}]`, out));
@@ -161,6 +172,7 @@ try {
   let r = await api('POST', '/api/puzzles/fx01/start', { mode: 'scored' }, A);
   check(r.status === 200 && r.body.next === 0, 'start returns decision 0');
   assertNoLeak('start', r.body, 'fx01', 0);
+  check(findKeys(r.body, ['optionGrades', 'grade', 'points']).length === 0, 'no per-option grades (or any grade) before the first answer');
   check((await api('GET', '/api/puzzles', null, A)).body.nextId === 'fx01', 'an in-progress play wins nextId');
   check(!hasTags(r.body), 'no tags in the start payload of an unplayed puzzle');
   check((await api('POST', '/api/puzzles/fx01/act', { decisionIndex: 1, optionId: 'check', mode: 'scored' }, A)).status === 409, 'cannot skip ahead');
@@ -169,13 +181,21 @@ try {
   check(r.body.reveal.grade === 'best' && r.body.reveal.points === 100, 'chart decision, raise AQo: Best 100');
   check(r.body.reveal.loss === null && r.body.reveal.decision.hand.freq.length === 2, 'chart reveal has no EV loss but full decision');
   check(r.body.reveal.explanation.text.length > 10 && !r.body.reveal.explanation.generated, 'authored explanation included');
+  check(optionGradesOk(r.body.reveal), 'the reveal grades every option (chart decision), in option order, agreeing with the answer');
+  let og = gradesOf(r.body.reveal);
+  check(og.raise_25?.[0] === 'best' && og.raise_25?.[1] === 100 && og.fold?.[0] === 'wrong' && og.fold?.[1] === 15 && r.body.reveal.optionGrades.every((g) => g.loss === null), `chart options: raise Best 100, fold Wrong 15, no EV loss (got ${JSON.stringify(og)})`);
   assertNoLeak('after decision 0', r.body, 'fx01', 1);
+  check(findKeys(r.body.steps, ['optionGrades']).length === 0, 'per-option grades travel only in the reveal, never in the steps');
 
   r = await api('POST', '/api/puzzles/fx01/act', { decisionIndex: 1, optionId: 'check', mode: 'scored' }, A);
   // hand-computed: freq 0.22, maxFreq 0.71 -> 60 + 40 * 0.22 / 0.71 = 72.394
   check(r.body.reveal.grade === 'correct' && near(r.body.reveal.points, 72.39), `flop check: Correct 72.39 (got ${r.body.reveal.grade} ${r.body.reveal.points})`);
   check(near(r.body.reveal.loss, 0.08) && near(r.body.reveal.lossPct, 1.45), `EV loss 0.08 bb = 1.45% pot (got ${r.body.reveal.loss}, ${r.body.reveal.lossPct})`);
   check(r.body.reveal.offMainLine && r.body.reveal.continuesWith === 'The hand continues with Bet 1.8 (33%).', 'off main line message');
+  check(optionGradesOk(r.body.reveal), 'solver decision: every option graded, the chosen one as the reveal');
+  og = gradesOf(r.body.reveal);
+  // Bob answers bet_18 at this decision below: Best 100.
+  check(og.check?.[0] === 'correct' && near(og.check?.[1], 72.39) && og.bet_18?.[0] === 'best' && og.bet_18?.[1] === 100, `flop options: check Correct 72.39, bet 1.8 Best 100 (got ${JSON.stringify(og)})`);
   assertNoLeak('after decision 1', r.body, 'fx01', 2);
   const vilBefore = r.body.steps.filter((s) => s.type === 'villain');
   check(vilBefore.length === 2 && vilBefore.every((s) => !('range' in s) && !('freq' in s)), 'villain flop call and turn check stay hidden until decision 2 is answered');
@@ -183,6 +203,7 @@ try {
   console.log('\n# resume');
   r = await api('POST', '/api/puzzles/fx01/start', { mode: 'scored' }, A);
   check(r.body.next === 2 && r.body.answers.length === 2 && r.body.answers[1].choice === 'check', 'resume at decision 2 with recorded choices');
+  check(r.body.answers.every(optionGradesOk), 'resumed reveals carry the per-option grades too');
   assertNoLeak('resume', r.body, 'fx01', 2);
   const mid = await api('GET', '/api/puzzles', null, A);
   check(mid.body.puzzles.find((p) => p.id === 'fx01').status === 'in_progress', 'status in_progress');
@@ -190,6 +211,9 @@ try {
   r = await api('POST', '/api/puzzles/fx01/act', { decisionIndex: 2, optionId: 'bet_114', mode: 'scored' }, A);
   // freq 0.02 < 0.035; loss 5.1 - 4.98 = 0.12, pot 9.1 -> 1.32% < 1.5
   check(r.body.reveal.grade === 'inaccuracy' && r.body.reveal.points === 40 && near(r.body.reveal.lossPct, 1.32), `turn overbet: Inaccuracy 40 at 1.32% (got ${r.body.reveal.grade} ${r.body.reveal.lossPct})`);
+  og = gradesOf(r.body.reveal);
+  // Bob answers bet_60 here below: Correct 60 + 40 * 0.32 / 0.66.
+  check(optionGradesOk(r.body.reveal) && og.bet_60?.[0] === 'correct' && near(og.bet_60?.[1], 79.39), `turn options: bet 6 Correct 79.39 (got ${JSON.stringify(og.bet_60)})`);
   assertNoLeak('after decision 2', r.body, 'fx01', 3);
   check(!hasTags(r.body), 'no tags in act payloads before completion');
   const dup = await api('POST', '/api/puzzles/fx01/act', { decisionIndex: 1, optionId: 'bet_18', mode: 'scored' }, A);
@@ -198,6 +222,9 @@ try {
   r = await api('POST', '/api/puzzles/fx01/act', { decisionIndex: 3, optionId: 'raise_138', mode: 'scored' }, A);
   // freq 0.02; loss 3.9 - 3.5 = 0.4, pot 13.7 -> 2.92% < 6
   check(r.body.reveal.grade === 'wrong' && r.body.reveal.points === 15, `river raise: Wrong 15 (got ${r.body.reveal.grade})`);
+  og = gradesOf(r.body.reveal);
+  const foldG = r.body.reveal.optionGrades.find((g) => g.id === 'fold');
+  check(optionGradesOk(r.body.reveal) && og.fold?.[0] === 'blunder' && og.fold?.[1] === 0 && near(foldG?.loss, 3.9) && near(foldG?.lossPct, 28.47), `river options: fold Blunder 0, loses 3.9 bb = 28.47% (got ${JSON.stringify(foldG)})`);
   const scoreA = Math.round((100 + 72.39 + 40 + 15) / 4);
   check(r.body.end && r.body.end.score === scoreA, `puzzle score ${scoreA} (got ${r.body.end?.score})`);
   check(r.body.end.step.reason === 'showdown' && r.body.end.step.showdown.villainHand.length === 2, 'showdown end step');
@@ -316,6 +343,7 @@ try {
   check(fx01Now.title === 'Top pair, re-solved' && fx01Now.score === fx01Before, `changed puzzle keeps the stored score (${fx01Now.score})`);
   r = await api('GET', '/api/puzzles/fx01/review', null, A);
   check(r.status === 200 && r.body.answers[1].grade === 'correct' && r.body.answers[1].stale && r.body.end.score === fx01Before, 'review of a changed puzzle shows the stored grades');
+  check(gradesOf(r.body.answers[1]).check?.[0] === 'best', 'its per-option grades follow the current solution (check is now Best)');
   r = await api('GET', '/api/leaderboard', null, A);
   check(r.body.players.find((p) => p.name === 'Alice').totalPoints === scoreA + scoreA3, 'leaderboard unchanged by the re-solve');
   r = await api('GET', '/api/puzzles/fx03/review', null, A);
@@ -448,12 +476,15 @@ try {
   check((await answer(A2, ab.id, 7, 0, 'fold')).status === 400, 'bad hand rejected');
   let ar = await answer(A2, ab.id, 0, 0, bestOpt(abHand0, 0));
   check(ar.status === 200 && ar.body.reveal.grade === 'best' && ar.body.battle.live.phase === 'decide', 'Alice answers decision 1 (Best); the hand waits for Bob');
+  check(optionGradesOk(ar.body.reveal) && findKeys(ar.body.battle, ['optionGrades']).length === 0, 'her battle reveal grades every option; the shared battle state carries no per-option grades');
   check(ar.body.steps.length === decPos(abHand0, 0) + 1, 'nobody is shown anything beyond the open decision');
   check(!('decisionCount' in ar.body.puzzle) && !('decisionCount' in ar.body.battle.hands[0]) && ar.body.next === 1, 'neither the act answer nor the battle state tells the number of decisions');
   check((await answer(A2, ab.id, 0, 1, bestOpt(abHand0, 1))).status === 409, 'Alice cannot go on alone');
   let bs = await abFull(B2);
   check(bs.live.answered.length === 1 && bs.live.deadline - bs.serverNow > 19000 && bs.live.deadline - bs.serverNow <= 20000 && bs.live.firstBy === 'Alice', 'Bob sees that Alice answered, and his 20 s clock from that answer');
-  check(bs.hands[0].opps[0].choices.length === 0 && !JSON.stringify(bs).includes('"grade"'), 'Bob gets none of Alice\'s answer before answering himself');
+  check(bs.hands[0].opps[0].choices.length === 0 && !JSON.stringify(bs).includes('"grade"') && !JSON.stringify(bs).includes('optionGrades'), 'Bob gets none of Alice\'s answer before answering himself');
+  const bobPeek = await api('POST', `/api/battles/${ab.id}/start`, { hand: 0 }, B2);
+  check(bobPeek.status === 200 && findKeys(bobPeek.body, ['optionGrades', 'grade']).length === 0, 'nor any grade in his view of the open decision');
   await adv(19000);
   let br = await answer(B2, ab.id, 0, 0, firstOpt(abHand0, 0));
   check(br.status === 200 && !br.body.timedOut && br.body.battle.live.phase === 'review', 'Bob answers after 19 s: counts; all answered -> review');
@@ -479,6 +510,7 @@ try {
   check(as.live.phase === 'review' && as.hands[0].opps[0].choices.find((c) => c.index === 2)?.timeout, 'Bob\'s poll records Alice\'s time-out: "ran out of time", the hand goes on');
   ar = await answer(A2, ab.id, 0, 2, bestOpt(abHand0, 2));
   check(ar.body.timedOut && ar.body.reveal.grade === 'timeout' && ar.body.reveal.points === 0 && ar.body.reveal.decision.hand && ar.body.reveal.explanation.text, 'Alice\'s late answer gets the time-out: 0 points, with the full analysis');
+  check(optionGradesOk(ar.body.reveal) && ar.body.reveal.optionGrades.some((g) => g.grade === 'best'), 'the time-out reveal also grades every option (what each answer would have scored)');
   // Automatic continue.
   await ready(B2, ab.id);
   await adv(T.auto - 1000);

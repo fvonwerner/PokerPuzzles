@@ -1,6 +1,6 @@
 // Turns solution files into what the client may see. Raw solution files are
 // never served; everything leaves the server through these functions.
-import { gradeDecision } from './grading.mjs';
+import { gradeDecision, gradeOptions } from './grading.mjs';
 
 const pct = (x) => `${Math.round(x * 100)}%`;
 const bb = (x) => `${Math.round(x * 100) / 100} bb`;
@@ -82,6 +82,13 @@ export function explanationFor(p, index) {
   return { text: generatedExplanation(p, decisionStep(p, index)), generated: true };
 }
 
+/**
+ * What every option of a decision would have scored, in the order of
+ * `d.options` (the "try another answer" view of an answered decision). Part
+ * of a reveal only, so it leaves the server together with the rest of it.
+ */
+export const optionGrades = (d) => gradeOptions(d);
+
 /** The full reveal for one answered decision. */
 export function reveal(p, index, optionId) {
   const d = decisionStep(p, index);
@@ -92,6 +99,7 @@ export function reveal(p, index, optionId) {
   return {
     index, choice: optionId, choiceLabel: choice.label, ...g,
     decision: d,
+    optionGrades: optionGrades(d),
     explanation: explanationFor(p, index),
     offMainLine,
     mainLine: { id: main.id, label: main.label },
@@ -108,6 +116,7 @@ export function timeoutReveal(p, index) {
     index, choice: null, choiceLabel: 'No answer', grade: 'timeout', label: "Time's up", points: 0,
     freq: null, maxFreq, loss: null, lossPct: null, timeout: true,
     decision: d,
+    optionGrades: optionGrades(d),
     explanation: explanationFor(p, index),
     offMainLine: false,
     mainLine: { id: main.id, label: main.label },

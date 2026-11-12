@@ -260,3 +260,26 @@ points, rounded to an integer (0–100). Only a player's **first** play of a
 puzzle counts; later plays are practice.
 
 The thresholds live in one constants object so they are easy to tune.
+
+### 4.1 Grades of every option (in a reveal only)
+
+When a decision is answered (or, in a battle, runs out of time) the server's
+reveal of it carries `optionGrades`: one entry per option, in the order of
+`decision.options`, graded by the same rules as an answer:
+
+```json
+"optionGrades": [
+  { "id": "fold",     "grade": "blunder", "label": "Blunder", "points": 0,  "freq": 0,    "loss": 5.21, "lossPct": 71.37 },
+  { "id": "call",     "grade": "best",    "label": "Best",    "points": 100, "freq": 0.954, "loss": 0,    "lossPct": 0 },
+  { "id": "raise_54", "grade": "correct", "label": "Correct", "points": 61.93, "freq": 0.046, "loss": 0, "lossPct": 0 }
+]
+```
+
+`loss` / `lossPct` are `null` for chart decisions. The entry of the chosen
+option equals the reveal's own `grade`, `points`, `loss` and `lossPct`, except
+for a recorded play of a puzzle file that has changed since (`stale`): the
+reveal keeps the stored grade and points, `optionGrades` follow the current
+file. The web app uses them for "try another answer" on an answered decision
+(nothing is sent back and nothing is stored). They are part of the reveal only:
+never in `steps`, never before the decision is answered, never in what a battle
+shows about the other players.

@@ -78,3 +78,79 @@ export function gradeBadge(grade, { small = false } = {}) {
 }
 
 export const delay = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// ---------- dialogs and the clipboard ----------
+const FOCUSABLE = 'button:not([disabled]), [href], input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+/**
+ * Keep keyboard focus inside `root` while it is open (Tab and Shift+Tab wrap).
+ * Returns a function that removes the trap.
+ */
+export function trapFocus(root) {
+  const onKey = (e) => {
+    if (e.key !== 'Tab') return;
+    const list = [...root.querySelectorAll(FOCUSABLE)].filter((x) => x.offsetParent !== null || x === document.activeElement);
+    if (!list.length) { e.preventDefault(); return; }
+    const first = list[0], last = list.at(-1);
+    if (!root.contains(document.activeElement)) { e.preventDefault(); first.focus(); return; }
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  };
+  document.addEventListener('keydown', onKey, true);
+  return () => document.removeEventListener('keydown', onKey, true);
+}
+
+/** Copy with the old way (a hidden textarea and execCommand); true when it worked. */
+function legacyCopy(text) {
+  const ta = h('textarea', { 'aria-hidden': 'true', readonly: true, style: { position: 'fixed', left: '-9999px', top: '0', opacity: '0' } });
+  ta.value = text;
+  const prev = document.activeElement;
+  document.body.append(ta);
+  let ok = false;
+  try { ta.select(); ta.setSelectionRange(0, text.length); ok = document.execCommand('copy'); } catch { ok = false; }
+  ta.remove();
+  prev?.focus?.({ preventScroll: true });
+  return ok;
+}
+
+/** The text in a box to select and copy by hand (when the browser does not allow copying). */
+export function copyBox(text, { title = 'Copy this text' } = {}) {
+  document.querySelector('.copy-box')?.remove();
+  const prev = document.activeElement;
+  const area = h('textarea.copy-text', { readonly: true, spellcheck: 'false', 'aria-label': title });
+  area.value = text;
+  let untrap = () => {};
+  const close = () => {
+    untrap(); box.remove();
+    window.removeEventListener('keydown', onKey, true); window.removeEventListener('hashchange', close);
+    if (prev?.isConnected) prev.focus({ preventScroll: true });
+  };
+  const onKey = (e) => { if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); close(); } };
+  let downOutside = false;
+  const box = h('div.copy-box', {
+    role: 'dialog', 'aria-modal': 'true', 'aria-label': title,
+    on: { pointerdown: (e) => { downOutside = e.target === box; }, click: (e) => { if (e.target === box && downOutside) close(); } },
+  },
+    h('div.copy-panel',
+      h('div.copy-head', h('h2.copy-title', title), h('button.btn.btn-sm', { type: 'button', on: { click: close } }, 'Close', h('kbd', 'Esc'))),
+      h('p.copy-note', 'Copying is blocked here. The text is selected: copy it with Ctrl+C (or ⌘C, or long-press and Copy), then paste it into Claude.'),
+      area));
+  document.body.append(box);
+  window.addEventListener('keydown', onKey, true); // before any screen sees Escape
+  window.addEventListener('hashchange', close);     // leaving the screen closes it
+  untrap = trapFocus(box);
+  area.focus({ preventScroll: true });
+  area.select();
+}
+
+/** Put `text` on the clipboard, with a toast; if the browser refuses, show it to copy by hand. */
+export async function copyText(text, { done = 'Copied.', title } = {}) {
+  let ok = false;
+  try {
+    if (navigator.clipboard?.writeText && window.isSecureContext) { await navigator.clipboard.writeText(text); ok = true; }
+  } catch { ok = false; }
+  if (!ok) ok = legacyCopy(text);
+  if (ok) toast(done);
+  else copyBox(text, { title });
+  return ok;
+}

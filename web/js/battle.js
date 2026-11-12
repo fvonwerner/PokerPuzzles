@@ -14,7 +14,7 @@ import { h, clear, toast, reducedMotion, gradeBadge, STREETS, GRADE_ICON, GRADE_
 import { API, session } from './api.js';
 import { playScreen } from './play.js';
 import { sound } from './sound.js';
-import { choiceLine, decisionBody } from './feedback.js';
+import { choiceLine, decisionBody, copyButton } from './feedback.js';
 import { cardText } from './poker.js';
 import { setLinkedText, tagChips } from './learn.js';
 
@@ -521,6 +521,8 @@ export function battleScreen(root, { id, nav }) {
       const key = el.dataset.deadline;
       const s = Math.ceil(rem / 1000);
       if (rem > 0 && s <= 5 && !clockFired.has(`${key}:${s}`)) { clockFired.add(`${key}:${s}`); sound.tick(s); }
+      // the last 5 s: nothing may hide your options (looking back, a full-screen chart)
+      if (rem > 0 && rem <= 5000 && !clockFired.has(`${key}:near`)) { clockFired.add(`${key}:near`); sub?.clockUrgent?.(); }
       if (rem <= 0 && !clockFired.has(`${key}:up`)) { clockFired.add(`${key}:up`); sound.timeUp(); el.closest('.actionbar')?.classList.add('timeup'); }
       if (rem <= -((st?.timing?.graceMs || 1500) + 300) && !clockFired.has(`${key}:ask`)) { clockFired.add(`${key}:ask`); sub?.timeUp?.(); }
     }
@@ -771,6 +773,10 @@ export function battleScreen(root, { id, nav }) {
       // Coming back to a decision that opened a while ago (reload, reconnect): no deal animation while the clock runs.
       rejoining: () => { const L = st.live; return !!L && L.phase !== 'countdown' && L.decideAt && Date.now() - toLocal(L.decideAt) > 4000; },
       barSig: () => { const L = st.live || {}; return JSON.stringify([L.phase, L.hand, L.index, L.deadline, L.answered, L.ready, L.autoAt, st.opps.map((o) => o.online)]); },
+      // The shared cursor as the play screen compares it: looking back returns to now when it moves or somebody answers.
+      liveState: () => { const L = st.live || {}; return { phase: L.phase, hand: L.hand, index: L.index, deadline: L.deadline || null, answered: (L.answered || []).length }; },
+      // Somebody may still be answering a decision of this hand: no "Copy for Claude" meanwhile.
+      decisionOpen: () => { if (review) return false; const L = st.live || {}; return L.phase === 'decide' && L.hand === n; },
     };
     const screen = playScreen(root, { id, mode: 'battle', nav, battle: hooks });
 
@@ -870,15 +876,25 @@ export function battleScreen(root, { id, nav }) {
     }
 
     // --- clocks, waiting states and the shared Continue / Next hand in the action bar ---
-    function decorateBar({ top, mid, bottom }, phase, { pending }) {
+    function decorateBar({ top, mid, bottom }, phase, { pending, looking = false }) {
       const L = L0();
       const s = st;
+      if (looking) {
+        // Looking back: the clock that runs stays in view, in the bar's top line (the rest waits for the return).
+        if (review || L.hand !== n) return;
+        let clock = null;
+        if (phase === 'deciding' && L.phase === 'decide' && L.deadline) clock = clockEl(L.deadline, { total: s.timing.clockMs, mine: true });
+        else if (phase === 'feedback' && L.phase === 'decide' && L.deadline) clock = clockEl(L.deadline, { total: s.timing.clockMs, label: 'left for the others' });
+        else if (((phase === 'feedback' && L.phase === 'review') || (phase === 'end' && L.phase === 'handEnd')) && L.autoAt) clock = clockEl(L.autoAt, { total: s.timing.autoMs, calm: true, label: 'until it goes on' });
+        if (clock) (top.querySelector('.rw-top') || top).append(h('div.rw-clock', clock));
+        return;
+      }
       const meReady = L.ready?.includes(s.you.id);
       const notMe = (ids) => s.opps.filter((o) => !ids.includes(o.id));
       const waitBlock = (text, clock) => h('div.bwaitbar', { role: 'status' }, h('span.bwait-text', text, h('span.bw-dots', h('i'), h('i'), h('i'))), clock);
       const bigBtn = (label, onClick) => h('button.btn.btn-primary.big-continue.bar-in', { type: 'button', on: { click: onClick } }, label, h('kbd', 'Enter'));
       if (review) {
-        if (phase === 'end') { const fb = bottom.querySelector('.final-btn'); clear(bottom).append(h('div.end-bar', fb, bigBtn('Back to the result', () => go('final')))); }
+        if (phase === 'end') clear(bottom).append(h('div.end-bar', bigBtn('Back to the result', () => go('final'))));
         return;
       }
       if (phase === 'deciding') {
@@ -908,7 +924,6 @@ export function battleScreen(root, { id, nav }) {
           clear(bottom).append(waitBlock('The hand goes on', null));
         }
       } else if (phase === 'end') {
-        const fb = bottom.querySelector('.final-btn');
         let el;
         if (L.phase === 'handEnd' && L.hand === n) {
           const autoClock = L.autoAt ? clockEl(L.autoAt, { total: s.timing.autoMs, calm: true, label: 'until it goes on' }) : null;
@@ -922,7 +937,7 @@ export function battleScreen(root, { id, nav }) {
         } else if (L.phase === 'countdown') el = waitBlock('The next hand is starting', null);
         else if (L.phase === 'done' || s.status === 'finished') el = bigBtn('See the result', () => go('final'));
         else el = waitBlock('…', null);
-        clear(bottom).append(h('div.end-bar', fb, el));
+        clear(bottom).append(h('div.end-bar', el));
       }
     }
 
@@ -989,12 +1004,13 @@ export function battleScreen(root, { id, nav }) {
                 c ? (c.timeout ? [' ran out of time · ', gradeBadge('timeout', { small: true }), ' 0 pts'] : [' chose ', h('b', c.label), ' · ', gradeBadge(c.grade, { small: true }), ` ${Math.round(c.points)} pts`, c.optionId === rv.choice ? h('span.dp-same', 'same as you') : null])
                   : ' —');
             }))),
-          ...decisionBody(rv, v.puzzle));
+          ...decisionBody(rv, v.puzzle, { onCopy: v.canCopy ? () => v.copy(rv.index) : null }));
       }
       const panel = h(`div.endpanel.duelpanel${animate ? '.duel-in' : ''}`, { role: 'region', 'aria-label': 'End of hand: everybody\'s picks' },
         head, banner,
         h(`div.duel-cols.c${cols}`, { 'aria-hidden': 'true' }, h('span'), h('span.dc-me', 'You'), st.opps.map((o) => h(`span.dc-opp.${oc(o)}`, o.name))),
         h('div.duel-rows', { role: 'tablist', 'aria-label': 'Decisions' }, rows),
+        v.canCopy && rs.length ? h('div.duel-copy', copyButton(() => v.copy('hand'), { label: 'Copy the hand for Claude', what: 'the whole hand' })) : null,
         more, detail);
       if (animate) {
         hv.revealed = true;
@@ -1027,6 +1043,7 @@ export function battleScreen(root, { id, nav }) {
     const me = {
       hand: n,
       timeUp() { if (screen.phase === 'deciding') screen.timeoutNow(); },
+      clockUrgent() { if (!review) screen.returnNow(); },
       update(prev, next) {
         if (review) return;
         const L = next.live;

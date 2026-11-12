@@ -4,18 +4,29 @@
 // and shows the selected one's detail, the action bar shows its strategy.
 //
 // Looking back: at any time (not while cards are moving) the player can step
-// through every moment of the hand so far: ArrowLeft / ArrowRight, or a click
-// on the hand-history strip. A past moment shows the table exactly as it was
-// (bets, stacks, pot, board, folds); one of your answered decisions shows its
-// analysis, a villain action shows villain's strategy where it is revealed.
-// Escape (or ArrowRight past the newest moment, or "Back to now") returns.
-// Only what has already been shown can be visited.
-import { h, clear, fmtBb, fmtSigned, toast, reducedMotion, delay, gradeBadge, STREETS, GRADE_ICON, GRADE_LABEL } from './ui.js';
+// through every moment of the hand so far: ArrowLeft / ArrowRight, the
+// Earlier / Later buttons, or a click on the hand-history strip. A past
+// moment shows the table exactly as it was (bets, stacks, pot, board, folds)
+// and the action bar becomes the looking-back bar: what the moment is, a line
+// about it (or, at one of your answered decisions, its options, live again),
+// and Earlier / "Return to your play" / Later. Nothing covers the table and
+// neither the table nor the bar change size. An answered decision shows its
+// analysis; trying another option there shows what it would have scored
+// ("Trying again", local only: nothing is sent, nothing is stored). A villain
+// action shows villain's strategy where it is revealed. Escape, "Return to
+// your play" or Later past the newest moment returns and restores the table,
+// panel, bar, history strip and focus. Only what has already been shown can
+// be visited. In a battle the clock stays in the bar while looking back, and
+// the hand moving on, an opponent answering or the last 5 s of your own clock
+// bring you back to the present.
+import { h, clear, fmtBb, fmtSigned, fmtFreq, toast, reducedMotion, delay, gradeBadge, copyText, STREETS, GRADE_ICON, GRADE_LABEL } from './ui.js';
 import { API } from './api.js';
 import { createTable } from './table.js';
 import { modelAt, initialModel, applyStep } from './handstate.js';
 import { shortLabel, pctOfPot, actionColors, cardText, positionLabel } from './poker.js';
-import { feedbackPanel, villainPanel, answerButtons, choiceLine, decisionBody } from './feedback.js';
+import { feedbackPanel, villainPanel, answerButtons, choiceLine, decisionBody, trialCard, trialButtons, copyButton, optLabel } from './feedback.js';
+import { closeChartOverlay } from './grid.js';
+import { buildPrompt } from './prompt.js';
 import { sound } from './sound.js';
 import { setLinkedText, tagChips } from './learn.js';
 
@@ -28,6 +39,19 @@ function pauseAfter(s) {
   return 0;
 }
 
+/** An action as words after a seat name: "folds", "bets 1.8", "raises to 5.4". */
+function verbPhrase(kind, amount) {
+  switch (kind) {
+    case 'fold': return 'folds';
+    case 'check': return 'checks';
+    case 'call': return amount ? `calls ${fmtBb(amount)}` : 'calls';
+    case 'bet': return `bets ${fmtBb(amount)}`;
+    case 'raise': return `raises to ${fmtBb(amount)}`;
+    case 'allin': return `goes all-in ${fmtBb(amount)}`;
+    default: return kind;
+  }
+}
+
 export function playScreen(root, { id, mode, nav, battle = null }) {
   // mode: 'scored' | 'practice' | 'battle'. In a battle, `battle` (battle.js)
   // supplies the API calls, the battle bar in place of the title row, the
@@ -38,11 +62,16 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
   const callAct = (index, optionId) => (battle ? battle.act(index, optionId) : API.act(id, index, optionId, mode === 'practice' ? 'practice' : 'scored'));
   const st = {
     puzzle: null, steps: [], reveals: {}, shown: 0, phase: 'loading', end: null,
-    pending: null, skip: false, sheetCollapsed: false,
+    pending: null, skip: false,
     sel: null, moreOpen: false, decisionPos: 0,
     view: null,        // looking back: the moment (step index, -1 = blinds) shown, or null for now
     nowModel: null,    // the table as it is now (to come back to)
     savedSide: null,   // the side panel of now, while looking back
+    selBefore: null,   // the finished view's selected decision before looking back
+    returnFocus: null, // what had focus before looking back
+    trial: null,       // looking back at an answered decision: { index, optionId } tried again (local only)
+    tried: {},         // decision index -> Set of option ids tried while looking back
+    live: null,        // battle: the shared cursor last seen (looking back returns when it moves)
   };
   let destroyed = false;
 
@@ -52,11 +81,10 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
   const log = h('div.log', { 'aria-label': 'Hand history: pick a moment to see the table as it was' });
   const side = h('aside.side', { 'aria-label': 'Hand panel' });
   const main = h('div.play-main', tableHost, bar, log);
-  const screen = h('section.play', top, h('div.play-grid', main, side));
+  const announcer = h('p.sr-only', { role: 'status', 'aria-live': 'polite' }); // looking back, said out loud
+  const screen = h('section.play', top, h('div.play-grid', main, side), announcer);
   clear(root).append(screen);
   const table = createTable(tableHost);
-  const pastBadge = h('div.past-badge', { role: 'status', hidden: true });
-  tableHost.append(pastBadge);
   const ro = typeof ResizeObserver === 'function'
     ? new ResizeObserver(() => screen.style.setProperty('--bar-h', `${bar.offsetHeight}px`)) : null;
   ro?.observe(bar);
@@ -67,6 +95,8 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
   const sortedReveals = () => Object.values(st.reveals).sort((a, b) => a.index - b.index);
   /** Draw the table as it is now and remember it. */
   function drawNow(m) { st.nowModel = m; table.render(m); }
+  const heroSeat = () => st.puzzle.hero.seat;
+  const who = (seat) => (seat === heroSeat() ? `${seat} (you)` : seat);
 
   function renderTop() {
     const p = st.puzzle;
@@ -95,6 +125,7 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
 
   /** The hand-history strip (always the present hand so far; the moment looked at is marked). */
   function renderLog(m) {
+    const focused = log.contains(document.activeElement) ? document.activeElement.dataset.moment : undefined;
     const list = momentList();
     const can = (i) => !!list && list.includes(i);
     const groups = [];
@@ -109,7 +140,7 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
     }
     if (!groups.length) groups.push({ street: 'preflop', cards: null, i: -1, items: [] });
     const momentBtn = (i, cls, content, title) => (can(i)
-      ? h(`button.${cls}.log-click${st.view === i ? '.at' : ''}`, { type: 'button', title, dataset: { moment: String(i) }, on: { click: () => goMoment(i) } }, content)
+      ? h(`button.${cls}.log-click${st.view === i ? '.at' : ''}`, { type: 'button', title, 'aria-current': st.view === i ? 'step' : null, dataset: { moment: String(i) }, on: { click: () => goMoment(i) } }, content)
       : h(`span.${cls}`, content));
     clear(log).append(h('h2.sr-only', 'Hand history'), ...groups.map((g) => h('div.log-street',
       momentBtn(g.i, 'log-st', [STREETS[g.street], g.cards ? h('span.log-cards', g.cards.map(cardText)) : null], g.i < 0 ? 'The table with the blinds posted' : `The table when the ${g.street} was dealt`),
@@ -121,6 +152,8 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
         const title = e.decisionIndex !== undefined ? 'The table when you decided, with the analysis' : e.villain && e.revealed ? "The table after this action, with villain's strategy" : 'The table after this action';
         return momentBtn(e.i, `log-item${e.forced ? '.log-forced' : ''}`, txt, title);
       }))));
+    // keep keyboard focus on the same moment when the strip is redrawn
+    if (focused !== undefined) log.querySelector(`[data-moment="${focused}"]`)?.focus({ preventScroll: true });
     // keep the moment looked at (or the newest) in view, scrolling the strip only (never the page)
     const at = log.querySelector('.at');
     if (at) {
@@ -133,20 +166,14 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
   function setSide(content) {
     clear(side);
     side.classList.toggle('has-content', !!content);
-    side.classList.toggle('sheet', !!content);
-    side.classList.toggle('collapsed', st.sheetCollapsed && !!content);
-    if (!content) return;
-    side.append(h('button.sheet-handle', {
-      type: 'button', 'aria-expanded': String(!st.sheetCollapsed),
-      on: { click: () => { st.sheetCollapsed = !st.sheetCollapsed; side.classList.toggle('collapsed', st.sheetCollapsed); side.querySelector('.sheet-handle').setAttribute('aria-expanded', String(!st.sheetCollapsed)); } },
-    }, h('span.handle-bar', { 'aria-hidden': 'true' }), h('span.sr-only', 'Show or hide the panel')));
-    side.append(content);
+    side.scrollTop = 0;
+    if (content) side.append(content);
+    syncCopy();
   }
   function restoreSide(nodes) {
     clear(side).append(...nodes);
-    const has = nodes.length > 0;
-    side.classList.toggle('has-content', has);
-    side.classList.toggle('sheet', has);
+    side.classList.toggle('has-content', nodes.length > 0);
+    syncCopy();
   }
 
   // ---------- action bar ----------
@@ -156,8 +183,14 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
   function renderBar(m) {
     const topSlot = h('div.bar-slot.bar-top'), mid = h('div.bar-slot.bar-main'), bottom = h('div.bar-slot.bar-bottom');
     const wasPhase = bar.dataset.phase;
+    const wasLooking = bar.classList.contains('past');
+    const looking = st.view !== null;
+    // a control of the looking-back bar that has focus keeps it when the bar is redrawn
+    const focusKey = bar.contains(document.activeElement) ? document.activeElement.dataset?.rw : undefined;
     bar.dataset.phase = st.phase;
-    if (st.phase === 'animating') {
+    if (looking) {
+      renderLookingBack(topSlot, mid, bottom);
+    } else if (st.phase === 'animating') {
       topSlot.append(h('button.btn.btn-ghost.btn-sm.skip', { type: 'button', on: { click: skip } }, 'Skip animation', h('kbd', 'Space')));
     } else if (st.phase === 'deciding' && m?.decision) {
       const d = m.decision;
@@ -165,10 +198,10 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
       const toCall = d.toCall > 0 ? ` · ${fmtBb(d.toCall)} to call` : '';
       topSlot.append(h('p.bar-prompt', h('b', `${STREETS[d.street]}: your move`), h('span.muted', ` · pot ${fmtBb(d.state.pot)}${toCall}`)));
       // Redrawn for the same decision (a battle poll): keep the very same buttons (focus, hover, no re-animation).
-      const keep = bar.querySelector(`.bar-main[data-dec="${d.index}"] > .bar-buttons:not(.answers)`);
+      const keep = !wasLooking && bar.querySelector(`.bar-main[data-dec="${d.index}"] > .bar-buttons:not(.answers):not(.trial-buttons)`);
       mid.dataset.dec = String(d.index);
       if (keep && wasPhase === 'deciding') mid.append(keep);
-      else mid.append(h('div.bar-buttons.bar-in', d.options.map((o, k) => {
+      else mid.append(h(`div.bar-buttons${wasLooking ? '' : '.bar-in'}`, d.options.map((o, k) => {
         const pct = d.source === 'chart' ? null : pctOfPot(o, d.state); // no % of pot preflop
         return h(`button.opt.k-${o.kind}`, {
           type: 'button', style: { '--opt': colors[k] }, dataset: { opt: o.id },
@@ -176,8 +209,8 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
           on: { click: (e) => choose(o.id, e.currentTarget) },
         },
         h('span.opt-key', { 'aria-hidden': 'true' }, k + 1),
-        h('span.opt-main', o.kind === 'raise' ? `Raise to ${fmtBb(o.amount)}` : shortLabel(o)),
-        h('span.opt-sub', o.kind === 'fold' || o.kind === 'check' ? ' ' : `${fmtBb(o.amount)} bb${pct !== null ? ` · ${pct}% pot` : ''}`));
+        h('span.opt-main', optLabel(o)),
+        h('span.opt-sub', o.kind === 'fold' || o.kind === 'check' ? ' ' : `${fmtBb(o.amount)} bb${pct !== null ? ` · ${pct}% pot` : ''}`));
       })));
     } else if (st.phase === 'feedback' && st.pending) {
       // The buttons stay and show the answer; the big Continue sits right under them.
@@ -185,7 +218,7 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
       const last = st.pending.next === null;
       if (rv.continuesWith) topSlot.append(h('p.continues-note', rv.continuesWith));
       mid.append(answerButtons(rv, { affirm: st.affirmNow, opp: battle?.oppPick(rv.index) }));
-      bottom.append(h('button.btn.btn-primary.big-continue.bar-in', { type: 'button', on: { click: cont } }, last ? 'Finish hand' : 'Continue', h('kbd', 'Enter')));
+      bottom.append(h(`button.btn.btn-primary.big-continue${wasLooking ? '' : '.bar-in'}`, { type: 'button', on: { click: cont } }, last ? 'Finish hand' : 'Continue', h('kbd', 'Enter')));
     } else if (st.phase === 'end') {
       const rv = st.reveals[st.sel];
       const btn = h('button.btn.btn-primary.big-continue', { type: 'button', disabled: true }, 'Next puzzle', h('kbd', 'Enter'));
@@ -199,14 +232,66 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
       }
       topSlot.append(h('p.bar-prompt', h('b', 'Hand over. '), h('span.muted', endLine(st.steps.at(-1)))));
       if (rv) mid.append(answerButtons(rv, { opp: battle?.oppPick(rv.index) }));
-      bottom.append(h('div.end-bar',
-        st.view !== null ? h('button.btn.btn-ghost.final-btn', { type: 'button', on: { click: goPresent } }, 'Final board') : '',
-        btn));
+      bottom.append(h('div.end-bar', btn));
     }
-    // In a battle the clocks, the waiting states and the shared Continue / Next hand live here.
-    battle?.decorateBar({ top: topSlot, mid, bottom }, st.phase, { onContinue: cont, decision: m?.decision || null, pending: st.pending });
-    bar.classList.toggle('past', st.view !== null);
+    // In a battle the clocks, the waiting states and the shared Continue / Next hand live here
+    // (while looking back: only the clock, in the top line).
+    battle?.decorateBar({ top: topSlot, mid, bottom }, st.phase, { onContinue: cont, decision: m?.decision || null, pending: st.pending, looking });
+    bar.classList.toggle('past', looking);
     clear(bar).append(topSlot, mid, bottom);
+    if (focusKey) {
+      const el = bar.querySelector(`[data-rw="${focusKey}"]`);
+      if (el && !el.disabled) el.focus({ preventScroll: true });
+      else if (looking) bar.querySelector('[data-rw="return"]')?.focus({ preventScroll: true });
+    }
+  }
+
+  /** The action bar while looking back: what the moment is, its content, Earlier / Return / Later. */
+  function renderLookingBack(topSlot, mid, bottom) {
+    const i = st.view;
+    const list = momentList() || [];
+    const k = list.indexOf(i);
+    const s = i >= 0 ? st.steps[i] : null;
+    const rv = s?.type === 'decision' ? st.reveals[s.index] : null;
+    topSlot.append(h('div.rw-top',
+      h('p.rw-head',
+        h('span.rw-k', 'Earlier moment'), h('span.rw-what', ` · ${momentLabel(i)}`),
+        rv ? h('span.rw-hint', ' · pick an option to try it') : null)));
+    if (rv) {
+      mid.append(trialButtons(rv, {
+        trying: st.trial?.index === rv.index ? st.trial.optionId : null,
+        tried: st.tried[rv.index], onTry: (optionId) => tryOption(rv.index, optionId),
+      }));
+    } else mid.append(momentCard(i));
+    const last = k >= list.length - 1;
+    bottom.append(h('div.rw-nav', { role: 'group', 'aria-label': 'Looking back' },
+      h('button.btn.rw-step', {
+        type: 'button', dataset: { rw: 'prev' }, disabled: k <= 0, 'aria-keyshortcuts': 'ArrowLeft', 'aria-label': 'One moment earlier',
+        on: { click: () => step(-1) },
+      }, h('span.rw-arrow', { 'aria-hidden': 'true' }, '◀'), h('span.rw-step-t', 'Earlier')),
+      h('button.btn.btn-primary.rw-return', {
+        type: 'button', dataset: { rw: 'return' }, 'aria-keyshortcuts': 'Escape', on: { click: () => goPresent() },
+      }, 'Return to your play', h('kbd', 'Esc')),
+      h('button.btn.rw-step', {
+        type: 'button', dataset: { rw: 'next' }, 'aria-keyshortcuts': 'ArrowRight', 'aria-label': last ? 'Return to your play' : 'One moment later',
+        on: { click: () => step(1) },
+      }, h('span.rw-step-t', last ? 'Now' : 'Later'), h('span.rw-arrow', { 'aria-hidden': 'true' }, '▶'))));
+  }
+
+  /** The bar's middle while looking back at anything but your decision: the moment in words. */
+  function momentCard(i) {
+    const m = momentModel(i);
+    const s = i >= 0 ? st.steps[i] : null;
+    const hero = m.seats[m.heroSeat], vil = m.seats[m.villainSeat];
+    const facts = `Pot ${fmtBb(m.pot)} · you ${fmtBb(hero.stack)} behind · ${m.villainSeat} ${fmtBb(vil.stack)} behind`;
+    let what, sub = facts;
+    if (!s) what = 'Blinds posted: SB 0.5, BB 1';
+    else if (s.type === 'deal') what = [`${STREETS[s.street]} `, h('span.mc-cards', s.cards.map(cardText))];
+    else if (s.type === 'villain') {
+      what = `${s.seat} ${verbPhrase(s.action.kind, s.action.amount)}${s.action.kind === 'bet' && s.action.pctPot ? ` (${s.action.pctPot}% pot)` : ''}`;
+      sub = 'range' in s ? [`${fmtFreq(s.freq)} of villain's range does this`, h('span.mc-more', ' · the panel shows the whole range')] : "Villain's strategy here shows after your answer";
+    } else what = `${who(s.seat)} ${verbPhrase(s.kind, actionAmount(i))}`;
+    return h('div.moment-card', h('p.mc-what', what), h('p.mc-sub', sub));
   }
 
   // The puzzle to go to next (server nextId), fetched once per finished hand.
@@ -239,6 +324,7 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
 
   // ---------- flow ----------
   async function animateTo(target, { keepSkip = false } = {}) {
+    closeChartOverlay(); // the hand moves on: no chart over it
     if (st.view !== null) goPresent({ quiet: true });
     st.phase = 'animating';
     if (!keepSkip) st.skip = false;
@@ -288,7 +374,8 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
   /** Answer the open decision (optionId null: report a battle time-out). */
   async function choose(optionId, btn) {
     if (st.phase !== 'deciding') return;
-    if (st.view !== null && optionId !== null) return; // looking back: the buttons are inactive
+    if (st.view !== null && optionId !== null) return; // looking back: only a time-out can come in
+    closeChartOverlay();
     if (st.view !== null) goPresent({ quiet: true });
     const m = st.nowModel || model();
     const d = m.decision;
@@ -314,19 +401,23 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
     }
   }
 
+  /** The analysis panel of an answered decision (feedback, or looking back at it). */
+  function decisionPanel(rv) {
+    const fb = feedbackPanel(rv, { puzzle: st.puzzle, practice: mode === 'practice', onCopy: offersCopy() ? () => copyPrompt(rv.index) : null });
+    battle?.decorateFeedback(fb, rv);
+    return fb;
+  }
+
   function showFeedback(res, m) {
     st.reveals[res.reveal.index] = res.reveal;
     st.pending = res;
     st.steps = res.steps;
     st.end = res.end;
-    st.sheetCollapsed = false;
+    st.phase = 'feedback';
     renderTop();
-    const fb = feedbackPanel(res.reveal, { puzzle: st.puzzle, practice: mode === 'practice' });
-    battle?.decorateFeedback(fb, res.reveal);
-    setSide(fb);
+    setSide(decisionPanel(res.reveal));
     if (battle && res.reveal.timeout) battle.onTimeUp?.();
     else sound.grade(res.reveal.grade);
-    st.phase = 'feedback';
     st.affirmNow = true;
     bar.classList.remove('busy');
     renderBar(m);
@@ -347,8 +438,12 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
   /** Battle: the shared cursor moved on; fetch the hand as it is now and play it forward. */
   async function advance() {
     if (st.phase !== 'feedback' && st.phase !== 'deciding') return false;
-    const r = await callStart();
+    if (st.advancing) return true; // one fetch at a time (a poll and a Continue can both ask)
+    st.advancing = true;
+    let r;
+    try { r = await callStart(); } finally { st.advancing = false; }
     if (destroyed) return true;
+    if (st.phase !== 'feedback' && st.phase !== 'deciding') return true; // answered (or timed out) meanwhile: the next poll moves on
     st.steps = r.steps; st.end = r.end;
     for (const a of r.answers || []) st.reveals[a.index] = a;
     st.pending = null;
@@ -363,6 +458,23 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
   function timeoutNow() {
     if (st.phase !== 'deciding') return;
     choose(null);
+  }
+
+  // ---------- "Copy for Claude" ----------
+  // Only where the solver's answer is revealed: after a decision and in the finished hand; never while one
+  // is open (in a battle: not while anybody is still answering the shared decision).
+  function offersCopy() { return st.phase === 'feedback' || st.phase === 'end'; }
+  function canCopy() { return offersCopy() && !battle?.decisionOpen?.(); }
+  /** Show or hide the copy buttons as the battle's shared decision opens and closes. */
+  function syncCopy() {
+    const on = canCopy();
+    side.querySelectorAll('.copy-claude').forEach((b) => { b.hidden = !on; });
+  }
+  function copyPrompt(what) {
+    if (!canCopy()) return;
+    const text = buildPrompt({ puzzle: st.puzzle, steps: st.steps, reveals: st.reveals, ...(what === 'hand' ? { whole: true } : { index: what }) });
+    if (!text) { toast('There is nothing to copy here yet.'); return; }
+    copyText(text, { done: 'Copied. Paste it into Claude.', title: 'Copy this and paste it into Claude' });
   }
 
   // ---------- finished hand ----------
@@ -381,11 +493,11 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
   /** Select a decision in the finished view; `rewind` moves the table to it. */
   function select(i, rewind) {
     if (!st.reveals[i]) return;
-    st.sel = i;
     if (rewind) {
       const pos = st.steps.findIndex((s) => s.type === 'decision' && s.index === i);
       if (pos >= 0) { goMoment(pos); return; }
     }
+    st.sel = i;
     renderTop();
     renderEndPanel();
     renderBar(null);
@@ -397,6 +509,7 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
       setSide(battle.endPanel(viewApi()));
       const ep = side.querySelector('.endpanel');
       if (ep && keep) ep.scrollTop = keep;
+      showTrial();
       return;
     }
     const end = st.end;
@@ -448,12 +561,14 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
           h('p.end-result', endLine(step)),
           sd ? h('p.end-showdown',
             h('span', h('span.muted', 'You '), st.puzzle.hero.hand.map(cardText), sd.heroHandName ? ` ${sd.heroHandName}` : ''),
-            h('span', h('span.muted', 'Villain '), sd.villainHand.map(cardText), sd.villainHandName ? ` ${sd.villainHandName}` : '')) : null)),
+            h('span', h('span.muted', 'Villain '), sd.villainHand.map(cardText), sd.villainHandName ? ` ${sd.villainHandName}` : '')) : null,
+          copyButton(() => copyPrompt('hand'), { label: 'Copy the hand for Claude', what: 'the whole hand' }))),
       more,
       h('div.recap-chips', { role: 'tablist', 'aria-label': 'Your decisions' }, chips),
       rv ? h('div.end-detail',
         h('div.end-detail-head', gradeBadge(rv.grade, { small: true }), h('span.num.end-detail-pts', `${Math.round(rv.points)} pts`), choiceLine(rv)),
-        ...decisionBody(rv, st.puzzle)) : null));
+        ...decisionBody(rv, st.puzzle, { onCopy: () => copyPrompt(rv.index) })) : null));
+    showTrial();
   }
 
   // ---------- looking back ----------
@@ -478,13 +593,21 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
     }
     return modelAt(st.puzzle, st.steps, i + 1, opts());
   }
+  /** What an action step put in: preflop calls add the difference (their amount is the total), the rest their amount. */
+  function actionAmount(i) {
+    const s = st.steps[i];
+    if (s.type !== 'action' || s.kind !== 'call' || s.street !== 'preflop') return s.amount;
+    const before = modelAt(st.puzzle, st.steps, i, opts()).seats[s.seat].bet || 0;
+    const after = momentModel(i).seats[s.seat].bet || 0;
+    return Math.round((after - before) * 100) / 100 || s.amount;
+  }
   function momentLabel(i) {
     if (i < 0) return 'Preflop · blinds posted';
     const s = st.steps[i];
     if (s.type === 'deal') return `${STREETS[s.street]} dealt`;
     if (s.type === 'decision') return `${STREETS[s.street]} · your decision ${s.index + 1}`;
-    if (s.type === 'villain') return `${STREETS[s.street]} · ${s.seat} ${shortLabel(s.action)}`;
-    if (s.type === 'action') return `${STREETS[s.street]} · ${s.seat} ${s.kind}${s.amount ? ` ${fmtBb(s.amount)}` : ''}`;
+    if (s.type === 'villain') return `${STREETS[s.street]} · ${s.seat} ${verbPhrase(s.action.kind, s.action.amount)}`;
+    if (s.type === 'action') return `${STREETS[s.street]} · ${who(s.seat)} ${verbPhrase(s.kind, actionAmount(i))}`;
     return 'Earlier moment';
   }
   function presentLogModel() {
@@ -496,40 +619,50 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
   function goMoment(i) {
     const list = momentList();
     if (!list || !list.includes(i)) return;
-    if (st.view === null && st.phase !== 'end') st.savedSide = Array.from(side.childNodes);
+    closeChartOverlay();
+    if (st.view === null) {
+      // entering: remember the present to come back to exactly
+      st.returnFocus = document.activeElement;
+      st.savedSide = st.phase === 'end' ? null : Array.from(side.childNodes);
+      st.savedScroll = [side.scrollTop, side.querySelector('.endpanel')?.scrollTop || 0];
+      st.selBefore = st.sel;
+      st.tried = {};
+    }
     st.view = i;
-    table.finishAll();
-    table.render(momentModel(i));
     const s = i >= 0 ? st.steps[i] : null;
     const rv = s?.type === 'decision' ? st.reveals[s.index] : null;
+    if (!rv || st.trial?.index !== s.index) st.trial = null;
+    table.finishAll();
+    table.render(momentModel(i));
     if (rv) {
       if (st.phase === 'end') { st.sel = s.index; renderEndPanel(); }
-      else {
-        const fb = feedbackPanel(rv, { puzzle: st.puzzle, practice: mode === 'practice' });
-        battle?.decorateFeedback(fb, rv);
-        setSide(fb);
-      }
+      else setSide(decisionPanel(rv));
     } else if (s?.type === 'villain' && 'range' in s) {
-      setSide(villainPanel(s, st.puzzle, () => goPresent()));
+      setSide(villainPanel(s, st.puzzle));
     } else if (st.phase === 'end') {
       if (!side.querySelector('.endpanel')) renderEndPanel();
     } else if (st.savedSide) restoreSide(st.savedSide);
-    pastBadge.hidden = false;
-    clear(pastBadge).append(
-      h('span.past-k', 'Earlier moment'), h('span.past-what', momentLabel(i)),
-      h('button.btn.btn-sm.past-back', { type: 'button', on: { click: () => goPresent() } }, 'Back to now', h('kbd', 'Esc')));
     renderTop();
     renderBar(st.phase === 'deciding' ? st.nowModel : null);
     renderLog(presentLogModel());
+    showTrial();
+    announcer.textContent = `Earlier moment: ${momentLabel(i)}.${rv ? ' Pick an option to try it; your score stays the same.' : ''}`;
   }
 
+  /** Back to the present. quiet: only the table and the state (the caller redraws the rest). */
   function goPresent({ quiet = false } = {}) {
     if (st.view === null) return;
+    closeChartOverlay(); // a chart of the earlier moment does not stay over the present
     st.view = null;
-    pastBadge.hidden = true;
-    if (quiet) return; // the caller redraws
+    st.trial = null;
+    st.tried = {};
+    const focusBack = st.returnFocus;
+    st.returnFocus = null;
     table.finishAll();
-    if (st.nowModel) table.render(st.nowModel);
+    if (st.nowModel) table.render(st.nowModel); // also for quiet callers: they animate on from the present
+    if (st.selBefore !== null && st.selBefore !== undefined) st.sel = st.selBefore;
+    st.selBefore = null;
+    if (quiet) { st.savedSide = null; st.savedScroll = null; return; }
     if (st.phase === 'end') renderEndPanel();
     else if (st.savedSide) {
       restoreSide(st.savedSide);
@@ -540,10 +673,32 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
       }
     } else setSide(null);
     st.savedSide = null;
+    if (st.savedScroll) {
+      const [sideTop, endTop] = st.savedScroll;
+      side.scrollTop = sideTop;
+      const ep = side.querySelector('.endpanel');
+      if (ep) ep.scrollTop = endTop;
+      st.savedScroll = null;
+    }
     renderTop();
     renderBar(st.phase === 'deciding' ? st.nowModel : null);
     renderLog(presentLogModel());
+    restoreFocus(focusBack);
+    announcer.textContent = 'Back to your play.';
+  }
+
+  /** Focus what had it before looking back (or the same thing redrawn), else the phase's natural place. */
+  function restoreFocus(el) {
+    if (el && el !== document.body && el.isConnected && !el.disabled && el.offsetParent !== null) { el.focus({ preventScroll: true }); return; }
+    if (el?.dataset?.moment !== undefined) {
+      const b = log.querySelector(`[data-moment="${el.dataset.moment}"]`);
+      if (b) { b.focus({ preventScroll: true }); return; }
+    }
     if (st.phase === 'deciding') bar.focus({ preventScroll: true });
+    else {
+      const b = bar.querySelector('.big-continue:not([disabled])');
+      if (b) b.focus({ preventScroll: true }); else bar.focus({ preventScroll: true });
+    }
   }
 
   function step(dir) {
@@ -561,26 +716,68 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
     return true;
   }
 
+  // ---------- trying another answer ----------
+  function tryOption(index, optionId) {
+    const rv = st.reveals[index];
+    if (st.view === null || !rv) return;
+    st.trial = { index, optionId };
+    (st.tried[index] ||= new Set()).add(optionId);
+    renderBar(st.phase === 'deciding' ? st.nowModel : null);
+    showTrial();
+    const k = rv.decision.options.findIndex((o) => o.id === optionId);
+    const g = rv.optionGrades?.[k];
+    announcer.textContent = `Trying ${shortLabel(rv.decision.options[k])}${g ? `: ${GRADE_LABEL[g.grade]}, ${Math.round(g.points)} points` : ''}. Your score stays the same.`;
+  }
+  function clearTrial() {
+    const was = st.trial;
+    st.trial = null;
+    showTrial();
+    renderBar(st.phase === 'deciding' ? st.nowModel : null);
+    if (was) bar.querySelector(`[data-rw="opt-${was.optionId}"]`)?.focus({ preventScroll: true });
+  }
+  /** Put the "Trying again" card above the decision's analysis in the panel (or take it away). */
+  function showTrial() {
+    side.querySelectorAll('.trial-card').forEach((x) => x.remove());
+    if (!st.trial || st.view === null) return;
+    const rv = st.reveals[st.trial.index];
+    const card = rv && trialCard(rv, st.trial.optionId, { onClose: clearTrial });
+    if (!card) return;
+    const detail = side.querySelector('.end-detail');
+    const fb = side.querySelector('.feedback:not(.villain-panel)');
+    if (detail) detail.prepend(card);
+    else if (fb) fb.prepend(card);
+    else return;
+    // scroll the panel (never the page) so the card is in view
+    for (let a = card.parentElement; a && a !== document.body; a = a.parentElement) {
+      if (a.scrollHeight > a.clientHeight + 1 && /(auto|scroll)/.test(getComputedStyle(a).overflowY)) {
+        const ar = a.getBoundingClientRect(), cr = card.getBoundingClientRect();
+        if (cr.top < ar.top || cr.bottom > ar.bottom) a.scrollTop += cr.top - ar.top - 8;
+      }
+      if (a === side) break;
+    }
+  }
+
   // ---------- keyboard ----------
   function onKey(e) {
     if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
-    if (document.querySelector('.lover, .term-pop, .vs-intro')) return; // Learn overlay, term pop-up or a battle intro open
-    const tag = (e.target.tagName || '').toLowerCase();
-    if (tag === 'input' || tag === 'textarea') return;
+    if (document.querySelector('.lover, .term-pop, .vs-intro, .chart-ov, .copy-box')) return; // an overlay or pop-up is open
+    const t = e.target;
+    const tag = (t.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || tag === 'select' || t.isContentEditable) return; // typing
     const onButton = tag === 'button' || tag === 'a' || tag === 'summary';
     if (st.phase === 'animating' && (e.key === ' ' || e.key === 'Escape' || e.key === 'Enter')) { e.preventDefault(); skip(); return; }
-    const inGrid = e.target.closest?.('.grid,.tablist:not(.recap)');
+    const inGrid = t.closest?.('.grid,.tablist:not(.recap)');
     if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && !inGrid) {
-      if (step(e.key === 'ArrowLeft' ? -1 : 1)) {
-        e.preventDefault();
-        if (st.phase === 'end') side.querySelector('.recap-chip[aria-selected="true"], .duel-row[aria-selected="true"]')?.blur();
-      }
+      if (step(e.key === 'ArrowLeft' ? -1 : 1)) e.preventDefault();
       return;
     }
     if (st.view !== null) {
-      // Looking back: nothing commits; Escape, Enter or Space return to now.
+      // Looking back: nothing is answered; Escape, Enter or Space return to now, 1-9 try an option.
       if (e.key === 'Escape' || ((e.key === 'Enter' || e.key === ' ') && !onButton)) { e.preventDefault(); goPresent(); }
-      else if (/^[1-9]$/.test(e.key)) e.preventDefault();
+      else if (/^[1-9]$/.test(e.key)) {
+        e.preventDefault();
+        bar.querySelectorAll('.trial-buttons button.opt')[Number(e.key) - 1]?.click();
+      }
       return;
     }
     if (st.phase === 'deciding' && /^[1-9]$/.test(e.key)) {
@@ -605,6 +802,7 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
       if (destroyed) return;
       st.puzzle = r.puzzle; st.steps = r.steps; st.end = r.end;
       for (const a of r.answers || []) st.reveals[a.index] = a;
+      st.live = battle?.liveState?.() || null;
       renderTop();
       setSide(null);
       if (r.completed) {
@@ -660,12 +858,28 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
       puzzle: st.puzzle, steps: st.steps, end: st.end, reveals: st.reveals, sel: st.sel, phase: st.phase,
       animated: !!st.endAnimated, endLine: () => endLine(st.steps.at(-1)), looking: st.view !== null,
       select: (i) => select(i, true),
+      copy: (what) => copyPrompt(what), canCopy: offersCopy(),
     };
   }
   /** New battle state arrived (poll): redraw what shows the opponents, without disturbing the player. */
   function refreshBattle({ changed = false } = {}) {
     if (destroyed || !st.puzzle) return;
+    // Looking back while the hand goes on around you (an opponent answers, your clock starts, the
+    // next decision opens): back to now. Moving on is also handled by advance(); an answer only here.
+    const cur = battle.liveState?.() || null;
+    const prev = st.live;
+    st.live = cur;
+    let why = changed ? 'answered' : null;
+    if (prev && cur) {
+      if (prev.phase !== cur.phase || prev.hand !== cur.hand || prev.index !== cur.index) why = 'moved';
+      else if (prev.answered !== cur.answered || prev.deadline !== cur.deadline) why = why || 'answered';
+    }
+    if (why && st.view !== null && (st.phase === 'deciding' || st.phase === 'feedback')) {
+      goPresent();
+      if (why === 'answered') toast(st.phase === 'deciding' && cur?.deadline ? 'An opponent answered: your clock is running.' : 'An opponent answered.');
+    }
     renderTop();
+    syncCopy();
     // The action bar only when something it shows changed (clocks tick by themselves).
     const sig = battle.barSig?.() ?? null;
     if (['deciding', 'feedback', 'end'].includes(st.phase) && (changed || sig !== st.barSig)) { st.barSig = sig; renderBar(st.phase === 'deciding' ? st.nowModel : null); }
@@ -678,10 +892,21 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
       if (!(s?.type === 'villain' && 'range' in s)) renderEndPanel();
     }
   }
+  /** Battle: your own clock is nearly out. Nothing may hide it or the options. */
+  function returnNow() {
+    closeChartOverlay();
+    if (st.view !== null && st.phase === 'deciding') {
+      goPresent();
+      toast('5 seconds left: back to your decision.');
+    }
+  }
 
   return {
-    destroy() { destroyed = true; ro?.disconnect(); table.finishAll(); sound.stopAll(); document.removeEventListener('keydown', onKey); },
-    refreshBattle, advance, timeoutNow,
+    destroy() {
+      destroyed = true; ro?.disconnect(); table.finishAll(); sound.stopAll(); closeChartOverlay();
+      document.removeEventListener('keydown', onKey);
+    },
+    refreshBattle, advance, timeoutNow, returnNow,
     get phase() { return st.phase; },
     /** The decision on screen: open (deciding) or answered (feedback). */
     get decisionIndex() { return st.phase === 'deciding' || st.phase === 'feedback' ? st.steps[st.decisionPos]?.index ?? null : null; },

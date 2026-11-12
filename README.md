@@ -138,6 +138,7 @@ Re-solve every hand after changing them: postflop ranges follow the charts.
 ```sh
 node server/tools/make-fixture.mjs   # writes 3 fake, SPEC-conformant puzzles (fx01-fx03)
 node server/tools/smoke.mjs          # starts a server on a spare port with a temp db and plays through the API
+node server/tools/prompt-test.mjs    # the "Copy for Claude" prompt (web/js/prompt.js): complete, and never anything not yet revealed
 ```
 
 ## Layout
@@ -151,8 +152,9 @@ server/lib/battles.mjs    battles: the shared cursor and clocks, hand selection,
 server/lib/storage.mjs    storage interface, JSON-file implementation (atomic temp-file + rename)
 server/lib/auth.mjs       name/PIN rules, scrypt hashing, tokens
 server/lib/puzzles.mjs    loading and validating solution and explanation files
-server/tools/             make-fixture.mjs, smoke.mjs, reset-player.mjs, battle-bot.mjs
+server/tools/             make-fixture.mjs, smoke.mjs, prompt-test.mjs, reset-player.mjs, battle-bot.mjs
 web/                      vanilla JS modules + CSS, no external resources
+web/js/prompt.js          "Copy for Claude": the prompt for one answered decision or the whole hand (pure, also runs under node)
 ```
 
 ## API
@@ -166,7 +168,7 @@ All bodies are JSON. Everything except login needs `Authorization: Bearer <token
 | `GET /api/me` | → `{player, usingFixtures}` |
 | `GET /api/puzzles` | → `{puzzles: [{id, number, title, tags (done puzzles only), scenario {key,name,potType}, hero {seat,position}, villain {seat,position}, decisionCount (done puzzles only), rank, level, status: new/in_progress/done, answered, score (null for a `partial` play), scored: false (partial plays only), battle (id of a running battle that holds this hand, not done puzzles only)}], nextId, usingFixtures}`. `rank` 1 = easiest, `level` easy/medium/hard (thirds of the rank order); difficulty is the mean over decisions of the mean points over the options (what random clicking would score), the raw number is not sent. `nextId` = the player's unfinished scored play (lowest rank first), else the easiest unplayed puzzle, else null. Signing in (or opening `/`) goes straight to `#/play/<nextId>`; the lobby is `#/lobby`. |
 | `POST /api/puzzles/:id/start {mode: "scored"\|"practice"}` | → `{puzzle, steps, next, mode, answers, completed, end}`. `steps` runs up to and including the first unanswered decision; `answers` are the reveals already recorded (resume). Practice needs a completed scored play and starts fresh. |
-| `POST /api/puzzles/:id/act {decisionIndex, optionId, mode}` | → `{reveal, steps, next, end}`. `reveal` = `{index, choice, choiceLabel, grade, label, points, freq, maxFreq, loss, lossPct, decision (full), explanation {text, generated}, offMainLine, mainLine, continuesWith}`. Scored: the choice is stored at once; re-sending an answered decision returns the recorded choice (`alreadyAnswered`). `end` (after the last decision) = `{step, heroNet, score, takeaway, others [{name, score}], recap}`. Practice grades but stores nothing (`end.score` is null; the client averages the points). |
+| `POST /api/puzzles/:id/act {decisionIndex, optionId, mode}` | → `{reveal, steps, next, end}`. `reveal` = `{index, choice, choiceLabel, grade, label, points, freq, maxFreq, loss, lossPct, decision (full), optionGrades [{id, grade, label, points, freq, loss, lossPct}] (what every option would have scored, SPEC 4.1), explanation {text, generated}, offMainLine, mainLine, continuesWith}`. Scored: the choice is stored at once; re-sending an answered decision returns the recorded choice (`alreadyAnswered`). `end` (after the last decision) = `{step, heroNet, score, takeaway, others [{name, score}], recap}`. Practice grades but stores nothing (`end.score` is null; the client averages the points). |
 | `GET /api/puzzles/:id/review` | → `{puzzle (with board), steps (all), answers (first-play reveals), end}`; 403 until completed. For a `partial` play (a hand finished by hand from an unfinished battle: played, never scored) `end.partial` is true and `end.score` null. |
 | `GET /api/leaderboard` | → `{players: [{id, name, played, totalPoints, average, decisions, grades {best,correct,inaccuracy,wrong,blunder}}], you, puzzleCount}` (completed first plays only) |
 | `GET /api/battles` | → `{battles: [battle], open: [{id, code, size, creator {name}, joined [{name}], invite: "you"\|"them"\|null, others [{name}], createdAt, rematchOf, joinable}], record: [{opponent {id,name}, wins, losses, draws, last, for, against}], handCount}`. `battles` are yours (newest first, without `choices`); `open` are battles you can join (public ones with a free seat and rematch invitations for you). `record` is per friend; in a three-way every pair counts (who finished higher). |

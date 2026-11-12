@@ -52,6 +52,18 @@ export function gradeDecision(decision, optionId, C = GRADING) {
   };
 }
 
+/**
+ * Grade every option of a decision, in the order of `decision.options`:
+ * [{ id, grade, label, points, freq, loss, lossPct }] (what each answer would
+ * have scored; the client's "try another answer" shows these).
+ */
+export function gradeOptions(decision, C = GRADING) {
+  return decision.options.map((o) => {
+    const g = gradeDecision(decision, o.id, C);
+    return { id: o.id, grade: g.grade, label: g.label, points: g.points, freq: g.freq, loss: g.loss, lossPct: g.lossPct };
+  });
+}
+
 /** Puzzle score: mean of decision points, rounded to an integer. */
 export function puzzleScore(pointsList) {
   if (!pointsList.length) return 0;
