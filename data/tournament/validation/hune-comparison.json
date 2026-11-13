@@ -1,0 +1,3240 @@
+{
+ "note": "Compare the exact heads-up push/fold solution (pushfold hu-sweep) with the",
+ "no_ante": {
+  "tab": "No Ante",
+  "cells_compared": 130,
+  "verdicts": {
+   "match": 130
+  },
+  "max_abs_diff_of_matches": 0.05,
+  "our_max_exploitability_bb_per_hand": 9.999885852424207e-08,
+  "rows": [
+   {
+    "side": "pusher",
+    "hand": "22",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "33",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "44",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "55",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "A2o",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "A5o",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "A8o",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "K2o",
+    "published": 11.6,
+    "ours": 11.65,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      11.65
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "K5o",
+    "published": 14.2,
+    "ours": 14.25,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      14.25
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      14.3,
+      14.4
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "K8o",
+    "published": 18.0,
+    "ours": 18.0,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      18.0
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      18.05,
+      18.65
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "K2s",
+    "published": 19.3,
+    "ours": 19.3,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      19.3
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      19.35,
+      19.35
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "K5s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "Q2o",
+    "published": 7.0,
+    "ours": 7.05,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      7.05
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "Q5o",
+    "published": 8.9,
+    "ours": 8.95,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      8.95
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "Q8o",
+    "published": 13.0,
+    "ours": 13.0,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      13.0
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      13.05,
+      13.05
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "Q2s",
+    "published": 12.7,
+    "ours": 12.7,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      12.7
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "Q5s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      19.1,
+      19.7
+     ],
+     [
+      19.95,
+      20.0
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "Q9s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "J2o",
+    "published": 4.6,
+    "ours": 4.6,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.6
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "J5o",
+    "published": 6.0,
+    "ours": 6.05,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      6.05
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "J8o",
+    "published": 13.3,
+    "ours": 13.3,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      12.05
+     ],
+     [
+      12.95,
+      13.3
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      12.4,
+      13.5
+     ],
+     [
+      14.0,
+      14.1
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "J2s",
+    "published": 8.5,
+    "ours": 8.55,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      8.55
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      8.6,
+      8.6
+     ],
+     [
+      8.8,
+      8.85
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "J5s",
+    "published": 14.7,
+    "ours": 14.75,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      14.75
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      15.4,
+      15.6
+     ],
+     [
+      16.1,
+      16.1
+     ],
+     [
+      16.2,
+      16.25
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "J8s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "T2o",
+    "published": 2.9,
+    "ours": 2.95,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.95
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      3.0,
+      3.0
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "T5o",
+    "published": 4.1,
+    "ours": 4.15,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.15
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      4.25,
+      4.25
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "T8o",
+    "published": 17.5,
+    "ours": 17.5,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      17.5
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      16.5,
+      17.8
+     ],
+     [
+      18.2,
+      18.4
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "T2s",
+    "published": 6.5,
+    "ours": 6.5,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      6.1
+     ],
+     [
+      6.45,
+      6.5
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      6.45,
+      6.45
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "T3s",
+    "published": 7.7,
+    "ours": 7.7,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      7.2
+     ],
+     [
+      7.35,
+      7.5
+     ],
+     [
+      7.7,
+      7.7
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      7.25,
+      7.25
+     ],
+     [
+      7.35,
+      7.35
+     ],
+     [
+      7.65,
+      7.7
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "T6s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "92o",
+    "published": 2.2,
+    "ours": 2.25,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.25
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "95o",
+    "published": 3.5,
+    "ours": 3.55,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.55
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "98o",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "92s",
+    "published": 3.7,
+    "ours": 3.75,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.45
+     ],
+     [
+      3.7,
+      3.75
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      3.55,
+      3.55
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "95s",
+    "published": 14.4,
+    "ours": 14.45,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      14.45
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "98s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "82o",
+    "published": 1.8,
+    "ours": 1.85,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      1.85
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "85o",
+    "published": 3.0,
+    "ours": 3.0,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.0
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      3.0,
+      3.0
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "87o",
+    "published": 14.7,
+    "ours": 14.7,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      14.7
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      15.6,
+      15.65
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "82s",
+    "published": 2.5,
+    "ours": 2.55,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.55
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "85s",
+    "published": 18.8,
+    "ours": 18.85,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      18.85
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "87s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "72o",
+    "published": 1.6,
+    "ours": 1.6,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      1.6
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "74o",
+    "published": 2.1,
+    "ours": 2.15,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.15
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "76o",
+    "published": 10.7,
+    "ours": 10.75,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      10.75
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      10.55,
+      10.8
+     ],
+     [
+      11.0,
+      11.2
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "72s",
+    "published": 2.1,
+    "ours": 2.1,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.1
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "74s",
+    "published": 13.9,
+    "ours": 13.95,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      12.05
+     ],
+     [
+      12.2,
+      13.6
+     ],
+     [
+      13.8,
+      13.95
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      12.1,
+      12.15
+     ],
+     [
+      13.65,
+      13.9
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "76s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "62o",
+    "published": 1.5,
+    "ours": 1.55,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      1.55
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "64o",
+    "published": 2.0,
+    "ours": 2.05,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.05
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "65o",
+    "published": 2.4,
+    "ours": 2.45,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.45
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "62s",
+    "published": 2.0,
+    "ours": 2.0,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "64s",
+    "published": 16.3,
+    "ours": 16.35,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      16.35
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "65s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "52o",
+    "published": 1.5,
+    "ours": 1.55,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      1.55
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "54o",
+    "published": 2.1,
+    "ours": 2.1,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.1
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "52s",
+    "published": 2.0,
+    "ours": 2.05,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.05
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "54s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "42o",
+    "published": 1.4,
+    "ours": 1.45,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      1.45
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "43o",
+    "published": 1.6,
+    "ours": 1.65,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      1.65
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "42s",
+    "published": 1.8,
+    "ours": 1.85,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      1.85
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "32o",
+    "published": 1.4,
+    "ours": 1.4,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      1.4
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "32s",
+    "published": 1.7,
+    "ours": 1.75,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      1.75
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "22",
+    "published": 15.0,
+    "ours": 15.05,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      15.05
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      15.05,
+      15.1
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "33",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "55",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "77",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "A2o",
+    "published": 15.8,
+    "ours": 15.85,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      15.85
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      15.7,
+      16.05
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "A5o",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "A8o",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "ATo",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "A2s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "A5s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "K2o",
+    "published": 8.1,
+    "ours": 8.15,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      8.15
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      8.15,
+      8.25
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "K5o",
+    "published": 10.2,
+    "ours": 10.2,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      10.2
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      10.15,
+      10.3
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "K8o",
+    "published": 13.8,
+    "ours": 13.85,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      13.85
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      13.65,
+      14.05
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "KTo",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "K2s",
+    "published": 10.7,
+    "ours": 10.75,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      10.75
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      10.8,
+      10.8
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "K5s",
+    "published": 13.2,
+    "ours": 13.25,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      13.25
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      13.25,
+      13.3
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "K9s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "Q2o",
+    "published": 5.6,
+    "ours": 5.6,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      5.6
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      5.65,
+      5.65
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "Q5o",
+    "published": 6.8,
+    "ours": 6.8,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      6.8
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      6.85,
+      6.85
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "Q8o",
+    "published": 9.7,
+    "ours": 9.75,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      9.75
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      9.65,
+      9.85
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "QTo",
+    "published": 15.3,
+    "ours": 15.3,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      15.3
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      14.9,
+      15.6
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "Q2s",
+    "published": 7.2,
+    "ours": 7.25,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      7.25
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      7.25,
+      7.25
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "Q5s",
+    "published": 8.9,
+    "ours": 8.95,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      8.95
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      8.95,
+      8.95
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "Q9s",
+    "published": 16.1,
+    "ours": 16.15,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      16.15
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      16.05,
+      16.2
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "J2o",
+    "published": 4.2,
+    "ours": 4.2,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.2
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      4.25,
+      4.25
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "J5o",
+    "published": 5.1,
+    "ours": 5.1,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      5.1
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      5.1,
+      5.15
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "J8o",
+    "published": 7.6,
+    "ours": 7.6,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      7.6
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      7.65,
+      7.7
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "JTo",
+    "published": 12.7,
+    "ours": 12.75,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      12.75
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      12.15,
+      12.2
+     ],
+     [
+      12.3,
+      12.95
+     ],
+     [
+      13.05,
+      13.15
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "J2s",
+    "published": 5.6,
+    "ours": 5.65,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      5.65
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      5.6,
+      5.65
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "J6s",
+    "published": 7.0,
+    "ours": 7.05,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      7.05
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      7.05,
+      7.1
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "J9s",
+    "published": 13.4,
+    "ours": 13.4,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      13.4
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      13.4,
+      13.5
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "T2o",
+    "published": 3.5,
+    "ours": 3.5,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.5
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      3.55,
+      3.55
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "T6o",
+    "published": 4.6,
+    "ours": 4.65,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.65
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      4.7,
+      4.7
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "T9o",
+    "published": 8.4,
+    "ours": 8.4,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      8.4
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      8.35,
+      8.55
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "T2s",
+    "published": 4.5,
+    "ours": 4.55,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.55
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "T6s",
+    "published": 6.3,
+    "ours": 6.35,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      6.35
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      6.35,
+      6.35
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "T9s",
+    "published": 11.5,
+    "ours": 11.5,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      11.5
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      11.5,
+      11.6
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "92o",
+    "published": 3.0,
+    "ours": 3.05,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.05
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "96o",
+    "published": 4.2,
+    "ours": 4.25,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.25
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "98o",
+    "published": 6.0,
+    "ours": 6.05,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      6.05
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      6.05,
+      6.05
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "92s",
+    "published": 3.9,
+    "ours": 3.9,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.9
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "96s",
+    "published": 5.8,
+    "ours": 5.85,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      5.85
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      5.85,
+      5.85
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "98s",
+    "published": 8.2,
+    "ours": 8.25,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      8.25
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "82o",
+    "published": 2.8,
+    "ours": 2.8,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.8
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "86o",
+    "published": 4.1,
+    "ours": 4.1,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.1
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "87o",
+    "published": 4.7,
+    "ours": 4.75,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.75
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "82s",
+    "published": 3.5,
+    "ours": 3.55,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.55
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "86s",
+    "published": 5.6,
+    "ours": 5.6,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      5.6
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      5.6,
+      5.6
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "87s",
+    "published": 6.5,
+    "ours": 6.55,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      6.55
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "72o",
+    "published": 2.6,
+    "ours": 2.65,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.65
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "76o",
+    "published": 4.0,
+    "ours": 4.05,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.05
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "72s",
+    "published": 3.3,
+    "ours": 3.3,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.3
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "76s",
+    "published": 5.4,
+    "ours": 5.45,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      5.45
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "62o",
+    "published": 2.7,
+    "ours": 2.7,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.7
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "65o",
+    "published": 3.7,
+    "ours": 3.7,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.7
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "62s",
+    "published": 3.3,
+    "ours": 3.35,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.35
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      3.4,
+      3.4
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "65s",
+    "published": 4.9,
+    "ours": 4.95,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.95
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      4.95,
+      4.95
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "52o",
+    "published": 2.8,
+    "ours": 2.85,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.85
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "54o",
+    "published": 3.5,
+    "ours": 3.5,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.5
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "52s",
+    "published": 3.6,
+    "ours": 3.6,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.6
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "54s",
+    "published": 4.6,
+    "ours": 4.6,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.6
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "42o",
+    "published": 2.7,
+    "ours": 2.75,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.75
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "43o",
+    "published": 3.0,
+    "ours": 3.0,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "42s",
+    "published": 3.4,
+    "ours": 3.4,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.4
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "43s",
+    "published": 3.8,
+    "ours": 3.85,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.85
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "32o",
+    "published": 2.6,
+    "ours": 2.65,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.65
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "32s",
+    "published": 3.3,
+    "ours": 3.3,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.3
+     ]
+    ],
+    "our_mixed_ranges": []
+   }
+  ],
+  "gapped_hands": [
+   {
+    "hand": "63s",
+    "published": "7.1 - 5.1, 2.3",
+    "our_intervals": [
+     [
+      1.0,
+      2.35
+     ],
+     [
+      5.1,
+      5.2
+     ],
+     [
+      5.65,
+      5.75
+     ],
+     [
+      5.95,
+      5.95
+     ],
+     [
+      6.05,
+      7.15
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      5.55,
+      5.6
+     ],
+     [
+      6.05,
+      6.05
+     ],
+     [
+      6.2,
+      6.2
+     ],
+     [
+      7.45,
+      7.45
+     ]
+    ]
+   },
+   {
+    "hand": "53s",
+    "published": "12.9 - 3.8, 2.4",
+    "our_intervals": [
+     [
+      1.0,
+      2.4
+     ],
+     [
+      3.75,
+      3.8
+     ],
+     [
+      3.9,
+      3.95
+     ],
+     [
+      4.1,
+      12.9
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      4.05,
+      4.05
+     ],
+     [
+      12.2,
+      12.25
+     ],
+     [
+      12.9,
+      12.9
+     ]
+    ]
+   },
+   {
+    "hand": "43s",
+    "published": "10.0 - 4.9, 2.2",
+    "our_intervals": [
+     [
+      1.0,
+      2.2
+     ],
+     [
+      4.85,
+      7.85
+     ],
+     [
+      8.55,
+      8.6
+     ],
+     [
+      8.75,
+      8.9
+     ],
+     [
+      9.0,
+      9.0
+     ],
+     [
+      9.15,
+      9.35
+     ],
+     [
+      9.55,
+      9.6
+     ],
+     [
+      9.75,
+      9.9
+     ],
+     [
+      10.0,
+      10.0
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      4.3,
+      4.3
+     ],
+     [
+      4.8,
+      4.8
+     ],
+     [
+      4.95,
+      4.95
+     ],
+     [
+      8.45,
+      8.55
+     ],
+     [
+      8.65,
+      8.75
+     ],
+     [
+      8.95,
+      8.95
+     ],
+     [
+      9.05,
+      9.15
+     ],
+     [
+      9.3,
+      9.3
+     ],
+     [
+      9.45,
+      9.8
+     ],
+     [
+      9.95,
+      10.0
+     ]
+    ]
+   }
+  ]
+ },
+ "ante_10pct": {
+  "tab": "Ante 10%",
+  "cells_compared": 30,
+  "verdicts": {
+   "match": 22,
+   "inside mixing": 8
+  },
+  "max_abs_diff_of_matches": 0.05,
+  "our_max_exploitability_bb_per_hand": 9.997911563396674e-08,
+  "rows": [
+   {
+    "side": "pusher",
+    "hand": "K2o",
+    "published": 13.3,
+    "ours": 13.3,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      13.3
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "Q2o",
+    "published": 8.1,
+    "ours": 8.1,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      8.1
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "Q5o",
+    "published": 10.3,
+    "ours": 10.3,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      10.3
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      10.45,
+      10.55
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "J5o",
+    "published": 7.1,
+    "ours": 7.0,
+    "diff": -0.1,
+    "verdict": "inside mixing",
+    "our_intervals": [
+     [
+      1.0,
+      7.0
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      7.1,
+      7.15
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "T3s",
+    "published": 8.9,
+    "ours": 8.95,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      8.95
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      9.5,
+      9.5
+     ],
+     [
+      10.05,
+      10.05
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "T6o",
+    "published": 6.7,
+    "ours": 6.6,
+    "diff": -0.1,
+    "verdict": "inside mixing",
+    "our_intervals": [
+     [
+      1.0,
+      6.6
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      6.65,
+      6.75
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "95o",
+    "published": 4.2,
+    "ours": 4.25,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.25
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      4.15,
+      4.15
+     ],
+     [
+      4.35,
+      4.35
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "85s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "76o",
+    "published": 13.5,
+    "ours": 12.8,
+    "diff": -0.7,
+    "verdict": "inside mixing",
+    "our_intervals": [
+     [
+      1.0,
+      12.35
+     ],
+     [
+      12.5,
+      12.8
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      12.5,
+      13.5
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "65o",
+    "published": 3.0,
+    "ours": 8.05,
+    "diff": 5.05,
+    "verdict": "inside mixing",
+    "our_intervals": [
+     [
+      1.0,
+      3.05
+     ],
+     [
+      4.95,
+      4.95
+     ],
+     [
+      5.55,
+      5.55
+     ],
+     [
+      5.9,
+      5.95
+     ],
+     [
+      6.35,
+      6.75
+     ],
+     [
+      6.9,
+      6.95
+     ],
+     [
+      7.3,
+      7.4
+     ],
+     [
+      7.75,
+      7.95
+     ],
+     [
+      8.05,
+      8.05
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      4.7,
+      4.7
+     ],
+     [
+      4.85,
+      4.9
+     ],
+     [
+      5.45,
+      5.5
+     ],
+     [
+      5.75,
+      5.75
+     ],
+     [
+      5.9,
+      5.9
+     ],
+     [
+      6.25,
+      6.35
+     ],
+     [
+      6.6,
+      6.95
+     ],
+     [
+      7.15,
+      7.35
+     ],
+     [
+      7.6,
+      7.9
+     ],
+     [
+      8.0,
+      8.05
+     ]
+    ]
+   },
+   {
+    "side": "pusher",
+    "hand": "54o",
+    "published": 2.5,
+    "ours": 2.5,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.5
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "32o",
+    "published": 1.6,
+    "ours": 1.65,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      1.65
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "K5s",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "Q9o",
+    "published": "20+",
+    "ours": "20+",
+    "diff": null,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      20.0
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "pusher",
+    "hand": "J8o",
+    "published": 15.4,
+    "ours": 16.1,
+    "diff": 0.7,
+    "verdict": "inside mixing",
+    "our_intervals": [
+     [
+      1.0,
+      13.75
+     ],
+     [
+      14.2,
+      15.4
+     ],
+     [
+      16.0,
+      16.1
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      13.8,
+      14.75
+     ],
+     [
+      15.25,
+      15.45
+     ],
+     [
+      15.6,
+      16.1
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "K2o",
+    "published": 9.4,
+    "ours": 9.35,
+    "diff": -0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      9.35
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      9.3,
+      9.4
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "Q2o",
+    "published": 6.4,
+    "ours": 6.4,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      6.4
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      6.35,
+      6.45
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "Q5o",
+    "published": 7.8,
+    "ours": 7.75,
+    "diff": -0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      7.75
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      7.75,
+      7.85
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "J5o",
+    "published": 5.9,
+    "ours": 5.85,
+    "diff": -0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      5.85
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      5.85,
+      5.9
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "T3s",
+    "published": 5.5,
+    "ours": 5.5,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      5.5
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      5.5,
+      5.5
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "T6o",
+    "published": 5.2,
+    "ours": 5.2,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      5.2
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      5.25,
+      5.25
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "95o",
+    "published": 4.1,
+    "ours": 4.15,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.15
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "85s",
+    "published": 5.5,
+    "ours": 5.55,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      5.55
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "76o",
+    "published": 4.5,
+    "ours": 4.5,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.5
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "65o",
+    "published": 4.1,
+    "ours": 4.1,
+    "diff": 0.0,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      4.1
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "54o",
+    "published": 3.8,
+    "ours": 3.85,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      3.85
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "32o",
+    "published": 2.9,
+    "ours": 2.95,
+    "diff": 0.05,
+    "verdict": "match",
+    "our_intervals": [
+     [
+      1.0,
+      2.95
+     ]
+    ],
+    "our_mixed_ranges": []
+   },
+   {
+    "side": "caller",
+    "hand": "K5s",
+    "published": 15.1,
+    "ours": 15.0,
+    "diff": -0.1,
+    "verdict": "inside mixing",
+    "our_intervals": [
+     [
+      1.0,
+      15.0
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      15.0,
+      15.2
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "Q9o",
+    "published": 13.5,
+    "ours": 13.3,
+    "diff": -0.2,
+    "verdict": "inside mixing",
+    "our_intervals": [
+     [
+      1.0,
+      13.3
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      13.15,
+      13.5
+     ]
+    ]
+   },
+   {
+    "side": "caller",
+    "hand": "J8o",
+    "published": 8.8,
+    "ours": 8.65,
+    "diff": -0.15,
+    "verdict": "inside mixing",
+    "our_intervals": [
+     [
+      1.0,
+      8.65
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      8.65,
+      8.8
+     ]
+    ]
+   }
+  ],
+  "gapped_hands": [
+   {
+    "hand": "63s",
+    "published": "8.9 - 4.7, 2.8",
+    "our_intervals": [
+     [
+      1.0,
+      2.85
+     ],
+     [
+      4.2,
+      4.25
+     ],
+     [
+      4.65,
+      5.15
+     ],
+     [
+      5.4,
+      8.9
+     ],
+     [
+      9.55,
+      9.65
+     ],
+     [
+      9.75,
+      9.75
+     ],
+     [
+      9.9,
+      10.1
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      4.8,
+      4.8
+     ],
+     [
+      5.25,
+      5.25
+     ],
+     [
+      5.4,
+      5.4
+     ],
+     [
+      8.85,
+      8.85
+     ],
+     [
+      9.5,
+      9.55
+     ],
+     [
+      9.65,
+      9.7
+     ],
+     [
+      9.85,
+      9.95
+     ]
+    ]
+   },
+   {
+    "hand": "53s",
+    "published": "15.2 - 3.8, 2.9",
+    "our_intervals": [
+     [
+      1.0,
+      2.9
+     ],
+     [
+      3.75,
+      3.8
+     ],
+     [
+      4.05,
+      14.9
+     ],
+     [
+      15.0,
+      15.2
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      3.7,
+      3.7
+     ],
+     [
+      4.0,
+      4.0
+     ],
+     [
+      14.8,
+      15.15
+     ]
+    ]
+   },
+   {
+    "hand": "43s",
+    "published": "11.5 - 4.7, 2.6",
+    "our_intervals": [
+     [
+      1.0,
+      2.6
+     ],
+     [
+      4.6,
+      9.05
+     ],
+     [
+      9.3,
+      9.3
+     ],
+     [
+      9.4,
+      11.45
+     ],
+     [
+      11.8,
+      11.8
+     ]
+    ],
+    "our_mixed_ranges": [
+     [
+      4.55,
+      4.6
+     ],
+     [
+      9.2,
+      9.45
+     ],
+     [
+      11.5,
+      11.5
+     ],
+     [
+      11.7,
+      11.8
+     ]
+    ]
+   }
+  ]
+ }
+}

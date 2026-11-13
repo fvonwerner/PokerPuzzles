@@ -1,0 +1,34 @@
+{
+ "name": "points-n5-hj10-co8-btn12-sb6-bb14",
+ "note": "50 bb on the table: 12,000 chips, big blind 240 chips; stacks in chips HJ 2400, CO 1920, BTN 2880, SB 1440, BB 3360",
+ "players": 5,
+ "stacks": [
+  10,
+  8,
+  12,
+  6,
+  14
+ ],
+ "ante": {
+  "mode": "per_player",
+  "amount": 0.1
+ },
+ "payoff": {
+  "model": "points",
+  "payouts": [
+   15,
+   8,
+   5,
+   3,
+   2
+  ]
+ },
+ "accuracy": {
+  "solve_deals": 100000,
+  "max_iterations": 400,
+  "refine_iterations": 150,
+  "refine_deals": 100000,
+  "eval_deals": 4000000,
+  "seed": 1
+ }
+}

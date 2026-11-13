@@ -1,0 +1,30 @@
+{
+ "name": "points-n3-btn6-sb12-bb14",
+ "note": "32 bb on the table: 12,000 chips, big blind 375 chips; stacks in chips BTN 2250, SB 4500, BB 5250",
+ "players": 3,
+ "stacks": [
+  6,
+  12,
+  14
+ ],
+ "ante": {
+  "mode": "per_player",
+  "amount": 0.1
+ },
+ "payoff": {
+  "model": "points",
+  "payouts": [
+   15,
+   8,
+   5
+  ]
+ },
+ "accuracy": {
+  "solve_deals": 100000,
+  "max_iterations": 400,
+  "refine_iterations": 150,
+  "refine_deals": 100000,
+  "eval_deals": 4000000,
+  "seed": 1
+ }
+}

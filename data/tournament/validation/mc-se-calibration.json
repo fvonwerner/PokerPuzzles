@@ -1,0 +1,29 @@
+{
+ "note": "Calibration of Monte Carlo standard errors: the exact heads-up equilibrium (10 bb, no ante, chips) valued by the Monte Carlo engine on 20 independent samples of 256,000 deals each (seeds 101-120). For every decision and class: the spread of the 20 estimates of the EV difference compared with the reported standard error, and z-scores against the exact EV difference.",
+ "results": {
+  "SB_open": {
+   "classes": 169,
+   "seeds": 20,
+   "median_ratio_empirical_sd_to_reported_se": 1.0057244675047694,
+   "rms_z_vs_exact": 1.0491763918035681,
+   "mean_z": 0.12134293880650741,
+   "frac_abs_z_gt_2": 0.059763313609467454,
+   "frac_abs_z_gt_3": 0.0053254437869822485
+  },
+  "BB_vs_SB": {
+   "classes": 169,
+   "seeds": 20,
+   "median_ratio_empirical_sd_to_reported_se": 0.974302295882167,
+   "rms_z_vs_exact": 1.0398665087570262,
+   "mean_z": 0.2111812116800852,
+   "frac_abs_z_gt_2": 0.06035502958579882,
+   "frac_abs_z_gt_3": 0.0053254437869822485
+  },
+  "player_ev_sb": {
+   "exact": -0.04537,
+   "mean_of_estimates": -0.0430695,
+   "sd_of_estimates": 0.010677458536069044,
+   "mean_reported_se": 0.0089505
+  }
+ }
+}

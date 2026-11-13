@@ -12,6 +12,7 @@ handoff/*.zip
 
 # Build output
 solver/target/
+pushfold/target/
 
 # OS and editor leftovers
 .DS_Store

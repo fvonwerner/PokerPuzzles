@@ -1,0 +1,22 @@
+{
+ "note": "The exact heads-up equilibrium (10 bb, no ante, chip EV) valued by the Monte Carlo engine on 1,000,000 independent deals (seed 11); z = (Monte Carlo EV difference - exact EV difference) / reported standard error.",
+ "SB_open": {
+  "classes": 169,
+  "z_mean": 0.015965702857013535,
+  "z_rms": 0.7838948956459016,
+  "z_max": 2.7551020408163405,
+  "median_se_bb": 0.0058
+ },
+ "BB_vs_SB": {
+  "classes": 169,
+  "z_mean": 0.00636667472134141,
+  "z_rms": 0.7991300346498847,
+  "z_max": 2.597826086956513,
+  "median_se_bb": 0.0125
+ },
+ "player_ev": {
+  "exact": -0.04537,
+  "mc": -0.04857,
+  "se": 0.0035
+ }
+}

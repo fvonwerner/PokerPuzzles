@@ -1,0 +1,57 @@
+{
+  "solution": "points-n3-btn10-sb8-bb12.json",
+  "method": "plain simulation: own RNG (PCG32), own posting and side-pot code, ICM by enumerating finishing orders, naive best-of-21 evaluator; earlier actions drawn from the strategies, both actions of each player valued exactly over later players' mixed strategies",
+  "deals": 10000000.0,
+  "seconds": 178.1,
+  "max_conservation_error": 2.1316282072803006e-14,
+  "player_ev": [
+    9.509609634108116,
+    8.541837176679548,
+    9.948553189209235
+  ],
+  "player_ev_se": [
+    0.0003405513260494708,
+    0.0004405147652993667,
+    0.0004127541125608538
+  ],
+  "solver_player_ev": [
+    9.50874,
+    8.54078,
+    9.95048
+  ],
+  "solver_player_ev_se": [
+    0.00047,
+    0.00074,
+    0.00078
+  ],
+  "player_ev_z": [
+    1.4983112524942557,
+    1.227572412336396,
+    -2.183411485260854
+  ],
+  "best_response_gain_plugin": [
+    0.00015739712140503033,
+    0.00011410152135049584,
+    0.00006902512545354337
+  ],
+  "best_response_gain_crossfit": [
+    -0.00020495974879784323,
+    -0.0003369776423051013,
+    -0.00010798956873706773
+  ],
+  "solver_exploitability_eval": [
+    0.000026,
+    0.000013,
+    4e-6
+  ],
+  "ev_diff_comparison": {
+    "cells_compared": 1014.0,
+    "z_mean": 0.057782994152591985,
+    "z_sd": 1.0051791405957784,
+    "frac_abs_z_gt_3": 0.0009861932938856016,
+    "weighted_mean_difference": 0.0005993188625510047,
+    "weighted_mean_difference_se": 0.0004780569774771958,
+    "weight": "share of hands reaching the cell",
+    "cells_abs_z_gt_4": []
+  }
+}

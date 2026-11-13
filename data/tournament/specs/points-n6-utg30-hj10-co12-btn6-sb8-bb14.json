@@ -1,0 +1,36 @@
+{
+ "name": "points-n6-utg30-hj10-co12-btn6-sb8-bb14",
+ "note": "80 bb on the table: 12,000 chips, big blind 150 chips; stacks in chips UTG 4500, HJ 1500, CO 1800, BTN 900, SB 1200, BB 2100",
+ "players": 6,
+ "stacks": [
+  30,
+  10,
+  12,
+  6,
+  8,
+  14
+ ],
+ "ante": {
+  "mode": "per_player",
+  "amount": 0.1
+ },
+ "payoff": {
+  "model": "points",
+  "payouts": [
+   15,
+   8,
+   5,
+   3,
+   2,
+   1
+  ]
+ },
+ "accuracy": {
+  "solve_deals": 100000,
+  "max_iterations": 400,
+  "refine_iterations": 150,
+  "refine_deals": 100000,
+  "eval_deals": 4000000,
+  "seed": 1
+ }
+}

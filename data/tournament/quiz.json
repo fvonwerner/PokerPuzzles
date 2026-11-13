@@ -1,0 +1,548 @@
+{
+ "version": 1,
+ "made_by": "tools/make-tournament-quiz.py",
+ "rules": {
+  "min_margin_bb": 0.08,
+  "max_margin_bb": 0.5,
+  "min_standard_errors": 5.0,
+  "min_reach": 0.02,
+  "seed": 20261112
+ },
+ "sets": [
+  {
+   "id": "hu",
+   "title": "Heads-up",
+   "blurb": "Two players left. Small blind: jam or fold. Big blind: call or fold. Chip EV, exact.",
+   "questions": [
+    {
+     "id": "tq01",
+     "spot": "chips-n2-9bb",
+     "decision": "SB_open",
+     "class": "K2o",
+     "cards": [
+      "Kc",
+      "2h"
+     ]
+    },
+    {
+     "id": "tq02",
+     "spot": "chips-n2-7bb",
+     "decision": "BB_vs_SB",
+     "class": "Q2o",
+     "cards": [
+      "Qs",
+      "2c"
+     ]
+    },
+    {
+     "id": "tq03",
+     "spot": "chips-n2-5bb",
+     "decision": "BB_vs_SB",
+     "class": "73s",
+     "cards": [
+      "7s",
+      "3s"
+     ]
+    },
+    {
+     "id": "tq04",
+     "spot": "chips-n2-4bb",
+     "decision": "BB_vs_SB",
+     "class": "J2o",
+     "cards": [
+      "Jc",
+      "2d"
+     ]
+    },
+    {
+     "id": "tq05",
+     "spot": "chips-n2-7bb",
+     "decision": "SB_open",
+     "class": "32o",
+     "cards": [
+      "3h",
+      "2d"
+     ]
+    },
+    {
+     "id": "tq06",
+     "spot": "chips-n2-8bb",
+     "decision": "BB_vs_SB",
+     "class": "Q3o",
+     "cards": [
+      "Qs",
+      "3h"
+     ]
+    },
+    {
+     "id": "tq07",
+     "spot": "chips-n2-10bb",
+     "decision": "BB_vs_SB",
+     "class": "J5s",
+     "cards": [
+      "Jc",
+      "5c"
+     ]
+    },
+    {
+     "id": "tq08",
+     "spot": "chips-n2-10bb",
+     "decision": "SB_open",
+     "class": "T9o",
+     "cards": [
+      "Td",
+      "9s"
+     ]
+    },
+    {
+     "id": "tq09",
+     "spot": "chips-n2-12bb",
+     "decision": "SB_open",
+     "class": "64s",
+     "cards": [
+      "6c",
+      "4c"
+     ]
+    },
+    {
+     "id": "tq10",
+     "spot": "chips-n2-6bb",
+     "decision": "SB_open",
+     "class": "Q2s",
+     "cards": [
+      "Qs",
+      "2s"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "open-chips",
+   "title": "First in",
+   "blurb": "Nobody has entered the pot. Jam or fold, 3 to 6 players, chip EV.",
+   "questions": [
+    {
+     "id": "tq11",
+     "spot": "chips-n6-12bb",
+     "decision": "CO_open",
+     "class": "A7o",
+     "cards": [
+      "Ah",
+      "7d"
+     ]
+    },
+    {
+     "id": "tq12",
+     "spot": "chips-n5-4bb",
+     "decision": "HJ_open",
+     "class": "43s",
+     "cards": [
+      "4d",
+      "3d"
+     ]
+    },
+    {
+     "id": "tq13",
+     "spot": "chips-n4-5bb",
+     "decision": "BTN_open",
+     "class": "J7o",
+     "cards": [
+      "Jd",
+      "7s"
+     ]
+    },
+    {
+     "id": "tq14",
+     "spot": "chips-n4-12bb",
+     "decision": "BTN_open",
+     "class": "Q8s",
+     "cards": [
+      "Qh",
+      "8h"
+     ]
+    },
+    {
+     "id": "tq15",
+     "spot": "chips-n5-6bb",
+     "decision": "CO_open",
+     "class": "K5s",
+     "cards": [
+      "Ks",
+      "5s"
+     ]
+    },
+    {
+     "id": "tq16",
+     "spot": "chips-n6-7bb",
+     "decision": "UTG_open",
+     "class": "A2o",
+     "cards": [
+      "As",
+      "2h"
+     ]
+    },
+    {
+     "id": "tq17",
+     "spot": "chips-n3-6bb",
+     "decision": "BTN_open",
+     "class": "K8o",
+     "cards": [
+      "Kc",
+      "8s"
+     ]
+    },
+    {
+     "id": "tq18",
+     "spot": "chips-n3-4bb",
+     "decision": "SB_open",
+     "class": "T6s",
+     "cards": [
+      "Tc",
+      "6c"
+     ]
+    },
+    {
+     "id": "tq19",
+     "spot": "chips-n6-5bb",
+     "decision": "HJ_open",
+     "class": "Q8o",
+     "cards": [
+      "Qc",
+      "8s"
+     ]
+    },
+    {
+     "id": "tq20",
+     "spot": "chips-n5-7bb",
+     "decision": "CO_open",
+     "class": "96o",
+     "cards": [
+      "9c",
+      "6h"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "call-chips",
+   "title": "Facing an all-in",
+   "blurb": "One player has gone all-in before you. Call or fold, 3 to 6 players, chip EV.",
+   "questions": [
+    {
+     "id": "tq21",
+     "spot": "chips-n5-10bb",
+     "decision": "SB_vs_BTN",
+     "class": "K9s",
+     "cards": [
+      "Kd",
+      "9d"
+     ]
+    },
+    {
+     "id": "tq22",
+     "spot": "chips-n5-4bb",
+     "decision": "BTN_vs_HJ",
+     "class": "A8o",
+     "cards": [
+      "Ad",
+      "8h"
+     ]
+    },
+    {
+     "id": "tq23",
+     "spot": "chips-n3-5bb",
+     "decision": "BB_vs_BTN",
+     "class": "J9o",
+     "cards": [
+      "Jc",
+      "9d"
+     ]
+    },
+    {
+     "id": "tq24",
+     "spot": "chips-n6-9bb",
+     "decision": "SB_vs_BTN",
+     "class": "A6o",
+     "cards": [
+      "Ah",
+      "6d"
+     ]
+    },
+    {
+     "id": "tq25",
+     "spot": "chips-n4-5bb",
+     "decision": "BTN_vs_CO",
+     "class": "T8s",
+     "cards": [
+      "Tc",
+      "8c"
+     ]
+    },
+    {
+     "id": "tq26",
+     "spot": "chips-n6-4bb",
+     "decision": "SB_vs_HJ",
+     "class": "Q6o",
+     "cards": [
+      "Qh",
+      "6c"
+     ]
+    },
+    {
+     "id": "tq27",
+     "spot": "chips-n5-9bb",
+     "decision": "BTN_vs_CO",
+     "class": "A2s",
+     "cards": [
+      "As",
+      "2s"
+     ]
+    },
+    {
+     "id": "tq28",
+     "spot": "chips-n6-6bb",
+     "decision": "CO_vs_HJ",
+     "class": "KJo",
+     "cards": [
+      "Kh",
+      "Jd"
+     ]
+    },
+    {
+     "id": "tq29",
+     "spot": "chips-n3-7bb",
+     "decision": "BB_vs_BTN",
+     "class": "Q4s",
+     "cards": [
+      "Qs",
+      "4s"
+     ]
+    },
+    {
+     "id": "tq30",
+     "spot": "chips-n4-6bb",
+     "decision": "BB_vs_SB",
+     "class": "95s",
+     "cards": [
+      "9h",
+      "5h"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "open-points",
+   "title": "League points: first in",
+   "blurb": "Late in the game with uneven stacks. Jam or fold, valued in league points (ICM).",
+   "questions": [
+    {
+     "id": "tq31",
+     "spot": "points-n3-btn12-sb9-bb24",
+     "decision": "BTN_open",
+     "class": "QTs",
+     "cards": [
+      "Qd",
+      "Td"
+     ]
+    },
+    {
+     "id": "tq32",
+     "spot": "points-n4-co12-btn9-sb30-bb9",
+     "decision": "BTN_open",
+     "class": "A5s",
+     "cards": [
+      "Ad",
+      "5d"
+     ]
+    },
+    {
+     "id": "tq33",
+     "spot": "points-n5-hj3-co15-btn13-sb14-bb15",
+     "decision": "BTN_open",
+     "class": "33",
+     "cards": [
+      "3c",
+      "3d"
+     ]
+    },
+    {
+     "id": "tq34",
+     "spot": "points-n5-hj10-co8-btn12-sb6-bb14",
+     "decision": "CO_open",
+     "class": "K3o",
+     "cards": [
+      "Kd",
+      "3s"
+     ]
+    },
+    {
+     "id": "tq35",
+     "spot": "points-n3-btn6-sb12-bb14",
+     "decision": "SB_open",
+     "class": "84o",
+     "cards": [
+      "8c",
+      "4s"
+     ]
+    },
+    {
+     "id": "tq36",
+     "spot": "points-n6-utg15-hj12-co5-btn10-sb8-bb10",
+     "decision": "UTG_open",
+     "class": "T7s",
+     "cards": [
+      "Th",
+      "7h"
+     ]
+    },
+    {
+     "id": "tq37",
+     "spot": "points-n4-co10-btn10-sb8-bb12",
+     "decision": "SB_open",
+     "class": "K4s",
+     "cards": [
+      "Kc",
+      "4c"
+     ]
+    },
+    {
+     "id": "tq38",
+     "spot": "points-n6-utg12-hj8-co10-btn6-sb14-bb10",
+     "decision": "CO_open",
+     "class": "82s",
+     "cards": [
+      "8s",
+      "2s"
+     ]
+    },
+    {
+     "id": "tq39",
+     "spot": "points-n6-utg30-hj10-co12-btn6-sb8-bb14",
+     "decision": "UTG_open",
+     "class": "A9o",
+     "cards": [
+      "Ad",
+      "9s"
+     ]
+    },
+    {
+     "id": "tq40",
+     "spot": "points-n2-sb18-bb12",
+     "decision": "SB_open",
+     "class": "T5o",
+     "cards": [
+      "Th",
+      "5s"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "call-points",
+   "title": "League points: facing an all-in",
+   "blurb": "One player has gone all-in before you. Call or fold, valued in league points (ICM).",
+   "questions": [
+    {
+     "id": "tq41",
+     "spot": "points-n6-utg5-hj7-co9-btn11-sb13-bb15",
+     "decision": "HJ_vs_UTG",
+     "class": "A9s",
+     "cards": [
+      "Ac",
+      "9c"
+     ]
+    },
+    {
+     "id": "tq42",
+     "spot": "points-n5-hj28-co10-btn12-sb6-bb4",
+     "decision": "SB_vs_BTN",
+     "class": "44",
+     "cards": [
+      "4s",
+      "4c"
+     ]
+    },
+    {
+     "id": "tq43",
+     "spot": "points-n4-co25-btn9-sb6-bb10",
+     "decision": "SB_vs_CO",
+     "class": "K9o",
+     "cards": [
+      "Kc",
+      "9d"
+     ]
+    },
+    {
+     "id": "tq44",
+     "spot": "points-n5-hj15-co12-btn5-sb10-bb8",
+     "decision": "BTN_vs_HJ",
+     "class": "77",
+     "cards": [
+      "7s",
+      "7c"
+     ]
+    },
+    {
+     "id": "tq45",
+     "spot": "points-n4-co8-btn14-sb3-bb35",
+     "decision": "SB_vs_CO",
+     "class": "98s",
+     "cards": [
+      "9h",
+      "8h"
+     ]
+    },
+    {
+     "id": "tq46",
+     "spot": "points-n3-btn7-sb25-bb8",
+     "decision": "BB_vs_BTN",
+     "class": "QJs",
+     "cards": [
+      "Qc",
+      "Jc"
+     ]
+    },
+    {
+     "id": "tq47",
+     "spot": "points-n6-utg12-hj8-co10-btn6-sb14-bb10",
+     "decision": "CO_vs_HJ",
+     "class": "AJo",
+     "cards": [
+      "As",
+      "Jd"
+     ]
+    },
+    {
+     "id": "tq48",
+     "spot": "points-n3-btn15-sb5-bb10",
+     "decision": "BB_vs_SB",
+     "class": "97o",
+     "cards": [
+      "9h",
+      "7d"
+     ]
+    },
+    {
+     "id": "tq49",
+     "spot": "points-n2-sb27-bb8",
+     "decision": "BB_vs_SB",
+     "class": "Q5s",
+     "cards": [
+      "Qc",
+      "5c"
+     ]
+    },
+    {
+     "id": "tq50",
+     "spot": "points-n6-utg8-hj14-co9-btn32-sb11-bb6",
+     "decision": "CO_vs_UTG",
+     "class": "AQo",
+     "cards": [
+      "Ad",
+      "Qh"
+     ]
+    }
+   ]
+  }
+ ]
+}

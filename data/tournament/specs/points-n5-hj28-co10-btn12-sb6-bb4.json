@@ -1,0 +1,34 @@
+{
+ "name": "points-n5-hj28-co10-btn12-sb6-bb4",
+ "note": "60 bb on the table: 12,000 chips, big blind 200 chips; stacks in chips HJ 5600, CO 2000, BTN 2400, SB 1200, BB 800",
+ "players": 5,
+ "stacks": [
+  28,
+  10,
+  12,
+  6,
+  4
+ ],
+ "ante": {
+  "mode": "per_player",
+  "amount": 0.1
+ },
+ "payoff": {
+  "model": "points",
+  "payouts": [
+   15,
+   8,
+   5,
+   3,
+   2
+  ]
+ },
+ "accuracy": {
+  "solve_deals": 100000,
+  "max_iterations": 400,
+  "refine_iterations": 150,
+  "refine_deals": 100000,
+  "eval_deals": 4000000,
+  "seed": 1
+ }
+}

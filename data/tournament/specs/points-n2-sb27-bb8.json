@@ -1,0 +1,28 @@
+{
+ "name": "points-n2-sb27-bb8",
+ "note": "35 bb on the table: 12,000 chips, big blind 342.86 chips; stacks in chips SB 9257, BB 2743",
+ "players": 2,
+ "stacks": [
+  27,
+  8
+ ],
+ "ante": {
+  "mode": "per_player",
+  "amount": 0.1
+ },
+ "payoff": {
+  "model": "points",
+  "payouts": [
+   15,
+   8
+  ]
+ },
+ "accuracy": {
+  "solve_deals": 100000,
+  "max_iterations": 400,
+  "refine_iterations": 150,
+  "refine_deals": 100000,
+  "eval_deals": 4000000,
+  "seed": 1
+ }
+}

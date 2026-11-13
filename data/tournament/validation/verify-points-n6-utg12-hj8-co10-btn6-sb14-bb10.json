@@ -1,0 +1,91 @@
+{
+  "solution": "points-n6-utg12-hj8-co10-btn6-sb14-bb10.json",
+  "method": "plain simulation: own RNG (PCG32), own posting and side-pot code, ICM by enumerating finishing orders, naive best-of-21 evaluator; earlier actions drawn from the strategies, both actions of each player valued exactly over later players' mixed strategies",
+  "deals": 10000000.0,
+  "seconds": 392.0,
+  "max_conservation_error": 1.4921397450962104e-13,
+  "player_ev": [
+    6.452418978542705,
+    5.084772685541299,
+    5.810092544414428,
+    4.270559822957238,
+    6.908105036759615,
+    5.4740509317841965
+  ],
+  "player_ev_se": [
+    0.0002758965463255222,
+    0.00028666486350654904,
+    0.00030505572638455026,
+    0.0002867351781114551,
+    0.00033937736089131886,
+    0.0003845429880253108
+  ],
+  "solver_player_ev": [
+    6.4525,
+    5.08453,
+    5.8101,
+    4.27059,
+    6.90814,
+    5.47415
+  ],
+  "solver_player_ev_se": [
+    0.00042,
+    0.00043,
+    0.00043,
+    0.00046,
+    0.00059,
+    0.00058
+  ],
+  "player_ev_z": [
+    -0.16123269092094064,
+    0.46959759739760437,
+    -0.014141366953648666,
+    -0.05567217288471032,
+    -0.051367840639351445,
+    -0.14236035901504315
+  ],
+  "best_response_gain_plugin": [
+    0.0000556705416801678,
+    0.00018330903111765285,
+    0.00020633860935940205,
+    0.0001374644195700318,
+    0.00028742490556616805,
+    0.0002080733919780002
+  ],
+  "best_response_gain_crossfit": [
+    -0.0003076780181524052,
+    -0.00009651661264570207,
+    -0.000038590224794878575,
+    -0.00006584788481933703,
+    -0.0002056083629261439,
+    -0.0005744349342397784
+  ],
+  "solver_exploitability_eval": [
+    0.000012,
+    0.000018,
+    6e-6,
+    8e-6,
+    0.00004,
+    0.000024
+  ],
+  "ev_diff_comparison": {
+    "cells_compared": 6732.0,
+    "z_mean": 0.001813723872599869,
+    "z_sd": 1.0042555456814726,
+    "frac_abs_z_gt_3": 0.0035650623885918,
+    "weighted_mean_difference": 0.00011192065737414943,
+    "weighted_mean_difference_se": 0.00034792327776789043,
+    "weight": "share of hands reaching the cell",
+    "cells_abs_z_gt_4": [
+      {
+        "player": 2,
+        "facing": 3,
+        "class": "52o",
+        "verify_ev_diff": -2.9566918528474417,
+        "solver_ev_diff": -2.516,
+        "z": -4.349286812774258,
+        "n": 1055.0
+      }
+    ]
+  }
+}

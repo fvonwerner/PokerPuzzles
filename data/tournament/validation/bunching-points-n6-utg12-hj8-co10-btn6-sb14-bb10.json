@@ -1,0 +1,2725 @@
+{
+  "solution": "points-n6-utg12-hj8-co10-btn6-sb14-bb10.json",
+  "what": "EV difference (all-in minus fold) of the SB's first-in jam and the BB's call of it after everybody else folded: full-deal solution (all card removal) versus a model that ignores the folded players' cards (exact heads-up equities, BB hand uniform given the SB's), both against the same strategies",
+  "units": "points",
+  "summary": {
+    "SB_open": {
+      "mean_abs_delta_combo_weighted": 0.055530455689880874,
+      "max_abs_delta": 0.08512061688440828,
+      "classes_delta_beyond_3_se": 167,
+      "classes_where_the_better_action_changes": 8
+    },
+    "BB_vs_SB": {
+      "mean_abs_delta_combo_weighted": 0.07361424996458367,
+      "max_abs_delta": 0.15080937214830326,
+      "classes_delta_beyond_3_se": 159,
+      "classes_where_the_better_action_changes": 1
+    }
+  },
+  "rows": [
+    {
+      "decision": "SB_open",
+      "class": "AA",
+      "ev_diff_full_deal": 0.8718,
+      "se": 0.001,
+      "ev_diff_folded_cards_ignored": 0.8481704250056468,
+      "delta": 0.023629574994353253
+    },
+    {
+      "decision": "SB_open",
+      "class": "AKs",
+      "ev_diff_full_deal": 0.6465,
+      "se": 0.0012,
+      "ev_diff_folded_cards_ignored": 0.6250618069820024,
+      "delta": 0.021438193017997542
+    },
+    {
+      "decision": "SB_open",
+      "class": "AQs",
+      "ev_diff_full_deal": 0.5901,
+      "se": 0.0013,
+      "ev_diff_folded_cards_ignored": 0.5788450871177472,
+      "delta": 0.011254912882252777
+    },
+    {
+      "decision": "SB_open",
+      "class": "AJs",
+      "ev_diff_full_deal": 0.5478,
+      "se": 0.0013,
+      "ev_diff_folded_cards_ignored": 0.5419271449920839,
+      "delta": 0.005872855007916011
+    },
+    {
+      "decision": "SB_open",
+      "class": "ATs",
+      "ev_diff_full_deal": 0.501,
+      "se": 0.0012,
+      "ev_diff_folded_cards_ignored": 0.5002402007277109,
+      "delta": 0.0007597992722890856
+    },
+    {
+      "decision": "SB_open",
+      "class": "A9s",
+      "ev_diff_full_deal": 0.4368,
+      "se": 0.0012,
+      "ev_diff_folded_cards_ignored": 0.44716888921540104,
+      "delta": -0.010368889215401023
+    },
+    {
+      "decision": "SB_open",
+      "class": "A8s",
+      "ev_diff_full_deal": 0.3983,
+      "se": 0.0015,
+      "ev_diff_folded_cards_ignored": 0.41194859109284077,
+      "delta": -0.013648591092840778
+    },
+    {
+      "decision": "SB_open",
+      "class": "A7s",
+      "ev_diff_full_deal": 0.3614,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.3818521335504549,
+      "delta": -0.020452133550454887
+    },
+    {
+      "decision": "SB_open",
+      "class": "A6s",
+      "ev_diff_full_deal": 0.3348,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.35658816882379457,
+      "delta": -0.021788168823794585
+    },
+    {
+      "decision": "SB_open",
+      "class": "A5s",
+      "ev_diff_full_deal": 0.3339,
+      "se": 0.0013,
+      "ev_diff_folded_cards_ignored": 0.3544445658191547,
+      "delta": -0.020544565819154703
+    },
+    {
+      "decision": "SB_open",
+      "class": "A4s",
+      "ev_diff_full_deal": 0.3174,
+      "se": 0.0014,
+      "ev_diff_folded_cards_ignored": 0.33952194295555105,
+      "delta": -0.022121942955551033
+    },
+    {
+      "decision": "SB_open",
+      "class": "A3s",
+      "ev_diff_full_deal": 0.3097,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.3325612680046262,
+      "delta": -0.022861268004626234
+    },
+    {
+      "decision": "SB_open",
+      "class": "A2s",
+      "ev_diff_full_deal": 0.3063,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.32822057235248897,
+      "delta": -0.021920572352488954
+    },
+    {
+      "decision": "SB_open",
+      "class": "AKo",
+      "ev_diff_full_deal": 0.627,
+      "se": 0.0012,
+      "ev_diff_folded_cards_ignored": 0.605306114494383,
+      "delta": 0.021693885505617017
+    },
+    {
+      "decision": "SB_open",
+      "class": "KK",
+      "ev_diff_full_deal": 0.7202,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.7363516906653448,
+      "delta": -0.01615169066534483
+    },
+    {
+      "decision": "SB_open",
+      "class": "KQs",
+      "ev_diff_full_deal": 0.3562,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.381458460938826,
+      "delta": -0.025258460938826
+    },
+    {
+      "decision": "SB_open",
+      "class": "KJs",
+      "ev_diff_full_deal": 0.3204,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.3472601270601311,
+      "delta": -0.026860127060131078
+    },
+    {
+      "decision": "SB_open",
+      "class": "KTs",
+      "ev_diff_full_deal": 0.2785,
+      "se": 0.0015,
+      "ev_diff_folded_cards_ignored": 0.3093221148414263,
+      "delta": -0.030822114841426274
+    },
+    {
+      "decision": "SB_open",
+      "class": "K9s",
+      "ev_diff_full_deal": 0.2188,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.26049157321704336,
+      "delta": -0.041691573217043365
+    },
+    {
+      "decision": "SB_open",
+      "class": "K8s",
+      "ev_diff_full_deal": 0.1854,
+      "se": 0.0015,
+      "ev_diff_folded_cards_ignored": 0.23042685430489507,
+      "delta": -0.04502685430489506
+    },
+    {
+      "decision": "SB_open",
+      "class": "K7s",
+      "ev_diff_full_deal": 0.1762,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.22338856178684496,
+      "delta": -0.04718856178684497
+    },
+    {
+      "decision": "SB_open",
+      "class": "K6s",
+      "ev_diff_full_deal": 0.1685,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.21799365390842895,
+      "delta": -0.04949365390842894
+    },
+    {
+      "decision": "SB_open",
+      "class": "K5s",
+      "ev_diff_full_deal": 0.1637,
+      "se": 0.0015,
+      "ev_diff_folded_cards_ignored": 0.209085502224732,
+      "delta": -0.04538550222473198
+    },
+    {
+      "decision": "SB_open",
+      "class": "K4s",
+      "ev_diff_full_deal": 0.1504,
+      "se": 0.0014,
+      "ev_diff_folded_cards_ignored": 0.1981298739602314,
+      "delta": -0.0477298739602314
+    },
+    {
+      "decision": "SB_open",
+      "class": "K3s",
+      "ev_diff_full_deal": 0.1468,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.19414207064641678,
+      "delta": -0.04734207064641677
+    },
+    {
+      "decision": "SB_open",
+      "class": "K2s",
+      "ev_diff_full_deal": 0.1416,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.18920834274761342,
+      "delta": -0.047608342747613414
+    },
+    {
+      "decision": "SB_open",
+      "class": "AQo",
+      "ev_diff_full_deal": 0.5659,
+      "se": 0.0014,
+      "ev_diff_folded_cards_ignored": 0.5548204109854865,
+      "delta": 0.011079589014513447
+    },
+    {
+      "decision": "SB_open",
+      "class": "KQo",
+      "ev_diff_full_deal": 0.3148,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.34262747799894505,
+      "delta": -0.027827477998945027
+    },
+    {
+      "decision": "SB_open",
+      "class": "QQ",
+      "ev_diff_full_deal": 0.6473,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.6725717647669427,
+      "delta": -0.025271764766942706
+    },
+    {
+      "decision": "SB_open",
+      "class": "QJs",
+      "ev_diff_full_deal": 0.251,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.2858502891391744,
+      "delta": -0.03485028913917437
+    },
+    {
+      "decision": "SB_open",
+      "class": "QTs",
+      "ev_diff_full_deal": 0.2246,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.25939802117950883,
+      "delta": -0.03479802117950884
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q9s",
+      "ev_diff_full_deal": 0.1804,
+      "se": 0.0021,
+      "ev_diff_folded_cards_ignored": 0.22823325075143955,
+      "delta": -0.04783325075143954
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q8s",
+      "ev_diff_full_deal": 0.1566,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.20799233193103014,
+      "delta": -0.051392331931030155
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q7s",
+      "ev_diff_full_deal": 0.1303,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.18774494453845011,
+      "delta": -0.057444944538450116
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q6s",
+      "ev_diff_full_deal": 0.1278,
+      "se": 0.0015,
+      "ev_diff_folded_cards_ignored": 0.1861739416346542,
+      "delta": -0.0583739416346542
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q5s",
+      "ev_diff_full_deal": 0.1237,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.1775320693004561,
+      "delta": -0.05383206930045609
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q4s",
+      "ev_diff_full_deal": 0.1107,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.16632864880992684,
+      "delta": -0.05562864880992684
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q3s",
+      "ev_diff_full_deal": 0.1047,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.16202200319275573,
+      "delta": -0.057322003192755724
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q2s",
+      "ev_diff_full_deal": 0.0998,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.1567233112581922,
+      "delta": -0.056923311258192194
+    },
+    {
+      "decision": "SB_open",
+      "class": "AJo",
+      "ev_diff_full_deal": 0.5198,
+      "se": 0.0013,
+      "ev_diff_folded_cards_ignored": 0.5151177969886171,
+      "delta": 0.0046822030113828905
+    },
+    {
+      "decision": "SB_open",
+      "class": "KJo",
+      "ev_diff_full_deal": 0.2754,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.30577039982218845,
+      "delta": -0.030370399822188476
+    },
+    {
+      "decision": "SB_open",
+      "class": "QJo",
+      "ev_diff_full_deal": 0.2017,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.2399945940910694,
+      "delta": -0.03829459409106942
+    },
+    {
+      "decision": "SB_open",
+      "class": "JJ",
+      "ev_diff_full_deal": 0.5886,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.6199561357662853,
+      "delta": -0.031356135766285265
+    },
+    {
+      "decision": "SB_open",
+      "class": "JTs",
+      "ev_diff_full_deal": 0.2261,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.2610315039894845,
+      "delta": -0.0349315039894845
+    },
+    {
+      "decision": "SB_open",
+      "class": "J9s",
+      "ev_diff_full_deal": 0.1869,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.2339179834575444,
+      "delta": -0.04701798345754438
+    },
+    {
+      "decision": "SB_open",
+      "class": "J8s",
+      "ev_diff_full_deal": 0.1616,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.21352497211230112,
+      "delta": -0.051924972112301127
+    },
+    {
+      "decision": "SB_open",
+      "class": "J7s",
+      "ev_diff_full_deal": 0.1342,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.19260436867694286,
+      "delta": -0.05840436867694285
+    },
+    {
+      "decision": "SB_open",
+      "class": "J6s",
+      "ev_diff_full_deal": 0.1124,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.17266970461413528,
+      "delta": -0.06026970461413528
+    },
+    {
+      "decision": "SB_open",
+      "class": "J5s",
+      "ev_diff_full_deal": 0.1114,
+      "se": 0.0015,
+      "ev_diff_folded_cards_ignored": 0.16769903996879443,
+      "delta": -0.05629903996879443
+    },
+    {
+      "decision": "SB_open",
+      "class": "J4s",
+      "ev_diff_full_deal": 0.1006,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.15651877894268962,
+      "delta": -0.05591877894268962
+    },
+    {
+      "decision": "SB_open",
+      "class": "J3s",
+      "ev_diff_full_deal": 0.0933,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.15219851406310878,
+      "delta": -0.05889851406310878
+    },
+    {
+      "decision": "SB_open",
+      "class": "J2s",
+      "ev_diff_full_deal": 0.0867,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.1468571931646385,
+      "delta": -0.060157193164638495
+    },
+    {
+      "decision": "SB_open",
+      "class": "ATo",
+      "ev_diff_full_deal": 0.4695,
+      "se": 0.0014,
+      "ev_diff_folded_cards_ignored": 0.470379980623691,
+      "delta": -0.0008799806236910457
+    },
+    {
+      "decision": "SB_open",
+      "class": "KTo",
+      "ev_diff_full_deal": 0.2308,
+      "se": 0.0015,
+      "ev_diff_folded_cards_ignored": 0.2649823989261173,
+      "delta": -0.0341823989261173
+    },
+    {
+      "decision": "SB_open",
+      "class": "QTo",
+      "ev_diff_full_deal": 0.1734,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.21179700381728264,
+      "delta": -0.03839700381728264
+    },
+    {
+      "decision": "SB_open",
+      "class": "JTo",
+      "ev_diff_full_deal": 0.174,
+      "se": 0.0021,
+      "ev_diff_folded_cards_ignored": 0.2134014201411351,
+      "delta": -0.039401420141135124
+    },
+    {
+      "decision": "SB_open",
+      "class": "TT",
+      "ev_diff_full_deal": 0.5333,
+      "se": 0.0023,
+      "ev_diff_folded_cards_ignored": 0.5688471453062668,
+      "delta": -0.03554714530626679
+    },
+    {
+      "decision": "SB_open",
+      "class": "T9s",
+      "ev_diff_full_deal": 0.1892,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.2403513313629721,
+      "delta": -0.05115133136297209
+    },
+    {
+      "decision": "SB_open",
+      "class": "T8s",
+      "ev_diff_full_deal": 0.1666,
+      "se": 0.0021,
+      "ev_diff_folded_cards_ignored": 0.21985195137588728,
+      "delta": -0.053251951375887285
+    },
+    {
+      "decision": "SB_open",
+      "class": "T7s",
+      "ev_diff_full_deal": 0.1394,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.19907729616266026,
+      "delta": -0.059677296162660265
+    },
+    {
+      "decision": "SB_open",
+      "class": "T6s",
+      "ev_diff_full_deal": 0.116,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.1784859959600355,
+      "delta": -0.0624859959600355
+    },
+    {
+      "decision": "SB_open",
+      "class": "T5s",
+      "ev_diff_full_deal": 0.0955,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.15414276978969293,
+      "delta": -0.05864276978969293
+    },
+    {
+      "decision": "SB_open",
+      "class": "T4s",
+      "ev_diff_full_deal": 0.0891,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.14689728494695856,
+      "delta": -0.05779728494695856
+    },
+    {
+      "decision": "SB_open",
+      "class": "T3s",
+      "ev_diff_full_deal": 0.081,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.14258349970961495,
+      "delta": -0.06158349970961495
+    },
+    {
+      "decision": "SB_open",
+      "class": "T2s",
+      "ev_diff_full_deal": 0.0755,
+      "se": 0.0023,
+      "ev_diff_folded_cards_ignored": 0.13722256824790266,
+      "delta": -0.06172256824790266
+    },
+    {
+      "decision": "SB_open",
+      "class": "A9o",
+      "ev_diff_full_deal": 0.4007,
+      "se": 0.0012,
+      "ev_diff_folded_cards_ignored": 0.41321249531097826,
+      "delta": -0.012512495310978256
+    },
+    {
+      "decision": "SB_open",
+      "class": "K9o",
+      "ev_diff_full_deal": 0.1672,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.21247718074219718,
+      "delta": -0.04527718074219719
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q9o",
+      "ev_diff_full_deal": 0.1252,
+      "se": 0.0023,
+      "ev_diff_folded_cards_ignored": 0.1777796711067536,
+      "delta": -0.0525796711067536
+    },
+    {
+      "decision": "SB_open",
+      "class": "J9o",
+      "ev_diff_full_deal": 0.1314,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.18422886242623085,
+      "delta": -0.05282886242623086
+    },
+    {
+      "decision": "SB_open",
+      "class": "T9o",
+      "ev_diff_full_deal": 0.135,
+      "se": 0.0022,
+      "ev_diff_folded_cards_ignored": 0.19116073076707885,
+      "delta": -0.05616073076707884
+    },
+    {
+      "decision": "SB_open",
+      "class": "99",
+      "ev_diff_full_deal": 0.4676,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.513560766782864,
+      "delta": -0.04596076678286398
+    },
+    {
+      "decision": "SB_open",
+      "class": "98s",
+      "ev_diff_full_deal": 0.1643,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.2240352846300945,
+      "delta": -0.059735284630094504
+    },
+    {
+      "decision": "SB_open",
+      "class": "97s",
+      "ev_diff_full_deal": 0.1394,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.20479940783088713,
+      "delta": -0.06539940783088713
+    },
+    {
+      "decision": "SB_open",
+      "class": "96s",
+      "ev_diff_full_deal": 0.1154,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.18447510204679002,
+      "delta": -0.06907510204679002
+    },
+    {
+      "decision": "SB_open",
+      "class": "95s",
+      "ev_diff_full_deal": 0.0945,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.16020829608618628,
+      "delta": -0.06570829608618628
+    },
+    {
+      "decision": "SB_open",
+      "class": "94s",
+      "ev_diff_full_deal": 0.0656,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.13329432917158332,
+      "delta": -0.06769432917158331
+    },
+    {
+      "decision": "SB_open",
+      "class": "93s",
+      "ev_diff_full_deal": 0.066,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.13311987051166527,
+      "delta": -0.06711987051166526
+    },
+    {
+      "decision": "SB_open",
+      "class": "92s",
+      "ev_diff_full_deal": 0.058,
+      "se": 0.0021,
+      "ev_diff_folded_cards_ignored": 0.12773989128897575,
+      "delta": -0.06973989128897576
+    },
+    {
+      "decision": "SB_open",
+      "class": "A8o",
+      "ev_diff_full_deal": 0.3595,
+      "se": 0.0015,
+      "ev_diff_folded_cards_ignored": 0.37531777017658874,
+      "delta": -0.015817770176588752
+    },
+    {
+      "decision": "SB_open",
+      "class": "K8o",
+      "ev_diff_full_deal": 0.1301,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.18029625558288515,
+      "delta": -0.05019625558288515
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q8o",
+      "ev_diff_full_deal": 0.0985,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.15597444690845522,
+      "delta": -0.05747444690845521
+    },
+    {
+      "decision": "SB_open",
+      "class": "J8o",
+      "ev_diff_full_deal": 0.1041,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.1622563649043338,
+      "delta": -0.05815636490433379
+    },
+    {
+      "decision": "SB_open",
+      "class": "T8o",
+      "ev_diff_full_deal": 0.1099,
+      "se": 0.0023,
+      "ev_diff_folded_cards_ignored": 0.16908421236422086,
+      "delta": -0.05918421236422086
+    },
+    {
+      "decision": "SB_open",
+      "class": "98o",
+      "ev_diff_full_deal": 0.1074,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.1734145661835948,
+      "delta": -0.0660145661835948
+    },
+    {
+      "decision": "SB_open",
+      "class": "88",
+      "ev_diff_full_deal": 0.4213,
+      "se": 0.0021,
+      "ev_diff_folded_cards_ignored": 0.4717607389524584,
+      "delta": -0.050460738952458395
+    },
+    {
+      "decision": "SB_open",
+      "class": "87s",
+      "ev_diff_full_deal": 0.1453,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.21306718599135133,
+      "delta": -0.06776718599135131
+    },
+    {
+      "decision": "SB_open",
+      "class": "86s",
+      "ev_diff_full_deal": 0.1224,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.1937510378072745,
+      "delta": -0.07135103780727452
+    },
+    {
+      "decision": "SB_open",
+      "class": "85s",
+      "ev_diff_full_deal": 0.1019,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.16988846897134677,
+      "delta": -0.06798846897134676
+    },
+    {
+      "decision": "SB_open",
+      "class": "84s",
+      "ev_diff_full_deal": 0.0766,
+      "se": 0.0021,
+      "ev_diff_folded_cards_ignored": 0.14289722201983712,
+      "delta": -0.06629722201983712
+    },
+    {
+      "decision": "SB_open",
+      "class": "83s",
+      "ev_diff_full_deal": 0.0517,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.12295904615042227,
+      "delta": -0.07125904615042228
+    },
+    {
+      "decision": "SB_open",
+      "class": "82s",
+      "ev_diff_full_deal": 0.0502,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.12199046417436597,
+      "delta": -0.07179046417436596
+    },
+    {
+      "decision": "SB_open",
+      "class": "A7o",
+      "ev_diff_full_deal": 0.3198,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.34285931799807473,
+      "delta": -0.023059317998074758
+    },
+    {
+      "decision": "SB_open",
+      "class": "K7o",
+      "ev_diff_full_deal": 0.1193,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.17234544689642034,
+      "delta": -0.05304544689642034
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q7o",
+      "ev_diff_full_deal": 0.071,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.1344393312148227,
+      "delta": -0.06343933121482272
+    },
+    {
+      "decision": "SB_open",
+      "class": "J7o",
+      "ev_diff_full_deal": 0.0763,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.13999019222727324,
+      "delta": -0.06369019222727323
+    },
+    {
+      "decision": "SB_open",
+      "class": "T7o",
+      "ev_diff_full_deal": 0.0819,
+      "se": 0.0022,
+      "ev_diff_folded_cards_ignored": 0.14699490186676967,
+      "delta": -0.06509490186676967
+    },
+    {
+      "decision": "SB_open",
+      "class": "97o",
+      "ev_diff_full_deal": 0.0809,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.15299036530949367,
+      "delta": -0.07209036530949367
+    },
+    {
+      "decision": "SB_open",
+      "class": "87o",
+      "ev_diff_full_deal": 0.0878,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.16179567712363388,
+      "delta": -0.07399567712363388
+    },
+    {
+      "decision": "SB_open",
+      "class": "77",
+      "ev_diff_full_deal": 0.3789,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.43393535481246553,
+      "delta": -0.05503535481246552
+    },
+    {
+      "decision": "SB_open",
+      "class": "76s",
+      "ev_diff_full_deal": 0.1275,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.2011025793250601,
+      "delta": -0.07360257932506009
+    },
+    {
+      "decision": "SB_open",
+      "class": "75s",
+      "ev_diff_full_deal": 0.106,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.17821209745390587,
+      "delta": -0.07221209745390587
+    },
+    {
+      "decision": "SB_open",
+      "class": "74s",
+      "ev_diff_full_deal": 0.0786,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.15123073325305939,
+      "delta": -0.07263073325305938
+    },
+    {
+      "decision": "SB_open",
+      "class": "73s",
+      "ev_diff_full_deal": 0.0552,
+      "se": 0.0013,
+      "ev_diff_folded_cards_ignored": 0.131113561345444,
+      "delta": -0.075913561345444
+    },
+    {
+      "decision": "SB_open",
+      "class": "72s",
+      "ev_diff_full_deal": 0.0347,
+      "se": 0.0021,
+      "ev_diff_folded_cards_ignored": 0.11007296827515142,
+      "delta": -0.07537296827515141
+    },
+    {
+      "decision": "SB_open",
+      "class": "A6o",
+      "ev_diff_full_deal": 0.291,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.3157442463285584,
+      "delta": -0.024744246328558428
+    },
+    {
+      "decision": "SB_open",
+      "class": "K6o",
+      "ev_diff_full_deal": 0.1112,
+      "se": 0.0015,
+      "ev_diff_folded_cards_ignored": 0.16659302723647762,
+      "delta": -0.05539302723647763
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q6o",
+      "ev_diff_full_deal": 0.0691,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.13280213048229814,
+      "delta": -0.06370213048229814
+    },
+    {
+      "decision": "SB_open",
+      "class": "J6o",
+      "ev_diff_full_deal": 0.0522,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.11874224504654603,
+      "delta": -0.06654224504654602
+    },
+    {
+      "decision": "SB_open",
+      "class": "T6o",
+      "ev_diff_full_deal": 0.057,
+      "se": 0.0021,
+      "ev_diff_folded_cards_ignored": 0.12503822704591114,
+      "delta": -0.06803822704591114
+    },
+    {
+      "decision": "SB_open",
+      "class": "96o",
+      "ev_diff_full_deal": 0.056,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.13133310772263568,
+      "delta": -0.07533310772263568
+    },
+    {
+      "decision": "SB_open",
+      "class": "86o",
+      "ev_diff_full_deal": 0.0631,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.14122802768235526,
+      "delta": -0.07812802768235526
+    },
+    {
+      "decision": "SB_open",
+      "class": "76o",
+      "ev_diff_full_deal": 0.0689,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.14927405791909537,
+      "delta": -0.08037405791909537
+    },
+    {
+      "decision": "SB_open",
+      "class": "66",
+      "ev_diff_full_deal": 0.3442,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.3995939141412974,
+      "delta": -0.05539391414129741
+    },
+    {
+      "decision": "SB_open",
+      "class": "65s",
+      "ev_diff_full_deal": 0.1169,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.18881989212124162,
+      "delta": -0.07191989212124161
+    },
+    {
+      "decision": "SB_open",
+      "class": "64s",
+      "ev_diff_full_deal": 0.089,
+      "se": 0.0015,
+      "ev_diff_folded_cards_ignored": 0.16216360870536717,
+      "delta": -0.07316360870536717
+    },
+    {
+      "decision": "SB_open",
+      "class": "63s",
+      "ev_diff_full_deal": 0.0657,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.1419297132860707,
+      "delta": -0.07622971328607071
+    },
+    {
+      "decision": "SB_open",
+      "class": "62s",
+      "ev_diff_full_deal": 0.0434,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.12073505112532186,
+      "delta": -0.07733505112532185
+    },
+    {
+      "decision": "SB_open",
+      "class": "A5o",
+      "ev_diff_full_deal": 0.2897,
+      "se": 0.0014,
+      "ev_diff_folded_cards_ignored": 0.31365713275860435,
+      "delta": -0.023957132758604338
+    },
+    {
+      "decision": "SB_open",
+      "class": "K5o",
+      "ev_diff_full_deal": 0.106,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.15719134830365367,
+      "delta": -0.05119134830365367
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q5o",
+      "ev_diff_full_deal": 0.0644,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.12368370894899494,
+      "delta": -0.05928370894899494
+    },
+    {
+      "decision": "SB_open",
+      "class": "J5o",
+      "ev_diff_full_deal": 0.0512,
+      "se": 0.0015,
+      "ev_diff_folded_cards_ignored": 0.11357804192554505,
+      "delta": -0.062378041925545046
+    },
+    {
+      "decision": "SB_open",
+      "class": "T5o",
+      "ev_diff_full_deal": 0.0345,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.09917671797322711,
+      "delta": -0.0646767179732271
+    },
+    {
+      "decision": "SB_open",
+      "class": "95o",
+      "ev_diff_full_deal": 0.0337,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.10556295679935129,
+      "delta": -0.07186295679935129
+    },
+    {
+      "decision": "SB_open",
+      "class": "85o",
+      "ev_diff_full_deal": 0.041,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.11590096786857597,
+      "delta": -0.07490096786857597
+    },
+    {
+      "decision": "SB_open",
+      "class": "75o",
+      "ev_diff_full_deal": 0.0461,
+      "se": 0.0022,
+      "ev_diff_folded_cards_ignored": 0.12500222501098884,
+      "delta": -0.07890222501098884
+    },
+    {
+      "decision": "SB_open",
+      "class": "65o",
+      "ev_diff_full_deal": 0.0572,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.13644738012250848,
+      "delta": -0.07924738012250848
+    },
+    {
+      "decision": "SB_open",
+      "class": "55",
+      "ev_diff_full_deal": 0.3119,
+      "se": 0.0023,
+      "ev_diff_folded_cards_ignored": 0.3645439603626269,
+      "delta": -0.05264396036262686
+    },
+    {
+      "decision": "SB_open",
+      "class": "54s",
+      "ev_diff_full_deal": 0.1066,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.1731673481043506,
+      "delta": -0.06656734810435061
+    },
+    {
+      "decision": "SB_open",
+      "class": "53s",
+      "ev_diff_full_deal": 0.085,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.15394161907620568,
+      "delta": -0.06894161907620568
+    },
+    {
+      "decision": "SB_open",
+      "class": "52s",
+      "ev_diff_full_deal": 0.0619,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.13276683389713034,
+      "delta": -0.07086683389713035
+    },
+    {
+      "decision": "SB_open",
+      "class": "A4o",
+      "ev_diff_full_deal": 0.2724,
+      "se": 0.0015,
+      "ev_diff_folded_cards_ignored": 0.2974686453581731,
+      "delta": -0.025068645358173103
+    },
+    {
+      "decision": "SB_open",
+      "class": "K4o",
+      "ev_diff_full_deal": 0.0929,
+      "se": 0.0015,
+      "ev_diff_folded_cards_ignored": 0.14518582933440113,
+      "delta": -0.05228582933440114
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q4o",
+      "ev_diff_full_deal": 0.0506,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.11141535413025627,
+      "delta": -0.06081535413025627
+    },
+    {
+      "decision": "SB_open",
+      "class": "J4o",
+      "ev_diff_full_deal": 0.0392,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.10133795578144693,
+      "delta": -0.06213795578144693
+    },
+    {
+      "decision": "SB_open",
+      "class": "T4o",
+      "ev_diff_full_deal": 0.0273,
+      "se": 0.0022,
+      "ev_diff_folded_cards_ignored": 0.09117867593462246,
+      "delta": -0.06387867593462246
+    },
+    {
+      "decision": "SB_open",
+      "class": "94o",
+      "ev_diff_full_deal": 0.002,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.07655998305751896,
+      "delta": -0.07455998305751896
+    },
+    {
+      "decision": "SB_open",
+      "class": "84o",
+      "ev_diff_full_deal": 0.0132,
+      "se": 0.0021,
+      "ev_diff_folded_cards_ignored": 0.0868107489294188,
+      "delta": -0.0736107489294188
+    },
+    {
+      "decision": "SB_open",
+      "class": "74o",
+      "ev_diff_full_deal": 0.0164,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.09592094092259716,
+      "delta": -0.07952094092259716
+    },
+    {
+      "decision": "SB_open",
+      "class": "64o",
+      "ev_diff_full_deal": 0.0276,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.10771798955160193,
+      "delta": -0.08011798955160193
+    },
+    {
+      "decision": "SB_open",
+      "class": "54o",
+      "ev_diff_full_deal": 0.0451,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.11969890105321969,
+      "delta": -0.07459890105321969
+    },
+    {
+      "decision": "SB_open",
+      "class": "44",
+      "ev_diff_full_deal": 0.2786,
+      "se": 0.0022,
+      "ev_diff_folded_cards_ignored": 0.33037904375269384,
+      "delta": -0.05177904375269382
+    },
+    {
+      "decision": "SB_open",
+      "class": "43s",
+      "ev_diff_full_deal": 0.0699,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.13956275663447296,
+      "delta": -0.06966275663447295
+    },
+    {
+      "decision": "SB_open",
+      "class": "42s",
+      "ev_diff_full_deal": 0.0491,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.11872392809069128,
+      "delta": -0.06962392809069129
+    },
+    {
+      "decision": "SB_open",
+      "class": "A3o",
+      "ev_diff_full_deal": 0.2639,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.2899363655536913,
+      "delta": -0.026036365553691265
+    },
+    {
+      "decision": "SB_open",
+      "class": "K3o",
+      "ev_diff_full_deal": 0.0881,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.14045271445611385,
+      "delta": -0.05235271445611385
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q3o",
+      "ev_diff_full_deal": 0.0433,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.10634469449686518,
+      "delta": -0.06304469449686517
+    },
+    {
+      "decision": "SB_open",
+      "class": "J3o",
+      "ev_diff_full_deal": 0.0313,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.09625811388485746,
+      "delta": -0.06495811388485745
+    },
+    {
+      "decision": "SB_open",
+      "class": "T3o",
+      "ev_diff_full_deal": 0.0188,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.08610547605109224,
+      "delta": -0.06730547605109224
+    },
+    {
+      "decision": "SB_open",
+      "class": "93o",
+      "ev_diff_full_deal": 0.0015,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.0759506483584376,
+      "delta": -0.0744506483584376
+    },
+    {
+      "decision": "SB_open",
+      "class": "83o",
+      "ev_diff_full_deal": -0.0123,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.0650957352338352,
+      "delta": -0.07739573523383521
+    },
+    {
+      "decision": "SB_open",
+      "class": "73o",
+      "ev_diff_full_deal": -0.0096,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.07401911221256718,
+      "delta": -0.08361911221256718
+    },
+    {
+      "decision": "SB_open",
+      "class": "63o",
+      "ev_diff_full_deal": 0.001,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.08569261398949944,
+      "delta": -0.08469261398949944
+    },
+    {
+      "decision": "SB_open",
+      "class": "53o",
+      "ev_diff_full_deal": 0.0218,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.09874456364361804,
+      "delta": -0.07694456364361804
+    },
+    {
+      "decision": "SB_open",
+      "class": "43o",
+      "ev_diff_full_deal": 0.0061,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.0832847569528397,
+      "delta": -0.0771847569528397
+    },
+    {
+      "decision": "SB_open",
+      "class": "33",
+      "ev_diff_full_deal": 0.2606,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.3115353077535051,
+      "delta": -0.05093530775350508
+    },
+    {
+      "decision": "SB_open",
+      "class": "32s",
+      "ev_diff_full_deal": 0.0398,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.1125191087228613,
+      "delta": -0.0727191087228613
+    },
+    {
+      "decision": "SB_open",
+      "class": "A2o",
+      "ev_diff_full_deal": 0.2593,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.2851857667290792,
+      "delta": -0.025885766729079218
+    },
+    {
+      "decision": "SB_open",
+      "class": "K2o",
+      "ev_diff_full_deal": 0.0808,
+      "se": 0.0017,
+      "ev_diff_folded_cards_ignored": 0.13508190539259354,
+      "delta": -0.054281905392593546
+    },
+    {
+      "decision": "SB_open",
+      "class": "Q2o",
+      "ev_diff_full_deal": 0.0374,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.10058564617321311,
+      "delta": -0.06318564617321311
+    },
+    {
+      "decision": "SB_open",
+      "class": "J2o",
+      "ev_diff_full_deal": 0.0238,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.09045767580675057,
+      "delta": -0.06665767580675057
+    },
+    {
+      "decision": "SB_open",
+      "class": "T2o",
+      "ev_diff_full_deal": 0.0114,
+      "se": 0.0025,
+      "ev_diff_folded_cards_ignored": 0.08028225763190397,
+      "delta": -0.06888225763190398
+    },
+    {
+      "decision": "SB_open",
+      "class": "92o",
+      "ev_diff_full_deal": -0.0067,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.07010734847338841,
+      "delta": -0.07680734847338841
+    },
+    {
+      "decision": "SB_open",
+      "class": "82o",
+      "ev_diff_full_deal": -0.0156,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.06401502180483322,
+      "delta": -0.07961502180483322
+    },
+    {
+      "decision": "SB_open",
+      "class": "72o",
+      "ev_diff_full_deal": -0.0334,
+      "se": 0.0022,
+      "ev_diff_folded_cards_ignored": 0.05150645836607571,
+      "delta": -0.08490645836607572
+    },
+    {
+      "decision": "SB_open",
+      "class": "62o",
+      "ev_diff_full_deal": -0.0221,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.06302061688440827,
+      "delta": -0.08512061688440828
+    },
+    {
+      "decision": "SB_open",
+      "class": "52o",
+      "ev_diff_full_deal": -0.0026,
+      "se": 0.0019,
+      "ev_diff_folded_cards_ignored": 0.07609653615772777,
+      "delta": -0.07869653615772777
+    },
+    {
+      "decision": "SB_open",
+      "class": "42o",
+      "ev_diff_full_deal": -0.017,
+      "se": 0.0018,
+      "ev_diff_folded_cards_ignored": 0.061012446026146125,
+      "delta": -0.07801244602614613
+    },
+    {
+      "decision": "SB_open",
+      "class": "32o",
+      "ev_diff_full_deal": -0.0267,
+      "se": 0.0016,
+      "ev_diff_folded_cards_ignored": 0.054036978363536804,
+      "delta": -0.0807369783635368
+    },
+    {
+      "decision": "SB_open",
+      "class": "22",
+      "ev_diff_full_deal": 0.2422,
+      "se": 0.002,
+      "ev_diff_folded_cards_ignored": 0.2975904388668124,
+      "delta": -0.055390438866812414
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "AA",
+      "ev_diff_full_deal": 2.2065,
+      "se": 0.0038,
+      "ev_diff_folded_cards_ignored": 2.165927684034309,
+      "delta": 0.040572315965691
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "AKs",
+      "ev_diff_full_deal": 0.925,
+      "se": 0.0041,
+      "ev_diff_folded_cards_ignored": 0.7898722506395608,
+      "delta": 0.13512774936043925
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "AQs",
+      "ev_diff_full_deal": 0.828,
+      "se": 0.0048,
+      "ev_diff_folded_cards_ignored": 0.718903372013214,
+      "delta": 0.10909662798678599
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "AJs",
+      "ev_diff_full_deal": 0.7506,
+      "se": 0.0048,
+      "ev_diff_folded_cards_ignored": 0.6495768745931118,
+      "delta": 0.10102312540688829
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "ATs",
+      "ev_diff_full_deal": 0.6722,
+      "se": 0.004,
+      "ev_diff_folded_cards_ignored": 0.5825540670089544,
+      "delta": 0.08964593299104562
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A9s",
+      "ev_diff_full_deal": 0.4803,
+      "se": 0.0048,
+      "ev_diff_folded_cards_ignored": 0.42507932224785117,
+      "delta": 0.05522067775214884
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A8s",
+      "ev_diff_full_deal": 0.4068,
+      "se": 0.0049,
+      "ev_diff_folded_cards_ignored": 0.3591981108764216,
+      "delta": 0.04760188912357838
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A7s",
+      "ev_diff_full_deal": 0.329,
+      "se": 0.0048,
+      "ev_diff_folded_cards_ignored": 0.28828807916368243,
+      "delta": 0.04071192083631758
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A6s",
+      "ev_diff_full_deal": 0.248,
+      "se": 0.0048,
+      "ev_diff_folded_cards_ignored": 0.20863188562471927,
+      "delta": 0.03936811437528073
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A5s",
+      "ev_diff_full_deal": 0.2478,
+      "se": 0.0036,
+      "ev_diff_folded_cards_ignored": 0.2097671202801139,
+      "delta": 0.03803287971988609
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A4s",
+      "ev_diff_full_deal": 0.1783,
+      "se": 0.005,
+      "ev_diff_folded_cards_ignored": 0.13270118577596854,
+      "delta": 0.04559881422403145
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A3s",
+      "ev_diff_full_deal": 0.1182,
+      "se": 0.0046,
+      "ev_diff_folded_cards_ignored": 0.06307288671062412,
+      "delta": 0.055127113289375876
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A2s",
+      "ev_diff_full_deal": 0.0556,
+      "se": 0.0046,
+      "ev_diff_folded_cards_ignored": -0.009843005238524905,
+      "delta": 0.0654430052385249
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "AKo",
+      "ev_diff_full_deal": 0.8076,
+      "se": 0.0044,
+      "ev_diff_folded_cards_ignored": 0.6567906278516967,
+      "delta": 0.15080937214830326
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "KK",
+      "ev_diff_full_deal": 1.8965,
+      "se": 0.0041,
+      "ev_diff_folded_cards_ignored": 1.9297189189912811,
+      "delta": -0.03321891899128104
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "KQs",
+      "ev_diff_full_deal": 0.4963,
+      "se": 0.004,
+      "ev_diff_folded_cards_ignored": 0.47739100508045335,
+      "delta": 0.018908994919546673
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "KJs",
+      "ev_diff_full_deal": 0.4281,
+      "se": 0.0047,
+      "ev_diff_folded_cards_ignored": 0.40716337562773636,
+      "delta": 0.020936624372263624
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "KTs",
+      "ev_diff_full_deal": 0.3585,
+      "se": 0.0044,
+      "ev_diff_folded_cards_ignored": 0.34107971263965664,
+      "delta": 0.017420287360343345
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K9s",
+      "ev_diff_full_deal": 0.1665,
+      "se": 0.0048,
+      "ev_diff_folded_cards_ignored": 0.18777771085125555,
+      "delta": -0.021277710851255544
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K8s",
+      "ev_diff_full_deal": 0.0272,
+      "se": 0.0038,
+      "ev_diff_folded_cards_ignored": 0.05519706850479538,
+      "delta": -0.027997068504795383
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K7s",
+      "ev_diff_full_deal": -0.034,
+      "se": 0.0044,
+      "ev_diff_folded_cards_ignored": -0.0016155032624133986,
+      "delta": -0.0323844967375866
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K6s",
+      "ev_diff_full_deal": -0.1056,
+      "se": 0.0042,
+      "ev_diff_folded_cards_ignored": -0.06790892230240561,
+      "delta": -0.03769107769759439
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K5s",
+      "ev_diff_full_deal": -0.1588,
+      "se": 0.0036,
+      "ev_diff_folded_cards_ignored": -0.13250371606364084,
+      "delta": -0.02629628393635916
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K4s",
+      "ev_diff_full_deal": -0.229,
+      "se": 0.0039,
+      "ev_diff_folded_cards_ignored": -0.21036063984271608,
+      "delta": -0.01863936015728393
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K3s",
+      "ev_diff_full_deal": -0.2927,
+      "se": 0.0049,
+      "ev_diff_folded_cards_ignored": -0.28048978611716935,
+      "delta": -0.012210213882830667
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K2s",
+      "ev_diff_full_deal": -0.3562,
+      "se": 0.0044,
+      "ev_diff_folded_cards_ignored": -0.35111907455477726,
+      "delta": -0.0050809254452227615
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "AQo",
+      "ev_diff_full_deal": 0.7043,
+      "se": 0.0051,
+      "ev_diff_folded_cards_ignored": 0.5812406828731933,
+      "delta": 0.12305931712680673
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "KQo",
+      "ev_diff_full_deal": 0.3521,
+      "se": 0.0044,
+      "ev_diff_folded_cards_ignored": 0.3254010559188869,
+      "delta": 0.02669894408111312
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "QQ",
+      "ev_diff_full_deal": 1.6607,
+      "se": 0.0043,
+      "ev_diff_folded_cards_ignored": 1.717331460819341,
+      "delta": -0.056631460819341006
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "QJs",
+      "ev_diff_full_deal": 0.2042,
+      "se": 0.0049,
+      "ev_diff_folded_cards_ignored": 0.20598042206087575,
+      "delta": -0.0017804220608757526
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "QTs",
+      "ev_diff_full_deal": 0.132,
+      "se": 0.0044,
+      "ev_diff_folded_cards_ignored": 0.13922666698426417,
+      "delta": -0.007226666984264163
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q9s",
+      "ev_diff_full_deal": -0.0527,
+      "se": 0.0053,
+      "ev_diff_folded_cards_ignored": -0.011673195728737486,
+      "delta": -0.04102680427126251
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q8s",
+      "ev_diff_full_deal": -0.1982,
+      "se": 0.0041,
+      "ev_diff_folded_cards_ignored": -0.14218331397511907,
+      "delta": -0.05601668602488091
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q7s",
+      "ev_diff_full_deal": -0.3397,
+      "se": 0.0048,
+      "ev_diff_folded_cards_ignored": -0.2739840382872083,
+      "delta": -0.0657159617127917
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q6s",
+      "ev_diff_full_deal": -0.39,
+      "se": 0.004,
+      "ev_diff_folded_cards_ignored": -0.32459983215900506,
+      "delta": -0.06540016784099495
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q5s",
+      "ev_diff_full_deal": -0.4466,
+      "se": 0.0039,
+      "ev_diff_folded_cards_ignored": -0.38956327877808083,
+      "delta": -0.05703672122191916
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q4s",
+      "ev_diff_full_deal": -0.5149,
+      "se": 0.004,
+      "ev_diff_folded_cards_ignored": -0.4666079183862516,
+      "delta": -0.04829208161374843
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q3s",
+      "ev_diff_full_deal": -0.5791,
+      "se": 0.0047,
+      "ev_diff_folded_cards_ignored": -0.5356101066083394,
+      "delta": -0.04348989339166054
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q2s",
+      "ev_diff_full_deal": -0.6389,
+      "se": 0.0049,
+      "ev_diff_folded_cards_ignored": -0.6045538140014607,
+      "delta": -0.034346185998539336
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "AJo",
+      "ev_diff_full_deal": 0.6202,
+      "se": 0.0052,
+      "ev_diff_folded_cards_ignored": 0.5073233519134714,
+      "delta": 0.11287664808652853
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "KJo",
+      "ev_diff_full_deal": 0.278,
+      "se": 0.005,
+      "ev_diff_folded_cards_ignored": 0.250485477548271,
+      "delta": 0.02751452245172903
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "QJo",
+      "ev_diff_full_deal": 0.0399,
+      "se": 0.0053,
+      "ev_diff_folded_cards_ignored": 0.03811462698944595,
+      "delta": 0.0017853730105540505
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "JJ",
+      "ev_diff_full_deal": 1.4438,
+      "se": 0.0045,
+      "ev_diff_folded_cards_ignored": 1.5060596132209567,
+      "delta": -0.062259613220956744
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "JTs",
+      "ev_diff_full_deal": -0.0376,
+      "se": 0.0044,
+      "ev_diff_folded_cards_ignored": -0.0315509610898477,
+      "delta": -0.0060490389101523
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J9s",
+      "ev_diff_full_deal": -0.2319,
+      "se": 0.0049,
+      "ev_diff_folded_cards_ignored": -0.18375159877213992,
+      "delta": -0.04814840122786007
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J8s",
+      "ev_diff_full_deal": -0.3747,
+      "se": 0.0041,
+      "ev_diff_folded_cards_ignored": -0.3141091018165827,
+      "delta": -0.060590898183417286
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J7s",
+      "ev_diff_full_deal": -0.5088,
+      "se": 0.0042,
+      "ev_diff_folded_cards_ignored": -0.44536829457389804,
+      "delta": -0.06343170542610199
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J6s",
+      "ev_diff_full_deal": -0.642,
+      "se": 0.0043,
+      "ev_diff_folded_cards_ignored": -0.577319649862348,
+      "delta": -0.06468035013765205
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J5s",
+      "ev_diff_full_deal": -0.682,
+      "se": 0.0041,
+      "ev_diff_folded_cards_ignored": -0.6256229159999425,
+      "delta": -0.05637708400005759
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J4s",
+      "ev_diff_full_deal": -0.7533,
+      "se": 0.005,
+      "ev_diff_folded_cards_ignored": -0.7015902546133215,
+      "delta": -0.051709745386678496
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J3s",
+      "ev_diff_full_deal": -0.8144,
+      "se": 0.0049,
+      "ev_diff_folded_cards_ignored": -0.769279285725585,
+      "delta": -0.045120714274415
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J2s",
+      "ev_diff_full_deal": -0.8715,
+      "se": 0.0042,
+      "ev_diff_folded_cards_ignored": -0.8362982080695261,
+      "delta": -0.0352017919304739
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "ATo",
+      "ev_diff_full_deal": 0.5378,
+      "se": 0.0045,
+      "ev_diff_folded_cards_ignored": 0.4357986851724402,
+      "delta": 0.10200131482755975
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "KTo",
+      "ev_diff_full_deal": 0.2027,
+      "se": 0.0045,
+      "ev_diff_folded_cards_ignored": 0.17992512129534013,
+      "delta": 0.022774878704659857
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "QTo",
+      "ev_diff_full_deal": -0.0365,
+      "se": 0.0048,
+      "ev_diff_folded_cards_ignored": -0.03318984140791816,
+      "delta": -0.0033101585920818355
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "JTo",
+      "ev_diff_full_deal": -0.2177,
+      "se": 0.0047,
+      "ev_diff_folded_cards_ignored": -0.2133162642988845,
+      "delta": -0.004383735701115499
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "TT",
+      "ev_diff_full_deal": 1.2213,
+      "se": 0.004,
+      "ev_diff_folded_cards_ignored": 1.2948013140757706,
+      "delta": -0.07350131407577054
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T9s",
+      "ev_diff_full_deal": -0.3825,
+      "se": 0.0049,
+      "ev_diff_folded_cards_ignored": -0.3252211263848124,
+      "delta": -0.05727887361518763
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T8s",
+      "ev_diff_full_deal": -0.5221,
+      "se": 0.0042,
+      "ev_diff_folded_cards_ignored": -0.45825636697312583,
+      "delta": -0.06384363302687418
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T7s",
+      "ev_diff_full_deal": -0.6669,
+      "se": 0.0038,
+      "ev_diff_folded_cards_ignored": -0.590868746749806,
+      "delta": -0.076031253250194
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T6s",
+      "ev_diff_full_deal": -0.7944,
+      "se": 0.004,
+      "ev_diff_folded_cards_ignored": -0.7224456720966818,
+      "delta": -0.07195432790331824
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T5s",
+      "ev_diff_full_deal": -0.9211,
+      "se": 0.004,
+      "ev_diff_folded_cards_ignored": -0.8579767029151778,
+      "delta": -0.06312329708482223
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T4s",
+      "ev_diff_full_deal": -0.9709,
+      "se": 0.0035,
+      "ev_diff_folded_cards_ignored": -0.9147321068441789,
+      "delta": -0.05616789315582105
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T3s",
+      "ev_diff_full_deal": -1.0304,
+      "se": 0.0042,
+      "ev_diff_folded_cards_ignored": -0.9808152065378468,
+      "delta": -0.049584793462153165
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T2s",
+      "ev_diff_full_deal": -1.0924,
+      "se": 0.0038,
+      "ev_diff_folded_cards_ignored": -1.0456293492496664,
+      "delta": -0.0467706507503336
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A9o",
+      "ev_diff_full_deal": 0.3313,
+      "se": 0.005,
+      "ev_diff_folded_cards_ignored": 0.2671485061509177,
+      "delta": 0.06415149384908231
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K9o",
+      "ev_diff_full_deal": -0.0031,
+      "se": 0.005,
+      "ev_diff_folded_cards_ignored": 0.01566525695136627,
+      "delta": -0.018765256951366268
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q9o",
+      "ev_diff_full_deal": -0.2362,
+      "se": 0.0054,
+      "ev_diff_folded_cards_ignored": -0.1949007536732046,
+      "delta": -0.04129924632679538
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J9o",
+      "ev_diff_full_deal": -0.4258,
+      "se": 0.0051,
+      "ev_diff_folded_cards_ignored": -0.3764077700810672,
+      "delta": -0.04939222991893283
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T9o",
+      "ev_diff_full_deal": -0.5846,
+      "se": 0.0047,
+      "ev_diff_folded_cards_ignored": -0.525414971731667,
+      "delta": -0.05918502826833305
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "99",
+      "ev_diff_full_deal": 0.9421,
+      "se": 0.0045,
+      "ev_diff_folded_cards_ignored": 1.0515696062669735,
+      "delta": -0.10946960626697344
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "98s",
+      "ev_diff_full_deal": -0.6901,
+      "se": 0.0045,
+      "ev_diff_folded_cards_ignored": -0.5843563387568661,
+      "delta": -0.10574366124313395
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "97s",
+      "ev_diff_full_deal": -0.828,
+      "se": 0.0037,
+      "ev_diff_folded_cards_ignored": -0.7133358044831789,
+      "delta": -0.11466419551682105
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "96s",
+      "ev_diff_full_deal": -0.955,
+      "se": 0.0039,
+      "ev_diff_folded_cards_ignored": -0.8423955496408903,
+      "delta": -0.11260445035910971
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "95s",
+      "ev_diff_full_deal": -1.076,
+      "se": 0.0041,
+      "ev_diff_folded_cards_ignored": -0.9749664510962102,
+      "delta": -0.1010335489037899
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "94s",
+      "ev_diff_full_deal": -1.2111,
+      "se": 0.0039,
+      "ev_diff_folded_cards_ignored": -1.1182786998774363,
+      "delta": -0.09282130012256373
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "93s",
+      "ev_diff_full_deal": -1.2494,
+      "se": 0.0042,
+      "ev_diff_folded_cards_ignored": -1.16381986196883,
+      "delta": -0.08558013803117004
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "92s",
+      "ev_diff_full_deal": -1.3065,
+      "se": 0.0044,
+      "ev_diff_folded_cards_ignored": -1.2240477145262643,
+      "delta": -0.08245228547373573
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A8o",
+      "ev_diff_full_deal": 0.251,
+      "se": 0.0052,
+      "ev_diff_folded_cards_ignored": 0.19628992336568912,
+      "delta": 0.05471007663431088
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K8o",
+      "ev_diff_full_deal": -0.1555,
+      "se": 0.0039,
+      "ev_diff_folded_cards_ignored": -0.12602403380620597,
+      "delta": -0.02947596619379403
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q8o",
+      "ev_diff_full_deal": -0.3911,
+      "se": 0.0044,
+      "ev_diff_folded_cards_ignored": -0.33439844674707164,
+      "delta": -0.05670155325292836
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J8o",
+      "ev_diff_full_deal": -0.5783,
+      "se": 0.0042,
+      "ev_diff_folded_cards_ignored": -0.5157482997371649,
+      "delta": -0.06255170026283519
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T8o",
+      "ev_diff_full_deal": -0.7344,
+      "se": 0.0041,
+      "ev_diff_folded_cards_ignored": -0.6675972494240944,
+      "delta": -0.06680275057590568
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "98o",
+      "ev_diff_full_deal": -0.9102,
+      "se": 0.0041,
+      "ev_diff_folded_cards_ignored": -0.8012399910999565,
+      "delta": -0.10896000890004354
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "88",
+      "ev_diff_full_deal": 0.7184,
+      "se": 0.0046,
+      "ev_diff_folded_cards_ignored": 0.8358709225944723,
+      "delta": -0.11747092259447223
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "87s",
+      "ev_diff_full_deal": -0.9114,
+      "se": 0.0035,
+      "ev_diff_folded_cards_ignored": -0.7806033387361593,
+      "delta": -0.1307966612638407
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "86s",
+      "ev_diff_full_deal": -1.0411,
+      "se": 0.003,
+      "ev_diff_folded_cards_ignored": -0.9072344319471609,
+      "delta": -0.133865568052839
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "85s",
+      "ev_diff_full_deal": -1.1576,
+      "se": 0.0031,
+      "ev_diff_folded_cards_ignored": -1.0383115563041052,
+      "delta": -0.11928844369589475
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "84s",
+      "ev_diff_full_deal": -1.2824,
+      "se": 0.0036,
+      "ev_diff_folded_cards_ignored": -1.1751707353653427,
+      "delta": -0.10722926463465732
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "83s",
+      "ev_diff_full_deal": -1.4146,
+      "se": 0.0039,
+      "ev_diff_folded_cards_ignored": -1.3150053126429695,
+      "delta": -0.09959468735703059
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "82s",
+      "ev_diff_full_deal": -1.4468,
+      "se": 0.0036,
+      "ev_diff_folded_cards_ignored": -1.351747262041511,
+      "delta": -0.09505273795848912
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A7o",
+      "ev_diff_full_deal": 0.1655,
+      "se": 0.0049,
+      "ev_diff_folded_cards_ignored": 0.12015703602122418,
+      "delta": 0.045342963978775824
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K7o",
+      "ev_diff_full_deal": -0.2201,
+      "se": 0.0043,
+      "ev_diff_folded_cards_ignored": -0.18706345861119006,
+      "delta": -0.03303654138880993
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q7o",
+      "ev_diff_full_deal": -0.5431,
+      "se": 0.005,
+      "ev_diff_folded_cards_ignored": -0.47518336184118215,
+      "delta": -0.06791663815881788
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J7o",
+      "ev_diff_full_deal": -0.7223,
+      "se": 0.0043,
+      "ev_diff_folded_cards_ignored": -0.6559633762714754,
+      "delta": -0.06633662372852467
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T7o",
+      "ev_diff_full_deal": -0.8905,
+      "se": 0.0039,
+      "ev_diff_folded_cards_ignored": -0.8092531156979008,
+      "delta": -0.08124688430209914
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "97o",
+      "ev_diff_full_deal": -1.058,
+      "se": 0.0036,
+      "ev_diff_folded_cards_ignored": -0.9389162351875794,
+      "delta": -0.11908376481242067
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "87o",
+      "ev_diff_full_deal": -1.1469,
+      "se": 0.0036,
+      "ev_diff_folded_cards_ignored": -1.0092941200698038,
+      "delta": -0.13760587993019624
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "77",
+      "ev_diff_full_deal": 0.4978,
+      "se": 0.005,
+      "ev_diff_folded_cards_ignored": 0.6184905919815853,
+      "delta": -0.12069059198158527
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "76s",
+      "ev_diff_full_deal": -1.0868,
+      "se": 0.0028,
+      "ev_diff_folded_cards_ignored": -0.9483756691916804,
+      "delta": -0.13842433080831962
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "75s",
+      "ev_diff_full_deal": -1.2093,
+      "se": 0.0036,
+      "ev_diff_folded_cards_ignored": -1.0780923898123707,
+      "delta": -0.1312076101876294
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "74s",
+      "ev_diff_full_deal": -1.3338,
+      "se": 0.0043,
+      "ev_diff_folded_cards_ignored": -1.2119076797878405,
+      "delta": -0.12189232021215957
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "73s",
+      "ev_diff_full_deal": -1.4608,
+      "se": 0.0049,
+      "ev_diff_folded_cards_ignored": -1.3451745136817694,
+      "delta": -0.11562548631823066
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "72s",
+      "ev_diff_full_deal": -1.579,
+      "se": 0.0037,
+      "ev_diff_folded_cards_ignored": -1.4790840842811177,
+      "delta": -0.09991591571888225
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A6o",
+      "ev_diff_full_deal": 0.0791,
+      "se": 0.0049,
+      "ev_diff_folded_cards_ignored": 0.034487142434163634,
+      "delta": 0.04461285756583637
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K6o",
+      "ev_diff_full_deal": -0.2964,
+      "se": 0.0041,
+      "ev_diff_folded_cards_ignored": -0.2583433261975966,
+      "delta": -0.03805667380240341
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q6o",
+      "ev_diff_full_deal": -0.5963,
+      "se": 0.0044,
+      "ev_diff_folded_cards_ignored": -0.5296571019796815,
+      "delta": -0.06664289802031853
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J6o",
+      "ev_diff_full_deal": -0.8624,
+      "se": 0.0047,
+      "ev_diff_folded_cards_ignored": -0.7970187319071722,
+      "delta": -0.06538126809282785
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T6o",
+      "ev_diff_full_deal": -1.0246,
+      "se": 0.0044,
+      "ev_diff_folded_cards_ignored": -0.9499198691008324,
+      "delta": -0.07468013089916758
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "96o",
+      "ev_diff_full_deal": -1.1927,
+      "se": 0.0044,
+      "ev_diff_folded_cards_ignored": -1.076839237337456,
+      "delta": -0.11586076266254408
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "86o",
+      "ev_diff_full_deal": -1.2824,
+      "se": 0.0033,
+      "ev_diff_folded_cards_ignored": -1.1445590158181163,
+      "delta": -0.13784098418188373
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "76o",
+      "ev_diff_full_deal": -1.3355,
+      "se": 0.0027,
+      "ev_diff_folded_cards_ignored": -1.1871195404199286,
+      "delta": -0.1483804595800713
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "66",
+      "ev_diff_full_deal": 0.2759,
+      "se": 0.0043,
+      "ev_diff_folded_cards_ignored": 0.39259808127706824,
+      "delta": -0.11669808127706827
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "65s",
+      "ev_diff_full_deal": -1.2338,
+      "se": 0.0039,
+      "ev_diff_folded_cards_ignored": -1.1018350440810458,
+      "delta": -0.13196495591895419
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "64s",
+      "ev_diff_full_deal": -1.3559,
+      "se": 0.0036,
+      "ev_diff_folded_cards_ignored": -1.2323357186411454,
+      "delta": -0.12356428135885467
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "63s",
+      "ev_diff_full_deal": -1.4797,
+      "se": 0.0041,
+      "ev_diff_folded_cards_ignored": -1.3594651120362553,
+      "delta": -0.12023488796374471
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "62s",
+      "ev_diff_full_deal": -1.6018,
+      "se": 0.0032,
+      "ev_diff_folded_cards_ignored": -1.491935445313791,
+      "delta": -0.10986455468620893
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A5o",
+      "ev_diff_full_deal": 0.0792,
+      "se": 0.0039,
+      "ev_diff_folded_cards_ignored": 0.03542842713747564,
+      "delta": 0.043771572862524366
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K5o",
+      "ev_diff_full_deal": -0.3555,
+      "se": 0.0038,
+      "ev_diff_folded_cards_ignored": -0.3276553992253325,
+      "delta": -0.027844600774667494
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q5o",
+      "ev_diff_full_deal": -0.6576,
+      "se": 0.0042,
+      "ev_diff_folded_cards_ignored": -0.5993198020261755,
+      "delta": -0.058280197973824444
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J5o",
+      "ev_diff_full_deal": -0.9104,
+      "se": 0.0042,
+      "ev_diff_folded_cards_ignored": -0.8488034206133696,
+      "delta": -0.061596579386630435
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T5o",
+      "ev_diff_full_deal": -1.1613,
+      "se": 0.0041,
+      "ev_diff_folded_cards_ignored": -1.094610197218024,
+      "delta": -0.066689802781976
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "95o",
+      "ev_diff_full_deal": -1.3233,
+      "se": 0.0037,
+      "ev_diff_folded_cards_ignored": -1.2183444478733545,
+      "delta": -0.10495555212664542
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "85o",
+      "ev_diff_full_deal": -1.412,
+      "se": 0.0032,
+      "ev_diff_folded_cards_ignored": -1.2844323009993286,
+      "delta": -0.12756769900067133
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "75o",
+      "ev_diff_full_deal": -1.4657,
+      "se": 0.0037,
+      "ev_diff_folded_cards_ignored": -1.325472961648136,
+      "delta": -0.140227038351864
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "65o",
+      "ev_diff_full_deal": -1.493,
+      "se": 0.0037,
+      "ev_diff_folded_cards_ignored": -1.3496566128103076,
+      "delta": -0.14334338718969253
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "55",
+      "ev_diff_full_deal": 0.0655,
+      "se": 0.005,
+      "ev_diff_folded_cards_ignored": 0.15499286118480143,
+      "delta": -0.08949286118480143
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "54s",
+      "ev_diff_full_deal": -1.3244,
+      "se": 0.0042,
+      "ev_diff_folded_cards_ignored": -1.2166593034718483,
+      "delta": -0.10774069652815177
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "53s",
+      "ev_diff_full_deal": -1.4396,
+      "se": 0.0034,
+      "ev_diff_folded_cards_ignored": -1.3381535620116785,
+      "delta": -0.10144643798832154
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "52s",
+      "ev_diff_full_deal": -1.556,
+      "se": 0.0039,
+      "ev_diff_folded_cards_ignored": -1.4660735501772637,
+      "delta": -0.08992644982273634
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A4o",
+      "ev_diff_full_deal": 0.002,
+      "se": 0.0052,
+      "ev_diff_folded_cards_ignored": -0.04805044040938937,
+      "delta": 0.05005044040938937
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K4o",
+      "ev_diff_full_deal": -0.4304,
+      "se": 0.0046,
+      "ev_diff_folded_cards_ignored": -0.4119257095130984,
+      "delta": -0.01847429048690158
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q4o",
+      "ev_diff_full_deal": -0.7335,
+      "se": 0.0045,
+      "ev_diff_folded_cards_ignored": -0.6827124699993719,
+      "delta": -0.05078753000062819
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J4o",
+      "ev_diff_full_deal": -0.9852,
+      "se": 0.0051,
+      "ev_diff_folded_cards_ignored": -0.9310342046240438,
+      "delta": -0.054165795375956116
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T4o",
+      "ev_diff_full_deal": -1.2154,
+      "se": 0.0036,
+      "ev_diff_folded_cards_ignored": -1.1562585537849321,
+      "delta": -0.059141446215067894
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "94o",
+      "ev_diff_full_deal": -1.4695,
+      "se": 0.0038,
+      "ev_diff_folded_cards_ignored": -1.3732643780895755,
+      "delta": -0.09623562191042456
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "84o",
+      "ev_diff_full_deal": -1.5452,
+      "se": 0.0031,
+      "ev_diff_folded_cards_ignored": -1.4322774770667244,
+      "delta": -0.11292252293327554
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "74o",
+      "ev_diff_full_deal": -1.6006,
+      "se": 0.0042,
+      "ev_diff_folded_cards_ignored": -1.4693677258558404,
+      "delta": -0.1312322741441596
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "64o",
+      "ev_diff_full_deal": -1.6224,
+      "se": 0.0036,
+      "ev_diff_folded_cards_ignored": -1.4900095455623286,
+      "delta": -0.1323904544376715
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "54o",
+      "ev_diff_full_deal": -1.5903,
+      "se": 0.0039,
+      "ev_diff_folded_cards_ignored": -1.4718286168427044,
+      "delta": -0.11847138315729566
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "44",
+      "ev_diff_full_deal": -0.174,
+      "se": 0.005,
+      "ev_diff_folded_cards_ignored": -0.09748899621503523,
+      "delta": -0.07651100378496475
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "43s",
+      "ev_diff_full_deal": -1.5067,
+      "se": 0.0043,
+      "ev_diff_folded_cards_ignored": -1.4132357220403162,
+      "delta": -0.0934642779596837
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "42s",
+      "ev_diff_full_deal": -1.6186,
+      "se": 0.0042,
+      "ev_diff_folded_cards_ignored": -1.532513630326651,
+      "delta": -0.08608636967334893
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A3o",
+      "ev_diff_full_deal": -0.063,
+      "se": 0.0048,
+      "ev_diff_folded_cards_ignored": -0.12338298119102004,
+      "delta": 0.060382981191020035
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K3o",
+      "ev_diff_full_deal": -0.5006,
+      "se": 0.0048,
+      "ev_diff_folded_cards_ignored": -0.48776845950390324,
+      "delta": -0.012831540496096805
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q3o",
+      "ev_diff_full_deal": -0.8018,
+      "se": 0.0045,
+      "ev_diff_folded_cards_ignored": -0.757345045647827,
+      "delta": -0.04445495435217295
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J3o",
+      "ev_diff_full_deal": -1.051,
+      "se": 0.0046,
+      "ev_diff_folded_cards_ignored": -1.0042544701454599,
+      "delta": -0.04674552985454006
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T3o",
+      "ev_diff_full_deal": -1.2807,
+      "se": 0.0042,
+      "ev_diff_folded_cards_ignored": -1.2277565005590172,
+      "delta": -0.052943499440982755
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "93o",
+      "ev_diff_full_deal": -1.5114,
+      "se": 0.0041,
+      "ev_diff_folded_cards_ignored": -1.4225177425293503,
+      "delta": -0.08888225747064982
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "83o",
+      "ev_diff_full_deal": -1.6886,
+      "se": 0.0035,
+      "ev_diff_folded_cards_ignored": -1.5833483765711724,
+      "delta": -0.10525162342882766
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "73o",
+      "ev_diff_full_deal": -1.739,
+      "se": 0.0049,
+      "ev_diff_folded_cards_ignored": -1.6142726098328226,
+      "delta": -0.12472739016717749
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "63o",
+      "ev_diff_full_deal": -1.7575,
+      "se": 0.004,
+      "ev_diff_folded_cards_ignored": -1.6274525148512613,
+      "delta": -0.13004748514873876
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "53o",
+      "ev_diff_full_deal": -1.714,
+      "se": 0.0036,
+      "ev_diff_folded_cards_ignored": -1.6023629458213289,
+      "delta": -0.11163705417867109
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "43o",
+      "ev_diff_full_deal": -1.7872,
+      "se": 0.0047,
+      "ev_diff_folded_cards_ignored": -1.6823693843015144,
+      "delta": -0.10483061569848551
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "33",
+      "ev_diff_full_deal": -0.3919,
+      "se": 0.0055,
+      "ev_diff_folded_cards_ignored": -0.3300595637481056,
+      "delta": -0.06184043625189445
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "32s",
+      "ev_diff_full_deal": -1.669,
+      "se": 0.0031,
+      "ev_diff_folded_cards_ignored": -1.586230129866563,
+      "delta": -0.08276987013343695
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "A2o",
+      "ev_diff_full_deal": -0.1326,
+      "se": 0.0049,
+      "ev_diff_folded_cards_ignored": -0.20214340632593603,
+      "delta": 0.06954340632593603
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "K2o",
+      "ev_diff_full_deal": -0.5703,
+      "se": 0.0045,
+      "ev_diff_folded_cards_ignored": -0.5639878295120476,
+      "delta": -0.0063121704879524065
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "Q2o",
+      "ev_diff_full_deal": -0.8667,
+      "se": 0.0049,
+      "ev_diff_folded_cards_ignored": -0.8317643744109467,
+      "delta": -0.034935625589053276
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "J2o",
+      "ev_diff_full_deal": -1.116,
+      "se": 0.0041,
+      "ev_diff_folded_cards_ignored": -1.0766158395094265,
+      "delta": -0.03938416049057358
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "T2o",
+      "ev_diff_full_deal": -1.3514,
+      "se": 0.0038,
+      "ev_diff_folded_cards_ignored": -1.2977694887356612,
+      "delta": -0.05363051126433871
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "92o",
+      "ev_diff_full_deal": -1.575,
+      "se": 0.0044,
+      "ev_diff_folded_cards_ignored": -1.4885057973739486,
+      "delta": -0.08649420262605134
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "82o",
+      "ev_diff_full_deal": -1.7263,
+      "se": 0.0037,
+      "ev_diff_folded_cards_ignored": -1.6234443916749086,
+      "delta": -0.10285560832509133
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "72o",
+      "ev_diff_full_deal": -1.8664,
+      "se": 0.0035,
+      "ev_diff_folded_cards_ignored": -1.758011405651905,
+      "delta": -0.10838859434809511
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "62o",
+      "ev_diff_full_deal": -1.8908,
+      "se": 0.0034,
+      "ev_diff_folded_cards_ignored": -1.7706878016762149,
+      "delta": -0.12011219832378517
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "52o",
+      "ev_diff_full_deal": -1.8412,
+      "se": 0.0032,
+      "ev_diff_folded_cards_ignored": -1.7409532916612502,
+      "delta": -0.10024670833874971
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "42o",
+      "ev_diff_full_deal": -1.9097,
+      "se": 0.0036,
+      "ev_diff_folded_cards_ignored": -1.8121589185687532,
+      "delta": -0.09754108143124673
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "32o",
+      "ev_diff_full_deal": -1.9613,
+      "se": 0.0028,
+      "ev_diff_folded_cards_ignored": -1.8692275636509101,
+      "delta": -0.0920724363490899
+    },
+    {
+      "decision": "BB_vs_SB",
+      "class": "22",
+      "ev_diff_full_deal": -0.5818,
+      "se": 0.0056,
+      "ev_diff_folded_cards_ignored": -0.5360722311456642,
+      "delta": -0.045727768854335826
+    }
+  ]
+}

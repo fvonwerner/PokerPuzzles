@@ -1,0 +1,9 @@
+{
+ "name": "example-bbante-chips-n6-10bb",
+ "note": "Big blind ante variant (BB posts 1 bb ante for the table, dead money), 6 players, 10 bb each, chip EV. Example of the option; not part of the first batch.",
+ "players": 6,
+ "stacks": [10, 10, 10, 10, 10, 10],
+ "ante": {"mode": "bb_ante", "amount": 1.0},
+ "payoff": {"model": "chips"},
+ "accuracy": {"solve_deals": 100000, "max_iterations": 400, "refine_iterations": 150, "refine_deals": 100000, "eval_deals": 4000000, "seed": 1}
+}

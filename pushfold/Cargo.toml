@@ -1,0 +1,25 @@
+[package]
+name = "pushfold"
+version = "0.1.1"
+edition = "2021"
+license = "AGPL-3.0-or-later"
+description = "Push/fold Nash equilibrium solver for short-stacked tournament spots (chip EV and ICM league points)"
+publish = false
+
+[[bin]]
+name = "pushfold"
+path = "src/main.rs"
+
+[dependencies]
+rayon = "=1.12.0"
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = { version = "=1.0.154", features = ["preserve_order"] }
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+lto = "thin"
+
+# The exhaustive evaluator tests enumerate all 133,784,560 seven-card hands.
+[profile.test]
+opt-level = 3

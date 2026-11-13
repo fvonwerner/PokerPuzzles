@@ -1,0 +1,24 @@
+{
+ "name": "chips-n3-9bb",
+ "players": 3,
+ "stacks": [
+  9,
+  9,
+  9
+ ],
+ "ante": {
+  "mode": "per_player",
+  "amount": 0.1
+ },
+ "payoff": {
+  "model": "chips"
+ },
+ "accuracy": {
+  "solve_deals": 100000,
+  "max_iterations": 400,
+  "refine_iterations": 150,
+  "refine_deals": 100000,
+  "eval_deals": 4000000,
+  "seed": 1
+ }
+}

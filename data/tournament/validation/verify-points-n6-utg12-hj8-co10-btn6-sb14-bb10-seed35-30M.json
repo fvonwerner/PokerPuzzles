@@ -1,0 +1,81 @@
+{
+  "solution": "points-n6-utg12-hj8-co10-btn6-sb14-bb10.json",
+  "method": "plain simulation: own RNG (PCG32), own posting and side-pot code, ICM by enumerating finishing orders, naive best-of-21 evaluator; earlier actions drawn from the strategies, both actions of each player valued exactly over later players' mixed strategies",
+  "deals": 30000000.0,
+  "seconds": 322.3,
+  "max_conservation_error": 1.4921397450962104e-13,
+  "player_ev": [
+    6.452675513294939,
+    5.08447991879899,
+    5.809714122108474,
+    4.270400828067626,
+    6.908426880695173,
+    5.474302737039762
+  ],
+  "player_ev_se": [
+    0.0001590363514507388,
+    0.0001655246468697984,
+    0.0001763510814568217,
+    0.0001655614121355393,
+    0.0001958877715781199,
+    0.0002222812081824715
+  ],
+  "solver_player_ev": [
+    6.4525,
+    5.08453,
+    5.8101,
+    4.27059,
+    6.90814,
+    5.47415
+  ],
+  "solver_player_ev_se": [
+    0.00042,
+    0.00043,
+    0.00043,
+    0.00046,
+    0.00059,
+    0.00058
+  ],
+  "player_ev_z": [
+    0.39080947013995715,
+    -0.10869294745472304,
+    -0.830277595443782,
+    -0.3869440172418047,
+    0.4614687500212594,
+    0.2458998298497326
+  ],
+  "best_response_gain_plugin": [
+    0.000030498028891112726,
+    0.00005208828146218516,
+    0.0000388837313770881,
+    0.000025822551754815466,
+    0.00007946788891540654,
+    0.00007573629340709964
+  ],
+  "best_response_gain_crossfit": [
+    -0.000045091728670641925,
+    -0.00012138915858796555,
+    -0.00009306259490702437,
+    -0.0001288740445402552,
+    -0.00009918383537487893,
+    -0.00010464748182907004
+  ],
+  "solver_exploitability_eval": [
+    0.000012,
+    0.000018,
+    6e-6,
+    8e-6,
+    0.00004,
+    0.000024
+  ],
+  "ev_diff_comparison": {
+    "cells_compared": 6790.0,
+    "z_mean": 0.01366215046596572,
+    "z_sd": 0.9776190889335632,
+    "frac_abs_z_gt_3": 0.0025036818851251843,
+    "weighted_mean_difference": 0.00005475548432942434,
+    "weighted_mean_difference_se": 0.00020469229083999708,
+    "weight": "share of hands reaching the cell",
+    "cells_abs_z_gt_4": []
+  }
+}
