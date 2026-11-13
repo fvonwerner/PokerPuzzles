@@ -29,6 +29,7 @@ import { closeChartOverlay } from './grid.js';
 import { buildPrompt } from './prompt.js';
 import { sound } from './sound.js';
 import { setLinkedText, tagChips } from './learn.js';
+import { othersBlock, othersHere } from './social.js';
 
 // Pause after each step's motion (the motion itself runs ~250-500 ms).
 function pauseAfter(s) {
@@ -52,12 +53,13 @@ function verbPhrase(kind, amount) {
   }
 }
 
-export function playScreen(root, { id, mode, nav, battle = null }) {
+export function playScreen(root, { id, mode, nav, battle = null, othersFocus = null }) {
   // mode: 'scored' | 'practice' | 'battle'. In a battle, `battle` (battle.js)
   // supplies the API calls, the battle bar in place of the title row, the
   // opponents' picks on the feedback, the clocks and waiting states in the
   // action bar, and the duel panel at the end of the hand; it moves the hand
   // on (advance()) when the server's shared cursor moves.
+  // othersFocus: a player id whose decisions open under "Others on this hand" (from a profile).
   const callStart = () => (battle ? battle.start() : API.start(id, mode));
   const callAct = (index, optionId) => (battle ? battle.act(index, optionId) : API.act(id, index, optionId, mode === 'practice' ? 'practice' : 'scored'));
   const st = {
@@ -72,6 +74,7 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
     trial: null,       // looking back at an answered decision: { index, optionId } tried again (local only)
     tried: {},         // decision index -> Set of option ids tried while looking back
     live: null,        // battle: the shared cursor last seen (looking back returns when it moves)
+    others: null,      // finished view: "Others on this hand" ({ loading, error, data, open, all }), fetched once the hand is over
   };
   let destroyed = false;
 
@@ -485,9 +488,51 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
     // Default: the decision with the fewest points (ties: the earliest).
     st.sel = rs.length ? rs.reduce((a, r) => (r.points < a.points ? r : a), rs[0]).index : null;
     st.view = null;
+    loadOthers();
     renderTop();
     renderEndPanel();
     renderBar(st.nowModel || model());
+  }
+
+  // ---------- what the others did (finished view only; a live battle shows its opponents instead) ----------
+  /** Fetch "Others on this hand" once the hand is over (the server answers only then). */
+  function loadOthers() {
+    if (battle || st.others) return;
+    st.others = { loading: true, data: null, error: null, open: othersFocus, all: false, scrolled: !othersFocus };
+    API.others(id).then((data) => {
+      Object.assign(st.others, { loading: false, data });
+      const k = othersFocus ? data.others.findIndex((o) => o.player.id === othersFocus) : -1;
+      if (othersFocus && k < 0) st.others.open = null; // not among them (any more)
+      if (k >= 4) st.others.all = true; // beyond the first rows: show them all
+    }, (e) => {
+      Object.assign(st.others, { loading: false, error: e.status === 403 ? e.message : 'Could not load what the others did.' });
+    }).finally(() => {
+      if (destroyed || st.phase !== 'end') return;
+      // Only redraw the end panel when it is showing (not a villain's panel looked back at).
+      if (side.querySelector('.endpanel')) renderEndPanel();
+      if (!st.others.scrolled) {
+        st.others.scrolled = true;
+        const item = side.querySelector('.ot-item.open');
+        if (item) scrollPanelTo(item);
+      }
+    });
+  }
+  /** Scroll the panel (never the page) so that `el` is in view. */
+  function scrollPanelTo(el) {
+    for (let a = el.parentElement; a && a !== document.body; a = a.parentElement) {
+      if (a.scrollHeight > a.clientHeight + 1 && /(auto|scroll)/.test(getComputedStyle(a).overflowY)) {
+        const ar = a.getBoundingClientRect(), r = el.getBoundingClientRect();
+        if (r.top < ar.top || r.bottom > ar.bottom) a.scrollTop += r.top - ar.top - 8;
+      }
+      if (a === side) break;
+    }
+  }
+  /** Your choice at decision i as this screen shows it (the first play in review, this run in practice). */
+  function mineAt(i, stored = {}) {
+    const rv = st.reveals[i];
+    if (!rv) return null;
+    const s = stored[i];
+    return { index: i, street: rv.decision.street, optionId: rv.timeout ? null : rv.choice, label: rv.choiceLabel, grade: s?.grade ?? rv.grade, points: s?.points ?? rv.points, ...(rv.timeout ? { timeout: true } : {}) };
   }
 
   /** Select a decision in the finished view; `rewind` moves the table to it. */
@@ -506,9 +551,13 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
   function renderEndPanel() {
     if (battle) {
       const keep = side.querySelector('.endpanel')?.scrollTop || 0;
+      const keepSide = side.querySelector('.endpanel') ? side.scrollTop : 0;
+      const fk = side.contains(document.activeElement) ? document.activeElement.dataset?.fk : null;
       setSide(battle.endPanel(viewApi()));
       const ep = side.querySelector('.endpanel');
       if (ep && keep) ep.scrollTop = keep;
+      if (keepSide) side.scrollTop = keepSide;
+      if (fk) side.querySelector(`[data-fk="${CSS.escape(fk)}"]`)?.focus({ preventScroll: true });
       showTrial();
       return;
     }
@@ -521,17 +570,17 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
       : end?.score;
     const sd = step.showdown;
     const tags = end?.tags || st.puzzle.tags || [];
-    const others = end?.others || [];
     const rv = st.reveals[st.sel];
+    // Redrawn (a decision picked, others loaded): keep the panel's scroll position and the focused control.
+    const prevEp = side.querySelector('.endpanel');
+    const keepScroll = prevEp ? [side.scrollTop, prevEp.scrollTop] : null;
+    const focusKey = side.contains(document.activeElement) ? document.activeElement.dataset?.fk : null;
 
     const more = h('details.end-more', { open: st.moreOpen, on: { toggle: (e) => { st.moreOpen = e.currentTarget.open; } } },
-      h('summary', h('span.end-more-text', end?.takeaway ? ['Takeaway: ', end.takeaway] : 'Takeaway and friends'),
-        h('span.end-more-friends', others.length ? `${others.length} friend${others.length > 1 ? 's' : ''} played` : 'no friends yet')),
+      h('summary', h('span.end-more-text', end?.takeaway ? ['Takeaway: ', end.takeaway] : 'Takeaway and tags'),
+        h('span.end-more-friends', `#${st.puzzle.number}`)),
       end?.takeaway ? setLinkedText(h('p.end-takeaway'), end.takeaway) : null,
       tags.length ? tagChips(h('p.end-tags'), tags) : null,
-      others.length
-        ? h('ol.others-list', others.map((o) => h('li', h('span', o.name), h('b.num', o.score))))
-        : h('p.muted.small', 'Nobody else has finished this one yet.'),
       h('p.end-links', mode === 'scored' ? h('a', { href: `#/practice/${id}` }, 'Replay in practice mode') : null, h('a', { href: '#/lobby' }, 'All puzzles')));
 
     // The decisions as a row of chips (street, grade, points): compact, so the
@@ -543,6 +592,7 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
       return h(`button.recap-chip.g-${grade}${on ? '.on' : ''}`, {
         type: 'button', role: 'tab', 'aria-selected': String(on), tabindex: on ? '0' : '-1',
         'aria-label': `${STREETS[r.decision.street]}: ${r.choiceLabel}, ${GRADE_LABEL[grade]}, ${Math.round(pts)} points`,
+        dataset: { fk: `rc:${r.index}` },
         on: { click: () => select(r.index, true) },
       },
       h('span.rc-street', STREETS[r.decision.street]),
@@ -565,9 +615,21 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
           copyButton(() => copyPrompt('hand'), { label: 'Copy the hand for Claude', what: 'the whole hand' }))),
       more,
       h('div.recap-chips', { role: 'tablist', 'aria-label': 'Your decisions' }, chips),
+      othersBlock(st.others, {
+        mineOf: (i) => mineAt(i, stored), sel: st.sel,
+        onSelect: (i) => select(i, true),
+        onChange: () => renderEndPanel(),
+      }),
       rv ? h('div.end-detail',
-        h('div.end-detail-head', gradeBadge(rv.grade, { small: true }), h('span.num.end-detail-pts', `${Math.round(rv.points)} pts`), choiceLine(rv)),
+        h('div.end-detail-head', gradeBadge(rv.grade, { small: true }), h('span.num.end-detail-pts', `${Math.round(rv.points)} pts`), choiceLine(rv),
+          othersHere(st.others, rv.index)),
         ...decisionBody(rv, st.puzzle, { onCopy: () => copyPrompt(rv.index) })) : null));
+    if (keepScroll) {
+      side.scrollTop = keepScroll[0];
+      const ep = side.querySelector('.endpanel');
+      if (ep) ep.scrollTop = keepScroll[1];
+    }
+    if (focusKey) side.querySelector(`[data-fk="${CSS.escape(focusKey)}"]`)?.focus({ preventScroll: true });
     showTrial();
   }
 
@@ -692,6 +754,11 @@ export function playScreen(root, { id, mode, nav, battle = null }) {
     if (el && el !== document.body && el.isConnected && !el.disabled && el.offsetParent !== null) { el.focus({ preventScroll: true }); return; }
     if (el?.dataset?.moment !== undefined) {
       const b = log.querySelector(`[data-moment="${el.dataset.moment}"]`);
+      if (b) { b.focus({ preventScroll: true }); return; }
+    }
+    if (el?.dataset?.fk) {
+      // a control of the finished view's panel (a decision chip, a row of "Others on this hand"), drawn anew
+      const b = side.querySelector(`[data-fk="${CSS.escape(el.dataset.fk)}"]`);
       if (b) { b.focus({ preventScroll: true }); return; }
     }
     if (st.phase === 'deciding') bar.focus({ preventScroll: true });

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Remove a player (and their sessions, plays and battles) from the JSON db.
+// Remove a player (and their sessions, plays, battles, friendships and friend
+// requests, and their tournament drill totals and quiz answers) from the JSON db.
 //
 //   node server/tools/reset-player.mjs --list
 //   node server/tools/reset-player.mjs <name>
@@ -22,7 +23,8 @@ if (!arg || arg === '--help' || arg === '-h') {
 }
 if (!existsSync(DB_FILE)) { console.error(`No db at ${DB_FILE}`); process.exit(1); }
 const db = JSON.parse(readFileSync(DB_FILE, 'utf8') || '{}');
-db.players ||= {}; db.sessions ||= {}; db.plays ||= {}; db.battles ||= {}; db.battlePlays ||= {};
+db.players ||= {}; db.sessions ||= {}; db.plays ||= {}; db.battles ||= {}; db.battlePlays ||= {}; db.friends ||= {};
+db.tournamentDrill ||= {}; db.tournamentQuiz ||= {};
 const plays = Object.values(db.plays);
 
 if (arg === '--list') {
@@ -52,9 +54,21 @@ for (const [k, b] of Object.entries(db.battles)) {
   for (const [pk, bp] of Object.entries(db.battlePlays)) if (bp.battleId === b.id) delete db.battlePlays[pk];
 }
 for (const b of Object.values(db.battles)) if (b.rematchId && !db.battles[b.rematchId]) b.rematchId = null;
+// Friendships and friend requests, both ways.
+let nFriends = 0, nRequests = 0;
+for (const [k, l] of Object.entries(db.friends)) {
+  if (l.from !== player.id && l.to !== player.id) continue;
+  if (l.status === 'friends') nFriends++; else nRequests++;
+  delete db.friends[k];
+}
+// Tournament: the drill totals and every quiz set they answered in.
+const nDrill = db.tournamentDrill[player.id] ? db.tournamentDrill[player.id].hands || 0 : 0;
+delete db.tournamentDrill[player.id];
+let nQuiz = 0;
+for (const [k, q] of Object.entries(db.tournamentQuiz)) if (q.playerId === player.id) { delete db.tournamentQuiz[k]; nQuiz++; }
 delete db.players[player.id];
 
 const tmp = join(dirname(DB_FILE), `.reset-player.${process.pid}.tmp`);
 writeFileSync(tmp, JSON.stringify(db, null, 1));
 renameSync(tmp, DB_FILE);
-console.log(`Removed ${player.name}: ${nPlays} play(s), ${nSessions} session(s), ${nBattles} battle(s).`);
+console.log(`Removed ${player.name}: ${nPlays} play(s), ${nSessions} session(s), ${nBattles} battle(s), ${nFriends} friendship(s), ${nRequests} friend request(s), ${nDrill} drill hand(s), ${nQuiz} quiz set(s).`);

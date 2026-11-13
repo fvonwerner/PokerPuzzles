@@ -283,3 +283,157 @@ file. The web app uses them for "try another answer" on an answered decision
 (nothing is sent back and nothing is stored). They are part of the reveal only:
 never in `steps`, never before the decision is answered, never in what a battle
 shows about the other players.
+
+## 5. Players, friends and what others see
+
+The server's database (`DB_FILE`, see the README) keeps players, sessions, plays and battles.
+Package B adds, both optional in an older file (read as empty):
+
+- `players[id].lastSeenAt`: when the player last used the site (ms), written at most every 5
+  minutes. It is the "last active" of the friends list (before it exists: their last finished
+  hand, else when they joined).
+- `friends`: one record per pair of players, keyed by the two ids in sorted order (`"a:b"`):
+
+  ```json
+  { "from": "<id who asked>", "to": "<id asked>", "status": "pending", "createdAt": 1731400000000, "acceptedAt": null }
+  ```
+
+  `pending` is a request from `from` to `to`; accepting turns it into `"friends"` (with
+  `acceptedAt`). Declining, cancelling and removing delete the record, so either player may ask
+  again later. A request to a player who has already asked you accepts theirs.
+
+### 5.1 Another player's plays
+
+What the server sends about another player's play of a hand depends on whether the **viewer**
+has finished that hand (their own play of it is completed, a `partial` one included, or they
+finished it in a battle):
+
+| | Viewer has not finished it | Viewer has finished it |
+|---|---|---|
+| that they played it, when, their score | yes | yes |
+| their choices, grades, points, one mark per decision | no | yes |
+| how many decisions the hand has | no | yes |
+
+Plays that are not completed are never shown to anybody else; `partial` plays (from a cancelled
+battle, never scored) are never shown to others and never counted in anybody's statistics (on
+your own profile they are listed as not scored).
+
+A choice shown to another player is `{index, street, optionId, label, grade, points, timeout?}`.
+As in a review (section 4.1), for a play of an older version of the puzzle file (`stale`, its
+fingerprint differs) the stored grade and points stay, labels follow the current file (a choice
+that is no longer an option says so), and decisions the current file no longer has are left out.
+
+Statistics over many hands never carry counts about another player's decisions: no number of
+decisions (overall or per street), no count per grade, no sum of points per street. A viewer could
+subtract the hands they have finished (whose decisions they see) from such counts and learn how
+many decisions, and which grades, a hand they have not played has. Another player's answers by
+grade are sent only as **shares**: whole percent adding up to exactly 100 (largest remainder; ties
+go to the grade with more answers, then the better grade; battle time-outs are a `timeout` share
+of their own when there are any), and per street only the average points per decision. Both only
+once the player has at least `minHands` (5) counted hands: over fewer hands even shares and
+averages would describe a single hand. This holds on profiles and on the leaderboard, in both
+scopes. The player's own profile has the exact counts; their own leaderboard row shows shares like
+every other row.
+
+### 5.2 Ranking
+
+The leaderboard's default order and the ranks on profiles follow one rule (`RANKING` in
+`server/lib/social.mjs`). Counted are finished, scored first plays of puzzles in the current set.
+
+1. A player with at least `minHands` (5) counted hands is ranked; the others are listed after
+   all ranked players, without a rank.
+2. Ranked players are ordered by average score (total points / hands, exact), then by more hands.
+3. Equal average and equal hands share a place: 1, 2, 2, 4.
+
+The leaderboard can show everyone or the viewer and their friends; ranks are worked out within the
+scope shown, and a profile shows the rank in both scopes as the viewer's leaderboard would.
+
+## 6. Tournament (push/fold)
+
+Short-stack practice for the league's sit-and-go on top of the solved push/fold spots
+(`TOURNAMENT_DIR`, default `data/tournament`; the data contract is `docs/TOURNAMENT.md` section 5):
+`spots/*.json` (75 solved table situations) and `quiz.json` (50 fixed questions, 5 sets of 10). The
+server reads them at start-up (`server/lib/tournament.mjs`); without the folder it starts all the
+same and the tab says the data is not installed (`GET /api/tournament` answers `{installed: false}`,
+the other tournament endpoints 503).
+
+### 6.1 One module for the rules
+
+`web/js/pushfold.js` is pure (no DOM, no I/O, no imports). The server grades, states the facts and
+samples the drill with it; the browser uses the same functions for the charts, the table, the
+question line, the number formats and "Copy for Claude"; `server/tools/tournament-test.mjs` checks it
+against the real files. Its numbers are the files' numbers as served: frequencies 3 decimals, EVs
+and their standard errors 4 (`normalizeSpot`).
+
+- **Scale.** 1 for chip spots; for league-points spots `(payouts[0] - payouts[N-1]) / (sum of
+  stacks)`, the points a big blind is worth. Thresholds in bb below are multiplied by it.
+- **Asked decisions.** First in (nobody all-in yet), and facing exactly one all-in with
+  `reach >= 0.01` (heads-up: both decisions always). Decisions facing two or more all-ins are never
+  asked; they appear only in the charts, with a notice about their larger errors.
+- **Verdict** for (decision, class, action `allin` | `fold`), with d = `ev_diff`, se = `ev_diff_se`,
+  f = `freq`: *close* when `|d| <= max(2.5 se, 0.02 scale)` or `0.05 <= f <= 0.95`: either answer is
+  right, graded **Correct**, and the app says "Too close to call: both plays are fine here".
+  Otherwise the better action is all-in when d > 0, fold when d < 0 (never decided by `freq`): the
+  right answer is **Best**; a wrong one costs `|d|` and is an **Inaccuracy** below 0.10 scale, **Wrong**
+  below 0.50 scale, else a **Blunder**. Costs are shown with their error, `0.31 bb (±0.02)` (± = 2 se),
+  heads-up `(exact)`; bb with 2 decimals, points with 3, percentages whole.
+- **Facts** (each one exactly true, every number from the spot file or plain arithmetic on it):
+  first in, who is behind and how often each calls (`allin_pct` of `<seat>_vs_<you>`, each when the
+  players between fold) and what you pick up (the others' forced bets) against what you can lose
+  (your stack capped by the biggest stack behind); facing one all-in, how wide the jammer jams when
+  folded to (his first-in `allin_pct`); in chip spots where you close the action the price, by the
+  identity `pot = 2 eff + dead`, `cost = eff - posted`, `needed = cost / pot`,
+  `share = (ev_allin + eff) / pot` (it holds for every class of all 120 such decisions of the batch:
+  `ev_fold = -posted`, `ev_diff = share x pot - cost`); with players behind, who can still call and
+  how often (`allin_pct` of `<seat>_vs_<jammer>_<you>`); in points spots what going out means (only a
+  player with at least your chips can put you out; out alone you take the lowest open place, N-th;
+  another player with no more chips than you can share that hand, which changes it) and that the EVs
+  are league points.
+- **Drill sampling.** The spot uniformly among those that match the choices; first in and facing an
+  all-in about equally often ("Both"); the decision by `reach`; the class by combos x `class_reach`;
+  "Close hands" only classes with `|d| <= 0.5 scale`; never the class just dealt.
+
+### 6.2 What leaves the server
+
+A question (drill or quiz) carries the spot's table (seats, stacks before posting, forced bets, units,
+payouts, chip note), the decision (`id`, `seat`, `position`, `facing`, `kind`) and the hand (class,
+two cards). Nothing the solver says: no frequencies, EVs, reach, `allin_pct`, facts. The graded
+answer brings the feedback: `{spot, decision (this decision's freq, ev_fold, ev_allin, ev_diff,
+ev_diff_se, reach, allin_pct), jammer (facing an all-in: his first-in id, seat, allin_pct, freq),
+hand, action, verdict, facts [{key, text}]}`. The charts (`/api/tournament/spots/<name>`) are open to
+every signed-in player: the quiz is on the honour system and records the time each answer took.
+
+### 6.3 Storage
+
+Two optional collections in the db file (an older file reads them as empty):
+
+```json
+"tournamentDrill": { "<playerId>": { "playerId": "...", "hands": 40, "right": 31,
+   "kinds":  { "open": { "hands": 22, "right": 18 }, "call": { "hands": 18, "right": 13 } },
+   "values": { "chips": { "hands": 30, "right": 24, "cost": 1.2345 }, "points": { "hands": 10, "right": 7, "cost": 0.0412 } },
+   "firstAt": 1731400000000, "lastAt": 1731400000000 } },
+"tournamentQuiz": { "<playerId>:<setId>": { "playerId": "...", "setId": "hu", "startedAt": 1731400000000, "finishedAt": null,
+   "shown": { "tq01": 1731400000000 },
+   "answers": [ { "q": "tq01", "spot": "chips-n2-9bb", "decision": "SB_open", "class": "K2o", "cards": ["Kc", "2h"],
+                  "action": "allin", "right": true, "grade": "best", "cost": 0, "close": false, "shownAt": 1731400000000, "at": 1731400004000 } ] } }
+```
+
+The drill keeps totals only (`cost`: the EV the answers gave up, bb for chips, points for points).
+A quiz play holds the answers in order; `shown` stamps when each question was first handed out.
+
+### 6.4 The quiz
+
+- The server hands out only the next unanswered question of a set (stamping when it was first shown)
+  and accepts an answer only for it; the first answer counts and cannot be changed (answering again
+  returns the recorded one). The time of an answer is from first shown to the answer; a set's time is
+  their sum.
+- How the others did on a question (name, a tick or a cross, friends first) only for a viewer who has
+  answered it.
+- Ranking (Everyone / Friends): by right answers over all finished sets (a close hand counts as right);
+  equal numbers share a place (1, 1, 3); players with no finished set are not ranked (and not listed).
+- Profiles: finished sets with right answers out of 10 for everybody; your own profile also the sets
+  you are in the middle of and your drill totals.
+- At start-up every question is checked against the spots (the spot, the decision and the class
+  exist, the decision is one the quiz asks, the cards are of the class, the hand is not close by the
+  verdict rule). A question that fails is logged as a WARNING and graded as close (both answers right);
+  one whose spot, decision or class is missing cannot be asked and is left out of its set.

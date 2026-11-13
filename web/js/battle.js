@@ -17,6 +17,7 @@ import { sound } from './sound.js';
 import { choiceLine, decisionBody, copyButton } from './feedback.js';
 import { cardText } from './poker.js';
 import { setLinkedText, tagChips } from './learn.js';
+import { othersBlock, othersHere } from './social.js';
 
 const POLL_MS = 1000, POLL_HIDDEN_MS = 4000, HOME_POLL_MS = 4000;
 const LEVEL = { easy: 'Easy', medium: 'Medium', hard: 'Hard' };
@@ -736,6 +737,15 @@ export function battleScreen(root, { id, nav }) {
     for (const [oi, o] of (st.hands[n]?.opps || []).entries()) for (const c of o.choices || []) hv.seenPicks.add(`${oi}:${c.index}`);
     if (!barTotals) barTotals = { me: st.me.total, opps: st.opps.map((o) => o.total) };
     document.title = `Battle · Hand ${n + 1}/${st.handCount} · PokerPuzzles`;
+    // "Others on this hand" only when the hand is opened again in review: the live battle already
+    // shows the opponents. The opponents of this battle are left out (they have their own columns).
+    const others = review ? { loading: true, data: null, error: null, open: null, all: false } : null;
+    const othersExclude = new Set(st.opps.map((o) => o.id));
+    if (review && st.hands[n]?.puzzle?.id) {
+      API.others(st.hands[n].puzzle.id).then((data) => { Object.assign(others, { loading: false, data }); },
+        (e) => { Object.assign(others, { loading: false, error: e.status === 403 ? e.message : 'Could not load what the others did.' }); })
+        .finally(() => { if (!destroyed && sub === me) screen.refreshBattle({ changed: true }); });
+    }
 
     const hooks = {
       start: async () => timed(async () => { const r = await API.battleStart(id, n); st = r.battle; hv.sig = sigOf(st); return r; }),
@@ -1003,7 +1013,8 @@ export function battleScreen(root, { id, nav }) {
               return h(`p.fb-choice.dp-opp-line.${oc(o)}`, h('b.opp-name', o.name),
                 c ? (c.timeout ? [' ran out of time · ', gradeBadge('timeout', { small: true }), ' 0 pts'] : [' chose ', h('b', c.label), ' · ', gradeBadge(c.grade, { small: true }), ` ${Math.round(c.points)} pts`, c.optionId === rv.choice ? h('span.dp-same', 'same as you') : null])
                   : ' —');
-            }))),
+            })),
+            review ? othersHere(others, rv.index, { exclude: othersExclude }) : null),
           ...decisionBody(rv, v.puzzle, { onCopy: v.canCopy ? () => v.copy(rv.index) : null }));
       }
       const panel = h(`div.endpanel.duelpanel${animate ? '.duel-in' : ''}`, { role: 'region', 'aria-label': 'End of hand: everybody\'s picks' },
@@ -1011,7 +1022,12 @@ export function battleScreen(root, { id, nav }) {
         h(`div.duel-cols.c${cols}`, { 'aria-hidden': 'true' }, h('span'), h('span.dc-me', 'You'), st.opps.map((o) => h(`span.dc-opp.${oc(o)}`, o.name))),
         h('div.duel-rows', { role: 'tablist', 'aria-label': 'Decisions' }, rows),
         v.canCopy && rs.length ? h('div.duel-copy', copyButton(() => v.copy('hand'), { label: 'Copy the hand for Claude', what: 'the whole hand' })) : null,
-        more, detail);
+        more,
+        review ? othersBlock(others, {
+          mineOf: (i) => myChoice(i), sel: v.sel, onSelect: (i) => v.select(i),
+          onChange: () => screen.refreshBattle({ changed: true }), exclude: othersExclude,
+        }) : null,
+        detail);
       if (animate) {
         hv.revealed = true;
         const rm = reducedMotion();

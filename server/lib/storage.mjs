@@ -4,11 +4,23 @@
 // methods.
 //
 //   getPlayer(id)            getPlayerByName(name)     putPlayer(player)    listPlayers()
+//   touchPlayer(id, at)      (sets only player.lastSeenAt: no read-modify-write of the rest of the record)
 //   getSession(token)        putSession(session)       deleteSession(token)
 //   getPlay(playerId, puzzleId)   putPlay(play)        listPlays({ puzzleId?, playerId? })
 //   getBattle(id)            getBattleByCode(code)     putBattle(battle)    listBattles({ playerId?, status? })
 //   getBattlePlay(battleId, playerId)   putBattlePlay(bp)   listBattlePlays({ battleId?, playerId? })
+//   getFriendLink(a, b)      putFriendLink(link)       deleteFriendLink(a, b)   listFriendLinks({ playerId? })
+//   getDrillTotals(playerId) putDrillTotals(rec)                                     (Tournament drill)
+//   getQuizPlay(playerId, setId)  putQuizPlay(rec)     listQuizPlays({ playerId?, setId? })  (Tournament quiz)
 //   close()
+//
+// A friend link is one record per pair of players (either order finds it):
+//   { from, to, status: 'pending' | 'friends', createdAt, acceptedAt }
+// `from` asked `to`; while pending it is a request, once accepted a friendship.
+// Tournament (docs/SPEC.md section 6): one drill record per player (totals only,
+// keyed by player id) and one quiz play per player and set ("<player>:<set>").
+// Collections added later (friends, tournamentDrill, tournamentQuiz) are
+// optional in an older db file.
 import { readFileSync, existsSync, mkdirSync, statSync } from 'node:fs';
 import { writeFile, rename } from 'node:fs/promises';
 import { dirname } from 'node:path';
@@ -16,9 +28,11 @@ import { dirname } from 'node:path';
 const clone = (x) => (x === undefined || x === null ? x : structuredClone(x));
 const playKey = (playerId, puzzleId) => `${playerId}:${puzzleId}`;
 const battlePlayKey = (battleId, playerId) => `${battleId}:${playerId}`;
+const quizKey = (playerId, setId) => `${playerId}:${setId}`;
+export const pairKey = (a, b) => (a < b ? `${a}:${b}` : `${b}:${a}`);
 
 export function createJsonFileStorage(file) {
-  const empty = () => ({ version: 1, players: {}, sessions: {}, plays: {}, battles: {}, battlePlays: {} });
+  const empty = () => ({ version: 1, players: {}, sessions: {}, plays: {}, battles: {}, battlePlays: {}, friends: {}, tournamentDrill: {}, tournamentQuiz: {} });
   let db = empty();
   let knownMtime = 0; // mtime of the file as we last read or wrote it
   const fileMtime = () => { try { return statSync(file).mtimeMs; } catch { return 0; } };
@@ -71,6 +85,12 @@ export function createJsonFileStorage(file) {
     },
     async putPlayer(player) { sync(); db.players[player.id] = clone(player); await save(); },
     async listPlayers() { sync(); return Object.values(db.players).map(clone); },
+    async touchPlayer(id, at) { sync();
+      const p = db.players[id];
+      if (!p) return;
+      p.lastSeenAt = at;
+      await save();
+    },
 
     async getSession(token) { sync(); return clone(db.sessions[token]) ?? null; },
     async putSession(session) { sync(); db.sessions[session.token] = clone(session); await save(); },
@@ -103,6 +123,25 @@ export function createJsonFileStorage(file) {
     async listBattlePlays({ battleId, playerId } = {}) { sync();
       return Object.values(db.battlePlays)
         .filter((p) => (!battleId || p.battleId === battleId) && (!playerId || p.playerId === playerId))
+        .map(clone);
+    },
+
+    async getFriendLink(a, b) { sync(); return clone((db.friends ||= {})[pairKey(a, b)]) ?? null; },
+    async putFriendLink(link) { sync(); (db.friends ||= {})[pairKey(link.from, link.to)] = clone(link); await save(); },
+    async deleteFriendLink(a, b) { sync(); delete (db.friends ||= {})[pairKey(a, b)]; await save(); },
+    async listFriendLinks({ playerId } = {}) { sync();
+      return Object.values(db.friends ||= {})
+        .filter((l) => !playerId || l.from === playerId || l.to === playerId)
+        .map(clone);
+    },
+
+    async getDrillTotals(playerId) { sync(); return clone((db.tournamentDrill ||= {})[playerId]) ?? null; },
+    async putDrillTotals(rec) { sync(); (db.tournamentDrill ||= {})[rec.playerId] = clone(rec); await save(); },
+    async getQuizPlay(playerId, setId) { sync(); return clone((db.tournamentQuiz ||= {})[quizKey(playerId, setId)]) ?? null; },
+    async putQuizPlay(rec) { sync(); (db.tournamentQuiz ||= {})[quizKey(rec.playerId, rec.setId)] = clone(rec); await save(); },
+    async listQuizPlays({ playerId, setId } = {}) { sync();
+      return Object.values(db.tournamentQuiz ||= {})
+        .filter((p) => (!playerId || p.playerId === playerId) && (!setId || p.setId === setId))
         .map(clone);
     },
 

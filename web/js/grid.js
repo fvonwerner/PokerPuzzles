@@ -16,8 +16,13 @@ const ENLARGE_ICON = '<svg viewBox="0 0 20 20" width="15" height="15" aria-hidde
  * ({cards, freq}: the hero's own two cards and the strategy the action
  * buttons show) if given, else the `highlight` class, so it never jumps.
  * A click (Enter) on a cell, or the Enlarge button, opens the full-screen chart.
+ * Optional hooks (the tournament charts): sub(c) replaces the readout's second
+ * line, cellClass(c) adds a class to a cell (and its full-screen twin),
+ * onPick(c, cell) takes a cell click instead of opening the full-screen chart,
+ * overlay { extra(c), note } adds a line of numbers to each full-screen cell and
+ * replaces the full-screen legend's note.
  */
-export function rangeGrid({ range, options = null, colors = null, highlight = null, exact = null, heat = false, caption }) {
+export function rangeGrid({ range, options = null, colors = null, highlight = null, exact = null, heat = false, caption, sub = null, cellClass = null, onPick = null, overlay = null }) {
   const cells = [];
   const fallback = highlight ? classIndexOf(highlight) : range.w.findIndex((x) => x > 0);
   const readout = h('div.readout', { 'aria-live': 'polite' });
@@ -48,7 +53,7 @@ export function rangeGrid({ range, options = null, colors = null, highlight = nu
     const name = classIndexName(c);
     const head = h('div.ro-top',
       h('div.ro-head', h('span.ro-class', name), h('span.ro-combos', `· ${COMBOS[classCombos(c)]}`)),
-      h('p.ro-sub', w > 0 ? ['in range ', h('b.num', fmtFreq(w)), ' of the time'] : 'not in range'));
+      h('p.ro-sub', sub ? sub(c) : w > 0 ? ['in range ', h('b.num', fmtFreq(w)), ' of the time'] : 'not in range'));
     const rows = !heat && options && range.f
       ? strategyRows(w > 0 ? range.f[c] : options.map(() => 0))
       : [h('div.ro-row',
@@ -59,7 +64,7 @@ export function rangeGrid({ range, options = null, colors = null, highlight = nu
   };
   if (exact && !(!heat && options && exact.cards?.length === 2 && exact.freq?.length === options.length)) exact = null;
   const rest = () => (exact ? showExact() : show(fallback));
-  const open = (c, from) => openChart({ range, options, colors, highlight, exact, heat, caption: caption || 'Range', focusClass: c, returnTo: from });
+  const open = (c, from) => openChart({ range, options, colors, highlight, exact, heat, caption: caption || 'Range', focusClass: c, returnTo: from, cellClass, extra: overlay?.extra || null, note: overlay?.note || null });
 
   for (let c = 0; c < 169; c++) {
     const w = range.w[c] || 0;
@@ -69,6 +74,8 @@ export function rangeGrid({ range, options = null, colors = null, highlight = nu
     if (highlight === name) cls.push('mine');
     const i = Math.floor(c / 13), j = c % 13;
     if (i === j) cls.push('pair'); else if (i < j) cls.push('suited');
+    const more = cellClass?.(c);
+    if (more) cls.push(...more.split(' ').filter(Boolean));
     let fill;
     if (heat) {
       fill = h('span.heat', { style: { opacity: w > 0 ? (0.12 + 0.88 * w).toFixed(3) : 0 } });
@@ -78,12 +85,14 @@ export function rangeGrid({ range, options = null, colors = null, highlight = nu
     }
     const cell = h(`button.${cls.join('.')}`, {
       type: 'button', tabindex: c === (fallback >= 0 ? fallback : 0) ? '0' : '-1',
-      'aria-label': `${name}, ${w > 0 ? `in range ${fmtFreq(w)} of the time` : 'not in range'}. Opens the chart full screen`,
+      'aria-label': `${name}, ${sub && options && range.f
+        ? options.map((o, k) => `${o.label} ${fmtFreq(range.f[c][k])}`).join(', ')
+        : w > 0 ? `in range ${fmtFreq(w)} of the time` : 'not in range'}. ${onPick ? 'Shows its numbers' : 'Opens the chart full screen'}`,
       on: {
         mouseenter: () => show(c),
         mouseleave: rest,
         focus: () => show(c),
-        click: () => open(c, cell),
+        click: () => (onPick ? onPick(c, cell) : open(c, cell)),
         keydown: (e) => {
           const moves = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: 13, ArrowUp: -13 };
           if (!(e.key in moves)) return;
@@ -122,7 +131,11 @@ function cellPct(v) {
   return '100';
 }
 
-function openChart({ range, options, colors, highlight, exact, heat, caption, focusClass = null, returnTo = null }) {
+/**
+ * The full-screen chart. Exported for pages that draw their own grid (the
+ * tournament charts). cellClass(c) / extra(c) / note: as rangeGrid's hooks.
+ */
+export function openChart({ range, options, colors, highlight, exact, heat, caption, focusClass = null, returnTo = null, cellClass = null, extra = null, note = null }) {
   current?.close({ restore: false });
   const strategy = !heat && !!options && !!range.f;
   const prevFocus = returnTo || document.activeElement;
@@ -138,6 +151,8 @@ function openChart({ range, options, colors, highlight, exact, heat, caption, fo
       if (w <= 0) cls.push('empty');
       if (highlight === name) cls.push('mine');
       if (c === focusClass) cls.push('picked');
+      const more = cellClass?.(c);
+      if (more) cls.push(...more.split(' ').filter(Boolean));
       const body = [h('span.xc-name', name)];
       let label = name;
       const style = {};
@@ -146,9 +161,11 @@ function openChart({ range, options, colors, highlight, exact, heat, caption, fo
           const f = range.f[c];
           const shown = options.map((o, k) => ({ o, k, v: f[k] || 0 })).filter((x) => x.v >= 0.005);
           body.push(...shown.map(({ k, v }) => h('b.xc-n', { style: { '--c': colors[k] } }, cellPct(v))));
+          const x = extra?.(c);
+          if (x) body.push(h('span.xc-x', x));
           body.push(h('span.xc-bar', { 'aria-hidden': 'true', style: { width: `${Math.max(6, w * 100).toFixed(1)}%` } },
-            f.map((x, k) => (x > 0 ? h('span', { style: { flexGrow: x, background: colors[k] } }) : null))));
-          label += `: ${shown.map(({ o, v }) => `${shortLabel(o)} ${fmtFreq(v)}`).join(', ')}${w < 0.995 ? `; ${fmtFreq(w)} of the class is in the range` : ''}`;
+            f.map((v, k) => (v > 0 ? h('span', { style: { flexGrow: v, background: colors[k] } }) : null))));
+          label += `: ${shown.map(({ o, v }) => `${shortLabel(o)} ${fmtFreq(v)}`).join(', ')}${w < 0.995 ? `; ${fmtFreq(w)} of the class is in the range` : ''}${x ? `; ${x}` : ''}`;
         } else label += ': not in the range';
       } else if (w > 0) {
         body.push(h('b.xc-w', fmtFreq(w)));
@@ -171,7 +188,7 @@ function openChart({ range, options, colors, highlight, exact, heat, caption, fo
   const legend = h('div.cov-legend',
     strategy
       ? [h('p.cov-keys', options.map((o, k) => h('span.cov-leg', h('span.cov-sw', { style: { background: colors[k] } }), shortLabel(o)))),
-        h('p.cov-note', 'Numbers: how often each action is played, in %. The bar under them: how much of the hand class is in the range.')]
+        h('p.cov-note', note || 'Numbers: how often each action is played, in %. The bar under them: how much of the hand class is in the range.')]
       : h('p.cov-note', h('span.cov-sw.cov-sw-heat'), 'Number: how much of each hand class is in the range.'),
     exactLine);
 

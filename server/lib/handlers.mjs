@@ -4,7 +4,7 @@
 // No HTTP in here, so the same logic can run behind another host or storage.
 import { AUTH, validateName, validatePin, hashPin, checkPin, newId, newToken } from './auth.mjs';
 import { header, publicSteps, reveal, endStep, timeoutReveal } from './view.mjs';
-import { puzzleScore, GRADE_ORDER, GRADE_LABELS } from './grading.mjs';
+import { puzzleScore, GRADE_LABELS } from './grading.mjs';
 import { battleHolds } from './battles.mjs';
 
 export class HttpError extends Error {
@@ -13,12 +13,20 @@ export class HttpError extends Error {
 const ok = (body, status = 200) => ({ status, body });
 const publicPlayer = (p) => ({ id: p.id, name: p.name });
 
+/** "Last active" (friends list) is when a player last used the app, kept to this precision (one write at most this often). */
+export const SEEN_MS = 5 * 60 * 1000;
+
 export async function requirePlayer(req, ctx) {
   if (!req.token) throw new HttpError(401, 'Not signed in.');
   const s = await ctx.storage.getSession(req.token);
   if (!s || s.expiresAt < ctx.now()) throw new HttpError(401, 'Session expired. Please sign in again.');
   const player = await ctx.storage.getPlayer(s.playerId);
   if (!player) throw new HttpError(401, 'Unknown player.');
+  const now = ctx.now();
+  if (!(player.lastSeenAt > now - SEEN_MS)) {
+    await ctx.storage.touchPlayer(player.id, now); // only this field: safe next to concurrent writes of the record
+    player.lastSeenAt = now;
+  }
   return player;
 }
 function requirePuzzle(req, ctx) {
@@ -39,7 +47,7 @@ export async function login(req, ctx) {
   let created = false;
   if (!player) {
     const { salt, hash } = await hashPin(pv.pin);
-    player = { id: newId(), name: n.name, nameKey: n.name.toLowerCase(), pinSalt: salt, pinHash: hash, failures: 0, lockedUntil: 0, createdAt: now };
+    player = { id: newId(), name: n.name, nameKey: n.name.toLowerCase(), pinSalt: salt, pinHash: hash, failures: 0, lockedUntil: 0, createdAt: now, lastSeenAt: now };
     await ctx.storage.putPlayer(player);
     created = true;
   } else {
@@ -75,7 +83,10 @@ export async function logout(req, ctx) {
 
 export async function me(req, ctx) {
   const player = await requirePlayer(req, ctx);
-  return ok({ player: publicPlayer(player), usingFixtures: ctx.usingFixtures });
+  // Friend requests waiting for this player's answer (the badge on "Friends").
+  const links = await ctx.storage.listFriendLinks({ playerId: player.id });
+  const friendRequests = links.filter((l) => l.status === 'pending' && l.to === player.id).length;
+  return ok({ player: publicPlayer(player), usingFixtures: ctx.usingFixtures, friendRequests });
 }
 
 // ---------- puzzles ----------
@@ -272,21 +283,4 @@ export async function review(req, ctx) {
   });
 }
 
-export async function leaderboard(req, ctx) {
-  const me_ = await requirePlayer(req, ctx);
-  const players = await ctx.storage.listPlayers();
-  const plays = (await ctx.storage.listPlays()).filter((pl) => pl.completedAt && !pl.partial && ctx.puzzles.has(pl.puzzleId)); // partial plays are never scored
-  const rows = players.map((pl) => {
-    const mine = plays.filter((x) => x.playerId === pl.id);
-    const grades = Object.fromEntries(GRADE_ORDER.map((g) => [g, 0]));
-    for (const x of mine) for (const c of x.choices) grades[c.grade] = (grades[c.grade] || 0) + 1;
-    const total = mine.reduce((a, x) => a + x.score, 0);
-    return {
-      id: pl.id, name: pl.name, played: mine.length, totalPoints: total,
-      average: mine.length ? Math.round((10 * total) / mine.length) / 10 : null,
-      decisions: Object.values(grades).reduce((a, b) => a + b, 0), grades,
-    };
-  });
-  rows.sort((a, b) => (b.average ?? -1) - (a.average ?? -1) || b.played - a.played || a.name.localeCompare(b.name));
-  return ok({ players: rows, you: me_.id, puzzleCount: ctx.puzzles.size });
-}
+// The leaderboard lives in social.mjs (scopes, ranking rule).

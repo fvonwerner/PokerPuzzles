@@ -48,14 +48,33 @@ export function loginScreen(root, { onSignedIn }) {
 
 
 const FILTERS_KEY = 'pokerpuzzles.filters';
+const SCOPE_KEY = 'pokerpuzzles.lbscope';
 
 export function lobbyScreen(root, { player }) {
   let filters = { pot: 'all', status: 'all', level: 'all' };
   try { filters = { ...filters, ...JSON.parse(localStorage.getItem(FILTERS_KEY) || '{}') }; } catch { /* ignore */ }
   let puzzles = [], board = null, usingFixtures = false, nextId = null;
-  let sort = { key: 'average', dir: -1 };
+  let scope = 'everyone';
+  try { if (localStorage.getItem(SCOPE_KEY) === 'friends') scope = 'friends'; } catch { /* ignore */ }
+  // Default order: the server's ranking (the `#` column); the other columns sort on a click.
+  let sort = { key: 'rank', dir: 1 };
+  let destroyed = false, scopeSeq = 0;
   const el = h('section.lobby');
   clear(root).append(el);
+
+  async function setScope(next) {
+    if (next === scope) return;
+    scope = next;
+    try { localStorage.setItem(SCOPE_KEY, scope); } catch { /* ignore */ }
+    const my = ++scopeSeq;
+    try {
+      const lb = await API.leaderboard(scope);
+      if (destroyed || my !== scopeSeq) return;
+      board = lb;
+      render();
+      el.querySelector(`.lb-scope [data-scope="${scope}"]`)?.focus({ preventScroll: true });
+    } catch (e) { toast(e.message, 'error'); }
+  }
 
   function chip(group, value, label) {
     const active = filters[group] === value;
@@ -98,34 +117,44 @@ export function lobbyScreen(root, { player }) {
 
   function leaderboardTable() {
     if (!board) return h('p.muted', 'Loading…');
-    const rows = board.players.filter((p) => p.played > 0 || p.id === board.you);
-    const keyOf = (r) => (sort.key === 'name' ? r.name.toLowerCase() : sort.key in r.grades ? r.grades[sort.key] : r[sort.key] ?? -1);
+    // Everyone: players with a finished hand (and you). Friends: you and all your friends.
+    const order = new Map(board.players.map((p, i) => [p.id, i])); // the server's ranking order
+    const rows = board.players.filter((p) => board.scope === 'friends' || p.played > 0 || p.id === board.you);
+    const GR = ['best', 'correct', 'inaccuracy', 'wrong', 'blunder'];
+    // grade columns: each player's share of answers in %, null (–) below the minimum: those sort last
+    const keyOf = (r) => (sort.key === 'name' ? r.name.toLowerCase() : sort.key === 'rank' ? order.get(r.id) : GR.includes(sort.key) ? (r.shares ? r.shares[sort.key] : -1) : r[sort.key] ?? -1);
     rows.sort((a, b) => {
       const x = keyOf(a), y = keyOf(b);
       if (x < y) return -sort.dir; if (x > y) return sort.dir;
-      return (b.played - a.played) || a.name.localeCompare(b.name);
+      return order.get(a.id) - order.get(b.id);
     });
-    // Rank by average (ties share a rank); players without plays are unranked.
-    const ranked = [...board.players].filter((p) => p.played > 0).sort((a, b) => b.average - a.average);
-    const rankOf = (r) => (r.played ? ranked.findIndex((x) => x.average === r.average) + 1 : null);
-    const th = (key, label, cls = '') => {
+    const th = (key, label, cls = '', title = null) => {
       const on = sort.key === key;
       return h(`th${cls}`, { scope: 'col', 'aria-sort': on ? (sort.dir < 0 ? 'descending' : 'ascending') : 'none' },
-        h('button.sort', { type: 'button', on: { click: () => { sort = { key, dir: on ? -sort.dir : key === 'name' ? 1 : -1 }; render(); } } }, label, on ? (sort.dir < 0 ? ' ▾' : ' ▴') : ''));
+        h('button.sort', { type: 'button', title, on: { click: () => { sort = { key, dir: on ? -sort.dir : key === 'name' || key === 'rank' ? 1 : -1 }; render(); } } }, label, on ? (sort.dir < 0 ? ' ▾' : ' ▴') : ''));
     };
+    const min = board.minHands;
+    const lonely = board.scope === 'friends' && !board.friendCount;
     return h('div', h('div.lb-scroll', h('table.lb',
-      h('caption.sr-only', 'Leaderboard'),
+      h('caption.sr-only', board.scope === 'friends' ? 'Leaderboard: you and your friends' : 'Leaderboard: everyone'),
       h('thead', h('tr',
-        h('th.num', { scope: 'col' }, '#'), th('name', 'Player'), th('played', 'Played', '.num'), th('average', 'Avg', '.num'), th('totalPoints', 'Total', '.num'),
-        ['best', 'correct', 'inaccuracy', 'wrong', 'blunder'].map((g) => h(`th.num.gcol`, { scope: 'col', 'aria-sort': sort.key === g ? (sort.dir < 0 ? 'descending' : 'ascending') : 'none' },
-          h('button.sort', { type: 'button', title: GRADE_LABEL[g], 'aria-label': `${GRADE_LABEL[g]} count`, on: { click: () => { sort = { key: g, dir: sort.key === g ? -sort.dir : -1 }; render(); } } },
+        th('rank', '#', '.num', `Rank: average score, from ${min} hands`), th('name', 'Player'), th('played', 'Played', '.num'), th('average', 'Avg', '.num'), th('totalPoints', 'Total', '.num'),
+        GR.map((g) => h(`th.num.gcol`, { scope: 'col', 'aria-sort': sort.key === g ? (sort.dir < 0 ? 'descending' : 'ascending') : 'none' },
+          h('button.sort', { type: 'button', title: `${GRADE_LABEL[g]}, % of answers`, 'aria-label': `${GRADE_LABEL[g]}, share of answers`, on: { click: () => { sort = { key: g, dir: sort.key === g ? -sort.dir : -1 }; render(); } } },
             h(`span.gpill.g-${g}`, GRADE_SHORT[g])))))),
       h('tbody', rows.map((r) => h(`tr${r.id === board.you ? '.me' : ''}`,
-        h('td.num.muted', rankOf(r) ?? '–'),
-        h('th', { scope: 'row' }, r.name, r.id === board.you ? h('span.you', 'You') : null),
+        h('td.num.muted', r.rank !== null && r.rank !== undefined ? r.rank : h('span', { title: `Ranked from ${min} hands` }, '–')),
+        h('th', { scope: 'row' }, h('a.lb-name', { href: `#/player/${r.id}` }, r.name), r.id === board.you ? h('span.you', 'You') : r.friend && board.scope !== 'friends' ? h('span.lb-friend', { title: 'Your friend' }, 'friend') : null),
         h('td.num', r.played), h('td.num.strong', r.average ?? '–'), h('td.num', r.totalPoints),
-        ['best', 'correct', 'inaccuracy', 'wrong', 'blunder'].map((g) => h('td.num.gcol', r.grades[g] || 0))))))),
-    h('p.small.muted.lb-note', 'Ranked by average score. Click a column to sort. Grade counts: ', ['best', 'correct', 'inaccuracy', 'wrong', 'blunder'].map((g) => h('span.lb-key', h(`span.gpill.g-${g}`, GRADE_SHORT[g]), ` ${GRADE_LABEL[g]} `))));
+        GR.map((g) => h('td.num.gcol', r.shares ? r.shares[g] : h('span.muted', { title: `Shown from ${min} hands` }, '–')))))))),
+    lonely ? h('p.small.lb-lonely', 'No friends here yet. ', h('a', { href: '#/friends' }, 'Find your friends'), ' to compare scores with them.') : null,
+    h('p.small.muted.lb-note', `Ranked by average score, from ${min} hands; more hands break a tie. Click a column to sort, a name for the profile. Grade columns: % of each player's answers (from ${min} hands, yours always): `, GR.map((g) => h('span.lb-key', h(`span.gpill.g-${g}`, GRADE_SHORT[g]), ` ${GRADE_LABEL[g]} `))));
+  }
+  function scopeSwitch() {
+    const chipS = (value, label) => h(`button.chip${scope === value ? '.on' : ''}`, {
+      type: 'button', 'aria-pressed': String(scope === value), dataset: { scope: value }, on: { click: () => setScope(value) },
+    }, label);
+    return h('div.chips.lb-scope', { role: 'group', 'aria-label': 'Whose scores' }, chipS('everyone', 'Everyone'), chipS('friends', 'Friends'));
   }
 
   // "Practise your weakest hands": lowest score first, then the next lowest.
@@ -184,18 +213,20 @@ export function lobbyScreen(root, { player }) {
             h('div.chips', { role: 'group', 'aria-label': 'Status' }, chip('status', 'all', 'Any status'), chip('status', 'new', 'New'), chip('status', 'in_progress', 'In progress'), chip('status', 'done', 'Done'))),
           h('p.small.muted.shown-count', `${shown.length} of ${puzzles.length} puzzles`),
           shown.length ? h('div.cards', shown.map(card)) : h('p.muted.pad', puzzles.length ? 'No puzzles match these filters.' : 'No puzzles yet.')),
-        h('aside.lobby-board', h('h2', 'Leaderboard'), leaderboardTable())));
+        h('aside.lobby-board', h('div.lb-head', h('h2', 'Leaderboard'), scopeSwitch()), leaderboardTable())));
   }
 
   (async () => {
     try {
-      const [list, lb] = await Promise.all([API.puzzles(), API.leaderboard()]);
+      const [list, lb] = await Promise.all([API.puzzles(), API.leaderboard(scope)]);
+      if (destroyed) return;
       puzzles = list.puzzles; usingFixtures = list.usingFixtures; nextId = list.nextId; board = lb;
       render();
     } catch (e) {
+      if (destroyed) return;
       clear(el).append(h('div.error-box', h('p', e.message), h('button.btn', { type: 'button', on: { click: () => location.reload() } }, 'Try again')));
     }
   })();
   el.append(h('p.muted.pad', 'Loading…'));
-  return { destroy() {} };
+  return { destroy() { destroyed = true; } };
 }

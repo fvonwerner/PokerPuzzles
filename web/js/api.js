@@ -44,7 +44,15 @@ export const API = {
   start: (id, mode) => api('POST', `/api/puzzles/${encodeURIComponent(id)}/start`, { mode }),
   act: (id, decisionIndex, optionId, mode) => api('POST', `/api/puzzles/${encodeURIComponent(id)}/act`, { decisionIndex, optionId, mode }),
   review: (id) => api('GET', `/api/puzzles/${encodeURIComponent(id)}/review`),
-  leaderboard: () => api('GET', '/api/leaderboard'),
+  others: (id) => api('GET', `/api/puzzles/${encodeURIComponent(id)}/others`),
+  leaderboard: (scope = 'everyone') => api('GET', `/api/leaderboard${scope === 'friends' ? '?scope=friends' : ''}`),
+  // friends, finding players, profiles
+  friends: () => api('GET', '/api/friends'),
+  friendRequest: (target) => api('POST', '/api/friends/request', target), // { id } or { name }
+  friendAction: (id, what) => api('POST', `/api/friends/${encodeURIComponent(id)}/${what}`), // accept | decline | cancel | remove
+  searchPlayers: (q) => api('GET', `/api/players?q=${encodeURIComponent(q)}`),
+  player: (id) => api('GET', `/api/players/${encodeURIComponent(id)}`),
+  playerHands: (id, before) => api('GET', `/api/players/${encodeURIComponent(id)}/hands?before=${encodeURIComponent(before)}`),
   battles: () => api('GET', '/api/battles'),
   createBattle: (size = 2) => api('POST', '/api/battles', { size }),
   joinBattleCode: (code) => api('POST', '/api/battles/join', { code }),
@@ -56,4 +64,14 @@ export const API = {
   battleReady: (id, ready = true) => api('POST', `/api/battles/${encodeURIComponent(id)}/ready`, { ready }),
   battleStart: (id, hand) => api('POST', `/api/battles/${encodeURIComponent(id)}/start`, { hand }),
   battleAct: (id, hand, decisionIndex, optionId) => api('POST', `/api/battles/${encodeURIComponent(id)}/act`, optionId === null ? { hand, decisionIndex, timeout: true } : { hand, decisionIndex, optionId }),
+  // Tournament (push/fold)
+  tournament: () => api('GET', '/api/tournament'),
+  tournamentSpot: (name) => api('GET', `/api/tournament/spots/${encodeURIComponent(name)}`),
+  drillNext: (prefs, avoid) => api('GET', `/api/tournament/drill/next?${new URLSearchParams({ ...prefs, ...(avoid ? { avoid } : {}) })}`),
+  drillAnswer: (q, action) => api('POST', '/api/tournament/drill/answer', { spot: q.spot.name, decision: q.decision.id, class: q.hand.class, cards: q.hand.cards, action }),
+  quizNext: (set) => api('POST', `/api/tournament/quiz/${encodeURIComponent(set)}/next`),
+  quizAnswer: (set, question, action) => api('POST', `/api/tournament/quiz/${encodeURIComponent(set)}/answer`, { question, action }),
+  quizSummary: (set) => api('GET', `/api/tournament/quiz/${encodeURIComponent(set)}/summary`),
+  quizOthers: (question) => api('GET', `/api/tournament/quiz/questions/${encodeURIComponent(question)}/others`),
+  quizRanking: (scope = 'everyone') => api('GET', `/api/tournament/quiz/ranking${scope === 'friends' ? '?scope=friends' : ''}`),
 };

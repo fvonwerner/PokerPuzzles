@@ -20,6 +20,15 @@ Environment variables:
 | `EXPLANATIONS_DIR` | `data/explanations` | optional `<id>.json` (SPEC section 2.3) |
 | `DB_FILE` | `server/data/db.json` | players, sessions, plays |
 | `RESCAN_MS` | `3000` | how often (at most) the puzzle folders are re-checked on API requests |
+| `TOURNAMENT_DIR` | `data/tournament` | the solved push/fold spots (`spots/*.json`) and `quiz.json` of the Tournament tab (docs/TOURNAMENT.md); read at start-up, restart after changing them. Missing: the server starts and the tab says the data is not installed |
+
+A working copy in `dev/` (server and web only) runs beside the live site with its own database and
+the repository's data:
+
+```sh
+cd dev && PORT=4466 DB_FILE=server/data/db.json SOLUTIONS_DIR=../data/solutions \
+  EXPLANATIONS_DIR=../data/explanations TOURNAMENT_DIR=../data/tournament node server/index.mjs
+```
 
 If `SOLUTIONS_DIR` is not set and `data/solutions` holds no puzzle files, the
 server falls back to the fake fixture puzzles in `data/solutions-fixture` (and
@@ -31,8 +40,65 @@ logged once and retried when it changes; a puzzle that was already loaded keeps
 its last good version meanwhile. Stored scores never change when a puzzle file
 changes; an unfinished play of a changed puzzle starts again from decision 0.
 
-Remove a test player and their plays (and battles): `node server/tools/reset-player.mjs <name>`
-(`--list` lists players). Safe while the server runs (it reloads the db file).
+Remove a test player and their plays (and battles, friendships and friend requests, tournament
+drill totals and quiz answers): `node server/tools/reset-player.mjs <name>` (`--list` lists
+players). Safe while the server runs (it reloads the db file).
+
+## Tournament
+
+Short-stack practice for the league's sit-and-go (`#/tournament`): 2 to 6 players with 4 to 12 big
+blinds, an ante of 0.1 bb from every player, all-in or fold, on top of the solved spots in
+`data/tournament` (how they were solved and how accurate they are: `docs/TOURNAMENT.md`; the rules
+of the tab: `docs/SPEC.md` section 6).
+
+- **Drill** (`#/tournament/drill`): endless hands. Choices (kept in the browser): chips or league
+  points, players, stack (chips) or situation (points), seat, first in / facing an all-in / both,
+  close hands (the two plays at most 0.5 bb apart, the default) or all hands. Each answer is graded
+  by the server and shown with both EVs, the difference and its error, the solver's frequency, facts
+  about the spot, the chart of the decision (and the jammer's range) and "Copy for Claude". The
+  server keeps only totals per player; the session tally is kept in the browser tab.
+- **Quiz** (`#/tournament/quiz`): the same 50 questions for everyone in 5 sets of 10. One question
+  at a time, the first answer counts, the time is recorded; after each answer, how the others who
+  answered it did; after the 10th the results, every question reviewable. A ranking (Everyone /
+  Friends) by right answers over finished sets; finished sets show on profiles.
+- **Charts** (`#/tournament/charts[/<spot>[/<decision>]]`): every decision of every spot as a 13x13
+  chart, a click on a hand for its numbers, "Enlarge" for every number at once; the decisions facing
+  two or more all-ins in their own group, with a note on their larger errors.
+
+The verdict, the facts and the drill's sampling live in one pure module, `web/js/pushfold.js`, used
+by the server and the browser alike.
+
+## Friends, profiles, ranking
+
+- **Friends** (`#/friends`): ask a player by name (exact, any case) or from a search (the first
+  letters, at least 2; at most 10 results, each with your relation to them) or from the people
+  you have battled. They accept or decline; you can take a request back; either can remove the
+  friendship. If they had already asked you, asking them back makes you friends at once. At most
+  50 of your requests can wait for an answer, and a player can have at most 200 friends
+  (`FRIENDS` in `server/lib/social.mjs`). The "Friends" link in the header shows the requests
+  waiting for you (refreshed on every page change and about every 30 s while the page is open).
+- **Profiles** (`#/player/<id>`, yours from your name or initial in the header): member since,
+  rank among everyone and among you and your friends, statistics (hands, average, total, the
+  answers by grade, points per decision by street, battles), and every finished hand, newest
+  first. A hand you have finished too opens to their decisions beside yours (and "Open the hand"
+  goes to `#/review/<puzzle>/with/<player>`); one you have not shows only their score and when.
+  Another player's answers by grade are shown as shares in whole percent (adding up to 100) and
+  the streets as average points only, from 5 counted hands on; never as counts or decision
+  totals, which would let you subtract the hands you know and count the decisions of one you have
+  not played. Your own profile has the exact counts. On phones "Sign out" is on your own profile.
+- **Others on this hand**: in the finished view (after a scored play, in review, after practice,
+  and when a battle hand is reopened from the result; never in a live battle) everybody else who
+  has finished the hand, friends first, then the most recent, at most 20: score and one mark per
+  decision, ringed where they chose differently from you; a row opens their decisions beside
+  yours, and picking one moves the table there. Each decision's detail says who chose what.
+- **Ranking** (the leaderboard's default order and the rank on profiles): a player is ranked from
+  5 finished, scored hands on (`RANKING.minHands`). Ranked players are ordered by average score
+  (exact, not the rounded one shown), more hands breaking a tie; equal average and equal hands
+  share a place (1, 2, 2, 4). Players below the minimum follow, without a rank. The leaderboard
+  can show everyone or you and your friends; the rank is worked out within the scope shown.
+
+Only finished plays count anywhere, and a `partial` play (from a cancelled battle) is never shown
+to others or counted.
 
 ## Battles
 
@@ -137,8 +203,9 @@ Re-solve every hand after changing them: postflop ranges follow the charts.
 
 ```sh
 node server/tools/make-fixture.mjs   # writes 3 fake, SPEC-conformant puzzles (fx01-fx03)
-node server/tools/smoke.mjs          # starts a server on a spare port with a temp db and plays through the API
+node server/tools/smoke.mjs          # starts a server on a spare port with a temp db and plays through the API (tournament: the real data, read only)
 node server/tools/prompt-test.mjs    # the "Copy for Claude" prompt (web/js/prompt.js): complete, and never anything not yet revealed
+node server/tools/tournament-test.mjs  # web/js/pushfold.js against the real spots: verdicts, facts, sampling, the quiz, the prompt
 ```
 
 ## Layout
@@ -149,28 +216,45 @@ server/lib/grading.mjs    SPEC section 4 (constants object GRADING)
 server/lib/view.mjs       solution file -> public view (nothing secret before it is answered), reveals, explanations
 server/lib/handlers.mjs   API handlers as plain functions of (request, ctx)
 server/lib/battles.mjs    battles: the shared cursor and clocks, hand selection, what each player may see of the others
+server/lib/social.mjs     friends, player search, profiles, the leaderboard and its ranking rule, "others on this hand"
+server/lib/tournament.mjs Tournament: loading the spots and the quiz (with the start-up check), drill, quiz, ranking, profile block
 server/lib/storage.mjs    storage interface, JSON-file implementation (atomic temp-file + rename)
 server/lib/auth.mjs       name/PIN rules, scrypt hashing, tokens
 server/lib/puzzles.mjs    loading and validating solution and explanation files
-server/tools/             make-fixture.mjs, smoke.mjs, prompt-test.mjs, reset-player.mjs, battle-bot.mjs
+server/tools/             make-fixture.mjs, smoke.mjs, prompt-test.mjs, tournament-test.mjs, reset-player.mjs, battle-bot.mjs
 web/                      vanilla JS modules + CSS, no external resources
 web/js/prompt.js          "Copy for Claude": the prompt for one answered decision or the whole hand (pure, also runs under node)
+web/js/pushfold.js        Tournament rules shared with the server: verdict, facts, drill sampling, formats, its "Copy for Claude" (pure)
+web/js/tournament.js      the Tournament tab: home, quiz page and ranking, a set's results, "How accurate is this?"
+web/js/tquestion.js       the Tournament question screen (drill, quiz, review) and its feedback panel
+web/js/tcharts.js         push/fold charts (the range grid with numbers) and the Charts page
+web/js/social.js          shared: friend buttons, grade marks, "Others on this hand", "Others here", decisions side by side
+web/js/friends.js         the Friends page
+web/js/profile.js         profiles
 ```
 
 ## API
 
 All bodies are JSON. Everything except login needs `Authorization: Bearer <token>`.
+Signed-in requests also note when the player was last seen (at most one write every 5 minutes).
 
 | Endpoint | |
 |---|---|
 | `POST /api/login {name, pin}` | → `{token, player, created}`. A new name creates the player. Names 2–20 chars, unique ignoring case; PIN 4–12 digits. 5 wrong PINs lock the name for 10 minutes. |
 | `POST /api/logout` | ends the session |
-| `GET /api/me` | → `{player, usingFixtures}` |
+| `GET /api/me` | → `{player, usingFixtures, friendRequests}` (`friendRequests`: requests waiting for your answer) |
 | `GET /api/puzzles` | → `{puzzles: [{id, number, title, tags (done puzzles only), scenario {key,name,potType}, hero {seat,position}, villain {seat,position}, decisionCount (done puzzles only), rank, level, status: new/in_progress/done, answered, score (null for a `partial` play), scored: false (partial plays only), battle (id of a running battle that holds this hand, not done puzzles only)}], nextId, usingFixtures}`. `rank` 1 = easiest, `level` easy/medium/hard (thirds of the rank order); difficulty is the mean over decisions of the mean points over the options (what random clicking would score), the raw number is not sent. `nextId` = the player's unfinished scored play (lowest rank first), else the easiest unplayed puzzle, else null. Signing in (or opening `/`) goes straight to `#/play/<nextId>`; the lobby is `#/lobby`. |
 | `POST /api/puzzles/:id/start {mode: "scored"\|"practice"}` | → `{puzzle, steps, next, mode, answers, completed, end}`. `steps` runs up to and including the first unanswered decision; `answers` are the reveals already recorded (resume). Practice needs a completed scored play and starts fresh. |
 | `POST /api/puzzles/:id/act {decisionIndex, optionId, mode}` | → `{reveal, steps, next, end}`. `reveal` = `{index, choice, choiceLabel, grade, label, points, freq, maxFreq, loss, lossPct, decision (full), optionGrades [{id, grade, label, points, freq, loss, lossPct}] (what every option would have scored, SPEC 4.1), explanation {text, generated}, offMainLine, mainLine, continuesWith}`. Scored: the choice is stored at once; re-sending an answered decision returns the recorded choice (`alreadyAnswered`). `end` (after the last decision) = `{step, heroNet, score, takeaway, others [{name, score}], recap}`. Practice grades but stores nothing (`end.score` is null; the client averages the points). |
 | `GET /api/puzzles/:id/review` | → `{puzzle (with board), steps (all), answers (first-play reveals), end}`; 403 until completed. For a `partial` play (a hand finished by hand from an unfinished battle: played, never scored) `end.partial` is true and `end.score` null. |
-| `GET /api/leaderboard` | → `{players: [{id, name, played, totalPoints, average, decisions, grades {best,correct,inaccuracy,wrong,blunder}}], you, puzzleCount}` (completed first plays only) |
+| `GET /api/puzzles/:id/others` | → `{puzzle {id, number, title}, decisionCount, you {score, choices, partial?, battle?, stale?}, others: [{player {id, name}, friend, score, completedAt, stale?, choices}], total, friends}`: everybody else who has finished the hand (never an unfinished or `partial` play), friends first, then the most recent, at most 20 (`total` counts them all). A choice is `{index, street, optionId, label, grade, points, timeout?}`; for a play of an older version of the puzzle file (`stale`) the stored grade and points stay and labels follow the current file, as in the review. 403 until you have finished the hand (your own play, a `partial` one too, or the hand in a battle); 404 unknown puzzle. |
+| `GET /api/leaderboard?scope=everyone\|friends` | → `{players: [{id, name, played, totalPoints, average, shares {best,correct,inaccuracy,wrong,blunder,timeout?}\|null, rank, friend}], you, scope, minHands, friendCount, puzzleCount}` (completed first plays only). `friends` = you and your friends. `players` come in the ranking order; `rank` is null below `minHands` (see "Friends, profiles, ranking"). `shares`: the answers by grade in whole percent, adding up to 100 (`timeout`, battle time-outs, only when there are any); another player's only from `minHands` hands (else null), yours always. No grade counts or decision totals. |
+| `GET /api/players?q=<prefix>` | → `{q, players: [{id, name, relation}]}`: names starting with `q` (any case, at least 2 letters; 400 otherwise), an exact match first, at most 10. `relation`: `you`, `friend`, `sent` (your request waits), `received` (theirs waits for you), `none`. |
+| `GET /api/players/:id` | → `{player {id, name, since}, you, relation, rank {minHands, played, everyone {rank, of, size}, friends {rank, of, size}\|null}, stats {played, average, totalPoints, battles {played, won}, detail, shares, streets {preflop\|flop\|turn\|river: {average}}}, friendCount (yours only), hands, handsTotal, next}`. Ranks as the viewer's leaderboard shows them (`of` = ranked players in the scope; `friends` for you and your friends only). Statistics count finished, scored plays of current puzzles. Another player: `shares` as on the leaderboard and per street only the average points per decision, from `minHands` counted hands on (else `detail` false and neither); never grade counts or decision totals. Your own profile: also `decisions`, `grades` (counts) and per street `{decisions, points, average}`. `hands` (first page, newest first): `[{puzzle {id, number, title, level}, completedAt, score, partial? (yours only), finished}]`; when `finished` (you have finished that hand too) also `choices` (theirs), `stale?`, and `mine {score, partial?, choices}`; otherwise only `yours: new\|in_progress` and `battle` (the id of your battle that holds it). Others never see unfinished or `partial` plays. |
+| `GET /api/players/:id/hands?before=<cursor>&limit=<1-50>` | → `{hands, handsTotal, next}`: the next page (`next` of the previous one; 25 by default). 400 for a bad cursor. |
+| `GET /api/friends` | → `{friends: [{id, name, since, played, average, lastActive}], incoming: [{id, name, at}], outgoing: [{id, name, at}], battled: [{id, name, battles, lastAt, relation}], limits {maxPending, maxFriends}}`. `lastActive`: when they last used the site (to about 5 minutes), else their last finished hand. `battled`: people from your battles that got going, not yet friends, most recent first, at most 8. |
+| `POST /api/friends/request {name}` or `{id}` | → `{relation: "sent", player}` (201), `{relation: "sent", existing: true}` when it is already waiting, `{relation: "friend", mutual: true}` when they had asked you. 400 yourself or no name, 404 unknown player, 409 already friends or a limit reached (50 waiting requests, 200 friends). |
+| `POST /api/friends/:id/accept` · `/decline` · `/cancel` · `/remove` | → `{relation, player}`. Accept or decline their request (404 if there is none; accepting a friend again is `existing`), take back yours (404 none; 409 if they have accepted), remove a friend (404 if not friends). |
 | `GET /api/battles` | → `{battles: [battle], open: [{id, code, size, creator {name}, joined [{name}], invite: "you"\|"them"\|null, others [{name}], createdAt, rematchOf, joinable}], record: [{opponent {id,name}, wins, losses, draws, last, for, against}], handCount}`. `battles` are yours (newest first, without `choices`); `open` are battles you can join (public ones with a free seat and rematch invitations for you). `record` is per friend; in a three-way every pair counts (who finished higher). |
 | `POST /api/battles {size}` | → `{battle, existing}` (201). `size` 2 (default) or 3. A new open battle with a 4-letter `code` (letters without look-alikes); returns your open battle of that size instead if you have one. |
 | `POST /api/battles/join {code}` | → `{battle, joined}`. Join by code (case and spaces ignored). When the battle is full the hands are chosen and the ready check starts. 400 malformed, 404 no open battle with that code, 409 full or cancelled. |
@@ -182,6 +266,17 @@ All bodies are JSON. Everything except login needs `Authorization: Bearer <token
 | `POST /api/battles/:id/rematch` | → `{battle, existing}` (201 when new). A new battle for the same players, open with invitations for the others; it goes on when all have answered (or the inviter presses begin). Pressing it again gives the same battle. Finished battles, or cancelled ones that had started. |
 | `POST /api/battles/:id/start {hand}` | → as `/puzzles/:id/start` (`puzzle, steps, next, answers, completed, end`) plus `mode: "battle"`, `hand`, `battle`: the hand at the shared cursor (steps up to the open decision only), or completed once the hand is over for everybody. 409 before the hand has started; 410 if its puzzle is gone. |
 | `POST /api/battles/:id/act {hand, decisionIndex, optionId}` or `{hand, decisionIndex, timeout: true}` | → `reveal, steps, next, alreadyAnswered, timedOut, battle`. Only the open decision; the hand does not go on until everybody has answered. An answer after the clock (plus 1.5 s) gets the recorded time-out (`timedOut: true`, a reveal with `grade: "timeout"`, 0 points and the full analysis). `timeout: true` asks for that time-out (409 with `retryInMs` if the server's clock has not run out yet). 409 for any decision that is not open. |
+| `GET /api/tournament` | → `{installed, spots: [{name, units, n, seats, stacks, posted, ante, blinds, payouts, note, exact, scale, asked {open, call}}], quiz: [{id, title, blurb, count, answered, finished, right (finished sets), timeMs}], drill {hands, right, kinds, values, lastAt}}`; `{installed: false}` without the data. No solver output. Gzip when accepted. |
+| `GET /api/tournament/spots/:name` | → one spot for the charts: the menu's fields plus `decisions: [{id, seat, position, facing, kind, reach, allin_pct, askable, freq[169], ev_fold[169], ev_allin[169], ev_diff[169], ev_diff_se[169]}]` (frequencies 3 decimals, EVs 4). Gzip when accepted; an `ETag` (304 for `If-None-Match`). 404 unknown spot. |
+| `GET /api/tournament/drill/next?value&players&stack&situation&seat&kind&hands&avoid` | → `{prefs, question: {spot, decision {id, seat, position, facing, kind}, hand {class, cards}}}`: a drill question for the choices (SPEC 6.1), never the class `avoid`; nothing the solver says. 404 when no hand matches. |
+| `POST /api/tournament/drill/answer {spot, decision, class, cards, action}` | → `{feedback, totals}`. `action` `allin` (a jam or a call) or `fold`; graded from the server's data and added to your totals. 400 for a decision the drill does not ask, a bad class or action. |
+| `POST /api/tournament/quiz/:set/next` | → `{set, count, answered, done, index, question, shownAt}`: the next unanswered question only (stamped when first shown), `done` and `question: null` when all are answered. |
+| `POST /api/tournament/quiz/:set/answer {question, action}` | → `{index, count, done, feedback, others}`. Only the next unanswered question (409 otherwise); the first answer counts: answering again returns it with `alreadyAnswered`. `others` = `{total, right, friends, others: [{player {id, name}, friend, right}]}` (friends first, at most 40). |
+| `GET /api/tournament/quiz/:set/summary` | → `{set, count, answered, right, finished, startedAt, finishedAt, timeMs, answers: [{index, id, action, right, grade, cost, timeMs, feedback}]}`: your answers so far. |
+| `GET /api/tournament/quiz/questions/:id/others` | → `{question, total, right, friends, others}`; 403 until you have answered that question. |
+| `GET /api/tournament/quiz/ranking?scope=everyone\|friends` | → `{scope, you, ranked, players: [{id, name, right, answered, sets, rank, friend}], setCount, friendCount}`: players with a finished set, by right answers over finished sets; equal numbers share a place. |
+
+The tournament endpoints need a session like the rest; without `TOURNAMENT_DIR` all but `GET /api/tournament` answer 503. A profile (`GET /api/players/:id`) also has `tournament`: `{setCount, sets: [{id, title, count, finished, right, finishedAt} | {id, title, count, finished: false, answered} (yours only)], drill (yours only)}` or `null` without the data.
 
 `battle` (players): `{id, status: open/active/finished/cancelled, code (open only), size, createdAt, joinedAt, finishedAt, cancelledAt, cancelReason: creator/declined/hands_updated, handCount, serverNow, timing {clockMs, graceMs, autoMs, countdownMs, leadMs}, you {id,name}, youCreated, creator, players [{id,name}], invited, declined, inviteOnly, canStart, canCancel, invite: "you"/"them"/null, live, me {hand, done, total}, opps [{id, name, color 1|2, online, lastSeenAgo, hand, done, total}], outcome: win/loss/draw/shared/place (finished only), place, shared, standings [{id, name, total, place}], hands: [{n, level, decisionCount (only once the hand is over for you), puzzle {id, number, title, available}|null, me {answered, done, score, choices}, opps [{id, answered, done, score, choices}], outcome: won/lost/tied|null, winners, place}], rematchOf, rematch {id, status, byYou, by, invitedYou, joined}|null}` plus `opponent`, `opp`, `online`, `lastSeenAgo` and `hands[].opp` for the first opponent (duels, older clients).
 `live` = `{phase: ready/countdown/decide/review/handEnd/done, hand, index, kind: start/resume/lead, startsAt, decideAt, deadline (server ms; the 20 s clock, from the first answer), firstBy, answered [ids], timedOut [ids], ready [ids], autoAt (server ms; the automatic continue), started}`; times are server times, `serverNow` lets clients correct for their own clock.

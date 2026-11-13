@@ -52,6 +52,21 @@ export const fmtFreq = (x) => {
   return `${p}%`;
 };
 export const fmtSigned = (x) => (x > 0 ? `+${fmtBb(x)}` : fmtBb(x));
+/** A day as "12 Nov 2026". */
+export const fmtDate = (t) => (t ? new Date(t).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '–');
+/** How long ago, in plain words ("just now", "3 h ago", "yesterday", "4 days ago", then the date). */
+export function agoText(t) {
+  if (!t) return '–';
+  const m = Math.round((Date.now() - t) / 60000);
+  if (m < 5) return 'just now';
+  if (m < 60) return `${m} min ago`;
+  const hr = Math.round(m / 60);
+  if (hr < 24) return `${hr} h ago`;
+  const d = Math.round(hr / 24);
+  if (d === 1) return 'yesterday';
+  if (d < 30) return `${d} days ago`;
+  return fmtDate(t);
+}
 export const cap = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 
 export const STREETS = { preflop: 'Preflop', flop: 'Flop', turn: 'Turn', river: 'River' };

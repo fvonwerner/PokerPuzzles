@@ -13,6 +13,9 @@ import { sound } from './sound.js';
 
 // Slot 0 is the bottom (hero); slots go clockwise (to the hero's left).
 const SLOT_CLASS = ['s0', 's1', 's2', 's3', 's4', 's5'];
+// A table with fewer players (tournament: m.seats holds only the seats in the game) spreads them
+// over these slots, in seat order clockwise from the hero.
+const LAYOUT = { 2: [0, 3], 3: [0, 2, 4], 4: [0, 2, 3, 4], 5: [0, 1, 2, 4, 5], 6: [0, 1, 2, 3, 4, 5] };
 const BET_BASE = 'translate(-50%, -50%)';
 const r2 = (x) => Math.round(x * 100) / 100;
 
@@ -39,9 +42,15 @@ export function createTable(root) {
   let epoch = 0;     // bumped by finishAll(): an in-flight transition stops adding motion
 
   // ---------- static drawing ----------
+  // Optional model fields (tournament): m.noBoard (no board slots), m.note (a line under the pot),
+  // m.dealer (the seat with the button, default BTN), seats[x].backs (face-down cards for a seat
+  // still in the hand), seats[x].allin.
   function render(m) {
     clear(el);
-    const heroIdx = SEATS.indexOf(m.heroSeat);
+    const present = SEATS.filter((s) => m.seats[s]);
+    const layout = LAYOUT[present.length] || LAYOUT[6];
+    const heroAt = present.indexOf(m.heroSeat);
+    const slotOf = (seat) => layout[(present.indexOf(seat) - heroAt + present.length) % present.length];
     el.append(h('div.felt', h('div.felt-inner')));
     const { bets, middle } = middleOf(m);
     const won = winnerOf(m); // at the end the pot has gone to the winner
@@ -49,14 +58,16 @@ export function createTable(root) {
       h('div.pot', { 'aria-label': won ? `${won} won ${fmtBb(m.pot)} big blinds` : `Pot ${fmtBb(m.pot)} big blinds` },
         h('span.pot-label', won ? (won === m.heroSeat ? 'You won' : `${won} won`) : 'Pot'), ' ', h('span.num', { dataset: { num: 'pot' } }, fmtBb(middle > 0 ? middle : m.pot)),
         bets > 0 && middle > 0 ? h('span.pot-total', ` (total ${fmtBb(m.pot)})`) : null),
-      h('div.board', { 'aria-label': m.board.length ? `Board ${m.board.join(' ')}` : 'No board yet' },
+      m.noBoard ? null : h('div.board', { 'aria-label': m.board.length ? `Board ${m.board.join(' ')}` : 'No board yet' },
         [0, 1, 2, 3, 4].map((i) => (m.board[i]
           ? cardEl(m.board[i], { size: 'md', key: `b${i}` })
-          : h('span.card.card-md.card-slot', { 'aria-hidden': 'true' }))))));
+          : h('span.card.card-md.card-slot', { 'aria-hidden': 'true' })))),
+      m.note ? h('div.table-note', m.note) : null));
 
     const villainShown = m.end && m.end.reason === 'showdown' && m.end.showdown ? m.end.showdown.villainHand : null;
-    SEATS.forEach((seat, idx) => {
-      const slot = (idx - heroIdx + 6) % 6;
+    const dealerSeat = m.dealer || 'BTN';
+    present.forEach((seat) => {
+      const slot = slotOf(seat);
       const s = m.seats[seat];
       const isHero = seat === m.heroSeat, isVillain = seat === m.villainSeat;
       const classes = ['seat', SLOT_CLASS[slot]];
@@ -68,10 +79,10 @@ export function createTable(root) {
       const cards = [];
       if (!s.folded && isHero) {
         m.puzzle.hero.hand.forEach((c, i) => cards.push(cardEl(c, { size: 'lg', key: `h${i}` })));
-      } else if (!s.folded && isVillain) {
-        for (let i = 0; i < 2; i++) cards.push(cardEl(villainShown ? villainShown[i] : null, { size: 'sm', key: `v${i}` }));
+      } else if (!s.folded && (isVillain || s.backs)) {
+        for (let i = 0; i < 2; i++) cards.push(cardEl(isVillain && villainShown ? villainShown[i] : null, { size: 'sm', key: `v${i}` }));
       }
-      const label = `${seat}${isHero ? ' (you)' : ''}${s.folded ? ', folded' : ''}, stack ${fmtBb(s.stack)} big blinds`;
+      const label = `${seat}${isHero ? ' (you)' : ''}${s.folded ? ', folded' : ''}${s.allin ? ', all-in' : ''}, stack ${fmtBb(s.stack)} big blinds`;
       el.append(h(`div.${classes.join('.')}`, { 'aria-label': label, dataset: { seat } },
         h('div.seat-cards', cards),
         h('div.seat-plate',
@@ -84,7 +95,7 @@ export function createTable(root) {
           h('span.chipstack', { 'aria-hidden': 'true' }, Array.from({ length: chipCount(s.bet) }, () => h('span.chipico'))),
           h('span.num', { dataset: { num: `bet-${seat}` } }, fmtBb(s.bet))));
       }
-      if (seat === 'BTN') el.append(h(`div.dealer.d${slot}`, { title: 'Dealer button', 'aria-label': 'Dealer button' }, 'D'));
+      if (seat === dealerSeat) el.append(h(`div.dealer.d${slot}`, { title: 'Dealer button', 'aria-label': 'Dealer button' }, 'D'));
     });
   }
 
